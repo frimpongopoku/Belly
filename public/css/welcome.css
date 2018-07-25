@@ -1,0 +1,169 @@
+.footer{
+    background:rgb(29, 40, 48); 
+    height:200px;
+    border:solid 0px rgb(189, 218, 245);
+    border-top-width:5px; 
+    backface-visibility: rgb(83, 157, 241)
+}
+
+.blur{
+    
+    filter: blur(10px); 
+    transition:1s ease-out all;
+}
+.noblur{
+    transition: 1s ease-in all;
+}
+.register-font{
+    color:rgb(122, 119, 119); 
+    font-size:1.5em; 
+}
+.founder-title{
+    color:#707070;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding:10px;
+}
+.profile-pic{
+    border: solid 5px #cac8c8; 
+    border-radius:100% ; 
+    height:200px !important; 
+    width:200px !important; 
+    box-shadow: 0px 2px 4px black;
+    object-fit: cover !important;
+}
+.sign-paragraph{
+    font-size:2em;
+    text-align: center;
+    color:rgb(73, 70, 70);
+}
+.sign-in-board{
+    background: rgb(198, 229, 247) !important;
+}
+.first{
+    height:600px; 
+    background-image: url('/imgs/blue-orange-small.jpg');
+    background-size:cover;
+    background-position: center center;
+    border: solid 0px #272727; 
+    border-bottom-width:5px;
+  
+}
+.paragraph-font{
+    color:white; 
+    font-size:1.3em; 
+    
+}
+.home-overlay{
+    position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 600px;
+   background-color: black;
+   opacity: 0.5;
+   transition:1s ease-in all;
+}
+.juice-text{
+     
+        
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size:6rem;
+        color:white;
+}
+.font-land{
+    
+    font-size:2rem;
+    color:rgb(238, 190, 232);
+}
+.font-angel{
+    color:white;
+}
+.font-huge{
+    font-size:7rem;
+    opacity:1;
+    color:white;
+   /* text-shadow: 0px 4px 8px #272727; */
+}
+body{
+    margin: 0px; 
+    padding:0px; 
+ 
+
+    font-family: 'Railway', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .full-height {
+        height: 100vh;
+    }
+
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .position-ref {
+        position: relative;
+    }
+
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 84px;
+    }
+
+    .links > a {
+        color: #636b6f;
+        padding: 0 25px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .m-b-md {
+        margin-bottom: 30px;
+    }

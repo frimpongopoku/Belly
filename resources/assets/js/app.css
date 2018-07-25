@@ -1,0 +1,225 @@
+body{
+    color:rgb(117, 116, 116);
+}
+
+
+.solid-p-w{
+    /* solid-paper-weight */
+    box-shadow: 0px 1px 1px rgb(163, 161, 161);
+}
+.margin-climb-up{
+    margin-top: 150px;
+}
+.name-badge{
+    padding:10px; 
+    background:black; 
+    color:white; 
+    margin-left:-10px;
+    
+
+}
+.gist-img{
+    height:300px; 
+    width:100%; 
+    object-fit: cover !important; 
+    margin:0;
+
+}
+.action-btn {
+    color: rgb(107, 106, 106); 
+    margin:5px;
+    text-decoration: none !important;
+}
+.action-btn:active{
+     
+    color:crimson; 
+}
+
+.action-btn:hover{
+    cursor:pointer; 
+    color:black;
+    
+    transition:0.2s ease-in; 
+}
+.input-file{
+    font-size: 1em;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    margin:10px;
+}
+.input-file:focus + label,
+.input-file + label:hover {
+    background-color: red;
+}
+.tab-back-color{
+    background: rgb(241, 240, 240) !important;
+}
+.tab-h-5{
+    height:500px;
+}
+.my-tab{
+    margin-top:70px;
+}
+.tab-option{
+    background: #f8f6f6; 
+    color:rgb(107, 106, 106);
+    text-align:center; 
+    padding:10px; 
+    width:100%; 
+    border:solid 0px black;
+}
+.tab-option:hover{
+    background:  rgb(207, 225, 241); 
+    color:black;
+    transition: 0.2s ease-in all;
+}
+.font-small{
+    font-size:1rem; 
+}
+.font-tiny{
+    font-size:0.8rem;
+}
+.font-small-ish{
+    font-size:1.3rem;
+}
+.font-medium{
+    font-size:1.7rem;
+}
+.font-big{
+    font-size:2rem;
+}
+.margin-10{
+    margin:15px 6px;
+}
+.page-margin{
+    margin:30px;
+}
+.angel{
+    color:white !important;
+}
+.my-card-footer{
+    margin-top:0px; 
+    padding:10px;
+    background:rgb(63, 158, 247);
+    border:solid 2px rgb(63, 158, 247);
+    border-top-width:0px;
+}
+.my-card > p{
+    margin:2px;
+    padding:2px;
+    
+}
+.side-li{
+    padding:10px; 
+    color:white; 
+    font-size:1.5rem;
+    text-align: left; 
+    margin:0px 0px;
+}
+
+.side-active {
+    background: white; 
+    color:black;
+}
+.side-li:hover{
+    background:  rgb(207, 225, 241); 
+    color:black;
+    transition: 0.3s ease-in all;
+    cursor:pointer;
+    
+}
+.title-flag{
+    padding:5px; 
+    border:solid 2px black; 
+    border-bottom-right-radius: 10px; 
+    border-bottom-left-radius: 10px;
+    color:white;
+    background:black; 
+    text-transform:uppercase;
+    
+}
+.side-ul{
+    list-style-type: none; 
+    padding:0px; 
+    margin:0px;
+
+
+}.vanish{
+    display:none ;
+   
+}
+.my-thumbnail{
+  
+    overflow-y:'scroll';
+    background:white; 
+    border:solid 1px rgb(212, 211, 211);
+    padding:20px;
+    font-size:1.5rem;
+    
+}
+.my-card{
+    min-height:200px; 
+    max-height:200px; 
+    overflow-y:'scroll';
+    background:white; 
+    border:solid 1px rgb(212, 211, 211);
+    padding:20px;
+    font-size:1.5rem;
+    
+}
+.my-card:hover{
+    background:black; 
+    color:white; 
+    transition:0.3s ease-in all;
+    cursor:pointer;
+    
+}
+.my-checkbox-label{
+     margin:10px; 
+     margin-left:3px;
+    font-size:1.2rem;
+    cursor:pointer;
+}
+.my-checkbox{
+    margin:10px; 
+    font-size:1.2rem;
+    cursor:pointer;
+}
+.side-nav-container{
+    left:0; 
+    top:0;
+    z-index:1;
+    position:fixed;
+    height:100%; 
+    width:200px; 
+    background:rgb(8, 8, 8);
+    color:white;
+    
+}
+.side-nav-profile-box{
+    padding:15px; 
+    margin:0px; 
+    background:rgb(63, 158, 247); 
+    border:solid px rgb(5, 53, 68); 
+    border-bottom-width:3px; 
+    height:170px;
+
+}
+
+.big-profile-pic {
+    height:400px; 
+    width:100%; 
+    border:solid 2px rgb(219, 217, 217);
+    object-fit: cover !important;
+
+}
+.side-profile-pic{
+  
+    height:110px; 
+    width:110px; 
+    border:solid 4px rgb(233, 229, 229); 
+    box-shadow: 0px 2px 2px black;
+    border-radius:100%; 
+    
+}
