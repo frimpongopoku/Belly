@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import  usersReducer  from './users-reducer'; 
-
+import   { userPiecesReducer, authenticatedUserReducer,  }  from './users-reducer'; 
+import { saveMenuItemsReducer, notifierReducer } from './application-reducer';
 
 const allReducers = combineReducers({ 
- 	users: usersReducer
+ 	userPieces: userPiecesReducer, 
+ 	authUser: authenticatedUserReducer, 
+ 	menuItems: saveMenuItemsReducer, 
+ 	notification: notifierReducer
  });
-
 
 export default allReducers; 

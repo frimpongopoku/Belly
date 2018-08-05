@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 class GistCard extends Component {
     render() {
         return (
@@ -12,7 +12,7 @@ class GistCard extends Component {
                     <div className = 'panel-body' style ={{padding:'0px'}}> 
                         <img src = '/imgs/knust.jpg' className='img-responsive gist-img' />
 
-                        <a href='#' className = 'name-badge margin-climb-up z-depth-1' style={{background:this.props.details.bcolor}}> @{this.props.details.name} </a>
+                        <a href='#' className = 'name-badge margin-climb-up  my-depth-1' style={{background:this.props.details.bcolor}}> @{this.props.details.name} </a>
                         <p className = 'font-small pull-right margin-10'>540 Likes 60 Comments</p>
                     </div> 
                     <div className = 'panel-footer'> 
@@ -25,6 +25,12 @@ class GistCard extends Component {
             </div>
         );
     }
+}
+
+GistCard.propTypes = { 
+    details: PropTypes.object,
+    bcolor: PropTypes.string, 
+    name: PropTypes.string 
 }
 
 export default GistCard;

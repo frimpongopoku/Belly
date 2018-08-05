@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './../../app.css';
+
 class SideNav extends Component {
     constructor(props){
         super(props);
         this.menuItems = [
+             
             {
                 fa:'fa-globe',
                 name: 'gist'
@@ -20,12 +22,21 @@ class SideNav extends Component {
                 fa:'fa-plus', 
                 name:'create-page'
             },
-            {
-                fa:'fa-signout', 
-                name:'logout'
-            }
+
         ];
+        this.logout = this.logout.bind(this);
         
+    }
+    componentWillMount(){
+        this.saveMenuToRemote();
+    }
+
+    logout(){
+        window.location = "/logout";
+    }
+
+    saveMenuToRemote(){ 
+        this.props.saveMenuFunction === undefined? '' : this.props.saveMenuFunction(this.menuItems);
     }
 
     capitalize(theString){
@@ -57,8 +68,6 @@ class SideNav extends Component {
                 });
             });
         }
-      
-      
     }
     render() {       
         return (
@@ -69,16 +78,23 @@ class SideNav extends Component {
                 <div className = 'side-nav-profile-box'> 
                     <center>
                       <img src='/imgs/avatars/nose-mask-avatar.jpg'className='side-profile-pic' />
-                      <h4 style={{'margin':'3px','cursor':'pointer'}}>Frimpong <i className = 'fa fa-caret-down'></i></h4>
+                      <h4 style={{'margin':'3px','cursor':'pointer'}}>
+                          { this.props.user ===null ? '...' : this.props.user.name }
+                       <i className = 'fa fa-caret-down'></i></h4>
                     </center>
                 </div>
                 <div> 
                     <ul className = 'side-ul'> 
-                            { this.spillMenu() }
+                        <li className = ' side-li' >
+                            <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
+                        </li>
+                        { this.spillMenu() }
+                        <li className = ' side-li' onClick = {()=>{ this.logout()}} >
+                            <i className = 'fa fa-sign-out' style={{ color:'red' }}></i> Logout 
+                        </li>
                     </ul>
                 </div>
-                </div>
-                
+                </div> 
             </div>
         );
     }

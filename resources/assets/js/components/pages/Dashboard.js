@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
-
+import Piece from './../Plugins/Piece';
+import TextModal from './../Plugins/TextModal';
 
 class Dashboard extends Component {
+    constructor(props){
+        super(props); 
+        this.searchTypes = ['Name','Title','Year','Username','University','Programme','Course','Rating']; 
+    }
+
+
+    spillPieces(){ 
+        return this.props.pieces.map( (piece, index) =>{ 
+            return (
+                <li key={ index }>
+                    <Piece owner= { piece.owner } course={ piece.course } 
+                        fileType = { piece.type } title={ piece.title } ID={ piece.id } />
+                    <TextModal piece_title = { piece.title } piece_id = {piece.id}
+                         piece_body={piece.body} created_at= { piece.created_at} />
+                </li>
+                );
+        })
+    }
+
     render() {
+
+        console.log(typeof(this.props.pieces));
         return (
             <div>
-                <div className = 'container'> 
-                    <div className = 'row'> 
-                        <div className = 'col-md-10 col-lg-10 col-md-offset-2'> 
+                <div className = 'container' style={{padding:'0'}}> 
+                    <div className = 'row' > 
+                        <div className = 'col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2'> 
                             {/* Search area */}
-                            <div className='my-thumbnail' style={{ margin: '15px' }}> 
+                            <div className='my-thumbnail' style={{ margin: '15px 0', marginLeft:0, width:'100%' }}> 
                                 <div className =' ' >
                                     <input type = 'text' placeholder='search ' className='form-control' />
 
@@ -42,46 +64,15 @@ class Dashboard extends Component {
                             </div>
                             {/* Found Papers area  */}
                             <div> 
-                                <div className = 'container'>
-                                    <div className = 'row'>
-                                        <div className ='col-md-4'>
-                                            <div className = 'z-depth-1'>
-                                                <div className ='my-card'> 
-                                                    <center>
-                                                        <p className='title-flag' style ={{textTransform:'uppercase'}}> <b>I am the good shepherd</b>
-                                                        </p>
-                                                    </center>
-                                                        <p><b>Name:</b> Frimpong Opoku</p>
-                                                        <p><b>Course:</b> Economics</p>
-                                                        <p><b>File-type:</b> PDF </p>
-                                                        <p><b>Progam:</b> Engineering</p>
-                                                    
-                                                </div>
-                                                <div className='my-card-footer clearfix'>
-                                                    <small className = 'angel'><i className = 'fa fa-timer'></i> 3 months ago</small>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className='col-md-4'>
-                                            <div className='z-depth-1'>
-                                                <div className='my-card'>
-                                                    <center>
-                                                        <br/><br/>
-                                                        <h1 className = 'card-title'> 
-                                                            FRENCH
-                                                        </h1>
-                                                        <p>Papers available: <span className ='badge'>450</span></p>
-                                                    </center>
-                                        
-
-                                                </div>
-                                                <div className='my-card-footer clearfix'>
-                                                    <small className='angel'><i className='fa fa-timer'></i> 3 months ago</small>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div className = 'container' style={{padding:'0'}}>
+                                    <div className = 'col-md-10' style={{padding:'0'}}>
+                                        <div className = 'row'> 
+                                            <ul style={{listStyleType:'none',padding:0}}> 
+                                               { 
+                                                  this.props.pieces ===null ? '' : this.spillPieces()
+                                               }
+                                             </ul>
+                                          </div>
                                     </div>
                                 </div>
                             </div>

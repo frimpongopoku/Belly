@@ -6,7 +6,7 @@ class Gist extends Component {
             <div className ='page-margin'>
                 <div className = 'container'> 
                     <div className = 'row'>
-                        <div className='col-md-10 col-lg-10 col-md-offset-1'> 
+                        <div className='col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1'> 
                             <div className = 'col-md-9' > 
                                 <div className = 'col-md-10 col-md-offset-1 '>
                                     <GCard details ={{name:'Agyingo', bcolor:'green'}}></GCard>
@@ -16,8 +16,8 @@ class Gist extends Component {
                             </div> 
                             <div className='col-md-3' > 
                                 <div style={{ position: 'fixed'}}>
-                                    <div className = ' my-thumbnail' style={{padding:'15px',borderRadius:0,}}>
-                                        <p className = 'font-big'>Place for advertisment and notifications </p>
+                                    <div className = 'thumbnail my-depth-1' style={{padding:15, marginRight:30}}>
+                                        <p className = 'font-big '>Place for some other shit </p>
                                     </div>
                                     
                                 </div>

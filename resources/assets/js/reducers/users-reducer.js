@@ -1,20 +1,34 @@
-var initialState = ['Frimpong', 'Akwesi','Opoku','Agyemang'];
 
-const usersReducer =( state =initialState , action )=>{
 
+export const userPiecesReducer =( state = null , action )=>{
 	switch (action.type) {
-		case "LOAD":
-			return { ...state , fresh: 'something'}
+		case "user/PIECESLOAD":
+			return action.payload
 			break;
-		
+				
 		default:
 			return state ;
 			break;
 	}
-
 	return state;
 }
 
 
-export default usersReducer;
+export const authenticatedUserReducer = (state=null, action ) =>{ 
+	switch (action.type) {
+		case "user/AUTHENTICATED":
+
+			return  action.payload ===null ? state : action.payload;
+		break;
+		default:
+			return state;
+			break;
+	}
+	return state;
+}
+
+
+
+
+
 

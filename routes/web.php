@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/get-auth-user','Main@getAuthUser');
+Route::get('/save-text-piece',['as'=>'textpiece.save','uses'=>'Main@saveTextPiece','middleware'=>'auth']);
+
+Route::get('/dummy','Main@dummy');
