@@ -1,5 +1,6 @@
 import React from 'react'; 
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 
 class TextModal extends React.Component{
 
@@ -9,10 +10,23 @@ class TextModal extends React.Component{
 		this.changeMode = this.changeMode.bind(this);
 	}
 
+	editPaper(){
+		var newDataBus = {title:this.refs._newTitle.value, body: this.refs._newBody.value, id:this.props.piece_id}
+		this.props.editPaperFunction(newDataBus, this.props.allPieces);
+		$('.view-title').text(this.refs._newTitle.value); 
+		$('.view-body').text(this.refs._newBody.value);
+		this.selectMode('view');
+	}
 
-	deletePaperPiece(){
+	deletePaper(){
+		var thisClass = this;
+		setTimeout(function(){
+			$('.modal .close').click();
+			thisClass.props.deletePaperFunction(thisClass.props.piece_id,thisClass.props.allPieces);
+		},1000)
 		
 	}
+	
 	changeMode(nextMode,currentMode){
 		//get the moode that is to be switched to 
 		//get the div of that. mode
@@ -68,25 +82,28 @@ class TextModal extends React.Component{
 
 	                                	<div id={'view-mode-'+this.props.piece_id}  style = {{ position:'relative'}}>
 		                                    <div className = 'piece-title'>
-		                                            <h2 >{this.props.piece_title}</h2>
+		                                            <h2 className='view-title'>{this.props.piece_title}</h2>
 		                                    </div>
 		                                    <div className = 'piece-body'>
-		                                        <p>{ this.props.piece_body }</p>
+		                                        <p className='view-body'>{ this.props.piece_body }</p>
 		                                     </div>
 		                                </div>
 		                                {/*Ddont forget display:inline-block*/}
 		                                <div id = {'edit-mode-'+this.props.piece_id}  style = {styles.correctMarg, styles.vanish  }> 
 		                              		<button className = 'btn my-depth-1 round-float-button float-red' ><i className ='fa fa-close'></i></button>
-		                                	<button className = 'btn my-depth-1 round-float-button float-green' onClick={()=>{ this.selectMode('view')}}><i className ='fa fa-save'></i></button>
-		                                	<input type='text'className = 'form-control modal-ed-title' defaultValue={this.props.piece_title} />
-		                                	<textarea className = 'form-control modal-ed-body ' rows='18' id = {'textarea-modal-'+this.props.piece_id}>
+		                                	<button className = 'btn my-depth-1 round-float-button float-green' onClick={()=>{ this.editPaper()}}><i className ='fa fa-save'></i></button>
+		                                	<input type='text'className = 'form-control modal-ed-title' ref ="_newTitle" defaultValue={this.props.piece_title} />
+		                                	<textarea className = 'form-control modal-ed-body ' rows='18'ref = "_newBody" id = {'textarea-modal-'+this.props.piece_id}>
 		                                		 { this.props.piece_body }
 		                                	</textarea> 
 		                                </div>
 		                                <div id ={ 'delete-mode-'+this.props.piece_id} style={ styles.vanish} > 
 		                                	<center> 
 		                                		<h2>Are you sure you want to delete <span style={{color:'black'}}><b>"{this.props.piece_title}"</b></span></h2>
-		                                		<button className=' btn btn-danger float-red my-depth-1 margin-5'><i className = 'fa fa-trash'></i> Yes I want to </button>
+		                                		<button data-toggle='modal-dismiss' className=' btn btn-danger float-red my-depth-1 margin-5'
+		                                			onClick ={()=>{this.deletePaper()}} >
+		                                			<i className = 'fa fa-trash'></i> Yes I want to 
+		                                		</button>
 		                                	</center> 
 		                                </div>
 		                                <div id = {'publish-mode-'+this.props.piece_id }style={ styles.vanish}> 
@@ -104,8 +121,9 @@ class TextModal extends React.Component{
 	                                     <a href='#' className='action-btn font-small-ish'><i className='fa fa-comment'></i> 10</a>
 	                                     <a href='#' className='action-btn font-small-ish'><i className='fa fa-share'></i> 2 </a>
 	                                     <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-rock-o'></i> 2 </a>
-	                                     <a href='#' className='name-badge-n my-depth-2 font-small-ish modal-s-i-c'>Pongo</a>
+	                                     <a href='#' className='name-badge-n my-depth-2 font-small-ish modal-s-i-c'>{this.props.owner}</a>
 	                                </div>
+	                                <button className=' close' data-dismiss='modal' ></button>
 	                            </div>
 	                        </div>
 	                    </div>

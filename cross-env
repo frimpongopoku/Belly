@@ -1,0 +1,543 @@
+
+Webpack is watching the files…
+
+ DONE  Compiled successfully in 11641ms15:23:46
+
+                                                                                                    Asset     Size  Chunks                    Chunk Names
+  fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.eot?f4769f9bdb7466be65088239c12046d1  20.1 kB          [emitted]         
+fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.woff2?448c34a56d699c29117adc64c43affeb    18 kB          [emitted]         
+ fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.woff?fa2772327f55d8198301fdb8bcfc8158  23.4 kB          [emitted]         
+  fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.ttf?e18bbf611f2a2e43afc071aa2f4e1512  45.4 kB          [emitted]         
+  fonts/vendor/bootstrap-sass/bootstrap/glyphicons-halflings-regular.svg?89889688147bd7575d6327160d64e760   109 kB          [emitted]         
+                                                                                               /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+                                                                                             /css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...15:58:43
+
+ DONE  Compiled successfully in 2909ms15:58:46
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:10:08
+
+ DONE  Compiled successfully in 545ms16:10:09
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:10:30
+
+ DONE  Compiled successfully in 673ms16:10:31
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:10:37
+
+ DONE  Compiled successfully in 347ms16:10:38
+
+ WAIT  Compiling...16:11:40
+
+ DONE  Compiled successfully in 386ms16:11:40
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:12:47
+
+ DONE  Compiled successfully in 874ms16:12:48
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:13:01
+
+ DONE  Compiled successfully in 349ms16:13:02
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:14:12
+
+ DONE  Compiled successfully in 482ms16:14:12
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:14:15
+
+ DONE  Compiled successfully in 224ms16:14:16
+
+ WAIT  Compiling...16:15:20
+
+ DONE  Compiled successfully in 307ms16:15:20
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:16:15
+
+ DONE  Compiled successfully in 333ms16:16:15
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:16:59
+
+ DONE  Compiled successfully in 328ms16:17:00
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:17:07
+
+ DONE  Compiled successfully in 721ms16:17:08
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:17:49
+
+ DONE  Compiled successfully in 364ms16:17:50
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:17:50
+
+ DONE  Compiled successfully in 239ms16:17:50
+
+ WAIT  Compiling...16:18:50
+
+ DONE  Compiled successfully in 300ms16:18:51
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:19:15
+
+ DONE  Compiled successfully in 401ms16:19:16
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:20:23
+
+ DONE  Compiled successfully in 389ms16:20:23
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:20:57
+
+ DONE  Compiled successfully in 395ms16:20:57
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:22:18
+
+ DONE  Compiled successfully in 868ms16:22:19
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:22:55
+
+ DONE  Compiled successfully in 418ms16:22:56
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:23:36
+
+ DONE  Compiled successfully in 376ms16:23:36
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:23:40
+
+ DONE  Compiled successfully in 585ms16:23:41
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:23:41
+
+ DONE  Compiled successfully in 225ms16:23:41
+
+ WAIT  Compiling...16:24:20
+
+ DONE  Compiled successfully in 413ms16:24:20
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:24:39
+
+ DONE  Compiled successfully in 283ms16:24:40
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:28:26
+
+ DONE  Compiled successfully in 314ms16:28:26
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:28:49
+
+ DONE  Compiled successfully in 742ms16:28:50
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:29:24
+
+ DONE  Compiled successfully in 413ms16:29:25
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:31:51
+
+ DONE  Compiled successfully in 472ms16:31:51
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:32:05
+
+ DONE  Compiled successfully in 497ms16:32:06
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:32:06
+
+ DONE  Compiled successfully in 400ms16:32:07
+
+ WAIT  Compiling...16:33:16
+
+ DONE  Compiled successfully in 284ms16:33:16
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:33:48
+
+ DONE  Compiled successfully in 535ms16:33:49
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:34:05
+
+ DONE  Compiled successfully in 408ms16:34:06
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:34:32
+
+ DONE  Compiled successfully in 378ms16:34:32
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:35:35
+
+ DONE  Compiled successfully in 304ms16:35:36
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:35:57
+
+ DONE  Compiled successfully in 378ms16:35:57
+
+ WAIT  Compiling...16:36:45
+
+ DONE  Compiled successfully in 293ms16:36:46
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:37:17
+
+ DONE  Compiled successfully in 353ms16:37:17
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:39:30
+
+ DONE  Compiled successfully in 351ms16:39:31
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:43:17
+
+ DONE  Compiled successfully in 659ms16:43:18
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:43:45
+
+ DONE  Compiled successfully in 523ms16:43:46
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:43:59
+
+ DONE  Compiled successfully in 470ms16:44:00
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:44:41
+
+ DONE  Compiled successfully in 447ms16:44:42
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:45:25
+
+ DONE  Compiled successfully in 378ms16:45:26
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:47:49
+
+ DONE  Compiled successfully in 893ms16:47:50
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:48:43
+
+ DONE  Compiled successfully in 512ms16:48:43
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:49:01
+
+ DONE  Compiled successfully in 273ms16:49:01
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:49:09
+
+ DONE  Compiled successfully in 413ms16:49:09
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:50:48
+
+ DONE  Compiled successfully in 585ms16:50:49
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:52:25
+
+ DONE  Compiled successfully in 324ms16:52:25
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:52:44
+
+ DONE  Compiled successfully in 336ms16:52:44
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:53:32
+
+ DONE  Compiled successfully in 241ms16:53:32
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:53:43
+
+ DONE  Compiled successfully in 369ms16:53:43
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...16:54:15
+
+ DONE  Compiled successfully in 258ms16:54:16
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:03:32
+
+ DONE  Compiled successfully in 363ms17:03:33
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:04:47
+
+ DONE  Compiled successfully in 223ms17:04:48
+
+ WAIT  Compiling...17:07:06
+
+ DONE  Compiled successfully in 604ms17:07:06
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:07:52
+
+ DONE  Compiled successfully in 379ms17:07:52
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:08:48
+
+ DONE  Compiled successfully in 703ms17:08:49
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:10:06
+
+ DONE  Compiled successfully in 364ms17:10:07
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:12:19
+
+ DONE  Compiled successfully in 510ms17:12:20
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:13:13
+
+ DONE  Compiled successfully in 556ms17:13:13
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:13:23
+
+ DONE  Compiled successfully in 596ms17:13:24
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:18:22
+
+ DONE  Compiled successfully in 375ms17:18:23
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:18:43
+
+ DONE  Compiled successfully in 801ms17:18:44
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:19:22
+
+ DONE  Compiled successfully in 456ms17:19:22
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:19:27
+
+ DONE  Compiled successfully in 593ms17:19:28
+
+ WAIT  Compiling...17:20:17
+
+ DONE  Compiled successfully in 647ms17:20:18
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:21:39
+
+ DONE  Compiled successfully in 601ms17:21:40
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:21:54
+
+ DONE  Compiled successfully in 316ms17:21:54
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:23:02
+
+ DONE  Compiled successfully in 331ms17:23:02
+
+ WAIT  Compiling...17:25:25
+
+ DONE  Compiled successfully in 350ms17:25:26
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:26:38
+
+ DONE  Compiled successfully in 321ms17:26:39
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:26:56
+
+ DONE  Compiled successfully in 271ms17:26:56
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:27:08
+
+ DONE  Compiled successfully in 187ms17:27:08
+
+ WAIT  Compiling...17:27:32
+
+ DONE  Compiled successfully in 890ms17:27:33
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:28:05
+
+ DONE  Compiled successfully in 659ms17:28:06
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app
+ WAIT  Compiling...17:28:53
+
+ DONE  Compiled successfully in 639ms17:28:54
+
+       Asset     Size  Chunks                    Chunk Names
+  /js/app.js  1.87 MB       0  [emitted]  [big]  /js/app
+/css/app.css   147 kB       0  [emitted]         /js/app

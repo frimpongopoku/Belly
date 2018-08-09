@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery'; 
 import SnackBar from './../Plugins/SnackBar';
+import Uploader from './../Plugins/Uploader';
 
 class Create extends Component {
     constructor(props){
         super(props); 
-        this.availableOptions = ['text','pdf','picture'];
-        
+        this.availableOptions = ['text','pdf','picture'];     
     }
 
     fullOfSpaces(string){
@@ -76,7 +76,8 @@ class Create extends Component {
             owner_id:ownerID, 
             id: Math.floor(Math.random() * Math.floor(1000)) ,
             created_at:'4 days ago', 
-            type:'text'
+            type:'text', 
+            user:{...this.props.user}
         };
         let validationResults = this.validate(title,body); 
 
@@ -85,28 +86,24 @@ class Create extends Component {
             this.refs.body.title = "";
             this.props.createPaperFunction(dataTrain, this.props.allPieces); 
             this.props.switchPageFunction('dashboard');
+            this.snack();
         }else{
             alert(validationResults.errors);
         }
         
     }
-    snack(ID, inDur , outDur, waitDur ){
-
-        $('#'+ID).fadeIn(inDur,()=>{
-            setTimeout(()=>{
-               $('#'+ID).fadeOut(outDur);
-            },waitDur)
-            
-        })
+    snack(){
+        var thisClass = this;
+        $('.notifier').fadeIn(600);
     }
     tabClick(option){
         let optionID = '#'+option+'-btn'; 
         let tab = '#'+option;
         let oldTab = '#'+$('#current-tab').val();
         this.availableOptions.filter((opt) => opt !== option).forEach(optB => {
-            $('#'+ optB+'-btn').removeClass('app-color my-depth-1');     
+            $('#'+ optB+'-btn').removeClass(' tab-umb ');     
         }); 
-        $(optionID).addClass('app-color my-depth-1');
+        $(optionID).addClass('tab-umb ');
         console.log('done');
         $(oldTab).fadeOut(200,function(){
             $(tab).fadeIn(200);
@@ -119,32 +116,23 @@ class Create extends Component {
             <div className = 'page-margin'>
                 <div className='container'>
                         <div className ='row'>
-                            <SnackBar 
-                                notice ={'Do something newerperopoasops sdoeperos'} 
-                                ID = {'new-piece'}
-                                color={'green'}
-                            />
+                             <div className={this.props.notification ===null? 'notifier' : 'notifier s-vanish'} style ={{display:'none'}}>     
+                                <SnackBar id ='First' color='green' notice ='Finshing up...'/>
+                            </div>
                             <div className= 'col-md-8 col-lg-10 col-lg-offset-1 col-md-offset-2'>
-                            <div className ='col-md-4'>
-                                 <button className = 'tab-option font-medium app-color my-depth-1' id='text-btn' 
+                            <div className ='col-md-4' style={{padding:0}}>
+                                 <button className = 'tab-option tab-umb tab-text font-medium ' id='text-btn' 
                                  onClick ={()=>{
                                     this.tabClick('text');
-                                 }}>Text</button>
+                                 }}><i className = 'fa fa-pencil'></i> Text</button>
                             </div>
-                            <div className='col-md-4'>
-                                <button className='tab-option font-medium' id='pdf-btn'
-                                    onClick={() => {
-                                        this.tabClick('pdf');
-                                    }}>PDF</button>
-                            </div>
-                            <div className='col-md-4'>
-                                <button className='tab-option font-medium' id = 'picture-btn'
+                            <div className='col-md-4' style={{padding:0}}>
+                                <button className='tab-option  font-medium' id = 'picture-btn'
                                     onClick={() => {
                                         this.tabClick('picture');
                                     }}
-                                >Picture</button>
+                                ><i className = 'fa fa-upload'></i> Picture</button>
                             </div>
-                           
                             <div className="">
                                 <div className=' my-tabs '>
                                     <input type = 'hidden' id ='current-tab' value='text'/>
@@ -158,29 +146,14 @@ class Create extends Component {
                                                 <label className = '' style={{margin:'5px'}}><b> I </b></label>
                                                    <input type='submit' onClick = {()=>{this.extractData()}} value = 'save' className = 'btn btn-success pull-right' />
                                             </div>
-                                            <textarea ref = 'body' className= 'form-control  my-txt-area'  rows='25' placeholder ='Compose question '>Start,</textarea>
-
-                                            
+                                            <textarea ref = 'body' className= 'form-control  my-txt-area'  rows='25' placeholder ='Compose question '>Start,</textarea>                                           
                                         </div>
-                                    </div>
-                                    <div className='my-tab vanish' id='pdf'>
-                                        <br />
-                                        <div className='my-thumbnail tab-back-color tab-h-5' >
-                                            <center> 
-                                                <h3 style = {{marginTop:'180px'}}>Upload PDF file </h3>
-                                                <input type = 'file' className ='input-file'  />
-                                               
-                                            </center>
-                                        </div>
-                                    </div>
+                                    </div>   
                                     <div className='my-tab vanish' id='picture'>
                                         <br />
                                        
-                                        <div className='my-thumbnail tab-back-color tab-h-5' >
-                                            <center>
-                                                <h3 style={{ marginTop: '180px' }}>Upload Picture Of Questions </h3>
-                                                <input type='file' className='input-file' />
-                                         </center>
+                                        <div className=' tab-h-5 clearfix' >
+                                           <Uploader />                                   
                                         </div>                                      
                                     </div>
                                 </div>                          

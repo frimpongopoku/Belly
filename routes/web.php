@@ -19,7 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::get('/get-auth-user','Main@getAuthUser');
-Route::get('/save-text-piece',['as'=>'textpiece.save','uses'=>'Main@saveTextPiece','middleware'=>'auth']);
+
+Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
+	Route::get('/get-auth-user','Main@getAuthUser');
+	Route::get('/save-text-piece',['as'=>'textpiece.save','uses'=>'Main@saveTextPiece']);
+	Route::get('/delete-paper/{id}',['as'=>'paper.delete','uses'=>'Main@deletePaper']);
+	Route::get('/get-all-papers',['as'=>'papers.get','uses'=>'Main@getPapers']);
+	Route::get('/edit-piece',['as'=>'paper.edit','uses'=>'Main@editPaper']);
+
+});
 
 Route::get('/dummy','Main@dummy');

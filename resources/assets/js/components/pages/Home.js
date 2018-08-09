@@ -9,9 +9,10 @@ import $ from 'jquery';
 import Profile from './Profile';
 import Create from './Create';
 import Gist from './Gist';
-import { fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
+import { test,editPaperAction, getUserPiecesAction, fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
 import Blood from './../Blood';
 import TextModal from './../Plugins/TextModal';
+import SnackBar from './../Plugins/SnackBar';
 
 class Home extends Component {
     constructor(props){
@@ -22,14 +23,18 @@ class Home extends Component {
     }
 
     componentWillMount(){ 
+        //load the authenticated user and his/her makings(pieces)
         this.props.getAuthUser();
-        this.props.loadUserPieces(null);
+        this.props.getUserPieces();
 
     }
     componentDidMount(){
-
     }
 
+
+    snack(notice,ID,color){
+        return (<SnackBar color={color} notice = { notice } ID ={ID} />)
+    };
     switchPage(newPage){
         //switch pages
         //record the latest page
@@ -51,12 +56,14 @@ class Home extends Component {
   render() {
         return (
             <div>
-                <TextModal></TextModal>
+                
                 <div className = 'side-nav'>
                     <SideNav saveMenuFunction = { this.props.saveMenu } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }></SideNav> 
                 </div>
                 <div id='dashboard'> 
-                   <Dashboard deletePaperFunction = { this.deletePaperPiece } pieces = { this.props.userPieces === null ? null : this.props.userPieces }></Dashboard>
+                 <Create allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
+              
+                           {/* <Dashboard editPaperFunction = { this.props.editPaper } deletePaperFunction = { this.props.deletePaperPiece } pieces = { this.props.userPieces === null ? null : this.props.userPieces }></Dashboard> */}
                 </div> 
                 <div id= 'profile' className='vanish' style = { styles.noteReady }> 
                     <Profile></Profile> 
@@ -69,17 +76,13 @@ class Home extends Component {
                 </div>
                 <center> 
                     <button onClick = {()=>{
-                        console.log(typeof([1,2,3,4,3]), "Yh, this is from the system!");
-                        if(typeof([1,2,3,4]) ==='Array' ){
-                            console.log("Bingo! I nailed the types. ");
-                           ;
-                        }else if(typeof({}) ==='object'){
-                            console.log("Another Bingo, I nailed the types");
-                        }else{
-                            console.log("Dude, wtf you talking about!");
-                        }
+                        
                     }}>Click me</button>
+                      <button className= 'ano' onClick = {()=>{
+                        console.log("Dude you just clicked me, DAAAMIN! Chain reaction");
+                    }}>Another Click me</button>
                 </center>
+                <center><h1 > <i className = 'fa fa-spinner fa-pulse'></i></h1></center>
             </div>
         );
     }
@@ -98,7 +101,8 @@ function mapStateToProps(state){
     return { 
         userPieces: state.userPieces ,
         authenticatedUser: state.authUser , 
-        store:state
+        store:state,
+        notification:state.notification
     };
 };
 function matchDispatchToProps(dispatch){
@@ -107,7 +111,10 @@ function matchDispatchToProps(dispatch){
         loadUserPieces: loadUserPiecesAction, 
         createNewPaper: createNewPaperAction, 
         saveMenu: saveMenuToRemoteAction, 
-        deletePaperPiece: deletePaperPieceAction
+        deletePaperPiece: deletePaperPieceAction, 
+        getUserPieces : getUserPiecesAction,
+        editPaper: editPaperAction,
+        test: test
     },dispatch)
 };
 
