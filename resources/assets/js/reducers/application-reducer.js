@@ -1,5 +1,11 @@
 
+export const tokenReducer = (state=null, action) =>{
+	if(action.type==="application/GET_TOKEN"){
+		return action.payload;
+	}
 
+	return state;
+}
 export const saveMenuItemsReducer = (state=null, action)=>{
 	if(action.type ==="application/SAVE_MENU"){
 		return action.payload;

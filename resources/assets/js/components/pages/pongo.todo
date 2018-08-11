@@ -11,7 +11,9 @@ FIX DELETE CODE, IT SHOULD NOT DELETE, IT SHOULD UPDATED THE DELETED COL TO 1 --
 	fix the tabselect for image modal..  _/
 5.1 Create Image piece card _/
 5.2 Create Image pice modal; _/
-	Get the name of the file with JS, and use php to upload. After?
+	Get the name of the file with JS, _/
+	 and use php to upload. 
+	-- After?
 	Update State, get the path to the new Image and 
 
 6. MOVE TO PDF UPLOADS

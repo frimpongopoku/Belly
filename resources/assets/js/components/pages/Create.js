@@ -99,15 +99,15 @@ class Create extends Component {
     tabClick(option){
         let optionID = '#'+option+'-btn'; 
         let tab = '#'+option;
-        let oldTab = '#'+$('#current-tab').val();
+        let oldTab = '#'+$('#c-current-tab').val();
         this.availableOptions.filter((opt) => opt !== option).forEach(optB => {
-            $('#'+ optB+'-btn').removeClass(' tab-umb ');     
+            $('#'+ optB+'-btn').removeClass(' z-depth-1 p-activate-section ');     
         }); 
-        $(optionID).addClass('tab-umb ');
+        $(optionID).addClass('z-depth-1 p-activate-section ');
         console.log('done');
         $(oldTab).fadeOut(200,function(){
             $(tab).fadeIn(200);
-            $('#current-tab').val(option);
+            $('#c-current-tab').val(option);
         });
         
     }
@@ -120,14 +120,12 @@ class Create extends Component {
                                 <SnackBar id ='First' color='green' notice ='Finshing up...'/>
                             </div>
                             <div className= 'col-md-8 col-lg-10 col-lg-offset-1 col-md-offset-2'>
-                            <div className ='col-md-4' style={{padding:0}}>
-                                 <button className = 'tab-option tab-umb tab-text font-medium ' id='text-btn' 
+                            <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}}>
+                                 <button className = 'd-tab zero-radius btn-undefault z-depth-1 p-activate-section ' id='text-btn' 
                                  onClick ={()=>{
                                     this.tabClick('text');
                                  }}><i className = 'fa fa-pencil'></i> Text</button>
-                            </div>
-                            <div className='col-md-4' style={{padding:0}}>
-                                <button className='tab-option  font-medium' id = 'picture-btn'
+                                 <button className='d-tab zero-radius btn-undefault' id = 'picture-btn'
                                     onClick={() => {
                                         this.tabClick('picture');
                                     }}
@@ -135,9 +133,8 @@ class Create extends Component {
                             </div>
                             <div className="">
                                 <div className=' my-tabs '>
-                                    <input type = 'hidden' id ='current-tab' value='text'/>
-
-                                    <div className='my-tab' id='text'>
+                                    <input type = 'hidden' id ='c-current-tab' value='text'/>
+                                    <div className='my-tab' id='text' style={{marginTop:'1rem'}}>
                                         <br />
                                         <div className = '' > 
                                             <input type = 'text' ref ='title'className= 'form-control my-input' placeholder='title' />
@@ -149,11 +146,10 @@ class Create extends Component {
                                             <textarea ref = 'body' className= 'form-control  my-txt-area'  rows='25' placeholder ='Compose question '>Start,</textarea>                                           
                                         </div>
                                     </div>   
-                                    <div className='my-tab vanish' id='picture'>
+                                    <div className='my-tab vanish' id='picture' style={{marginTop:'2rem'}}>
                                         <br />
-                                       
                                         <div className=' tab-h-5 clearfix' >
-                                           <Uploader />                                   
+                                           <Uploader token = { this.props.token } />                                   
                                         </div>                                      
                                     </div>
                                 </div>                          

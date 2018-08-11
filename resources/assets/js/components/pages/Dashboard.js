@@ -80,9 +80,6 @@ class Dashboard extends Component {
                 backgroundPosition:'center center',
                 opacity:1, 
                 transition:'0.5s ease-in all'
-                
-
-               
             });  
         }
     }

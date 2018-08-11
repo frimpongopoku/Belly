@@ -1,7 +1,9 @@
 
 
 
-
+.file-check{
+    padding:10px;
+}
 .anoda{
     animation-name:fa-spin;
     animation-duration: infinite;
@@ -108,6 +110,7 @@
     border:solid 0px #808080; 
     box-shadow: 0 0 0 gray;
     border-bottom-width:2px;
+    margin-bottom:6px;
 }
 
 .input-file-textbox:focus{

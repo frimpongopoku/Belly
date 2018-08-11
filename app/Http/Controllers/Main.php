@@ -8,7 +8,9 @@ use App\PaperPiece;
 
 class Main extends Controller
 {
-	
+	public function getToken(){
+		return csrf_token();
+	}
 	public function editPaper(Request $request){
 		$found = PaperPiece::find($request->id); 
 		if($found){

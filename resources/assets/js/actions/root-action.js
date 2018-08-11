@@ -7,6 +7,18 @@ export const test = ()=>{
 	return notifierAction('new shit!');
 }
 
+export const getTokenAction = ()=>{
+	return dispatch=>{
+		$.ajax({
+			method:'get',
+			url:'/me/get-token'
+		}).done(response =>{
+			console.log("I am the token nigga:",response);
+			dispatch({type:"application/GET_TOKEN", payload:response })
+		})
+	}
+}
+
 export const editPaper = (newData,oldPieces) =>{
 	//find the piece that is to be edited from the whole bunch, 
 	//insert the edits into the isolated piece, 

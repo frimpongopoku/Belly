@@ -9,7 +9,7 @@ import $ from 'jquery';
 import Profile from './Profile';
 import Create from './Create';
 import Gist from './Gist';
-import { test,editPaperAction, getUserPiecesAction, fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
+import { test,getTokenAction,editPaperAction, getUserPiecesAction, fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
 import Blood from './../Blood';
 import TextModal from './../Plugins/TextModal';
 import SnackBar from './../Plugins/SnackBar';
@@ -26,6 +26,7 @@ class Home extends Component {
         //load the authenticated user and his/her makings(pieces)
         this.props.getAuthUser();
         this.props.getUserPieces();
+        this.props.getToken();
 
     }
     componentDidMount(){
@@ -61,7 +62,7 @@ class Home extends Component {
                     <SideNav saveMenuFunction = { this.props.saveMenu } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }></SideNav> 
                 </div>
                 <div id='dashboard'> 
-                 <Create allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
+                 <Create token={ this.props.token } allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
               
                            {/* <Dashboard editPaperFunction = { this.props.editPaper } deletePaperFunction = { this.props.deletePaperPiece } pieces = { this.props.userPieces === null ? null : this.props.userPieces }></Dashboard> */}
                 </div> 
@@ -69,7 +70,7 @@ class Home extends Component {
                     <Profile></Profile> 
                 </div>
                 <div id='create-page' className='vanish' style={styles.noteReady}> 
-                    <Create allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
+                    <Create token = { this.props.token }allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
                 </div>
                 <div id='gist' className='vanish' style={ styles.noteReady}> 
                     <Gist></Gist>
@@ -102,7 +103,8 @@ function mapStateToProps(state){
         userPieces: state.userPieces ,
         authenticatedUser: state.authUser , 
         store:state,
-        notification:state.notification
+        notification:state.notification,
+        token:state.token
     };
 };
 function matchDispatchToProps(dispatch){
@@ -114,7 +116,8 @@ function matchDispatchToProps(dispatch){
         deletePaperPiece: deletePaperPieceAction, 
         getUserPieces : getUserPiecesAction,
         editPaper: editPaperAction,
-        test: test
+        test: test, 
+        getToken:getTokenAction
     },dispatch)
 };
 

@@ -26,7 +26,9 @@ Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
 	Route::get('/delete-paper/{id}',['as'=>'paper.delete','uses'=>'Main@deletePaper']);
 	Route::get('/get-all-papers',['as'=>'papers.get','uses'=>'Main@getPapers']);
 	Route::get('/edit-piece',['as'=>'paper.edit','uses'=>'Main@editPaper']);
+	Route::get('/get-token','Main@getToken');
 
 });
 
+Route::post('/up','UploadController@uploadImage');
 Route::get('/dummy','Main@dummy');
