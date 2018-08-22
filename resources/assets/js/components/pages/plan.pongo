@@ -1,0 +1,67 @@
+TODO (PLAN)
+
+
+ FIX THIS ========> AFTER UPLOADING PICTURE, IT DOESNT APPEAR 
+0. DELETE MODAL WITH CODE  _/
+1. LOAD REAL CONTENT FROM DB, _/
+2. TEST IF ALL THE FUNCTIONS STILL WORK _/
+3. NOW WRITE EDIT CODE FOR TO UPDATE IN REACT AND IN LARAVEL _/ 
+3.5 WORK ON NOTIFYING THE USER WHEN EVERYTHING IS DONE _/
+FIX DELETE CODE, IT SHOULD NOT DELETE, IT SHOULD UPDATED THE DELETED COL TO 1 --> ON PAGE LOAD BRING DELETED ===0 _/
+4. THEN YOU ARE DONE WITH TEXT.. 
+5. MOVE ON TO PICTURE UPLOADS, (ENHANCE UI FIRST BITCH, THAT SHIT z DISGUSTING) 1/2 _/
+	fix the tabselect for image modal..  _/
+5.1 Create Image piece card _/
+5.2 Create Image pice modal; _/
+	Get the name of the file with JS, _/
+	 and use php to upload. _/ 
+	-- After?†
+	++ save image path to DB, _/
+	----ERROR YET TO BE FIXED >> Cant get access to the picture pieces in the makenew component -->remember nigga, thats what you were working ON
+	++ Update State, get the path to the new Image and display. _/
+	++ Delete Picture allow user to delete Picture 
+	2. Remove from dataBase(laravel)> delete the actual file._/
+		1. Delete from state and Update (reload everything, basically wai!) _/1/2
+		
+	++ Multiple image display (Concept: 
+		Add new divs below the main divs, and create idImageArrays for the rest of the images like the main images.... 
+		Then load them when the main one is loaded.. thats it, the rest of the images will be done!! BOOM!)
+	++ Multiplay image upload!.
+
+6. MOVE TO PDF UPLOADS
+7. MOVE TO NEWS FEED, (FINISH UP THE UI FIRST)
+8. MOVE TO NEWS FEED BACKEND FOR NEWS(PAPERS) GENERATION --->LATEST SoN 
+9. THEN PROFILE 
+10. THEN SET UP DB TABLE RELATIONSHIPs 
+11. CREATE LIKE FXN, 
+12. COMMENT FXN, 
+13. DOUGH FXN.
+14. DOUGH CALCULATION FXN
+15. BLOG
+
+
+
+
+MAYBE DRAG AND DROP FUNCTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NEWS FEED ALGORITHM
+GIMME THE HOTTEST FEED ASSOCIATED WITH MY COURSE
+THEN THE HOTTEST FEED ASSOCIATED WITH OTHER COURSES WOULD FOLLOW!

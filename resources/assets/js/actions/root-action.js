@@ -2,6 +2,52 @@ import $ from 'jquery';
 import { initialState } from './../reducers/dummy';
 
 
+export const deletePicturePieceAction =(id,allPieces)=>{
+	let filtered = allPieces.filter(item=>{
+		return item.id !=id;
+	}); 
+	return dispatch=>{
+		dispatch(deleteDBPic(id));
+		dispatch(loadPicsPiecesAction(filtered))
+	}   
+}
+
+export const deleteDBPic = (id) =>{
+	return dispatch =>{ 
+		$.ajax({
+			method:'get',
+			url:'/me/delete-pic-item-'+id
+		}).done(response=>{
+			console.log("Your Image has been deleted nigga!!");
+		}); 
+	}
+	//what if something happens and it doesnt save.... Well, I wil be back 
+}
+export const newPicPieceAction =( newData,oldPieces)=>{
+	//new dataTrain contains the newName, id, and other details of the 'just' uploaded file... 
+	//so get it , and check if oldPics is up to othe pagination number which is "6" for now
+	//if its not up to, just add it, if it is already up to, replace the new data with one... 
+	console.log("I am all the picture pieces in newAction:", oldPieces);
+	let newDataSet = oldPieces.length === 6 ? oldPieces.slice(0,5) : oldPieces; 
+	return dispatch=>{
+		dispatch(loadPicsPiecesAction([newData, ...newDataSet]));
+	}
+}
+
+export const getPicPiecesAction =()=>{
+	return dispatch =>{
+		$.ajax({
+			method:'get',
+			url:'/me/get-all-pic-papers'
+		}).done(response =>{
+			dispatch(loadPicsPiecesAction(response.data));
+		});
+	}
+}
+export const loadPicsPiecesAction =(newDataTrain)=>{
+	return {type:'user/PICTURE_PIECES_GET', payload:newDataTrain};
+}
+
 export const test = ()=>{
 	console.log(" I have been called upon!");
 	return notifierAction('new shit!');
@@ -13,7 +59,6 @@ export const getTokenAction = ()=>{
 			method:'get',
 			url:'/me/get-token'
 		}).done(response =>{
-			console.log("I am the token nigga:",response);
 			dispatch({type:"application/GET_TOKEN", payload:response })
 		})
 	}
@@ -34,7 +79,7 @@ export const editPaper = (newData,oldPieces) =>{
 }
 
 export const addPaper = (dataTrain,oldPieces) =>{
-	var old = oldPieces.slice(0,5);//This will make sure to written only 5 elements + the new one so It will much my pagination
+	var old = oldPieces.length === 6 ? oldPieces.slice(0,5) : oldPieces ;//This will make sure to written only 5 elements + the new one so It will much my pagination
 	let newState = [dataTrain,...old]; 
 	return newState;
 }
@@ -118,7 +163,7 @@ export const getUserPiecesAction = ()=>{
 	return dispatch =>{
 		$.ajax({
 			method:'get',
-			url:'/me/get-all-papers'
+			url:'/me/get-all-text-papers'
 		}).done( response =>{
 			dispatch(loadUserPiecesAction(response.data))
 		});
@@ -126,7 +171,8 @@ export const getUserPiecesAction = ()=>{
 }
 
 export const loadUserPiecesAction =(newDataTrain)=>{
-	return ({ type:'user/PIECESLOAD', payload:newDataTrain ===null ? initialState : newDataTrain });
+	//this action's sole fxn is to pass data on to the txtreducer part in the store >> it has direct access
+	return ({ type:'user/TEXT_PIECES_GET', payload:newDataTrain ===null ? initialState : newDataTrain });
 };
 
 export const saveAuthenticatedUserAction = ( user )=> { 

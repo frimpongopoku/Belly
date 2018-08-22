@@ -13,7 +13,6 @@ class PicPiece extends React.Component{
                             <div className ='my-pic-card z-depth-1-half' > 
                                 
                                 <div className = {' shots-img shots-img-'+this.props.ID} style={{ height:0, opacity:0.1}} data-toggle='modal' data-target={'#pic-piece-'+this.props.ID}>
-                                    
                                 </div>
                                 <div className = {' spinner spinner-'+ this.props.ID} style = {{paddingTop:'30%'}}>
                                      <center><img src={logo}  className = 'spinner-logo' style={{height:50,width:50}}/></center>

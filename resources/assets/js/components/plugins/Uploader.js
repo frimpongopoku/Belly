@@ -3,32 +3,45 @@ import $ from 'jquery';
 import ajaxSubmit from 'jquery-form';
 
 class Uploader extends React.Component{
+	constructor(props){
+		super(props); 
+		this.state = {
+			selectedItems:null, 
+			fileTypes: ['png','PNG','jpg','JPG','jpeg','JPEG','gif','GIF','bmp','BMP','pdf','PDF']
+		}
+	}
 	componentDidMount(){
+		var thisClass = this;
 		var checkFile = this.checkFile;
 		$('.input-file').change(function(){
 			setTimeout(function(){
-				checkFile();
-			},2000)
+				checkFile(thisClass);
+			},500)
 		})
-		this.uploadOnSubmit();
+		let fullWidth = document.getElementById('info-box'); 
+		console.log("I am the width: ", fullWidth);
 	}
 	doUpload(){ 
-		if( this.fileSelected() === true){ //if something has actually been secleted
+		if( this.fileSelected() === true){ //if something has actually been selected
 			$('#upload-form').submit();	
-		}else{
+		}
+		else{
 			alert('Where do you think you are going? You havent selected anything');
 		}
 	}
 	uploadOnSubmit(){
 		var fileSelected = this.fileSelected;
 		var cleanUp = this.cleanUp;
+		var newPic = this.props.newPicFunction;
+		var allPicPieces = this.props.allPicturePieces;
+		var thisClass = this;
+		var addNewPicture = this.addNewPicture;
 		$('#upload-form').on('submit',function(e){
 			if(fileSelected()===true){
 				e.preventDefault(); 
 				e.stopImmediatePropagation();//this is to make sure the form does not submit twice
 				$(this).ajaxSubmit({ 
 					beforeSend:function(){
-						console.log('hello, I am before send, bitches');
 						$('.progress').fadeIn(200);  
 						$('.progress-bar').css({width:0});
 						$('.progress-text').fadeIn(200);
@@ -42,38 +55,95 @@ class Uploader extends React.Component{
 	 							$('.progress').fadeOut(100); 
 	 							$('.progress-text').fadeOut(100);
 	 					},1500);
-						console.log('I am done BITCHES--> this is success',data);
+						addNewPicture(data, thisClass);
 						cleanUp();
 					}
 				});
 				return false; //this is also a second wall to make sure the form does not submit twice
 			}//end of IF
-		});		
+		});	}
+	showDashboard(){
+	 	$('#create-page-button').removeClass('side-active'); 
+       	$('#create-page').fadeOut(300); 
+       	$('#dashboard').fadeIn(300); 
+       	$('#dashboard-button').addClass('side-active');
+       	$('#current-page-box').val('dashboard'); 
+       	$("#create-page").fadeOut(100)
 	}
-
-	checkFile(){
-		let fileObj = $('.input-file')[0].files[0]; 
-		if(fileObj !== undefined){
-			let fileTypes = ['png','PNG','jpg','JPG','jpeg','JPEG','gif','GIF','bmp','BMP','pdf','PDF'];
-			let fileName = fileObj.name; 
-			let fileExt = fileObj.type.split('/')[1]; 
-			let fileSize = fileObj.size < 1000000 ? Math.round(fileObj.size/1000) : Math.round((fileObj.size/1000000)*10)/10;
-			if( fileObj.size > 2000000){
-				$('.file-check-size').removeClass('label-success').addClass('label-danger');
-			}else{
-				$('.file-check-size').removeClass('label-danger').addClass('label-success');
-			}
-			if(!fileTypes.includes(fileExt)){
-				$('.file-check-type').removeClass('label-success').addClass('label-danger');
-			}else{
-				$('.file-check-type').removeClass('label-danger ').addClass('label-success');
-			}
-			let displayExt = fileObj.size < 1000000 ? ' KB': ' MB';
-			$('#input-file-textbox').val(fileName);
-			$('.file-check-name').text(fileName);
-			$('.file-check-size').text(fileSize + displayExt); 
-			$('.file-check-type').text(fileExt); 
+	addNewPicture(data,thisClass){
+		thisClass.props.newPicFunction(data, thisClass.props.allPicturePieces);
+		thisClass.showDashboard();
+	}
+	fixInfo(id,dataTrain,thisClass){
+		let name= "#check-file-name-"+id;
+		let size = "#check-file-size-"+id;
+		let type = "#check-file-type-"+id;
+		let properSize = dataTrain.size < 1000000 ? Math.round(dataTrain.size/1000) : Math.round((dataTrain.size/1000000)*10)/10;
+		let unit = dataTrain.size < 1000000 ? ' KB' : ' MB';
+		$(name).text(dataTrain.name); 
+		$(size).text(properSize + unit ); 
+		$(type).text(dataTrain.type.split('/')[1]);
+		//add styling 
+		if( dataTrain.size >2000000 ){
+			$(size).removeClass('label-success').addClass('label-danger');
 		}
+		else{
+			$(size).removeClass('label-danger').addClass('label-success');
+		} 
+		if( !thisClass.state.fileTypes.includes(dataTrain.type) ){
+			$(type).removeClass('label-success').addClass('label-danger');
+		}
+		else{
+			$(type).removeClass('label-danger').addClass('label-success');
+		}
+	}
+	stringifyList(thisClass){
+		let string = ""; 
+		thisClass.state.selectedItems.map(item=>{ 
+			string = string !== "" ? string +", "+ item.name : string + item.name
+		});
+		$('#input-file-textbox').val(string);
+	}
+	displayInfo(){
+		console.log($('#info-box'));
+		let fullWidth = $('#info-box').width(); 
+		console.log("I am the width: ", fullWidth);
+		let nameW = Math.round(0.6 * fullWidth); 
+		let sizeW  = Math.round(0.2 * fullWidth); 
+		let typeW = Math.round(0.2 * fullWidth);
+		if( this.state.selectedItems !== null){
+			return this.state.selectedItems.map((item,inArrayID)=>{
+				return (
+					<div  key = { inArrayID } style={{width:'100%'}}>
+						<button className = ' file-check number-font corner-10 z-depth-1 p-r-fix label label-success' 
+							id={"check-file-name-"+inArrayID} style={{width:'60%' }} onClick={(e)=>{
+								e.preventDefault();
+							}}> { inArrayID}</button> 
+				        <button className = ' corner-10 file-check number-font  z-depth-1 p-r-fix label label-success'  
+				       		 id={"check-file-size-"+inArrayID} style={{width:'10%' }}  onClick={(e)=>{
+								e.preventDefault();
+							}}> Second One { inArrayID }</button> 
+				        <button className = 'corner-10 file-check number-font  z-depth-1 p-r-fix label label-success'  
+				        	id={"check-file-type-"+inArrayID} style={{width:'10%'}} onClick={(e)=>{
+								e.preventDefault();
+							}}> Third One { inArrayID }</button> <br/>
+				       
+				        
+			        </div>
+				);
+			});
+		}
+	}
+	checkFile(thisClass){
+		let fileObj = $('.input-file')[0].files[0]; 
+		thisClass.setState({selectedItems: [...$('.input-file')[0].files] });
+		thisClass.stringifyList(thisClass);
+		if(fileObj !== undefined){
+			thisClass.state.selectedItems.map( (item, index)=>{
+				thisClass.fixInfo(index,item,thisClass);
+			});
+		}
+
 	}
 	fileSelected(){
 		let fileObj = $('.input-file')[0].files[0]; 
@@ -84,14 +154,13 @@ class Uploader extends React.Component{
 		}
 	}
 	cleanUp(){
-		$('.file-check-name').text('');
-		$('.file-check-size').text(''); 
-		$('.file-check-type').text('');
+		$('.file-check-check').text('');
 		$('#input-file-textbox').val('')
-		$('#post-title').val('');
-		$('.input-file').val('');
-	}
+		$('#post-description').val('');
+		$('.input-file').val('');}
 	render(){
+		this.uploadOnSubmit();//check pongo.why to know why this happens out here.
+
 		return (
 			<div>
 				 <center>
@@ -101,30 +170,28 @@ class Uploader extends React.Component{
                     <small className = 'text text-success'>Maximum file size for PDFs <b><span className ='text text-danger number-font'> 5 MB </span></b>.</small>
                 </center>
                 	{/* FORM AREA */}
-            	<form action="/up" id='upload-form' method="post" encType = 'multipart/form-data'>
+            	<form action="/upload-image" id='upload-form' method="post" encType = 'multipart/form-data'>
             		<input type='hidden' name='_token' defaultValue ={ this.props.token } />
                     <input type='text' placeholder='Choose file ' className ='form-control number-font pull-left input-file-textbox zero-radius' id='input-file-textbox'style={{width:'85%'}} readOnly/>
                     <button className='btn btn-primary zero-radius green pull-right z-depth-1 ' id='test-button' onClick={(event)=>{
                     	event.preventDefault();
                         $('.input-file').trigger('click');
                     }}><i className = 'fa fa-upload'></i> Select</button>
-                  
-                    <div onClick={()=>{ this.doUpload()}} className = 'btn btn-success zero-radius pull-right z-depth-1' style={{ marginTop:6, paddingLeft:22, paddingRight:22}}>Done</div>
-                    <input type='text' name='postTitle' className = 'form-control zero-radius input-file-textbox pull-left' id='post-title' style={{width:'85%',marginBottom:13}} placeholder='Say something'/>
-                   
-					<small className = 'file-check-name file-check number-font  z-depth-1 p-r-fix label label-success'></small> 
-	                <small className = 'file-check-size file-check number-font  z-depth-1 p-r-fix label label-success'></small> 
-	                <small className = 'file-check-type file-check number-font  z-depth-1 p-r-fix label label-success'></small> <br/><br />
+                    <div onClick={()=>{ this.doUpload()}} className = 'btn btn-default zero-radius pull-right z-depth-1' style={{ marginTop:6, paddingLeft:22, paddingRight:22}}>Done</div>
+                    <input type='text' name='description' className = 'form-control zero-radius input-file-textbox pull-left' defaultValue="" id='post-description' style={{width:'85%',marginBottom:13}} placeholder='Say something'/>
+	                <div style ={{ width:'100%'}} id=" info-box">
+	               		 {  this.displayInfo() }
+	               	</div>
                     <div className="progress" style={{height:"2px", display:'none',marginBottom:5}}>
 				 		<div className="progress-bar" role="progressbar" style={{width:0}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>	 		
 					</div>
 					<center><small className=' text text-default number-font progress-text vanish'>0% complete</small></center>
-                    <input type='file' className='input-file' name="image" style={{opacity:0}}/> 
+                    <input type='file' className='input-file' name="image" style={{opacity:0}} multiple/> 
                 </form>
-                
-				
+	               
 			</div>
 		);
+
 	}
 }
 

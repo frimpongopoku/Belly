@@ -48,7 +48,7 @@ class SideNav extends Component {
             return (
                 <li className={option.name === 'dashboard' ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } onClick={() => {
                     this.switchPage(option.name)
-                }} key = { index }> <i className={ 'fa '+ option.fa }></i>
+                }} key = { index }> <i className={ 'fa  '+ option.fa }></i>
                 { " "+ this.capitalize(option.name) }</li>
             );
         });

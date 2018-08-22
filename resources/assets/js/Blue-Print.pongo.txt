@@ -1,0 +1,163 @@
+>> I am going to try as much as possible to explain all the things I did in commcycle. Even the little things, but mainly the (Laravel Part). You just need to understand the structure and the rest is just normal "webpage" web developement stuff.... 
+
+BIO
+..In a normal php website, its usually made up of pages like (Frimpong.php) == and this might contain all code like 
+{
+	<php?
+		$name = " Pongo "; 
+		echo "<h1> $name </h1> ";
+		//and there is usally a bunch of code here with everything all messed and kinda compact
+}
+..and on running this, the browser will render an h1 tag with the content "Pongo" (ie. when you type Frimpong.php in your address bar, there is request to look for that particular file yh? )
+So, laravel just separates everything for you so that you dont have to have your logic and your html in the same files, with cleaner routes : which make you find bugs faster and hella easier. 
+It simply breaks them into 
+	->Routes,
+	->Models, 
+	->Controllers, 
+	->Blade files 
+Now back to the context of commcycle.
+
+ =:COMMCYCLE
+ 	All the links that are available to any user of commcycle, can be found in the 'web.php'. 
+ 	It is the single file that holds all the routes --everything (more like the middle man between the browser and your backend
+ 	) 
+ 	Now laravel routes work(looks) a bit differently from the way local html/php webpages work
+ 	Example: you may put 'commcycle/home.php' in your anchor "<a href" to get you to that page..., but in laravel its different -- but very simple.
+ 	Go to: "routes/web.php".
+ 	You may find something like this... 
+ 	{ Route::get('admin', 'AdminController@showAdminMain'); }
+ 	this only means when a user types "admin" into the browser check the AdminController for the function  "showAdminMain".. Thats all!
+ 	I'will talk about controllers later
+ 	=:MODELS $$ .env file
+ 		Wondering how and where the whole application is connected to the database 
+ 		the connection is made in the '.env' file -- yh thats what the file is called
+ 		Now instead of reconnecting to the database everytime to you want to save or retrive something from the database like in the normal php ..  mysqli_connect($servername, $username, $password); and running different queries to different tables everytime. In laravel you only connect in the .env file -- stating the database name, the port your username and password for the database account
+ 		>> check the .env file for commcycle's info its in the main directory(its not in any other folder). 
+ 		After this connection, laravel allows us to create other php files called "Models" which relate directly to the different tables in our entire database. 
+ 		Navigate to "app/" and you will find a bunch of files that have the ".php" ext. Those are the models. 
+ 		In commcycle we have: 
+ 			
+ 			.. Deleted.php ( relates to the table that contains all the commcycle items that have been deleted by the admins)
+ 			.. Free.php (relates to the table that contains the free stuff with pictures)
+ 			.. Ladyb.php (relates to the table that contains all ladyB's items )
+ 			.. ladybBorder (relates to the table that contains all ladyB's orders )
+ 			.. Lbadmin ( relates to the table that contains all the admins that can access the ladyB admin side)
+ 			.. Lblog( relates to the table that contains the logs of all the activites ladyB does)
+ 			.. Lbmsg.php ( relates to the table that contains all the messages that users send to ladyB )
+ 			.. lbNews.php ( relates to the table that contains all the news updates that appear on the right side of ladyB section in commcycle )
+ 			.. Log.php( relates to the table that contains monitors the activities of all commcycle admins... not ladyB )
+ 			.. Message.php (relates to the table that contains all the messages that our users send us )
+ 			.. NoPicFree.php ( relates to the table that contains all the free stuff that do not have pictures... as in commcycle SHOP-B)
+ 			.. Order.php ( relates to the table that contains all the orders that we receive )
+ 			.. Shop.php ( relates to the table that contains all the items in the shop section of commcycle)
+ 			.. Subscribe.php ( relates to the table that contains all the information of our subscribers )
+ 			.. User.php ( relates to the table that contains all the information of our admins )
+ 			>>So in the code, anytime you see any reference to any of these, laravel is simply saying " hey I have been able to connect to the database already, and I am currently in full control of this particular table so tell me something to do."
+ 			..Cart.php
+ 				>>This one is not a typical laravel class.. Its just a normal php class that I created for every user's cart. 
+ 				>>So every user's cart or basket takes this form.... before you initialize this class, you would have to pass >>in an old basket... 
+ 				>>If there is no old basket and you are just starting to shop, "null" replaces the old basket.. 
+ 				>>this class contains a function "add" that accepts the name of the item, the shop it was taken from, and >>it's id in whatever database table... 
+ 				>>So the whole idea behind asking for an old basket upon initializing this class is to check the old basket with the new item that you might pass to it's function 'add' function
+ 				>>So it just checks if the items is there and just increases its quantity, and if it is not, it just adds on >>to its list (the same for delete item tooo)
+ 				[
+ 					After all this, I store the freshly made cart in the session, so it can easily be accessed later, when the user wants to buy another item and it needs to be passed on as an old item, 
+ 					or the user visits the "showcart" route and everything in the basket has to be displayed
+ 				]
+ 				------->IT IS STORED AS AN OBJECT WITH THE NAME 'CART' in the session.... check the cartController@trialAddToCart to see these actions.
+ 	=:BLADE FILES 
+ 		Blade files are the view templates in laravel ( yh this is nonsense. lool!)
+ 		In my first example "Frimpong.php", here,
+ 		This file would be named in laravel as "Frimpong.blade.php"...
+ 		So for example when a user visits "wwww.commcycle.co".
+ 		THe routes file identifies it as "/" then it runs a simple function(NB> the fxn was very small so it needed no controller). ( check the web.php file to find this) 
+ 		SO when a user hits "/": 
+ 		do this: 
+ 			{	
+ 				return view('commcycle-pages.index');
+ 			}
+ 			"view" here is a laravel in-built facade that links up directly to the location "resources/views/";
+ 			so this simply means go to "resources/views/" look for the folder "commcycle-pages" and then look for the file "index.blade.php".. but there is no need to write "index.blade.php" --"index" will do, laravel is smart enough to know that.
+ 			enough of blade files now.. lets goto controllers
+
+ 	=:CONTROLLERS 
+ 		Now like I said earlier about separating logic and html pages.. Controllers are the ones that hold all logic. From time to time some logics can be very simple that one could write even in the routes file but correctly it should be done in controllers. 
+ 		A controller is just another php file. To find all commcycle's Controller files, just navigate to...  
+ 		Go to: " app/Http/Controllers" you will find all commcycles controllers.. 
+ 			.. AdminController.php
+ 			.. CartController.php
+ 			.. CommcycleController.php
+ 			.. LadyBController.php
+ 			.. UploadController.php 
+ 			-----------------------------------------------------------------------------------------------------------------
+ 			So the link a user inputs enters the route file, then looks for the function in the controller which is associated with that link and then executes contents of the function.
+ 			Example: 
+ 			"Route::get('clearall','CartController@clearSession');"
+ 			The above only means, when a user runs "clearall" in the addressbar, go and look for a controller called = CartController, and in that controller look for a function called = clearSession. 
+ 			In this example if you check the appropriate file you will find
+ 			{
+ 				public function clearSession(){
+ 					Session::flush(); 
+ 					>>which just means clear the session...
+ 				}
+ 			}
+
+ 			>>Now I am going to talk about each controller and some useful functions in them in ENGLISH LANGUAGE
+
+ 			=:AdminContoller.php
+ 				>>wherever you see '$request,' its a variable that contains  the data the user has put in from his side.. in this case
+ 				>>example username, password
+ 				adminAuthenticate( $request){
+ 					'User' is the model for the admin table in the database. 
+ 					'Log' is the model for the Log table in the database
+ 					loop through the admins database table and find one that matches $request.name and $request.password.. 
+ 					if you find one, 
+ 					then: 
+ 						log it down as the $request.name has signed in succesfully
+ 						store the admin in the session,
+ 						show the admin's page!
+ 					else: 
+ 						return to the login page and display the error message that has been stored in the session.
+ 				}
+ 				adminSignIn(){
+ 					just render the admin sign-in page
+ 				}
+ 				adminLogout(){
+ 					clear out the session,  
+ 					navigate back to the admin page.. 
+ 					>>the trick here is that the admin page only shows for you as long as your data is in the session.. 
+ 					without it, SORRY MAN!!
+ 				}
+ 				communicate(){
+ 					send emails to all subscribers, 
+ 					or a specific subscriber
+ 				}
+ 				deleteItem(){
+ 					create a new log of a delete activity.. 
+ 					before you delete, there is a table for deleted data, so store it there first and then 
+ 					delete that row of data. 
+ 					After that tell everyone this "someone has deleted something"
+ 				}
+ 				showAdminComItems(){
+ 					goto 'Free' model and paginate -- in 6(or any number) items per page, 
+ 					goto 'freeNoPic' model do same, 
+ 					send it to the view page, so that it can be looped through...
+
+ 					>>so this is basically where all the items from the free table are collected, and transfered into the
+ 					'commcycle.blade.php' page. --->for admins
+ 				}
+
+
+ 				=:UploadController
+ 					This controller handles all upload functions ( most of the code is self explanatory) 
+
+ 				=:CommcycleController
+ 					This controller contains functions that handles all the navigations on the main pages of commcycle.. 
+ 					like /commcycle/ or /shop/ or /about us/ or /lady-B/
+
+ 				=:ladyBController 
+ 					This controller has functions that run all ladyB admin Activities.. all of it!!!! and a bit of client side activities 
+ 				=:CartController 
+ 					This also has functions that handle the cart item activities like adding more stuff, or checking out, or deleting items from your basket.
+
+

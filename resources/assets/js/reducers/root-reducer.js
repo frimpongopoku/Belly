@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import   { userPiecesReducer, authenticatedUserReducer,  }  from './users-reducer'; 
+import   { userPiecesReducer, authenticatedUserReducer, userPicturePiecesReducer }  from './users-reducer'; 
 import { saveMenuItemsReducer, notifierReducer,tokenReducer } from './application-reducer';
 
 const allReducers = combineReducers({ 
- 	userPieces: userPiecesReducer, 
+ 	textPieces: userPiecesReducer, 
+ 	picturePieces:userPicturePiecesReducer,
  	authUser: authenticatedUserReducer, 
  	menuItems: saveMenuItemsReducer, 
  	notification: notifierReducer, 

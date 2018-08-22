@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Piece from './../Plugins/Piece';
 import TextModal from './../Plugins/TextModal';
-import PicModal from './../Plugins/PicModal';
+import PicModal from './../Plugins/PicModal'; //remember to reset this thing back to the single piece, or just add the single piece
+import MultiplePicModal from './../Plugins/MultiplePicModal';
 import logo from './../../imgs/f-spinner-2.png';
 import PicPiece from './../Plugins/PicPiece';
 
@@ -11,13 +12,11 @@ class Dashboard extends Component {
         this.searchTypes = ['Name','Title','Year','Username','University','Programme','Course','Rating']; 
         this.availableOptions = ['text-section','picture-section','pdf-section'];
     }
-
     tabClick(option){
-
         let optionID = '#'+option+'-btn'; 
         let tab = '#'+option;
         let oldTab = '#'+$('#d-current-tab').val();
-        this.availableOptions.filter((opt) => opt !== option).forEach(optB => {
+        this.availableOptions.filter(opt => opt !== option).forEach(optB => {
             $('#'+ optB+'-btn').removeClass(' z-depth-1 p-activate-section ');     
         }); 
         $(optionID).addClass('z-depth-1 p-activate-section ');
@@ -25,27 +24,26 @@ class Dashboard extends Component {
             $(tab).fadeIn(200);
             $('#d-current-tab').val(option);
         });
+        var imgIDArr = this.idImageArrayManufacture(this.props.picPieces);
         var imageReplace = this.runAllImages;
         var thisClass = this;
         setTimeout(function(){
-            imageReplace(thisClass);
-        },2000)  
-
+            imageReplace(thisClass,imgIDArr);
+        },1000)  
     }
-
     spillTextPieces(){ 
         return this.props.pieces.map( (piece, index) =>{ 
             return (
                 <li key={ index }>
                     <Piece 
-                    owner= { piece.name } 
-                    course={  piece.user.course } 
+                    owner= { this.props.user.name } 
+                    course={ this.props.user.course } 
                     fileType = "text" 
                     title={ piece.title } 
                     ID={ piece.id } />
                     <TextModal 
                     editPaperFunction ={ this.props.editPaperFunction } 
-                    owner = {piece.user.name} 
+                    owner = {this.props.user.name} 
                     allPieces = { this.props.pieces } 
                     deletePaperFunction = { this.props.deletePaperFunction }
                     piece_title = { piece.title } 
@@ -57,11 +55,56 @@ class Dashboard extends Component {
         })
     }
     spillPicPieces(){
-
+        //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
+        return this.props.picPieces.map( (piece,index)=>{
+            if(piece.type ==='single'){
+              return (
+                       <li key={index}> 
+                            <PicPiece ID ={piece.id} logo = {this.props.logo} />
+                            <PicModal 
+                                tabClick = {this.tabClick}
+                                owner = {this.props.user.name}
+                                piece_id = {piece.id}
+                                piece_body={piece.description}
+                                allPieces = { this.props.picPieces } 
+                                created_at= { piece.created_at }
+                                image_url ={piece.picture_link}
+                                extraImageLoadFunction = { this.extraImageLoad }
+                                loadImageFunction = {this.imageLoad}
+                                arrayMakerFunction = {this.idImageArrayManufacture}
+                                deletePictureFunction = { this.props.deletePictureFunction}
+                            />
+                       </li>
+                  );
+            }
+            else if( piece.type ==='multiple'){
+                return(
+                     <li key={index}> 
+                        <PicPiece ID ={piece.id} logo = {this.props.logo} />
+                        <MultiplePicModal
+                            tabClick = {this.tabClick}
+                            owner = {this.props.user.name}
+                            piece_id = {piece.id}
+                            piece_body={piece.description}
+                            allPieces = { this.props.picPieces } 
+                            created_at= { piece.created_at }
+                            image_url ={piece.picture_link}
+                            extraImageLoadFunction = { this.extraImageLoad }
+                            loadImageFunction = {this.imageLoad}
+                            arrayMakerFunction = {this.idImageArrayManufacture}
+                            deletePictureFunction = { this.props.deletePictureFunction}
+                            extraImgsText = { piece.extra_images }
+                        />
+                   </li>
+                );
+            }
+                     
+        });
     }
     imageLoad(imageID,imageURL){
+        //requests for an image to be loaded unto a page
         var bigImage = document.createElement('img'); 
-        bigImage.src = "http://localhost:8000/imgs/avatars/"+imageURL;
+        bigImage.src = "http://localhost:8000/"+imageURL;
         bigImage.onload = function(){
             $('.spinner-'+imageID).hide();
             $('.shots-img-'+imageID).css({
@@ -78,16 +121,63 @@ class Dashboard extends Component {
                 background:'url('+bigImage.src+')',
                 backgroundSize:'auto 100%', 
                 backgroundPosition:'center center',
+                backgroundRepeat:'no-repeat !important',
                 opacity:1, 
                 transition:'0.5s ease-in all'
             });  
         }
     }
 
-    runAllImages(thisClass){
-        thisClass.imageLoad('2221',"blonde-avatar.jpg");
-        thisClass.imageLoad('2222',"girl-avatar.jpeg");
-        thisClass.imageLoad('2223',"../blue-orange.jpg");
+    extraImageLoad(imageID, inArrayID, imageURL){
+        var bigImage = document.createElement('img'); 
+        bigImage.src = "http://localhost:8000/"+imageURL;
+        bigImage.onload = function(){
+            $('#pic-piece-body-'+imageID+'-m-'+inArrayID).css({
+                background:'url('+bigImage.src+')',
+                backgroundSize:'auto 100%', 
+                backgroundPosition:'center center',
+                backgroundRepeat:'no-repeat !important',
+                opacity:1, 
+                transition:'0.5s ease-in all'
+            });  
+        }
+    }
+
+    separateExtrasToSingles(text){
+        //this function splits the text of extra images that were stringified during upload 
+        var list = text.split("<==>"); 
+        return list;
+    }
+
+    idImageArrayManufacture(pieces){
+        //get all the picPieces from the state and arrange them into 'id', 'image' object to be passed to the (runAllImagesFxn)
+        let arr = [];
+        pieces.map(item =>{
+            //check if item has extra pictures 
+            if(item.type ==='multiple'){
+                 var collection = { id: item.id , image: item.picture_link, type:'M', extraImages: item.extra_images }; //you need to put the text ouchere yh!
+             }
+            else{
+                  var collection = { id: item.id , image: item.picture_link, type:'S' };
+             }
+            arr.push(collection);
+        });
+        return arr;
+    }
+    runAllImages(thisClass,idImageArray){
+        //this accetps this-class(Dashboard Class) as a parameter, and an array to that is made up of objects which contain 
+        //'id' and 'image'.... that can be triggered to run on tabclick
+        idImageArray.forEach(item => {
+            thisClass.imageLoad(item.id, item.image);
+            if( item.type ==='M' ){
+                thisClass.separateExtrasToSingles(item.extraImages).map( ( extra, index )=>{
+                    thisClass.extraImageLoad(item.id,index, extra);
+                });
+            }
+                // thisClass.extraImageLoad(item.id,'1','imgs/avatars/blonde-avatar.jpg');
+                // thisClass.extraImageLoad(item.id,'2','imgs/avatars/female-avatar.png');
+                // thisClass.extraImageLoad(item.id,'3','imgs/avatars/hoodie-avatar.jpg');
+        });
     }
     render() {
         return (
@@ -147,44 +237,11 @@ class Dashboard extends Component {
                                                  </ul>
                                              </div>
                                              <div id = 'picture-section' className = 'vanish' >  
-                                                 <PicPiece ID ="2221" logo = {this.props.logo} />
-                                                 <PicPiece ID ="2222" logo = {this.props.logo}/>
-                                                 <PicPiece ID ="2223" logo = {this.props.logo}/>
-                                                <PicModal 
-                                                    owner = "Pongo 1" 
-                                                    allPieces = { this.props.pieces } 
-                                                    deletePaperFunction = { this.props.deletePaperFunction }
-                                                    piece_title = "Le title 1"
-                                                    piece_id = "2221"
-                                                    piece_body="An empty street, an empty hearrt, a sould inside my heart! LOL! Westlife...."
-                                                    created_at= "13 years ago -M"
-                                                    loadModalImage = { this.loadModalImage}
-                                                    image_url ="/imgs/avatars/blonde-avatar.jpg"
-
-                                                />
-                                                <PicModal 
-                                                    owner = "Pongo 1" 
-                                                    allPieces = { this.props.pieces } 
-                                                    deletePaperFunction = { this.props.deletePaperFunction }
-                                                    piece_title = "Le 2"
-                                                    piece_id = "2222"
-                                                    piece_body="An empty street, an empty hearrt, a sould inside my heart! LOL! Westlife...."
-                                                    created_at= "13 years ago M"
-                                                    loadModalImage = { this.loadModalImage}
-                                                    image_url ="/imgs/avatars/girl-avatar.jpeg"
-
-                                                />
-                                                <PicModal 
-                                                    owner = "Akwesi" 
-                                                    allPieces = { this.props.pieces } 
-                                                    deletePaperFunction = { this.props.deletePaperFunction }
-                                                    piece_title = "Le title 3"
-                                                    piece_id = "2223"
-                                                    piece_body="An empty street, an empty hearrt, a sould inside my heart! LOL! Westlife...."
-                                                    created_at= "13 years ago M+"
-                                                    loadModalImage = { this.loadModalImage}
-                                                    image_url ="/imgs/blue-orange.jpg"
-                                                />
+                                                  <ul style={{listStyleType:'none',padding:0}}> 
+                                                      {
+                                                          this.props.picPieces === null ? '' : this.spillPicPieces()
+                                                      }
+                                                  </ul>
                                                 <center><h3>DIfferent Picture Test</h3></center>
                                              </div>
                                              <div id = 'pdf-section' className = 'vanish'> 
@@ -202,6 +259,4 @@ class Dashboard extends Component {
         );
     }
 }
-
-
 export default Dashboard;

@@ -29,4 +29,7 @@ class User extends Authenticatable
     public function paperPieces(){
         return $this->hasMany('App\PaperPiece');
     }
+    public function picturePieces(){
+        return $this->hasMany('App\PicturePiece');
+    }
 }

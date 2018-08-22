@@ -7,9 +7,9 @@ import SideNav from './../navigation/Sidebar';
 import Dashboard from './Dashboard';
 import $ from 'jquery'; 
 import Profile from './Profile';
-import Create from './Create';
+import Create from './Makenew';
 import Gist from './Gist';
-import { test,getTokenAction,editPaperAction, getUserPiecesAction, fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
+import { test,deletePicturePieceAction,newPicPieceAction,getPicPiecesAction,getTokenAction,editPaperAction, getUserPiecesAction, fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
 import Blood from './../Blood';
 import TextModal from './../Plugins/TextModal';
 import SnackBar from './../Plugins/SnackBar';
@@ -26,13 +26,11 @@ class Home extends Component {
         //load the authenticated user and his/her makings(pieces)
         this.props.getAuthUser();
         this.props.getUserPieces();
+        this.props.getPicPieces();
         this.props.getToken();
 
     }
-    componentDidMount(){
-    }
-
-
+ 
     snack(notice,ID,color){
         return (<SnackBar color={color} notice = { notice } ID ={ID} />)
     };
@@ -62,15 +60,14 @@ class Home extends Component {
                     <SideNav saveMenuFunction = { this.props.saveMenu } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }></SideNav> 
                 </div>
                 <div id='dashboard'> 
-                 <Create token={ this.props.token } allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
-              
-                           {/* <Dashboard editPaperFunction = { this.props.editPaper } deletePaperFunction = { this.props.deletePaperPiece } pieces = { this.props.userPieces === null ? null : this.props.userPieces }></Dashboard> */}
+                 {/* <Create token={ this.props.token } allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create> */}
+                    <Dashboard deletePictureFunction = {this.props.deletePicturePiece} picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } user={this.props.authenticatedUser} editPaperFunction = { this.props.editPaper } deletePaperFunction = { this.props.deletePaperPiece } pieces = { this.props.userPieces === null ? null : this.props.userPieces }></Dashboard> 
                 </div> 
                 <div id= 'profile' className='vanish' style = { styles.noteReady }> 
                     <Profile></Profile> 
                 </div>
                 <div id='create-page' className='vanish' style={styles.noteReady}> 
-                    <Create token = { this.props.token }allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
+                    <Create allPicturePieces={this.props.userPicPieces === null ? null : this.props.userPicPieces} newPicFunction = { this.props.newPic } token = { this.props.token } allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create>
                 </div>
                 <div id='gist' className='vanish' style={ styles.noteReady}> 
                     <Gist></Gist>
@@ -80,7 +77,7 @@ class Home extends Component {
                         
                     }}>Click me</button>
                       <button className= 'ano' onClick = {()=>{
-                        console.log("Dude you just clicked me, DAAAMIN! Chain reaction");
+                      $('#create-page').removeClass('side-active'); 
                     }}>Another Click me</button>
                 </center>
                 <center><h1 > <i className = 'fa fa-spinner fa-pulse'></i></h1></center>
@@ -100,7 +97,8 @@ const styles = {
 
 function mapStateToProps(state){
     return { 
-        userPieces: state.userPieces ,
+        userPieces: state.textPieces ,
+        userPicPieces: state.picturePieces,
         authenticatedUser: state.authUser , 
         store:state,
         notification:state.notification,
@@ -113,11 +111,14 @@ function matchDispatchToProps(dispatch){
         loadUserPieces: loadUserPiecesAction, 
         createNewPaper: createNewPaperAction, 
         saveMenu: saveMenuToRemoteAction, 
+        deletePicturePiece:deletePicturePieceAction,
         deletePaperPiece: deletePaperPieceAction, 
+        getPicPieces:getPicPiecesAction,
         getUserPieces : getUserPiecesAction,
         editPaper: editPaperAction,
         test: test, 
-        getToken:getTokenAction
+        getToken:getTokenAction, 
+        newPic: newPicPieceAction
     },dispatch)
 };
 

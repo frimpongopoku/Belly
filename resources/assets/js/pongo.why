@@ -1,0 +1,3 @@
+uploadOnSubmit:method ->Location 
+	This function was put where it was because It doesnt load the right values when it is put in componentWillMount or ComponentDidMount... 
+	Because at the time CWM and CDM are acive, some props would not have the right values.. Example: "this.props.allPictures" would be NULL at in CWM and CDM... so it only works when everything is ready in the render fxn 

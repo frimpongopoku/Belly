@@ -1,3 +1,87 @@
+
+
+
+
+
+
+<PicPiece ID ="2221" logo = {this.props.logo} />
+                                                 <PicPiece ID ="2222" logo = {this.props.logo}/>
+                                                 <PicPiece ID ="2223" logo = {this.props.logo}/>
+                                                <PicModal 
+                                                    owner = "Pongo 1" 
+                                                    allPieces = { this.props.pieces } 
+                                                    deletePaperFunction = { this.props.deletePaperFunction }
+                                                    piece_title = "Le title 1"
+                                                    piece_id = "2221"
+                                                    piece_body="An empty street, an empty hearrt, a sould inside my heart! LOL! Westlife...."
+                                                    created_at= "13 years ago -M"
+                                                    loadModalImage = { this.loadModalImage}
+                                                    image_url ="/imgs/avatars/blonde-avatar.jpg"
+
+                                                />
+                                                <PicModal 
+                                                    owner = "Pongo 1" 
+                                                    allPieces = { this.props.pieces } 
+                                                    deletePaperFunction = { this.props.deletePaperFunction }
+                                                    piece_title = "Le 2"
+                                                    piece_id = "2222"
+                                                    piece_body="An empty street, an empty hearrt, a sould inside my heart! LOL! Westlife...."
+                                                    created_at= "13 years ago M"
+                                                    loadModalImage = { this.loadModalImage}
+                                                    image_url ="/imgs/avatars/girl-avatar.jpeg"
+
+                                                />
+                                                <PicModal 
+                                                    owner = "Akwesi" 
+                                                    allPieces = { this.props.pieces } 
+                                                    deletePaperFunction = { this.props.deletePaperFunction }
+                                                    piece_title = "Le title 3"
+                                                    piece_id = "2223"
+                                                    piece_body="An empty street, an empty hearrt, a sould inside my heart! LOL! Westlife...."
+                                                    created_at= "13 years ago M+"
+                                                    loadModalImage = { this.loadModalImage}
+                                                    image_url ="/imgs/blue-orange.jpg"
+                                                />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 request->itemBrand,'Info'=>$request->info,'Price'=>'','Size'=>'']);
     	if ($request->finalise == "finalise" && $request->hasFile('image')){
             $ext = $request->image->getClientOriginalExtension();

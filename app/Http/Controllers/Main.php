@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth; 
 use App\PaperPiece;
+use App\PicturePiece;
 
 class Main extends Controller
 {
+
+	public function deletePicture($id){
+
+		$found = PicturePiece::find($id); 
+		//delete image from the directory 
+		unlink($found->picture_link);
+		//delete image from the database
+		$found->delete(); 
+
+
+	}
 	public function getToken(){
 		return csrf_token();
 	}
@@ -17,8 +29,12 @@ class Main extends Controller
 			$found->update(['title'=>$request->title, 'body'=>$request->body]);
 		}
 	}
+	public function getPicPapers(){
+		$firstPicSet = Auth::user()->picturePieces()->orderBy('id','DESC')->paginate(6); 
+		return $firstPicSet;
+	}
 	public function getPapers(){
-		$firstTextSet = PaperPiece::where('deleted','0')->with('user')->orderBy('id','DESC')->paginate(6); 
+		$firstTextSet = Auth::user()->paperPieces()->orderBy('id','DESC')->paginate(6); 
 		return $firstTextSet;
 	}
 	public function deletePaper($id){

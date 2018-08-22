@@ -3,12 +3,15 @@ import $ from 'jquery';
 import SnackBar from './../Plugins/SnackBar';
 import Uploader from './../Plugins/Uploader';
 
-class Create extends Component {
+class MakeNew extends Component {
     constructor(props){
         super(props); 
-        this.availableOptions = ['text','pdf','picture'];     
+        this.availableOptions = ['text','pdf','picture'];    
+        this.switchPageAfterUpload = this.switchPageAfterUpload.bind(this); 
     }
-
+    componentDidlMount(){
+        console.log("I am in create:",this.props.allPicturePieces);
+    }
     fullOfSpaces(string){
         //BUT THIS ALGORITHM ONLY WORKS AS LONG AS "string" is not empty
         //default asci value of space is 32
@@ -72,12 +75,11 @@ class Create extends Component {
             title: title,
             body:body,
             course:course,
-            owner:owner,
-            owner_id:ownerID, 
+            name:owner,
+            user_id:ownerID, 
             id: Math.floor(Math.random() * Math.floor(1000)) ,
             created_at:'4 days ago', 
-            type:'text', 
-            user:{...this.props.user}
+            type:'text'
         };
         let validationResults = this.validate(title,body); 
 
@@ -104,14 +106,17 @@ class Create extends Component {
             $('#'+ optB+'-btn').removeClass(' z-depth-1 p-activate-section ');     
         }); 
         $(optionID).addClass('z-depth-1 p-activate-section ');
-        console.log('done');
         $(oldTab).fadeOut(200,function(){
             $(tab).fadeIn(200);
             $('#c-current-tab').val(option);
         });
         
     }
+    switchPageAfterUpload(){
+        this.props.switchPageFunction('dashboard');
+    }
     render() {
+         console.log("I am in create render:",this.props.allPicturePieces);
         return (
             <div className = 'page-margin'>
                 <div className='container'>
@@ -121,11 +126,11 @@ class Create extends Component {
                             </div>
                             <div className= 'col-md-8 col-lg-10 col-lg-offset-1 col-md-offset-2'>
                             <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}}>
-                                 <button className = 'd-tab zero-radius btn-undefault z-depth-1 p-activate-section ' id='text-btn' 
+                                 <button className = 'd-tab zero-border btn-undefault z-depth-1 p-activate-section ' id='text-btn' 
                                  onClick ={()=>{
                                     this.tabClick('text');
                                  }}><i className = 'fa fa-pencil'></i> Text</button>
-                                 <button className='d-tab zero-radius btn-undefault' id = 'picture-btn'
+                                 <button className='d-tab zero-border btn-undefault' id = 'picture-btn'
                                     onClick={() => {
                                         this.tabClick('picture');
                                     }}
@@ -149,7 +154,7 @@ class Create extends Component {
                                     <div className='my-tab vanish' id='picture' style={{marginTop:'2rem'}}>
                                         <br />
                                         <div className=' tab-h-5 clearfix' >
-                                           <Uploader token = { this.props.token } />                                   
+                                           <Uploader switchPageFunction= { this.switchPageAfterUpload } newPicFunction = {this.props.newPicFunction } allPicturePieces = { this.props.allPicturePieces }token = { this.props.token } />                                   
                                         </div>                                      
                                     </div>
                                 </div>                          
@@ -172,4 +177,4 @@ const styles = {
         }
 };
 
-export default Create;
+export default MakeNew;
