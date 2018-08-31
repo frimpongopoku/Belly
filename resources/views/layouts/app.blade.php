@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Juice') }}</title>
+    <title>{{ config('app.name', 'QBelly') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -19,7 +19,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="margin:0 !important; padding:0 !important">
                {{--  <nav class="navbar navbar-default navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">

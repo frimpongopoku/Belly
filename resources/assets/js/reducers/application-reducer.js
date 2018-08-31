@@ -17,7 +17,7 @@ export const saveMenuItemsReducer = (state=null, action)=>{
 
 export const notifierReducer = (state = null, action )=>{
 	switch (action.type) {
-		case "application/PIECE_DB_SAVE":
+		case "application/NOTIFY":
 				return action.payload
 			break;
 			

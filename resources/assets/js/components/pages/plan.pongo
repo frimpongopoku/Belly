@@ -23,13 +23,17 @@ FIX DELETE CODE, IT SHOULD NOT DELETE, IT SHOULD UPDATED THE DELETED COL TO 1 --
 	2. Remove from dataBase(laravel)> delete the actual file._/
 		1. Delete from state and Update (reload everything, basically wai!) _/1/2
 		
-	++ Multiple image display (Concept: 
+	++ Multiple image display (Concept: _/
 		Add new divs below the main divs, and create idImageArrays for the rest of the images like the main images.... 
 		Then load them when the main one is loaded.. thats it, the rest of the images will be done!! BOOM!)
-	++ Multiplay image upload!.
+	++ Multiplay image upload!._/
 
-6. MOVE TO PDF UPLOADS
+6. MOVE TO PDF PROFILE _/
+	do this: do not  update anuthin in the DB if the use rdoes not make any changes... 
+	then maybe add password edit_/
 7. MOVE TO NEWS FEED, (FINISH UP THE UI FIRST)
+	DO picture post appearance _?
+	Do text post appearance
 8. MOVE TO NEWS FEED BACKEND FOR NEWS(PAPERS) GENERATION --->LATEST SoN 
 9. THEN PROFILE 
 10. THEN SET UP DB TABLE RELATIONSHIPs 

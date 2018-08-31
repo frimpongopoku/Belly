@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="padding:0; margin:0; width:100%">
     <div id='home'></div>
 </div>
 @endsection

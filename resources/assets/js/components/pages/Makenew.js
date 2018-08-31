@@ -116,13 +116,12 @@ class MakeNew extends Component {
         this.props.switchPageFunction('dashboard');
     }
     render() {
-         console.log("I am in create render:",this.props.allPicturePieces);
         return (
             <div className = 'page-margin'>
                 <div className='container'>
                         <div className ='row'>
                              <div className={this.props.notification ===null? 'notifier' : 'notifier s-vanish'} style ={{display:'none'}}>     
-                                <SnackBar id ='First' color='green' notice ='Finshing up...'/>
+                                <SnackBar id ='First' color='green' notice ='Finshing up '/>
                             </div>
                             <div className= 'col-md-8 col-lg-10 col-lg-offset-1 col-md-offset-2'>
                             <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}}>

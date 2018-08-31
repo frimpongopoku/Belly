@@ -2,6 +2,19 @@ import $ from 'jquery';
 import { initialState } from './../reducers/dummy';
 
 
+export const saveProfileEditsAction = (dataTrain)=>{
+	//console.log("I am th etrain in saveProfileEdits : ", dataTrain);
+	return dispatch =>{ 
+		$.ajax({ 
+			method:"get", 
+			url:"/me/save-profile-edits", 
+			data: dataTrain
+		}).done(user=>{ 
+			dispatch(saveAuthenticatedUserAction(user));
+			dispatch( notifierAction("Profile Saved"));
+		});
+	}
+}
 export const deletePicturePieceAction =(id,allPieces)=>{
 	let filtered = allPieces.filter(item=>{
 		return item.id !=id;
@@ -157,7 +170,7 @@ export const dBSaveAction = (dataTrain) =>{
 };            
 
 export const notifierAction = (data)=>{ 
-	return({type:'application/PIECE_DB_SAVE',payload:data})
+	return({type:'application/NOTIFY',payload:data})
 }
 export const getUserPiecesAction = ()=>{
 	return dispatch =>{

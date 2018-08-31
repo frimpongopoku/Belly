@@ -6,10 +6,20 @@ use Illuminate\Http\Request;
 use Auth; 
 use App\PaperPiece;
 use App\PicturePiece;
+use App\User;
 
 class Main extends Controller
 {
 
+	public function saveProfile(Request $request){
+		$user = User::find(Auth::user()->id); 
+		if($user){
+			$user->update(['name'=>$request->name, 'number'=>$request->number,'course'=>$request->course, 'hall'=>$request->hall, 'school'=>$request->university,'email'=>$request->email]);
+			return $user;
+		}
+
+		return $user;
+	}
 	public function deletePicture($id){
 
 		$found = PicturePiece::find($id); 
@@ -17,8 +27,6 @@ class Main extends Controller
 		unlink($found->picture_link);
 		//delete image from the database
 		$found->delete(); 
-
-
 	}
 	public function getToken(){
 		return csrf_token();

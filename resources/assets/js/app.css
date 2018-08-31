@@ -1,4 +1,106 @@
+.nav-icon{
+    cursor:pointer;
+}
+.nav-icon:hover{
+    transform:scale(1.3);
+    color:yellowgreen;
+    transition:0.3s ease-in all;
 
+}
+
+
+.QB{
+    font-size:3rem;
+    color:white; 
+}
+
+.tint-focus{
+    position:relative; 
+    cursor:pointer;
+    animation: jump infinite 0.5s linear;
+
+}
+.confidence-level{
+    margin-top:-10px !important;
+    cursor:pointer;
+    font-size:1.8rem;
+    padding:10px;
+    color:limegreen;
+
+}
+
+.tint-focus:hover{
+    transform: scale(2);
+}
+@keyframes jump{
+    0%{
+        transform: translateY(5px);
+    }
+    50%{
+        transfrom:translateY(-5px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+.rating-belt{
+    height: 70px;
+    position: absolute;
+    width: 100%;
+    margin-left: -15px;
+    margin-top: -70px;
+    border-color: #272727;
+
+}
+.QB-tint{
+    color:white; 
+    font-size:1.7rem;
+    text-shadow: 0 2px 2px dimgrey;
+
+}
+.nav-bar-stick{
+    position:fixed; 
+    top:0; 
+    width:100%; 
+    z-index:1;
+}
+.z-text-depth-1{
+    text-shadow: 0 2px 2px dimgrey;
+}
+.QB-Brand{
+    height:100px !important; 
+    width:100px !important;
+    object-fit:cover;
+    object-position: center center;
+}
+.phone-textbox-design{
+    border: solid 0px #C8C8C8; 
+    border-bottom-width:2px;
+    box-shadow: 0 0 0 gray; 
+    border-radius:0;
+    margin:10px;
+}
+.phone-textbox-design:focus{
+    border: solid 0px #6c757d; 
+    border-bottom-width:2px;
+    box-shadow: 0 0 0 gray !important; 
+    border-radius:0;
+    outline:0;
+}
+.m-right-bit{
+    margin-right:6px;
+}
+
+.c-m-height{
+    max-height:250px !important;
+}
+.f-d-card{
+    background:"white";
+    padding:30px !important; 
+    min-height:250px;
+    max-height:350px; 
+    background:white;
+}
 .corner-10{
     margin:2px 2px !important; 
     border-radius:3px;
@@ -337,10 +439,13 @@
     color:white;
 }
 .app-color{ 
-    background: rgb(63, 158, 247) !important;
+    background: rgb(65, 85, 255) !important;
     color:white !important;
  }
-
+.p-black-color{
+    background: #272727; 
+    color:white !important;
+}
 .z-depth-1-half{
     box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
 }
@@ -407,7 +512,20 @@
     
 
  }
-
+ .gist-coin-display{
+    margin-top: 5px;
+    padding: 5px;
+    background: mediumvioletred;
+    cursor:pointer;
+ }
+ .gist-coin-display:hover{
+    transform:scale(1.2);
+    box-shadow: 0 2px 2px gray;
+    transition:0.3s ease-in all;
+ }
+.t-black{
+    color:black;
+}
  .my-input:focus{
     border: solid 0px gray;
     border-bottom-color:rgb(98,97,97);
@@ -417,7 +535,10 @@
     padding:20px;
     margin-bottom:10px;
  }
-
+.sides-padding{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
 
 .my-txt-area{ 
     border-radius:0px; 
@@ -433,17 +554,33 @@
     box-shadow: 0px 0px 0px gray;
     resize:none;
 }
-
+.rounded{
+    border-top-right-radius: 50px; 
+    border-bottom-right-radius: 50px; 
+    border-top-left-radius: 50px; 
+    border-bottom-left-radius: 50px;
+}
 body{
     color:rgb(117, 116, 116);   
     background:white;
+    padding:0 !important;
+}
+.info-bg-color{
+    background: #66CCFF;
+}
+.gist-title{
+    padding:7px;
+}
+.padding-bit{
+    padding:5px;
+    margin:3px;
 }
 .solid-p-w{
     /* solid-paper-weight */
     box-shadow: 0px 1px 1px rgb(163, 161, 161);
 }
 .margin-climb-up{
-    margin-top: 150px;
+    margin-top: -20px;
 }
 .name-badge-n{
     padding:10px; 
@@ -454,6 +591,26 @@ body{
 
 
 }
+.paper-title-div{
+    background: whitesmoke;
+    color: black;
+    margin-top: 3px;
+    padding: 1px;
+    padding-left: 15px;
+}
+
+.semi-footer{
+    background: antiquewhite;
+    color: black;
+    margin-top: 3px;
+    padding: 1px;
+    padding-left: 15px;
+}
+.paper-panel:hover{
+    transform:translateY(-10px);
+    transition:0.3s ease-in all;
+    cursor:pointer;
+}
 .name-badge-n:hover{
     transform: rotateY(20deg);
     transition: 0.5s ease-in all;
@@ -461,11 +618,11 @@ body{
 .name-badge{
     padding:10px; 
     background:black; 
-    color:white; 
-    margin-left:-10px;
+    color:white;
+    margin-left:-20px;
 }
 .gist-img{
-    height:300px; 
+    height:400px; 
     width:100%; 
     object-fit: cover !important; 
     margin:0;
@@ -711,9 +868,12 @@ body{
 }
 
 .big-profile-pic {
-    height:400px; 
-    width:100%; 
-    border:solid 2px rgb(219, 217, 217);
+    margin-top:20px;
+    height:250px; 
+    width:250px; 
+    border-radius:100%;
+    border:solid 4px rgb(233, 229, 229);
+     box-shadow: 0px 2px 2px black;
     object-fit: cover !important;
 
 }

@@ -80,9 +80,10 @@ class Uploader extends React.Component{
 		let type = "#check-file-type-"+id;
 		let properSize = dataTrain.size < 1000000 ? Math.round(dataTrain.size/1000) : Math.round((dataTrain.size/1000000)*10)/10;
 		let unit = dataTrain.size < 1000000 ? ' KB' : ' MB';
+		let typeExt = dataTrain.type.split('/')[1];
 		$(name).text(dataTrain.name); 
 		$(size).text(properSize + unit ); 
-		$(type).text(dataTrain.type.split('/')[1]);
+		$(type).text(typeExt);
 		//add styling 
 		if( dataTrain.size >2000000 ){
 			$(size).removeClass('label-success').addClass('label-danger');
@@ -90,7 +91,7 @@ class Uploader extends React.Component{
 		else{
 			$(size).removeClass('label-danger').addClass('label-success');
 		} 
-		if( !thisClass.state.fileTypes.includes(dataTrain.type) ){
+		if( !thisClass.state.fileTypes.includes(typeExt) ){
 			$(type).removeClass('label-success').addClass('label-danger');
 		}
 		else{
@@ -105,12 +106,6 @@ class Uploader extends React.Component{
 		$('#input-file-textbox').val(string);
 	}
 	displayInfo(){
-		console.log($('#info-box'));
-		let fullWidth = $('#info-box').width(); 
-		console.log("I am the width: ", fullWidth);
-		let nameW = Math.round(0.6 * fullWidth); 
-		let sizeW  = Math.round(0.2 * fullWidth); 
-		let typeW = Math.round(0.2 * fullWidth);
 		if( this.state.selectedItems !== null){
 			return this.state.selectedItems.map((item,inArrayID)=>{
 				return (
@@ -186,7 +181,7 @@ class Uploader extends React.Component{
 				 		<div className="progress-bar" role="progressbar" style={{width:0}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>	 		
 					</div>
 					<center><small className=' text text-default number-font progress-text vanish'>0% complete</small></center>
-                    <input type='file' className='input-file' name="image" style={{opacity:0}} multiple/> 
+                    <input type='file' className='input-file' name="image[]" style={{opacity:0, width:1}} multiple/> 
                 </form>
 	               
 			</div>
