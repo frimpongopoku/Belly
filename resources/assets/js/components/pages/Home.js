@@ -9,11 +9,11 @@ import $ from 'jquery';
 import Profile from './Profile';
 import Create from './Makenew';
 import Gist from './Gist';
-import { saveProfileEditsAction, test,deletePicturePieceAction,newPicPieceAction,getPicPiecesAction,getTokenAction,editPaperAction, getUserPiecesAction, fetchUserAction, loadUserPiecesAction, createNewPaperAction, saveMenuToRemoteAction, deletePaperPieceAction } from './../../actions/root-action';
+import { appActions } from './../imports/actions';
 import Blood from './../Blood';
-import TextModal from './../Plugins/TextModal';
-import SnackBar from './../Plugins/SnackBar';
-import NavBar from './../Plugins/NavBar';
+import TextModal from './../plugins/TextModal';
+import SnackBar from './../plugins/SnackBar';
+import NavBar from './../plugins/NavBar';
 
 class Home extends Component {
   constructor(props){
@@ -46,56 +46,60 @@ class Home extends Component {
     $('#'+currentPage+'-button').removeClass('side-active'); 
     $('#'+newPage + '-button').addClass('side-active');
   }
-
   clickSomething(){ 
     this.blood.changePage("create-page");     
   }
   render() {
     return (
       <div>  
-        <div id = 'nav-bar' className = ''> 
+        <div id = 'nav-bar' className = 'vanish'> 
           <NavBar></NavBar>
         </div>
-        <div className = 'side-nav vanish'>
-          <SideNav saveMenuFunction = { this.props.saveMenu } 
-            user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }>
-          </SideNav> 
-        </div>
-        <div id='dashboard' className = 'vanish'> 
-          <Profile 
-            user = { this.props.authenticatedUser === null ? 
-              {name:"",email:"",school:"",number:"",hall:"", gui:""} : 
-              this.props.authenticatedUser }
-            notification = { this.props.notification } 
-            saveProfileEditsFunction = { this.props.saveProfileEdits }>
-          </Profile> 
-           {/* <Create token={ this.props.token } allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } createPaperFunction = { this.props.createNewPaper }></Create> */}
-           {/* <Dashboard deletePictureFunction = {this.props.deletePicturePiece} picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } user={this.props.authenticatedUser} editPaperFunction = { this.props.editPaper } deletePaperFunction = { this.props.deletePaperPiece } pieces = { this.props.userPieces === null ? null : this.props.userPieces }></Dashboard> */}
-        </div> 
-        <div id= 'profile' className='vanish' style = { styles.noteReady }>    
-        </div>
-        <div id='create-page' className='vanish' style={styles.noteReady}> 
-          <Create allPicturePieces={this.props.userPicPieces === null ? null : this.props.userPicPieces} 
-            newPicFunction = { this.props.newPic } token = { this.props.token } 
-            allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } 
-            user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } 
-            createPaperFunction = { this.props.createNewPaper }>
-          </Create>
-        </div>
-        <div id='gist' className='' style={ styles.noteReady}> 
+        <div className = ' col-md-12 col-lg-12'>
+          <div className = 'side-nav'>
+            <div className = 'col-md-2 col-lg-2 col-xs-12'>
+              <SideNav saveMenuFunction = { this.props.saveMenu } 
+                user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }>
+              </SideNav> 
+             </div>
+          </div>
+          <div className = ' col-md-10 col-lg-10'>
+            <div id='dashboard' className = ''> 
+              <Dashboard 
+                deletePictureFunction = {this.props.deletePicturePiece} 
+                picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } 
+                user={this.props.authenticatedUser} 
+                editPaperFunction = { this.props.editPaper } 
+                deletePaperFunction = { this.props.deletePaperPiece } 
+                pieces = { this.props.userPieces === null ? null : this.props.userPieces }>
+              </Dashboard>
+            </div> 
+            <div id= 'profile' className='vanish' style = { styles.noteReady }> 
+              <Profile 
+                user = { this.props.authenticatedUser === null ? 
+                  {name:"",email:"",school:"",number:"",hall:"", gui:""} : 
+                  this.props.authenticatedUser }
+                notification = { this.props.notification } 
+                saveProfileEditsFunction = { this.props.saveProfileEdits }>
+              </Profile>    
+            </div>
+            <div id='create-page' className='vanish' style={styles.noteReady}> 
+              <Create allPicturePieces={this.props.userPicPieces === null ? null : this.props.userPicPieces} 
+                newPicFunction = { this.props.newPic } token = { this.props.token } 
+                allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } 
+                user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } 
+                createPaperFunction = { this.props.createNewPaper }>
+              </Create>
+            </div>
+           </div>
+          </div>
+        <div id='gist' className='vanish' style={ styles.noteReady}> 
           <Gist></Gist>
         </div>
-        <center> 
-          <button onClick = {()=>{
-          }}>Click me</button>
-            <button className= 'ano' onClick = {()=>{
-            $('#create-page').removeClass('side-active'); 
-          }}>Another Click me</button>
-        </center>
-        <center><h1 > <i className = 'fa fa-spinner fa-spin'></i></h1></center>
+        <center><h1> <i className = 'fa fa-spinner fa-spin'></i></h1></center>
       </div>
     );
-    }
+   }
 }
 const styles = { 
     notReady:{
@@ -106,33 +110,32 @@ const styles = {
         color:'blue'
     }
 };
-
 function mapStateToProps(state){
-    return { 
-        userPieces: state.textPieces ,
-        userPicPieces: state.picturePieces,
-        authenticatedUser: state.authUser , 
-        store:state,
-        notification:state.notification,
-        token:state.token
-    };
+  return { 
+      userPieces: state.textPieces ,
+      userPicPieces: state.picturePieces,
+      authenticatedUser: state.authUser , 
+      store:state,
+      notification:state.notification,
+      token:state.token
+  };
 };
 function matchDispatchToProps(dispatch){
-    return bindActionCreators({ 
-        getAuthUser: fetchUserAction, 
-        loadUserPieces: loadUserPiecesAction, 
-        createNewPaper: createNewPaperAction, 
-        saveMenu: saveMenuToRemoteAction, 
-        deletePicturePiece:deletePicturePieceAction,
-        deletePaperPiece: deletePaperPieceAction, 
-        getPicPieces:getPicPiecesAction,
-        getUserPieces : getUserPiecesAction,
-        editPaper: editPaperAction,
-        test: test, 
-        getToken:getTokenAction, 
-        newPic: newPicPieceAction, 
-        saveProfileEdits: saveProfileEditsAction
-    },dispatch)
+  return bindActionCreators({ 
+    getAuthUser: appActions.fetchUserAction, 
+    loadUserPieces: appActions.loadUserPiecesAction, 
+    createNewPaper: appActions.createNewPaperAction, 
+    saveMenu: appActions.saveMenuToRemoteAction, 
+    deletePicturePiece:appActions.deletePicturePieceAction,
+    deletePaperPiece: appActions.deletePaperPieceAction, 
+    getPicPieces:appActions.getPicPiecesAction,
+    getUserPieces : appActions.getUserPiecesAction,
+    editPaper: appActions.editPaperAction,
+    test: appActions.test, 
+    getToken:appActions.getTokenAction, 
+    newPic: appActions.newPicPieceAction, 
+    saveProfileEdits: appActions.saveProfileEditsAction
+  },dispatch)
 };
 
 export default connect (mapStateToProps, matchDispatchToProps)(Home);

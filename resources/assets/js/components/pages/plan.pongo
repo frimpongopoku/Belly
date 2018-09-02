@@ -33,7 +33,8 @@ FIX DELETE CODE, IT SHOULD NOT DELETE, IT SHOULD UPDATED THE DELETED COL TO 1 --
 	then maybe add password edit_/
 7. MOVE TO NEWS FEED, (FINISH UP THE UI FIRST)
 	DO picture post appearance _?
-	Do text post appearance
+	Do text post appearance_/
+	Hookup movement from news feed to dashboard!
 8. MOVE TO NEWS FEED BACKEND FOR NEWS(PAPERS) GENERATION --->LATEST SoN 
 9. THEN PROFILE 
 10. THEN SET UP DB TABLE RELATIONSHIPs 

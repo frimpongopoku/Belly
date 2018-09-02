@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SnackBar from './../Plugins/SnackBar';
+import SnackBar from './../plugins/SnackBar';
 
 class Profile extends Component {
   constructor(props){
@@ -105,7 +105,7 @@ class Profile extends Component {
       <div className = "page-margin"style = {{ marginLeft:0}}>
         <div className = "container" > 
           <div className = "row" > 
-            <div className="col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2"> 
+            <div className="col-md-10 col-lg-10 "> 
               <div className={this.props.notification === null? ' prof-notifier' : ' s-vanish prof-notifier'} style ={{display:'none'}}>     
                   <SnackBar id ='profile-notifier' color='green' notice ='saving '/>
               </div>

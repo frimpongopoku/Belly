@@ -60,14 +60,20 @@ class SideNav extends Component {
       let currentPage = $('#current-page-box').val();
       if(choicePage === currentPage){} //do nothing 
       else{
-          $('#' + currentPage).fadeOut(300, function () {
-              $('#' + choicePage).fadeIn(200, function () {
+        $('#' + currentPage).fadeOut(300, function () {
+            $('#' + choicePage).fadeIn(200, function () {
+              //if the page the user is attempting to enter is the news page, dont update the box
+                if(choicePage ==='gist'){}
+                else{
                   $('#current-page-box').val(choicePage);
-              });
-          });
+                }
+              
+            });
+        });
       }
       if( choicePage ==="gist"){
         $('.side-nav').fadeOut(400);
+        $('#nav-bar').fadeIn(200);
       }
       else{
         $('.side-nav').fadeIn(400);
@@ -84,13 +90,13 @@ class SideNav extends Component {
               <img src='/imgs/avatars/nose-mask-avatar.jpg'className='side-profile-pic' />
               <h4 style={{'margin':'3px','cursor':'pointer'}}>
                   { this.props.user ===null ? '...' : this.props.user.name }
-               <i className = 'fa fa-caret-down'></i></h4>
+               <i className = 'fa fa-caret-down awesome-margin'></i></h4>
             </center>
           </div>
           <div> 
             <ul className = 'side-ul'> 
               <li className = ' side-li' >
-                  <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
+                  <i className = 'fa fa-bell ' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
               </li>
               { this.spillMenu() }
               <li className = ' side-li' onClick = {()=>{ this.logout()}} >

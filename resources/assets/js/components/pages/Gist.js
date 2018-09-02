@@ -11,8 +11,9 @@ class Gist extends Component {
               <div className = 'col-md-12 col-lg-12' > 
                 <div className = 'col-md-10 col-md-offset-1 '>
                 <div style = {{ marginTop:80}}></div>
-                  <GPCard details ={{name:'Agyingo', bcolor:'green'}}></GPCard>
-                  <GCard details ={{name:'Agyingo', bcolor:'green'}}></GCard>
+                  <GPCard details ={{name:'Agyingo', bcolor:'green'}} type='text' id ='1'></GPCard>
+                  <GCard details ={{name:'Agyingo', bcolor:'green'}} type='pic' id="1"></GCard>
+                   <GPCard details ={{name:'Agyingo', bcolor:'green'}} type='text' id ='2'></GPCard>
                   
                 </div>
               </div> 
