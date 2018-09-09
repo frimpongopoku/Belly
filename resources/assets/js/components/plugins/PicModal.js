@@ -141,6 +141,10 @@ const styles = {
 }; 
 
 PicModal.propTypes = { 
+  tabClick: PropTypes.func,
+  arrayMakerFunction: PropTypes.func,
+  loadImageFunction: PropTypes.func,
+  user:PropTypes.array,
 	deletePaperFunction: PropTypes.func,
 	loadImageFunction: PropTypes.func, 
 	tabClick: PropTypes.func,
