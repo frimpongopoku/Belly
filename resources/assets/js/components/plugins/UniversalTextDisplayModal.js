@@ -1,35 +1,10 @@
 import React from 'react'; 
-import PropTypes from 'prop-types';
-import $ from 'jquery';
-
 
 class UniversalTextModal extends React.Component{
-	constructor(props){
-		super(props);
-  }
-
-	editPaper(){
-		var newDataBus = {title:this.refs._newTitle.value, body: this.refs._newBody.value, id:this.props.piece_id}
-		this.props.editPaperFunction(newDataBus, this.props.allPieces);
-		$('.view-title').text(this.refs._newTitle.value); 
-		$('.view-body').text(this.refs._newBody.value);
-		this.selectMode('view');
-	}
-  
-	deletePaper(){
-		var thisClass = this;
-		setTimeout(function(){
-			$('.modal .close').click();
-			thisClass.props.deletePaperFunction(thisClass.props.piece_id,thisClass.props.allPieces);
-		},1000)
-  }
-
-
-  
 	render(){
 		return (
 				<div id = "universal">
-					<input type ='hidden' id="modal-opt-mode" value='view'  /> 
+					<input type ='hidden' id="modal-opt-mode-text" value='view'  /> 
 					<div className='modal fade my-depth-1' id="universal-text-modal"> 
             <div className = 'modal-dialog modal-lg'> 
               <div className = 'modal-content'>
@@ -38,8 +13,7 @@ class UniversalTextModal extends React.Component{
                   </div>
 	                  <div className = 'col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1'>
                       <div id ="text-modal-envelope">
-                        
-                        {/*Ddont forget display:inline-block*/}
+              
                         
                       </div>
 	                  </div>
@@ -70,15 +44,6 @@ const styles = {
 	correctMarg:{ 
 		margin:20}
 }; 
-
-	UniversalTextModal.propTypes = { 
-		piece_title: PropTypes.string,
-	  owner: PropTypes.string,
-		piece_body: PropTypes.string,
-		piece_id: PropTypes.number,
-		created_at: PropTypes.string
-	}
-
 
 
 export default UniversalTextModal;
