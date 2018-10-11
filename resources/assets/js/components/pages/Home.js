@@ -11,7 +11,6 @@ import Create from './Makenew';
 import Gist from './Gist';
 import { appActions } from './../imports/actions';
 import Blood from './../Blood';
-import TextModal from './../plugins/TextModal';
 import SnackBar from './../plugins/SnackBar';
 import NavBar from './../plugins/NavBar';
 
@@ -84,7 +83,8 @@ class Home extends Component {
               </Profile>    
             </div>
             <div id='create-page' className='vanish' style={styles.noteReady}> 
-              <Create allPicturePieces={this.props.userPicPieces === null ? null : this.props.userPicPieces} 
+              <Create 
+                allPicturePieces={this.props.userPicPieces === null ? null : this.props.userPicPieces} 
                 newPicFunction = { this.props.newPic } token = { this.props.token } 
                 allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } 
                 user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } 
@@ -114,7 +114,7 @@ function mapStateToProps(state){
   return { 
       userPieces: state.textPieces ,
       userPicPieces: state.picturePieces,
-      authenticatedUser: state.authUser , 
+      authenticatedUser: state.authUser, 
       store:state,
       notification:state.notification,
       token:state.token

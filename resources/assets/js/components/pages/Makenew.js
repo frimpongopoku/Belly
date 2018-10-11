@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery'; 
 import SnackBar from './../plugins/SnackBar';
 import Uploader from './../plugins/Uploader';
+import PropTypes from 'prop-types';
 
 class MakeNew extends Component {
   constructor(props){
@@ -175,4 +176,12 @@ const styles = {
   }
 };
 
+
+MakeNew.propTypes = { 
+  allPicturePieces:PropTypes.object,
+  newPicFunction:PropTypes.func,
+  createPaperFunction:PropTypes.func,
+  allPieces:PropTypes.object,
+  user:PropTypes.object,
+}
 export default MakeNew;

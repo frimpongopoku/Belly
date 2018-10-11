@@ -8,7 +8,10 @@
 
 }
 
-
+.pic-modal-envelope{
+  margin-left: -23px; 
+  width:800px;
+}
 .QB{
     font-size:3rem;
     color:white; 
@@ -124,6 +127,13 @@
     animation-duration: infinite;
 }
 
+.modal-pic-div-image{
+  background-position: center center; 
+  background-size: auto 100%; 
+  opacity: 1; 
+  background-repeat: no-repeat !important; 
+  transition: .5s ease-in-out;
+}
 .pic-piece-image{
     width:100% !important;
     min-height:620px !important;
@@ -594,7 +604,6 @@ body{
     margin-left:10px;
     border-radius:10px;
 
-
 }
 .comment-box{
     height:35px !important;
@@ -626,7 +635,6 @@ body{
     background:whitesmoke; 
     padding:6px 15px; 
     display:inline-block;
-
 }
 .appear{
     display:block;

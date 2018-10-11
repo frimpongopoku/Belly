@@ -1,17 +1,55 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Piece from './../plugins/Piece';
-import TextModal from './../plugins/TextModal';
 import PicModal from './../plugins/PicModal'; //remember to reset this thing back to the single piece, or just add the single piece
 import MultiplePicModal from './../plugins/MultiplePicModal';
 import logo from './../../imgs/f-spinner-2.png';
 import PicPiece from './../plugins/PicPiece';
+import UniversalTextDisplay from  './../plugins/UniversalTextDisplayModal';
+import UniversalPicDisplay from './../plugins/UniversalPicDisplayModal';
+import ReactDOM from 'react-dom';
 
 class Dashboard extends Component {
   constructor(props){
     super(props); 
     this.searchTypes = ['Name','Title','Year','Username','University','Programme','Course','Rating']; 
     this.availableOptions = ['text-section','picture-section','pdf-section'];
+    this.currentTextPieceSetter = this.currentTextPieceSetter.bind(this);
+    this.currentPicPieceSetter = this.currentPicPieceSetter.bind(this);
+    this.setTextCurrentState = this.setTextCurrentState.bind(this);
+    this.setPicCurrentState = this.setPicCurrentState.bind(this);
+    this.createOptionElements = this.createOptionElements.bind(this);
+    this.createAllOptions = this.createAllOptions.bind(this);
+    this.createAllPictureOptions = this.createAllPictureOptions.bind(this);
+    this.initAllPages = this.initAllPages.bind(this);
+    this.initAllPicPages = this.initAllPicPages.bind(this);
+    this.selectMode = this.selectMode.bind(this);
+    this.changeMode = this.changeMode.bind(this);
+    this.editPaper = this.editPaper.bind(this);
+    this.handleImgDivs = this.handleImgDivs.bind(this);
+    this.zoom =this.zoom.bind(this);
+    this.state = { 
+        currentTextPiece:null,
+        currentTextState:false,
+        currentTextIndicator:0,
+        currentPicPiece:null,
+        currentPicPieceState:false,
+        currentPicIndicator:0
+      }
   }
+  setPicCurrentState(dataTrain){
+    this.setState({currentPicPieceState:true});
+  }
+  currentPicPieceSetter(dataTrain){
+    this.setState({ currentPicPiece:dataTrain, currentPicIndicator:dataTrain.id})
+  }
+  setTextCurrentState(){
+    this.setState({currentTextState:true});
+  }
+  currentTextPieceSetter(dataTrain){
+    this.setState({ currentTextPiece: dataTrain, currentTextIndicator: dataTrain.ID });
+  }
+
   tabClick(option){
     let optionID = '#'+option+'-btn'; 
     let tab = '#'+option;
@@ -39,17 +77,15 @@ class Dashboard extends Component {
           owner= { this.props.user.name } 
           course={ this.props.user.course } 
           fileType = "text" 
-          title={ piece.title } 
+          title={ piece.title }
+          body = { piece.body }
+          openPieceFunction = { this.currentTextPieceSetter }
+          currentTextStateFunction = { this.setTextCurrentState }
+          createSideOptionsFunction ={ this.createAllOptions }
+          textModalCleanUpFunction = { this.textModalCleanUp }
+          initAllPagesFunction = { this.initAllPages }
+          indicator = { this.state.currentTextIndicator }
           ID={ piece.id } />
-          <TextModal 
-          editPaperFunction ={ this.props.editPaperFunction } 
-          owner = {this.props.user.name} 
-          allPieces = { this.props.pieces } 
-          deletePaperFunction = { this.props.deletePaperFunction }
-          piece_title = { piece.title } 
-          piece_id = {piece.id}
-          piece_body={piece.body} 
-          created_at= { piece.created_at} />
         </li>
         );
     })
@@ -57,49 +93,47 @@ class Dashboard extends Component {
   spillPicPieces(){
       //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
     return this.props.picPieces.map( (piece,index)=>{
-      if(piece.type ==='single'){
+      
         return (
           <li key={index}> 
-            <PicPiece ID ={piece.id} logo = {this.props.logo} />
-            <PicModal 
-              tabClick = {this.tabClick}
-              owner = {this.props.user.name}
-              piece_id = {piece.id}
-              piece_body={piece.description}
-              allPieces = { this.props.picPieces } 
-              created_at= { piece.created_at }
-              image_url ={piece.picture_link}
-              extraImageLoadFunction = { this.extraImageLoad }
-              loadImageFunction = {this.imageLoad}
-              arrayMakerFunction = {this.idImageArrayManufacture}
-              deletePictureFunction = { this.props.deletePictureFunction}
-            />
-           </li>
+            <PicPiece 
+              owner = { this.props.user.name }
+              image_url={piece.picture_link}
+              piece_id={piece.id}
+              created_at={piece.created_at}
+              allPieces={this.props.picPieces} 
+              created_at={piece.created_at}
+              openPieceFunction = {this.currentPicPieceSetter}
+              currentPicStateFunction = {this.setPicCurrentState}
+              createSideOptionsFunction = {this.createAllPictureOptions}
+              cleanUpFunction ={this.picModalCleanUp}
+              initAllPagesFunction = { this.initAllPicPages }
+              extras = { piece.extra_images}
+              type = { piece.type}
+              indicator = { this.state.currentPicIndicator }
+              />
+        </li>
         );
-      }
-      else if( piece.type ==='multiple'){
-        return(
-          <li key={index}> 
-            <PicPiece ID ={piece.id} logo = {this.props.logo} />
-            <MultiplePicModal
-                tabClick = {this.tabClick}
-                owner = {this.props.user.name}
-                piece_id = {piece.id}
-                piece_body={piece.description}
-                allPieces = { this.props.picPieces } 
-                created_at= { piece.created_at }
-                image_url ={piece.picture_link}
-                extraImageLoadFunction = { this.extraImageLoad }
-                loadImageFunction = {this.imageLoad}
-                arrayMakerFunction = {this.idImageArrayManufacture}
-                deletePictureFunction = { this.props.deletePictureFunction}
-                extraImgsText = { piece.extra_images }
-            />
-         </li>
-        );
-      }
                  
     });
+  }
+  backgroundImageLoad(id,imageURL){
+    //requests for an image to be loaded unto a page
+    var bigImage = document.createElement('img');
+    bigImage.src = "http://localhost:8000/" + imageURL;
+    bigImage.onload = function () {
+      $('.spinner-' + imageID).hide();
+      $('.shots-img-' + imageID).css({
+        background: 'url(' + bigImage.src + ')',
+        height: 200,
+        backgroundPosition: 'center center',
+        opacity: 1,
+        objectFit: 'cover !important',
+        transition: '0.5s ease-in all',
+        borderTopRightRadius: 5,
+        borderTopLeftRadius: 5
+      });
+    }
   }
   imageLoad(imageID,imageURL){
     //requests for an image to be loaded unto a page
@@ -164,6 +198,7 @@ class Dashboard extends Component {
     });
     return arr;
   }
+
   runAllImages(thisClass,idImageArray){
     //this accetps this-class(Dashboard Class) as a parameter, and an array to that is made up of objects which contain 
     //'id' and 'image'.... that can be triggered to run on tabclick
@@ -178,6 +213,359 @@ class Dashboard extends Component {
             // thisClass.extraImageLoad(item.id,'2','imgs/avatars/female-avatar.png');
             // thisClass.extraImageLoad(item.id,'3','imgs/avatars/hoodie-avatar.jpg');
     });
+  }
+
+  selectMode(mode,key) {
+    let currentOption = $('#modal-opt-mode-'+key).val();
+    var ckey; 
+    if( key ==='text'){
+      ckey = 't'
+    }
+    else if( key ==='pic'){
+      ckey = 'p';
+    }
+    $('#modal-' + currentOption + '-' + key).removeClass('m-side-active');
+    $('#modal-' + mode + '-' + key).addClass('m-side-active');
+    this.changeMode(mode, currentOption,ckey);
+    $('#modal-opt-mode-'+key).val(mode);
+  }
+  createOptionElements(type, href, fontAwesome,key,target) {
+    let anchorDiv = document.createElement('div');
+    let anchor = document.createElement('a');
+    let fa = document.createElement('i');
+    let thisClass = this;
+    anchorDiv.className = 'modal-side-items ';
+    anchorDiv.addEventListener('click', function () { thisClass.selectMode(type,key) });
+    anchorDiv.id = 'modal-'+type + '-' + key;
+    anchor.className = 'modal-s-i-c';
+    anchor.href = href;
+    fa.className = fontAwesome;
+    anchor.appendChild(fa);
+    anchorDiv.appendChild(anchor);
+    document.getElementById(target).appendChild(anchorDiv);
+  }
+
+  createAllOptions(){
+    this.createOptionElements('edit', '#', 'fa fa-pencil','text', 'text-m-side-bar');
+    this.createOptionElements('publish', '#', 'fa fa-arrow-circle-up', 'text','text-m-side-bar');
+    this.createOptionElements('delete', '#', 'fa fa-trash', 'text','text-m-side-bar');
+  }
+  createAllPictureOptions(){
+    this.createOptionElements('view', '#', 'fa fa-eye','pic', 'pic-m-side-bar');
+    this.createOptionElements('publish', '#', 'fa fa-arrow-circle-up', 'pic','pic-m-side-bar');
+    this.createOptionElements('delete', '#', 'fa fa-trash', 'pic', 'pic-m-side-bar');
+  }
+  changeMode(nextMode, currentMode,key) {
+    //get the moode that is to be switched to 
+    //get the div of that. mode
+    //get the current mode 
+    //get the current mode div 
+    //transition the current div out, and trans the next div in. 
+    //NB: 'this' becomes the selected item inside the jqeury selected element, it doesnt point to the main 
+    //class again.
+    $('#universal-'+ key +'-' + currentMode + '-mode').animate({ left: 20, opacity: 0 }, 300, function () {
+      $('#universal-'+ key +'-' + currentMode + '-mode').css({ left: 0, display: 'none', opacity: 1 })
+      $('#universal-'+ key +'-' + nextMode + '-mode').fadeIn(300);
+      if (nextMode === 'delete' || nextMode === 'publish') {
+        $('#universal-'+ key +'-' + nextMode + '-mode').addClass('centerness');
+      }
+      $('#universal-'+ key +'-' + nextMode + '-mode').addClass('relative');
+    });
+  }
+  textModalCleanUp() {
+    let edit = document.getElementById('modal-edit-text');
+    let editPage = document.getElementById('universal-t-edit-mode');
+    let publish = document.getElementById('modal-publish-text');
+    let publishPage = document.getElementById('universal-t-publish-mode');
+    let del = document.getElementById('modal-delete-text');
+    let delPage = document.getElementById('universal-t-delete-mode');
+    let viewPage = document.getElementById('universal-t-view-mode');
+    let deletables =  [edit,publish,del,editPage,delPage,publishPage,viewPage]
+    deletables.forEach( item =>{
+      if(item !==null){
+        item.remove();
+      }
+    });
+  }
+  picModalCleanUp(){
+    let view = document.getElementById('modal-view-pic');
+    let publish = document.getElementById('modal-publish-pic');
+    let publishPage = document.getElementById('universal-p-publish-mode');
+    let del = document.getElementById('modal-delete-pic');
+    let delPage = document.getElementById('universal-p-delete-mode');
+    let viewPage = document.getElementById('universal-p-view-mode');
+    let deletables = [view, publish, del,viewPage,publishPage,delPage]
+    deletables.forEach(item => {
+      if (item !== null) {
+        item.remove();
+      }
+    });
+  }
+
+  editPaper(id) {
+    let oldTitle = this.state.currentTextPiece.title; 
+    let oldBody = this.state.currentTextPiece.body;
+    let title = $('.js-modal-edit-title').val();
+    let body = $('.js-modal-edit-body').val();
+    let newDataBus = { title: title, body: body, id: id };
+    if( oldTitle !== title && title !=="" || oldBody !==body && body !=="" ){
+      this.props.editPaperFunction(newDataBus, this.props.pieces);
+      $('.view-title').text(title);
+      $('.view-body').text(body);
+      this.textModalCleanUp();
+      this.createAllOptions();
+      this.initAllPages(title, body, id);
+    }
+  }
+  zoom(ID) {
+    var zoomed = $('.modal-image').attr('data-zoomed');
+    if (zoomed === "false") {
+      $('.modal-image').css({ transform: 'scale(1.3)', borderRadius: 20, transition: '0.2s ease-in all' });
+      $('.modal-image').attr('data-zoomed', 'true');
+    } else if (zoomed = "true") {
+      $('.modal-image').css({ transform: 'scale(1)', borderRadius: 0, transition: '0.2s ease-in all' });
+      $('.modal-image').attr('data-zoomed', 'false');
+    }
+  }
+
+  handleImgDivs(imageLink,parent){
+    let imageDiv = document.createElement('div');
+    imageDiv.style.background = 'url(' + imageLink + ')';
+    imageDiv.className = 'pic-piece-image modal-image';
+    imageDiv.style.backgroundSize = 'auto 100%';
+    imageDiv.style.backgroundPosition = 'center center';
+    imageDiv.style.backgroundRepeat = ' no-repeat !important';
+    imageDiv.style.opacity = 1;
+    imageDiv.setAttribute('data-zoomed', 'false');
+    imageDiv.style.margin = 0;
+    imageDiv.addEventListener('click', function () { thisClass.zoom(id) }); 
+    parent.appendChild(imageDiv);
+    
+  }
+  createPictureViewPage(id,body,imageLink,type,extras){
+    //parent div
+    //image div 
+    //div for image text 
+    //p from    image text
+    let thisClass = this;
+    let parent = document.createElement('div'); 
+    this.handleImgDivs(imageLink,parent);
+    if( type ==='mulltiple'){
+      this.separateExtrasToSingles(extras).forEach(link =>{
+        this.handleImgDivs(link,parent)
+      });
+    }
+    let textDiv = document.createElement('div'); 
+    let text = document.createElement('p');
+    parent.id  = 'universal-p-view-mode'; 
+    parent.style.position = 'relative'; 
+    parent.style.margin = 0; 
+    text.textContent = body; 
+    textDiv.appendChild(text);
+    textDiv.className = ' vanish'; 
+    parent.appendChild(textDiv);
+    console.log("I am the image div....: ",parent)
+    document.getElementById('pic-modal-envelope').appendChild(parent);
+
+  }
+  createPictureDeletePage(id){
+    let thisClass = this;
+    let parent = document.createElement('div');
+    let center = document.createElement('center');
+    let text = document.createElement('h2');
+    let textSpan = document.createElement('span');
+    let bold = document.createElement('b');
+    let btn = document.createElement('button');
+    let btnFa = document.createElement('i');
+    parent.id = 'universal-p-delete-mode';
+    parent.className = 'vanish';
+    text.textContent = 'Are you sure you want to delete this? ';
+    textSpan.style.color = 'black';
+    btn.setAttribute('data-toggle', 'modal-dismiss');
+    btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
+    btn.addEventListener('click', function () { thisClass.deletePicture(id) });
+    btnFa.className = ' fa fa-trash';
+    textSpan.appendChild(bold);
+    text.appendChild(textSpan);
+    btn.textContent = 'Yes I want to';
+    btn.appendChild(btnFa);
+    center.appendChild(text);
+    center.appendChild(btn);
+    parent.appendChild(center);
+    console.log("Dude I am the delete page inPic  __>:: ", parent)
+    document.getElementById('pic-modal-envelope').appendChild(parent);
+  }
+  createPicturePublishPage(body){
+    let parent = document.createElement('div');
+    let center = document.createElement('center');
+    let text = document.createElement('h2');
+    let textSpan = document.createElement('span');
+    let bold = document.createElement('b');
+    let btn = document.createElement('button');
+    let btnFa = document.createElement('i');
+    let cont = document.createElement('span');
+    parent.id = 'universal-p-publish-mode';
+    parent.className = 'vanish';
+    text.textContent = ' You are about to make this paper live to everyone. Are you sure ';
+    textSpan.style.color = 'black';
+    btn.className = ' btn btn-success float-green my-depth-1 margin-5';
+    btn.addEventListener('click', function () { alert('Nigga I am the shit!!!') });
+    btnFa.className = ' fa fa-globe';
+    cont.textContent = " is ready?";
+    textSpan.appendChild(bold);
+    text.appendChild(textSpan);
+    text.appendChild(cont);
+    btn.appendChild(btnFa);
+    btn.textContent = 'I know what I am doing ';
+    center.appendChild(text);
+    center.appendChild(btn);
+    parent.appendChild(center);
+    console.log("Dude I am the publish page |||__>::||  ", parent)
+    document.getElementById('pic-modal-envelope').appendChild(parent);
+  }
+  createViewModalPage(title,body){
+    let parent = document.createElement('div'); 
+    let titleDiv = document.createElement('div');
+    let realTitle = document.createElement('h2');
+    let bodyDiv = document.createElement('div'); 
+    let realBody = document.createElement('p'); 
+    parent.id = 'universal-t-view-mode';
+    parent.style.position ='relative';
+    titleDiv.className = 'piece-title';
+    realTitle.className ='view-title'; 
+    bodyDiv.className = 'piece-body'; 
+    realBody.className = 'view-body';
+    realTitle.textContent = title;
+    realBody.textContent = body;
+    titleDiv.appendChild(realTitle); 
+    bodyDiv.appendChild(realBody); 
+    parent.appendChild(titleDiv); 
+    parent.appendChild(bodyDiv);
+    console.log("I am the parent:::: ", parent);
+    document.getElementById('text-modal-envelope').appendChild(parent);
+
+  }
+  createEditModalPage(title,body,id){
+    let thisClass = this;
+    let parent = document.createElement('div');
+    let closeBtn = document.createElement('button'); 
+    let closeFa = document.createElement('i'); 
+    let saveBtn = document.createElement('button'); 
+    let saveFa = document.createElement('i');
+    let titleInput = document.createElement('input'); 
+    let bodyArea = document.createElement('textarea');
+    parent.style.margin = 20;
+    parent.className = "vanish"; 
+    parent.id = 'universal-t-edit-mode'; 
+    closeBtn.className = 'btn my-depth-1 round-float-button float-red';
+    closeFa.className = ' fa fa-close'; 
+    saveBtn.className = ' btn my-depth-1 round-float-button float-green';
+    saveBtn.addEventListener('click',function(){thisClass.editPaper(id)});
+    closeBtn.addEventListener('click',function(){ thisClass.selectMode('view','text');})
+    saveFa.className = ' fa fa-save'; 
+    titleInput.type = 'text'; 
+    titleInput.className = ' form-control modal-ed-title js-modal-edit-title';
+    titleInput.ref = "_newTitle"; 
+    titleInput.defaultValue =title; 
+    bodyArea.className ='form-control modal-ed-body js-modal-edit-body'; 
+    bodyArea.rows = 18; 
+    bodyArea.ref = '_newBody';
+    bodyArea.id = 'm-edit-textarea';
+    bodyArea.textContent = body;
+    closeBtn.appendChild(closeFa); 
+    saveBtn.appendChild(saveFa); 
+    parent.appendChild(closeBtn); 
+    parent.appendChild(saveBtn); 
+    parent.appendChild(titleInput); 
+    parent.appendChild(bodyArea); 
+    console.log("Yoo I am the edit page ---->>: : ", parent);
+    document.getElementById('text-modal-envelope').appendChild(parent);
+
+  }
+  createDeleteModalPage(title,id){
+    let thisClass = this;
+    let parent = document.createElement('div'); 
+    let center = document.createElement('center');  
+    let text = document.createElement('h2'); 
+    let textSpan = document.createElement('span');
+    let bold = document.createElement('b'); 
+    let btn = document.createElement('button'); 
+    let btnFa = document.createElement('i');
+    parent.id = 'universal-t-delete-mode'; 
+    parent.className = 'vanish';
+    text.textContent = 'Are you sure you want to delete ';
+    textSpan.style.color = 'black';
+    btn.setAttribute('data-toggle','modal-dismiss'); 
+    btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
+    btn.addEventListener('click',function(){thisClass.deletePaper(id)});
+    btnFa.className = ' fa fa-trash'; 
+    bold.textContent = ' "'+title+'" ';
+    textSpan.appendChild(bold);
+    text.appendChild(textSpan); 
+    btn.textContent = 'Yes I want to';
+    btn.appendChild(btnFa); 
+    center.appendChild(text); 
+    center.appendChild(btn); 
+    parent.appendChild(center); 
+    console.log("Dude I am the delete page __>:: ",parent)
+    document.getElementById('text-modal-envelope').appendChild(parent);
+  }
+  createPublishModalPage(title){
+    let parent = document.createElement('div');
+    let center = document.createElement('center');
+    let text = document.createElement('h2');
+    let textSpan = document.createElement('span');
+    let bold = document.createElement('b');
+    let btn = document.createElement('button');
+    let btnFa = document.createElement('i');
+    let cont = document.createElement('span');
+    parent.id = 'universal-t-publish-mode';
+    parent.className = 'vanish';
+    text.textContent = ' You are about to make this paper live to everyone. Are you sure ';
+    textSpan.style.color = 'black';
+    btn.className = ' btn btn-success float-green my-depth-1 margin-5';
+    btn.addEventListener('click', function () { alert('Nigga I am the shit!!!') });
+    btnFa.className = ' fa fa-globe';
+    bold.textContent = '"' + title + '"';
+    cont.textContent = " is ready?";
+    textSpan.appendChild(bold);
+    text.appendChild(textSpan);
+    text.appendChild(cont);
+    btn.appendChild(btnFa);
+    btn.textContent = 'I know what I am doing ';
+    center.appendChild(text);
+    center.appendChild(btn);
+    parent.appendChild(center);
+    console.log("Dude I am the publish page |||__>::||  ", parent)
+    document.getElementById('text-modal-envelope').appendChild(parent);
+  }
+  initAllPicPages(id,body,imageLink,type,extras){
+    this.createPictureViewPage(id,body,imageLink,type,extras);
+    this.createPictureDeletePage(id);
+    this.createPicturePublishPage(body);
+  }
+  initAllPages(title,body,id){
+    this.createViewModalPage(title,body);
+    this.createEditModalPage(title,body,id);
+    this.createDeleteModalPage(title,id);
+    this.createPublishModalPage(title);
+  }
+
+  deletePaper(id){
+    var thisClass = this;
+    setTimeout(function () {
+      $('.modal .close').click();
+      thisClass.props.deletePaperFunction(id, thisClass.props.pieces);
+    }, 1000)
+  }
+  
+
+  deletePicture(id) {
+    $('.modal .close').click();
+    this.props.deletePictureFunction(id, this.props.picPieces);
+    let idImageArray = this.props.idImageArrayManufacture(this.props.picPieces);
+    this.runAllImages(idImageArray);
+
   }
   render() {
     return (
@@ -254,8 +642,56 @@ class Dashboard extends Component {
             </div> 
           </div> 
         </div>
+      {/*  =============================== DISPLAY MODALS =============================*/}
+        {
+              this.state.currentTextPiece === null ? 
+                <UniversalTextDisplay 
+                  editPaperFunction ={null} 
+                  owner = {null}
+                  allPieces = {null}
+                  deletePaperFunction = {null}
+                  piece_title ={null} 
+                  piece_id = {null}
+                  piece_body={null}
+                  created_at= {null}
+                />
+              :  
+                <UniversalTextDisplay 
+                  editPaperFunction ={ this.props.editPaperFunction } 
+                  owner = {this.props.user.name} 
+                  allPieces = { this.props.pieces } 
+                  deletePaperFunction = { this.props.deletePaperFunction}
+                  piece_title = { this.state.currentTextPiece.title } 
+                  piece_id = {this.state.currentTextPiece.ID}
+                  piece_body={this.state.currentTextPiece.body } 
+                  created_at= { this.state.currentTextPiece.created_at}
+                  createSideOptionFunction={this.createOptionElements}
+                  textModalCleanUpFunction={this.textModalCleanUp}
+                />
+        }
+        {
+          this.state.currentPicPiece === null ?
+            <UniversalPicDisplay
+              
+            />
+            :
+            <UniversalPicDisplay
+              owner = { this.props.user.name }
+              created_at = {this.state.currentPicPiece.created_at}
+            />
+        }
       </div>
     );
   }
+}
+
+Dashboard.propTypes = {
+  deletePaperFunction:PropTypes.func,
+  deletePictureFunction:PropTypes.func, 
+  editPaperFunction:PropTypes.func,
+  editPictureFunction:PropTypes.func, 
+  picPieces: PropTypes.object, 
+  user: PropTypes.object,
+  pieces:PropTypes.object
 }
 export default Dashboard;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SnackBar from './../plugins/SnackBar';
+import PropTypes from 'prop-types';
 
 class Profile extends Component {
   constructor(props){
@@ -178,5 +179,11 @@ class Profile extends Component {
       </div>
     );
   }
+}
+
+Profile.propTypes = { 
+  saveProfileEditsFunction:PropTypes.func,
+  user:PropTypes.object,
+  notificaion:PropTypes.array
 }
 export default Profile;
