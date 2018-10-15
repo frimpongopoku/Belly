@@ -11,7 +11,10 @@ import {
 	loadUserPiecesAction, 
 	createNewPaperAction, 
 	saveMenuToRemoteAction, 
-	deletePaperPieceAction 
+  deletePaperPieceAction, 
+  getNewsAction, 
+  getAllCoursesAction,
+  newLikeAction
 } from './../../actions/root-action';
 
 
@@ -28,5 +31,11 @@ export const appActions = {
 	loadUserPiecesAction:loadUserPiecesAction ,
 	createNewPaperAction: createNewPaperAction, 
 	saveMenuToRemoteAction: saveMenuToRemoteAction, 
-	deletePaperPieceAction: deletePaperPieceAction
+  deletePaperPieceAction: deletePaperPieceAction, 
+  getNewsAction: getNewsAction, 
+  getAllCoursesAction: getAllCoursesAction, 
+  
 };
+export const likeActions = { 
+  sendNewLike: newLikeAction
+}

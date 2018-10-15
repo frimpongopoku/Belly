@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Dropdown from './MyDropdown';
 import Wager from './Wager';
 import CommentPad from './CommentPad';
-class GistCard extends Component {
+class GistImageCard extends Component {
   constructor(props){
     super(props); 
     this.zoom= this.zoom.bind(this);
@@ -59,7 +59,7 @@ class GistCard extends Component {
       <div style={{marginTop:40}}>
         <div className = 'panel panel-default solid-p-w' style={{ marginBottom:0}}> 
           <a href='#' className = 'name-badge   my-depth-2 margin-climb-up'  
-              style={{background:this.props.details.bcolor,position:'absolute' }}> @{this.props.details.name} 
+              style={{background:this.props.details.bcolor,position:'absolute' }}> @{this.props.details.owner.name} 
           </a> 
           <div style={{marginBottom:15, paddingTop:15}} ></div>
           <div className = ' pull-right ' style={{paddingRight:10}}> 
@@ -68,25 +68,25 @@ class GistCard extends Component {
           {/* ================== PANEL-BODY ============== */}
           <div className = 'panel-body clearfix' style ={{padding:'0px '}}> 
             <div className = ' paper-title-div'style={{padding:15}}>
-              <p> And the something happend @Euligi and what is this things!!!  Guys it is happening </p>
+              <p> {this.props.description} </p>
             </div>
             <div className = ' school-course-div pull-right' style={{paddingLeft:5, marginBottom:5}}> 
-              <small className = ' label label-info info-bg-color z-depth-1 p-r-fix'><i className ='fa fa-graduation-cap p-r-fix'></i> KNUST </small>
-              <small className = ' label label-default z-depth-1 p-r-fix'><i className ='fa fa-book p-r-fix'></i> Computer Science </small>
+              <small className = ' label label-info info-bg-color z-depth-1 p-r-fix'><i className ='fa fa-graduation-cap p-r-fix'></i> {this.props.details.owner.school} </small>
+              <small className = ' label label-default z-depth-1 p-r-fix'><i className ='fa fa-book p-r-fix'></i> {this.props.course}</small>
             </div>
             <span style={{padding:10 }} className = ' text text-primary font-small number-font'><i className='fa fa-clock-o'></i> 3 seconds ago </span>
             
           {/* ================== IMAGE  ============== */}
-            <img src = '/imgs/knust.jpg' 
+            <img src = {this.props.image_link}
               onClick={()=>{this.zoom(this.props.id)}} 
               className='img-responsive gist-img cursor' id={"img-zoom-pointer-"+this.props.id} 
               data-zoomed="false" 
 
             />
             <div className = ' semi-footer clearfix' style={{padding:"5px 20px"}}>
-              <small className = "number-font t-black"><span className = "fa fa-thumbs-up"></span> <span> 150 </span> </small> 
-              <small className = "number-font t-black"><span className = "fa fa-comments"></span> <span> 40 </span></small> 
-              <small className = " label label-primary pull-right gist-coin-display number-font"> <b>C</b> 400 </small>
+              <small className = "number-font t-black"><span className = "fa fa-thumbs-up"></span> <span> {this.props.likes} </span> </small> 
+              <small className = "number-font t-black"><span className = "fa fa-comments"></span> <span> {this.props.comments} </span></small> 
+              <small className = " label label-primary pull-right gist-coin-display number-font"> <b>C</b> {this.props.coins} </small>
             </div>
           {/* ================== WAGER BOX ============== */}
             <Wager></Wager>
@@ -113,10 +113,11 @@ class GistCard extends Component {
   }
 }
 
-GistCard.propTypes = { 
-    details: PropTypes.object,
-    bcolor: PropTypes.string, 
-    name: PropTypes.string 
+GistImageCard.propTypes = { 
+  //details has = name, bcolor, owner
+    details: PropTypes.object, 
+    type: PropTypes.string,
+    id: PropTypes.number
 }
 
-export default GistCard;
+export default GistImageCard;

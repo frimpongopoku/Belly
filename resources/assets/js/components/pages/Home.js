@@ -27,6 +27,8 @@ class Home extends Component {
     this.props.getUserPieces();
     this.props.getPicPieces();
     this.props.getToken();
+    this.props.getNews(0);
+    this.props.getAllCourses();
   }
 
   snack(notice,ID,color){
@@ -88,13 +90,15 @@ class Home extends Component {
                 newPicFunction = { this.props.newPic } token = { this.props.token } 
                 allPieces = { this.props.userPieces } switchPageFunction = { this.switchPage } 
                 user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser } 
-                createPaperFunction = { this.props.createNewPaper }>
+                createPaperFunction = { this.props.createNewPaper }
+                allCourses = { this.props.allCourses}
+                >
               </Create>
             </div>
            </div>
           </div>
         <div id='gist' className='vanish' style={ styles.noteReady}> 
-          <Gist></Gist>
+          <Gist allNews = { this.props.news ===null ? null : this.props.news }></Gist>
         </div>
         <center><h1> <i className = 'fa fa-spinner fa-spin'></i></h1></center>
       </div>
@@ -117,7 +121,9 @@ function mapStateToProps(state){
       authenticatedUser: state.authUser, 
       store:state,
       notification:state.notification,
-      token:state.token
+      news: state.newsFeed,
+      token:state.token, 
+      allCourses: state.allCourses
   };
 };
 function matchDispatchToProps(dispatch){
@@ -134,7 +140,9 @@ function matchDispatchToProps(dispatch){
     test: appActions.test, 
     getToken:appActions.getTokenAction, 
     newPic: appActions.newPicPieceAction, 
-    saveProfileEdits: appActions.saveProfileEditsAction
+    saveProfileEdits: appActions.saveProfileEditsAction,
+    getNews: appActions.getNewsAction,
+    getAllCourses: appActions.getAllCoursesAction 
   },dispatch)
 };
 

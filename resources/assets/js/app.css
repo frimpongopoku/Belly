@@ -1,3 +1,14 @@
+.upload-button-design{
+  background:rgb(255, 169, 8) !important; 
+  color:black!important;
+  border-color:rgb(255, 169, 8) !important; 
+}
+.upload-button-design:hover{
+  background:#202020 !important; 
+  color:white !important;
+  border-color:#202020 !important; 
+  transition: .3s ease-in-out all;
+}
 .nav-icon{
     cursor:pointer;
 }

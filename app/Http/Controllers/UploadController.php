@@ -8,6 +8,9 @@ use App\PicturePiece;
 class UploadController extends Controller
 {
 
+  public function upTest(Request $request){
+    return $request->pic_course_selection;
+  }
 	public function check(Request $request){
 		print_r($request->image[0]);
 		echo "<br>"; 
@@ -66,7 +69,8 @@ class UploadController extends Controller
 		$results = $this->checkFile($request->image[0]); 
 		$picture = new PicturePiece();
     	$picture->name = Auth::user()->name; 
-    	$picture->user_id = Auth::user()->id; 
+      $picture->user_id = Auth::user()->id; 
+      $picture->course = $request->pic_course_select;
     	if($request->description != "" && $this->fullOfSpaces($request->description) !="true"){
     		$picture->description = $request->description ;
     	}

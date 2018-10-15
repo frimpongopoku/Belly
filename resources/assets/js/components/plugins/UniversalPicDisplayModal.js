@@ -1,9 +1,6 @@
 import React from 'react';
 
 class UniversalPicModal extends React.Component {
-
-    
-  
   render() {
     return (
       <div id="universal">

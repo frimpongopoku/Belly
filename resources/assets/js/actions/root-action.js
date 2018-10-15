@@ -2,14 +2,44 @@ import $ from 'jquery';
 import { initialState } from './../reducers/dummy';
 
 
+export const newLikeAction = (miniTrain,allLikes) =>{
+
+    return dispatch =>{
+      $.ajax({method:"get",url:"/me/like",data:miniTrain})
+      .done((response)=>{ 
+        //dispatch(newLikesSetAction(response,allLikes))
+      });
+    }
+}
+
+export const newLikesSetAction = () =>{
+
+}
+export const getAllCoursesAction = () =>{
+  return dispatch=>{
+    $.ajax({ method:'get',url:'/me/get-all-courses'})
+    .done(response =>{
+      dispatch({type:"user/GET_ALL_COURSES", payload:response});
+    });
+  }
+}
+export const getNewsAction =(point)=>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'/me/get-news/'+point})
+    .done((data)=>{
+      dispatch(loadNewsPiecesAction(data));
+    });
+  }
+}
+export const loadNewsPiecesAction =(dataTrain) =>{
+  //this fxn has access to the portion in the store, so you can pass anykinda data to the store to represent news.. 
+  //this fxn is just the link, otherFxnsLikethisInclude: loadUserPieces,loadUserPicPieces
+  return { type: "user/LOAD_NEWS",payload:dataTrain};
+}
 export const saveProfileEditsAction = (dataTrain)=>{
-	//console.log("I am th etrain in saveProfileEdits : ", dataTrain);
 	return dispatch =>{ 
-		$.ajax({ 
-			method:"get", 
-			url:"/me/save-profile-edits", 
-			data: dataTrain
-		}).done(user=>{ 
+    $.ajax({ method:"get",	url:"/me/save-profile-edits",	data: dataTrain})
+    .done(user=>{ 
 			dispatch(saveAuthenticatedUserAction(user));
 			dispatch( notifierAction("Profile Saved"));
 		});
@@ -27,10 +57,8 @@ export const deletePicturePieceAction =(id,allPieces)=>{
 
 export const deleteDBPic = (id) =>{
 	return dispatch =>{ 
-		$.ajax({
-			method:'get',
-			url:'/me/delete-pic-item-'+id
-		}).done(response=>{
+    $.ajax({	method:'get',url:'/me/delete-pic-item-'+id})
+    .done(response=>{
 			console.log("Your Image has been deleted nigga!!");
 		}); 
 	}
@@ -49,10 +77,8 @@ export const newPicPieceAction =( newData,oldPieces)=>{
 
 export const getPicPiecesAction =()=>{
 	return dispatch =>{
-		$.ajax({
-			method:'get',
-			url:'/me/get-all-pic-papers'
-		}).done(response =>{
+    $.ajax({method:'get',	url:'/me/get-all-pic-papers'})
+    .done(response =>{
 			dispatch(loadPicsPiecesAction(response.data));
 		});
 	}
@@ -68,10 +94,8 @@ export const test = ()=>{
 
 export const getTokenAction = ()=>{
 	return dispatch=>{
-		$.ajax({
-			method:'get',
-			url:'/me/get-token'
-		}).done(response =>{
+    $.ajax({method:'get',url:'/me/get-token'})
+    .done(response =>{
 			dispatch({type:"application/GET_TOKEN", payload:response })
 		})
 	}
@@ -116,14 +140,10 @@ export const deletePaperPieceAction = (id,oldPieces) =>{
 		dispatch(loadUserPiecesAction(delPaper(id,oldPieces)));
 	}
 }
-
 export const dBEditPaper =(newData)=>{
 	return dispatch =>{
-		$.ajax({
-			method:'get',
-			url:'/me/edit-piece/', 
-			data:{...newData}
-		}).done(response =>{
+    $.ajax({method:'get',url:'/me/edit-piece/', data:{...newData}})
+    .done(response =>{
 			console.log("Updated done from behind toooo!");
 			//put some notification here, but for now.....
 		})
@@ -131,10 +151,8 @@ export const dBEditPaper =(newData)=>{
 }
 export const dBDelete = (id) =>{
 	return dispatch=>{
-		$.ajax({
-			method:'get',
-			url:'/me/delete-paper/'+id
-		}).done(response =>{
+    $.ajax({method:'get',url:'/me/delete-paper/'+id})
+    .done(response =>{
 			//put some notification handler out here... but for now, just log some shit 
 			console.log("Your paper has been deleted from the database!");
 		});
@@ -154,16 +172,12 @@ export const createNewPaperAction = (dataObj, oldPieces) =>{
 
 export const dBSaveAction = (dataTrain) =>{
 	return dispatch => {
-		$.ajax({
-			method:'get',
-			url:'/me/save-text-piece',
-			data:{ name: dataTrain.owner, body: dataTrain.body, user_id: dataTrain.owner_id, title: dataTrain.title }
-		}).done( response => {
+    $.ajax({method:'get',url:'/me/save-text-piece',data:{ name: dataTrain.name,course: dataTrain.course, body: dataTrain.body, user_id: dataTrain.user_id, title: dataTrain.title }})
+    .done( response => {
 			if( response === "True" ){
 				setTimeout(function(){
 					dispatch(notifierAction(dataTrain.title));
 				},2000)
-				
 			}
 		});
 	};
@@ -174,10 +188,8 @@ export const notifierAction = (data)=>{
 }
 export const getUserPiecesAction = ()=>{
 	return dispatch =>{
-		$.ajax({
-			method:'get',
-			url:'/me/get-all-text-papers'
-		}).done( response =>{
+    $.ajax({method:'get',url:'/me/get-all-text-papers'})
+    .done( response =>{
 			dispatch(loadUserPiecesAction(response.data))
 		});
 	}
@@ -194,10 +206,8 @@ export const saveAuthenticatedUserAction = ( user )=> {
 
 export const fetchUserAction = ()=> { 
 	return dispatch =>{
-		$.ajax({
-			method:'get',
-			url:'/me/get-auth-user'
-		}).done( response =>{ 
+    $.ajax({method:'get',url:'/me/get-auth-user'})
+    .done( response =>{ 
 				dispatch(saveAuthenticatedUserAction(response));
 		});
 	}

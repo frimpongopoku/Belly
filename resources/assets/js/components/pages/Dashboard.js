@@ -75,7 +75,7 @@ class Dashboard extends Component {
         <li key={ index }>
           <Piece 
           owner= { this.props.user.name } 
-          course={ this.props.user.course } 
+          course={ piece.course } 
           fileType = "text" 
           title={ piece.title }
           body = { piece.body }

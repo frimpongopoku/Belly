@@ -32,4 +32,7 @@ class User extends Authenticatable
     public function picturePieces(){
         return $this->hasMany('App\PicturePiece');
     }
+    public function likes(){
+      return $this->hasMany("App\Likes");
+    }
 }
