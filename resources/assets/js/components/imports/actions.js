@@ -14,7 +14,9 @@ import {
   deletePaperPieceAction, 
   getNewsAction, 
   getAllCoursesAction,
-  newLikeAction
+  newLikeAction,
+  picLikeAction,
+
 } from './../../actions/root-action';
 
 
@@ -38,4 +40,9 @@ export const appActions = {
 };
 export const likeActions = { 
   sendNewLike: newLikeAction
-}
+};
+export const gistActions ={
+  picLikeAction:picLikeAction,
+  newLikeAction: newLikeAction,
+  getNews: getNewsAction
+};

@@ -7,6 +7,10 @@ class GistPaperCard extends React.Component{
 	constructor(props){
 		super(props); 
     this.showComment = this.showComment.bind(this);
+    this.checkIfUserLiked = this.checkIfUserLiked.bind(this);
+    this.state ={ 
+      auth_user_liked:false
+    }
     
 		this.options = [ 
       { title:'Unpublish', fa:'fa-globe',function:null}, 
@@ -15,8 +19,25 @@ class GistPaperCard extends React.Component{
     ];
 	}
   
+  componentDidMount(){
+    this.checkIfUserLiked();
+  }
+  checkIfUserLiked(){
+    let thisClass = this;
+    for (let i = 0; i < this.props.likesArray.length; i++) {
+      console.log("I am just in the lopooooop")
+      const aLike = this.props.likesArray[i];
+      if(aLike.user_id === this.props.user.id && aLike.paper_piece_id === this.props.id){
+        this.setState({auth_user_liked:true});
+        console.log("Iam in the for if loop show thine self!!!!!!")
+        return null;
+
+      }
+    }
+    //thisClass.setState({auth_user_liked:false})
+  }
   doLike(){
-    this.props.newLikeFunction({user_id:this.props.user.id,paper_piece_id:this.props.id},this.props.likesArray);
+    this.props.newLikeFunction({user_id:this.props.user.id,paper_piece_id:this.props.id},this.props.allNews);
     console.log("Your like has been sent");
   }
 	zoomText(id){
@@ -55,6 +76,7 @@ class GistPaperCard extends React.Component{
 		}
 	}
 	render(){
+    console.log("logthegistThis::: ",this.state);
 		return (
 				<div className ="">
 					<div className ='panel panel-default' style = {{width:"100%",marginBottom:0,marginTop:50}}> 
@@ -66,7 +88,7 @@ class GistPaperCard extends React.Component{
               	style={{background:this.props.details.bcolor,position:'absolute', marginTop:-30, marginLeft:-36 }}> @{this.props.details.owner.name} 
           		</a> 
           		<div className =" paper-title-div " >
-          			<h4>{this.props.title }</h4>
+          			<h4>{this.props.title+ " - " + this.props.id }</h4>
           		</div>
           		<small style={{padding:10}}> 
           			<span className = ' text text-primary font-small number-font'><i className='fa fa-clock-o'></i> 3 seconds ago </span>
@@ -88,12 +110,15 @@ class GistPaperCard extends React.Component{
                     <span> { this.props.likes} </span> 
                   </small> 
 		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"></span> <span> { this.props.comments} </span> </small> 
-		              <small className = " label label-primary pull-right gist-coin-display number-font"> <b>C</b> {this.props.coins} </small>
+		              <small className = " label label-primary pull-right gist-coin-display number-font"> 
+                    <b>C</b> {this.props.coins} 
+                  </small>
 		            </div>
           		</div>
 						</div>
 						<div className = 'panel-footer'> 
-            <a href='#' className='action-btn font-small-ish' onClick={(e) => { e.preventDefault(); this.doLike() }}>
+            <a href='#' className= 'action-btn font-small-ish' style={ this.state.auth_user_liked ? styles.likedColor:{} }
+              onClick={(e) => { e.preventDefault(); this.doLike() }}>
               <i className = 'fa fa-thumbs-up'></i> Like
               </a>
 	            <a  className='action-btn font-small-ish ' 
@@ -112,6 +137,12 @@ class GistPaperCard extends React.Component{
 				</div>
 			);
 	}
+}
+
+const styles ={
+  likedColor:{
+    color:'crimson !important'
+  }
 }
 
 export default GistPaperCard;

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Set from "./News-Set";
-import { Provider } from 'react-redux';
-import { store } from './../../redux-setup/store';
+import ImageCard from "./GistImageCard"; 
+import TextCard from "./GistPaperCard";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { gistActions} from "./../imports/actions";
+
 class NewsContainer extends Component{
   //this class contains all the necessary functions that will load the next sets of data for the gist page
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.createSetDisplay = this.createSetDisplay.bind(this);
+
     this.state = {
       news: null,
       badgeNumber:0,
@@ -15,58 +19,120 @@ class NewsContainer extends Component{
     }
   }
   componentDidMount() {
-    this.firstBatch();
+    this.props.getNews(0,this.props.allNews);
+    this.setState({badgeNumber: Number(this.state.badgeNumber+1)})
   };
-  firstBatch() {
-    let thisClass = this;
-    $.ajax({ url: '/me/get-news/0', method: 'get' })
-      .done(function (data) {
-        thisClass.setState({ news: data,badgeNumber: 1 });
-        thisClass.createSetDisplay("set-0",data);
-        console.log(data);
+ 
+  ejectPictures(){
+   let thisClass =this; 
+   if(this.props.allNews.active !==false){
+     return this.props.allNews.pics.map(function(item,index){
+       var num = Math.round(Math.random(1000000) * 100000000000);
+       var loopIndex = "news-pic-" + num.toString();
+       return (
+         <li key={loopIndex}>
+           <ImageCard
+             id={item.id}
+             details={{ bcolor: 'green', owner: item.user }}
+             description={item.description}
+             user={thisClass.props.authenticatedUser}
+             course={item.course}
+             image_link={item.picture_link}
+             created_at={item.created_at}
+             likesArray={item.likes}
+             likes={item.likes.length}
+             comments={Math.round(Math.random(500) * 100)}
+             course={item.course}
+             coins={Math.round(Math.random(50000) * 1000)}
+             school={item.user.school}
+             likeFunction={thisClass.props.picLikeFunction}
+             allNews={thisClass.props.allNews}
+             school={item.user.school}
+           />
+         </li>
+       );
+     })
+   }
+  }
+
+  ejectTexts() {
+    let thisClass= this;
+    if(this.props.allNews.active !==false){
+      return this.props.allNews.texts.map(function(item,index){
+        var num = Math.round(Math.random(1000000) *100000000000);
+        var loopIndex = "news-text-"+num.toString();
+        return (
+          <li key={loopIndex}>
+            <TextCard
+              type={item.type}
+              details={{ bcolor: 'black', owner: item.user }}
+              id={item.id}
+              user={thisClass.props.authenticatedUser}
+              title={item.title}
+              body={item.body}
+              created_at={item.created_at}
+              likesArray = {item.likes}
+              likes={item.likes.length}
+              comments={Math.round(Math.random(500) * 100)}
+              course={item.course}
+              coins={Math.round(Math.random(50000) * 1000)}
+              school={item.user.school}
+              newLikeFunction={thisClass.props.newLikeFunction}
+              allNews= { thisClass.props.allNews}
+              school = { item.user.school}
+            />
+          </li>
+        );
       });
-  }
-  fetcher(url) {
-    let thisClass = this;
-    let setName = "set-" + this.state.badgeNumber;
-    $.ajax({ method: 'get', url: url })
-      .done(function (response) {
-        thisClass.setState({ news: response, badgeNumber: thisClass.state.badgeNumber+1 });
-        if (setName > thisClass.state.last_page) { }
-        else {
-          thisClass.createSetDisplay(setName, response);
-        }
-      });
-  }
-  getNextBatch() {
-    this.fetcher(this.state.next_page_url+this.state.badgeNumber);
-  }
-  createSetDisplay(badgeName, props) {
-    console.log("I am the props",props);
-    if (props.texts.length ===0 && props.pics.length ===0){}
-    else{
-      let compCont = document.createElement('div');
-      compCont.id = badgeName;
-      compCont.style.opacity = 0;
-      document.getElementById('app-news-container').appendChild(compCont);
-      ReactDOM.render( 
-        <Provider store = { store }> 
-          <Set pieces={props} next={this.getNextBatch.bind(this)} />
-        </Provider>, 
-    document.getElementById(badgeName));
-      $("#" + badgeName).animate({ opacity: 1, transform: "translateX(30px)" }, 600);
     }
   }
   render() {
     return (
       <div id="app-news-container">
+        <ul style = {styles.ulFix}>
+            {this.ejectTexts()}
+        </ul>
+        <ul style={styles.ulFix}>
+          {this.ejectPictures()}
+        </ul>
+        <br />
+        <button className = "btn btn-warning" 
+          onClick= {()=>
+            { 
+              this.props.getNews(this.state.badgeNumber,this.props.allNews);
+              this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) })
+          }}>
+          Next Data 
+          <i className ="fa fa-forward" style ={{margin:5}}></i>
+        </button>
       </div>
     );
   }
 }
 
+const styles = {
+  ulFix: {
+    listStyleType: 'none',
+    margin: 0,
+    padding: 0
+  }
+}
 
-export default NewsContainer;
+function mapStateToProps(state){
+  return({
+    allNews: state.newsFeed,
+    authenticatedUser:state.authUser
+  });
+}
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    picLikeFunction:gistActions.picLikeAction,
+    newLikeFunction : gistActions.newLikeAction,
+    getNews: gistActions.getNews
+
+  },dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);
   /*
     SIDE NOTES: 
     When this component is mounted, a request is sent to fetch the first set of news. 

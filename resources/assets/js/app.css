@@ -731,6 +731,14 @@ body{
     object-fit: cover !important; 
     margin:0;
 }
+.action-btn-act-liked{
+  color:crimson !important;
+}
+.action-btn-act-liked:hover{
+  cursor:pointer; 
+  color:black;
+  transition:0.2s ease-in; 
+}
 .action-btn {
     color: rgb(107, 106, 106); 
     margin:5px;

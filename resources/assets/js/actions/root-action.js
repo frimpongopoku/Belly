@@ -2,19 +2,40 @@ import $ from 'jquery';
 import { initialState } from './../reducers/dummy';
 
 
-export const newLikeAction = (miniTrain,allLikes) =>{
-
+export const picLikeAction =(miniTrain, allNews)=>{
+  return dispatch => {
+    $.ajax({ method: "get", url: "/me/picture-like", data: miniTrain })
+      .done((response) => {
+        let newState = { texts: [], pics: [], active: true };
+        allNews.pics.forEach(function (picNews) {
+          if (picNews.id === response.id) {
+            picNews.likes = response.likes;
+          }
+          newState.pics.push(picNews);
+        });
+        newState.texts = [...allNews.texts];
+        dispatch(loadNewsPiecesAction(newState));
+      });
+  }
+}
+export const newLikeAction = (miniTrain,allNews) =>{
     return dispatch =>{
       $.ajax({method:"get",url:"/me/like",data:miniTrain})
       .done((response)=>{ 
-        //dispatch(newLikesSetAction(response,allLikes))
+        console.log("I am in root-action:rec_liked::::: ",response);
+        let newState ={texts:[],pics:[],active:true};
+        allNews.texts.forEach(function(textNews){
+          if(textNews.id === response.id){
+            textNews.likes = response.likes;
+          }
+          newState.texts.push(textNews);
+        });
+        newState.pics = [...allNews.pics];
+        dispatch(loadNewsPiecesAction(newState));
       });
     }
 }
 
-export const newLikesSetAction = () =>{
-
-}
 export const getAllCoursesAction = () =>{
   return dispatch=>{
     $.ajax({ method:'get',url:'/me/get-all-courses'})
@@ -23,11 +44,19 @@ export const getAllCoursesAction = () =>{
     });
   }
 }
-export const getNewsAction =(point)=>{
+export const getNewsAction =(point,oldNews)=>{
   return dispatch=>{
     $.ajax({method:'get',url:'/me/get-news/'+point})
     .done((data)=>{
-      dispatch(loadNewsPiecesAction(data));
+      if(data.texts.length ===0 && data.pics.length === 0){
+        dispatch(loadNewsPiecesAction(oldNews));
+      }
+      else{
+        let textNews = [...oldNews.texts,...data.texts]; 
+        let picNews = [...oldNews.pics, ...data.pics];
+        let finishedState ={ texts:textNews, pics: picNews,active:true};
+        dispatch(loadNewsPiecesAction(finishedState));
+      }
     });
   }
 }

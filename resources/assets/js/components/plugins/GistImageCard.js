@@ -6,6 +6,7 @@ import CommentPad from './CommentPad';
 class GistImageCard extends Component {
   constructor(props){
     super(props); 
+    this.doLike = this.doLike.bind(this);
     this.zoom= this.zoom.bind(this);
     this.options = [ 
       { title:'Unpublish', fa:'fa-globe',function:null}, 
@@ -53,6 +54,11 @@ class GistImageCard extends Component {
       $('#img-zoom-pointer-'+ID).attr('data-zoomed','false');  
     }
   }
+
+  doLike() {
+    this.props.likeFunction({ user_id: this.props.user.id, picture_piece_id: this.props.id }, this.props.allNews);
+    console.log("Your like has been sent");
+  }
   nothing(){};
   render() {
     return (
@@ -98,7 +104,8 @@ class GistImageCard extends Component {
             className = ' btn-sm btn btn-default pull-right zero-radius'>
             <i className = 'fa fa-eye'></i>
           </button> 
-            <a href='#' className = 'action-btn font-small-ish'><i className = 'fa fa-thumbs-up'></i> Like</a>
+            <a href='#' className = 'action-btn font-small-ish'onClick = {()=>{this.doLike()}}>
+              <i className = 'fa fa-thumbs-up'></i> Like</a>
             <a 
             id ={'comment-button-'+this.props.type+'-'+this.props.id} 
               onClick ={(e)=>{e.preventDefault();this.showComment(this.props.id, this.props.type)}} 

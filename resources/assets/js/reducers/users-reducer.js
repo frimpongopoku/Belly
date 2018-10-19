@@ -12,7 +12,7 @@ export const allCoursesReducer = (state = null, action) => {
   }
   return state
 }
-export const newsFeedReducer = ( state = null, action) =>{
+export const newsFeedReducer = ( state ={texts:[],pics:[],active:false}, action) =>{
   switch (action.type) {
     case "user/LOAD_NEWS":
       return action.payload

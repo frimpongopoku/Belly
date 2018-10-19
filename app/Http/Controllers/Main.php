@@ -12,24 +12,42 @@ class Main extends Controller
 {
 
 
-    public function like(Request $request){
-      $exists = Like::where(["user_id"=>$request->user_id, "paper_piece_id" =>$request->paper_piece_id])->first();
-      if($exists){
-        $exists->delete();
-        $allLikes = PaperPiece::findOrFail($request->paper_piece_id)->first(); 
-        return $allLikes;
-      }
-      else{
-        $like = new Like(); 
-        $like->user_id = $request->user_id; 
-        $like->paper_piece_id = $request->paper_piece_id;
-        if($like->save()){
-          $allLikes = PaperPiece::findOrFail($request->paper_piece_id)->first(); 
-          return $allLikes;
-        }
-      }
-      
+  public function pictureLike(Request $request){
+    $exists = Like::where(["user_id"=>$request->user_id, "picture_piece_id" =>$request->picture_piece_id])->first();
+    if($exists){
+      $exists->delete();
+      $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
+      return $likedPiece;
     }
+    else{
+      $like = new Like(); 
+      $like->user_id = $request->user_id; 
+      $like->picture_piece_id = $request->picture_piece_id;
+      if($like->save()){
+        //return the paper's new set of likes NB: newly added too
+        $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
+        return $likedPiece;
+      }
+    }
+  }
+  public function like(Request $request){
+    $exists = Like::where(["user_id"=>$request->user_id, "paper_piece_id" =>$request->paper_piece_id])->first();
+    if($exists){
+      $exists->delete();
+      $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first(); 
+      return $likedPiece;
+    }
+    else{
+      $like = new Like(); 
+      $like->user_id = $request->user_id; 
+      $like->paper_piece_id = $request->paper_piece_id;
+      if($like->save()){
+        //return the paper's new set of likes NB: newly added too
+        $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first(); 
+        return $likedPiece;
+      }
+    }
+  }
   public function getAllCourses(){
     $allCourses = Course::all(); 
     return $allCourses;
@@ -48,7 +66,7 @@ class Main extends Controller
     $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes")->orderBy('id','DESC')->paginate($nextSetPoint);
     $texts = array_slice($this->objectToArray($texts),$alreadySent,$nextSetPoint+1);
     $pics = array_slice($this->objectToArray($pics),$alreadySent,$nextSetPoint+1);
-    return [ 'texts'=>$texts , 'pics'=>$pics];
+    return [ 'texts'=>$texts , 'pics'=>$pics,"setNumber"=>$point +1];
   }
   public function objectToArray($obj){
     $temp = []; 
