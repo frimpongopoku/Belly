@@ -9,7 +9,8 @@ class GistPaperCard extends React.Component{
     this.showComment = this.showComment.bind(this);
     this.checkIfUserLiked = this.checkIfUserLiked.bind(this);
     this.state ={ 
-      auth_user_liked:false
+      auth_user_liked:false,
+      my_comments:null
     }
     
 		this.options = [ 
@@ -19,6 +20,19 @@ class GistPaperCard extends React.Component{
     ];
 	}
   
+  grabComments(){
+    if(this.state.my_comments ===null){
+      this.getComments();
+    }
+  }
+
+  getComments(){
+    let thisClass= this;
+    $.ajax({ method: 'get', url: '/me/get-comments/' + this.props.id + "/paper" })
+      .done(function (response){
+        thisClass.setState({ my_comments: response });
+    });
+  }
   componentDidMount(){
     this.checkIfUserLiked();
   }
@@ -109,7 +123,7 @@ class GistPaperCard extends React.Component{
                     <span className = "fa fa-thumbs-up"></span> 
                     <span> { this.props.likes} </span> 
                   </small> 
-		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"></span> <span> { this.props.comments} </span> </small> 
+		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"></span> <span> { this.props.commentsCount} </span> </small> 
 		              <small className = " label label-primary pull-right gist-coin-display number-font"> 
                     <b>C</b> {this.props.coins} 
                   </small>
@@ -123,8 +137,8 @@ class GistPaperCard extends React.Component{
               </a>
 	            <a  className='action-btn font-small-ish ' 
 	            	id ={'comment-button-'+this.props.type+'-'+this.props.id} 
-	            	data-shown="false" 
-	            	onClick={(e)=>{e.preventDefault();this.showComment(this.props.id,this.props.type)}}>
+	            	data-shown="false" data-toggle="modal" data-target="#universal-comment-board"
+	            	onClick={(e)=>{e.preventDefault();this.props.showComments(this.props.id,"paper",this.props.title);}}>
 	            	<i className='fa fa-comment'></i> 
 	            	 Comment
 	            </a>
@@ -132,7 +146,11 @@ class GistPaperCard extends React.Component{
 						</div>
 					</div>
 										{/*======================+++END OF PANEL ====================*/}
-						<CommentPad id ={this.props.id} type={this.props.type}/>
+            <CommentPad 
+              id ={this.props.id} 
+              type={this.props.type} 
+             
+            />
 						
 				</div>
 			);

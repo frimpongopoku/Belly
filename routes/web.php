@@ -32,7 +32,9 @@ Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
   Route::get('get-news/{point}','Main@gatherNews');
   Route::get('get-all-courses','Main@getAllCourses');
   Route::get('like','Main@like');
-  Route::Get('picture-like','Main@pictureLike');
+  Route::get('picture-like','Main@pictureLike');
+  Route::get('get-comments/{id}/{type}','Main@getComments');
+  Route::get('save-comment','Main@saveComment');
 });
 Route::group(['middleware'=>'auth'],function(){
 	Route::post('upload-image','UploadController@saveUserImageUpload');

@@ -16,6 +16,8 @@ import {
   getAllCoursesAction,
   newLikeAction,
   picLikeAction,
+  getCommentsForPieceAction,
+
 
 } from './../../actions/root-action';
 
@@ -44,5 +46,7 @@ export const likeActions = {
 export const gistActions ={
   picLikeAction:picLikeAction,
   newLikeAction: newLikeAction,
-  getNews: getNewsAction
+  getNewsAction: getNewsAction,
+  getCommentsForPieceAction:getCommentsForPieceAction,
+
 };

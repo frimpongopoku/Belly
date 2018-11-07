@@ -2,6 +2,20 @@ import $ from 'jquery';
 import { initialState } from './../reducers/dummy';
 
 
+
+
+  
+  export const getCommentsForPieceAction=(id,type) =>{
+    return dispatch=>{
+      $.ajax({method:'get',url:'/me/get-comments/'+id+"/"+type})
+      .done((response)=>{
+          dispatch(loadCurrentComment(response));
+      });
+    }
+  }
+export const loadCurrentComment = (dataTrain)=>{
+  return{ type:"user/PIECE_COMMENT_GET", payload:dataTrain};
+}
 export const picLikeAction =(miniTrain, allNews)=>{
   return dispatch => {
     $.ajax({ method: "get", url: "/me/picture-like", data: miniTrain })

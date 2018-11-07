@@ -57,7 +57,7 @@ class Home extends Component {
           <NavBar></NavBar>
         </div>
         <div className = ' col-md-12 col-lg-12'>
-          <div className = 'side-nav'>
+          <div className = 'side-nav' >
             <div className = 'col-md-2 col-lg-2 col-xs-12'>
               <SideNav saveMenuFunction = { this.props.saveMenu } 
                 user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }>
@@ -66,14 +66,15 @@ class Home extends Component {
           </div>
           <div className = ' col-md-10 col-lg-10'>
             <div id='dashboard' className = ''> 
-              <Dashboard 
-                deletePictureFunction = {this.props.deletePicturePiece} 
-                picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } 
-                user={this.props.authenticatedUser} 
-                editPaperFunction = { this.props.editPaper } 
-                deletePaperFunction = { this.props.deletePaperPiece } 
-                pieces = { this.props.userPieces === null ? null : this.props.userPieces }>
-              </Dashboard>
+             
+               <Dashboard 
+                  deletePictureFunction = {this.props.deletePicturePiece} 
+                  picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } 
+                  user={this.props.authenticatedUser} 
+                  editPaperFunction = { this.props.editPaper } 
+                  deletePaperFunction = { this.props.deletePaperPiece } 
+                  pieces = { this.props.userPieces === null ? null : this.props.userPieces }>
+                </Dashboard> 
             </div> 
             <div id= 'profile' className='vanish' style = { styles.noteReady }> 
               <Profile 

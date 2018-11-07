@@ -1,5 +1,17 @@
 
 
+
+export const currentCommentReducer = (state = null, action)=>{
+  switch (action.type) {
+    case "user/PIECE_COMMENT_GET":
+      return action.payload
+      break;
+  
+    default:
+      break;
+  }
+  return state;
+}
 export const allCoursesReducer = (state = null, action) => {
   switch (action.type) {
     case "user/GET_ALL_COURSES":

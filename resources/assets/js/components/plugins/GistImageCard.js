@@ -108,8 +108,9 @@ class GistImageCard extends Component {
               <i className = 'fa fa-thumbs-up'></i> Like</a>
             <a 
             id ={'comment-button-'+this.props.type+'-'+this.props.id} 
-              onClick ={(e)=>{e.preventDefault();this.showComment(this.props.id, this.props.type)}} 
-              className='action-btn font-small-ish' data-shown="false">
+              onClick={(e) => { e.preventDefault(); this.props.showComments(this.props.id, "picture", "Shot")}} 
+              className='action-btn font-small-ish'
+               data-shown="false" data-toggle="modal" data-target="#universal-comment-board">
               <i className='fa fa-comment'></i> Comment</a>
             <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-grab-o'></i> Grab</a>
           </div>

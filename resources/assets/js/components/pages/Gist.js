@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewsContainer from "./../plugins/NewsContainer";
+
 import { Provider } from "react-redux";
 import {store } from "./../../redux-setup/store";
 class Gist extends Component {
@@ -21,6 +22,7 @@ class Gist extends Component {
                     {/* <GPCard details ={{name:'Agyingo', bcolor:'green'}} type='text' id ='1'></GPCard>
                     <GCard details ={{name:'Agyingo', bcolor:'green'}} type='pic' id="1"></GCard>
                     <GPCard details ={{name:'Agyingo', bcolor:'green'}} type='text' id ='2'></GPCard> */}
+                      
                 </div>
               </div> 
             </div>

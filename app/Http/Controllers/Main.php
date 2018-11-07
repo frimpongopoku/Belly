@@ -8,10 +8,37 @@ use App\PicturePiece;
 use App\User;
 use App\Course;
 use App\Like;
+use App\Comment;
 class Main extends Controller
 {
+  
+  public function saveComment(Request $request){
+    $newCom = new Comment(); 
+    $newCom->body= $request->body; 
+    $newCom->user_id= Auth::user()->id;
+    if ($request->type =="paper"){
+      $newCom->paper_piece_id= $request->pieceID;
+      $newCom->picture_piece_id= "L";
+    }
+    elseif($request->type =="picture"){
+      $newCom->paper_piece_id= "L";
+      $newCom->picture_piece_id= $request->pieceID;
+    }
+    if($newCom->save()){
+      return "TRUE";
+    }
+  }
+  public function getComments($id,$type){
 
-
+    if($type == "picture"){
+      $commentsOfPiece =Comment::where('picture_piece_id',$id)->with('user')->get();
+      return $commentsOfPiece;
+    }
+    elseif($type=="paper"){
+      $commentsOfPiece = Comment::where('paper_piece_id',$id)->with('user')->get();
+      return $commentsOfPiece;
+    }
+  }
   public function pictureLike(Request $request){
     $exists = Like::where(["user_id"=>$request->user_id, "picture_piece_id" =>$request->picture_piece_id])->first();
     if($exists){
@@ -62,8 +89,8 @@ class Main extends Controller
     //*make the users choose other courses they would like to see news(questions) on
     $alreadySent = $point * 3;
     $nextSetPoint  = $alreadySent + 3;
-    $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes")->orderBy('id','DESC')->paginate($nextSetPoint);
-    $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes")->orderBy('id','DESC')->paginate($nextSetPoint);
+    $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes","comments")->orderBy('id','DESC')->paginate($nextSetPoint);
+    $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes","comments")->orderBy('id','DESC')->paginate($nextSetPoint);
     $texts = array_slice($this->objectToArray($texts),$alreadySent,$nextSetPoint+1);
     $pics = array_slice($this->objectToArray($pics),$alreadySent,$nextSetPoint+1);
     return [ 'texts'=>$texts , 'pics'=>$pics,"setNumber"=>$point +1];
