@@ -18,7 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
 Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
 	Route::get('get-auth-user','Main@getAuthUser');
 	Route::get('save-text-piece',['as'=>'textpiece.save','uses'=>'Main@saveTextPiece']);
@@ -35,13 +34,20 @@ Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
   Route::get('picture-like','Main@pictureLike');
   Route::get('get-comments/{id}/{type}','Main@getComments');
   Route::get('save-comment','Main@saveComment');
+  Route::get('search','SearchController@doSearch');
+  Route::get('text-paginator','Main@textPageGetter');
+  Route::get('main-search','SearchController@goToSearch');
+
 });
 Route::group(['middleware'=>'auth'],function(){
-	Route::post('upload-image','UploadController@saveUserImageUpload');
+  Route::post('upload-image','UploadController@saveUserImageUpload');
+  Route::get('paper-view/MBZyU9WoGvD3M3OcszZ8skHvoPputaKIhq9uPmW6ZqImU8iwby1xOdirul1w2gGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/{id}','Main@paperView');
+  Route::get('shot-view/J3zUZ9WoGvD3M3OcszZ8skHvoPputaKIShq9uPmW6ZqImU8iwby1xOdirul1wgGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/{id}','Main@shotView');
+  Route::get('delete-comment/{id}','Main@deleteComment');
 });
 
 
-
+Route::get('do-search','SearchController@doSearch');
 Route::get('dummy','Main@dummy');
 Route::post('check','UploadController@check');
 Route::get('up-test',"UploadController@upTest");

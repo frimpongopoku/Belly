@@ -11,9 +11,7 @@ class MakeNew extends Component {
     this.availableOptions = ['text','pdf','picture'];    
     this.switchPageAfterUpload = this.switchPageAfterUpload.bind(this); 
   }
-  componentDidlMount(){
-    console.log("I am in create:",this.props.allPicturePieces);
-  }
+  
   fullOfSpaces(string){
     //BUT THIS ALGORITHM ONLY WORKS AS LONG AS "string" is not empty
     //default asci value of space is 32

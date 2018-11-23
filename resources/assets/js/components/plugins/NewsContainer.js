@@ -103,7 +103,7 @@ class NewsContainer extends Component{
     let body = $('#comment-textbox').val(); 
     let pieceID = piece_id;
     let dataTrain = {body:body, type: type, pieceID: pieceID};
-    if(body !==""){
+    if($.trim(body) !==""){
       $.ajax({method:'get',url:'/me/save-comment/',data:dataTrain})
       .done(function(response){
         if(response ==="TRUE"){
@@ -167,7 +167,7 @@ class NewsContainer extends Component{
     footerButtonDiv.className = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
     footerButtonDiv.id = "js-comment-button";
     let commentButton = document.createElement('button');
-   
+
     commentButton.className = "user-badge-comment btn btn-default rounded pull-right";
     commentButton.style.padding = 7;
     commentButton.style.fontSize = "1.2rem";
@@ -178,7 +178,6 @@ class NewsContainer extends Component{
     footerButtonDiv.appendChild(commentButton);
     console.log("I am the  CommentContainer:::: ", commentContainer);
     console.log("I am the footerdiv::: ", footerButtonDiv);
-   
     document.getElementById('js-comment-modal-body').appendChild(commentContainer);
     document.getElementById('js-comment-board-footer').appendChild(footerButtonDiv);
     //}

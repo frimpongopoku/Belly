@@ -17,6 +17,8 @@ import {
   newLikeAction,
   picLikeAction,
   getCommentsForPieceAction,
+  paginatorTextValuesAction,
+  paginatorPicValuesAction,
 
 
 } from './../../actions/root-action';
@@ -38,6 +40,8 @@ export const appActions = {
   deletePaperPieceAction: deletePaperPieceAction, 
   getNewsAction: getNewsAction, 
   getAllCoursesAction: getAllCoursesAction, 
+  paginatorTextValuesAction:paginatorTextValuesAction,
+  paginatorPicValuesAction:paginatorPicValuesAction
   
 };
 export const likeActions = { 

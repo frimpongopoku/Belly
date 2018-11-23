@@ -12,6 +12,28 @@ use App\Comment;
 class Main extends Controller
 {
   
+
+ 
+  public function deleteComment($id){
+    $comment = Comment::find($id);
+    if($comment){
+      $comment->delete();
+    }
+  }
+  public function paperView($id){
+    $found = PaperPiece::where('id',$id)->with('comments','likes','user')->firstOrFail();
+    $similar = PaperPiece::latest()->search($found->course)->where('id','!=',$found->id)->with('user')->paginate(6);
+    $user_has_liked =$found->likes->where('user_id',Auth::user()->id)->first();
+    $app_comments = Comment::where('paper_piece_id',$id)->orderBy('id','DESC')->with('user')->paginate(30);
+    return view('search',compact('found','similar','app_comments','user_has_liked'));
+  }
+  public function shotView($id){
+    $found = PicturePiece::where('id',$id)->with('comments','likes','user')->firstOrFail();
+    $similar = PicturePiece::latest()->search($found->course)->where('id','!=',$found->id)->with('user')->paginate(6);
+    $user_has_liked =$found->likes->where('user_id',Auth::user()->id)->first();
+    $app_comments = Comment::where('picture_piece_id',$id)->orderBy('id','DESC')->with('user')->paginate(30);
+    return view('picsearch',compact('found','similar','app_comments','user_has_liked'));
+  }
   public function saveComment(Request $request){
     $newCom = new Comment(); 
     $newCom->body= $request->body; 

@@ -13,6 +13,7 @@ import { appActions } from './../imports/actions';
 import Blood from './../Blood';
 import SnackBar from './../plugins/SnackBar';
 import NavBar from './../plugins/NavBar';
+import { paginatorPicValuesAction } from '../../actions/root-action';
 
 class Home extends Component {
   constructor(props){
@@ -73,6 +74,8 @@ class Home extends Component {
                   user={this.props.authenticatedUser} 
                   editPaperFunction = { this.props.editPaper } 
                   deletePaperFunction = { this.props.deletePaperPiece } 
+                  paginatorTextValuesInsert = { this.props.paginatorTextValuesInsert}
+                  paginatorPicValuesInsert={this.props.paginatorPicValuesInsert}
                   pieces = { this.props.userPieces === null ? null : this.props.userPieces }>
                 </Dashboard> 
             </div> 
@@ -143,7 +146,9 @@ function matchDispatchToProps(dispatch){
     newPic: appActions.newPicPieceAction, 
     saveProfileEdits: appActions.saveProfileEditsAction,
     getNews: appActions.getNewsAction,
-    getAllCourses: appActions.getAllCoursesAction 
+    getAllCourses: appActions.getAllCoursesAction, 
+    paginatorTextValuesInsert: appActions.paginatorTextValuesAction,
+    paginatorPicValuesInsert: appActions.paginatorPicValuesAction
   },dispatch)
 };
 

@@ -1,4 +1,44 @@
+<div className="" style={{ padding: 10, paddingLeft: 15 }}>
+              <input type="radio" className=" my-checkbox" 
+                onClick={ ()=>{ this.registerCriteria("name") }}
+              name='criteria' id="Name" />
+              <label className="form-check-label my-checkbox-label" value = "Name" htmlFor="Name">By Name</label>
 
+              <input type="radio" className=" my-checkbox" 
+                onClick={() => { this.registerCriteria("title") }}
+              name='criteria' value='Title' id="Title" />
+              <label className="form-check-label my-checkbox-label" htmlFor="Title">By Title</label>
+
+              <input type="radio" className=" my-checkbox"
+                onClick={() => { this.registerCriteria("university") }}
+              name='criteria' value='University' id="University" />
+              <label className="form-check-label my-checkbox-label" htmlFor="University">By University</label>
+
+              <input type="radio" className=" my-checkbox" 
+                onClick={() => { this.registerCriteria("year") }}
+              name='criteria' value='Year' id="Year" />
+              <label className="form-check-label my-checkbox-label" htmlFor="Year">By Year</label>
+
+              <input type="radio" className=" my-checkbox" 
+                onClick={() => { this.registerCriteria("username") }}
+              name='criteria' value='Username' id="Username" />
+              <label className="form-check-label my-checkbox-label" htmlFor="Username">By Username</label>
+
+              <input type="radio" className=" my-checkbox" 
+                onClick={() => { this.registerCriteria("program") }}
+              name='criteria' value='Programme' id="Programme" />
+              <label className="form-check-label my-checkbox-label" htmlFor="Programme">By Programme</label>
+
+              <input type="radio" className=" my-checkbox" 
+                onClick={() => { this.registerCriteria("course") }}
+              name='criteria' value='Course' id="Course" />
+              <label className="form-check-label my-checkbox-label" htmlFor="Course">By Course</label>
+
+              <input type="radio" className=" my-checkbox" 
+                onClick={() => { this.registerCriteria("ratings") }}
+              name='criteria' value='Rating' id="Rating" />
+              <label className="form-check-label my-checkbox-label" htmlFor="Rating">By Rating</label>
+            </div>
 
 
 

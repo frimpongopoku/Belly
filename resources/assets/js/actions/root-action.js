@@ -126,6 +126,12 @@ export const getPicPiecesAction =()=>{
 		});
 	}
 }
+export const paginatorPicValuesAction = (data) => {
+  return dispatch => {
+    dispatch(loadPicsPiecesAction(data));
+  }
+};
+
 export const loadPicsPiecesAction =(newDataTrain)=>{
 	return {type:'user/PICTURE_PIECES_GET', payload:newDataTrain};
 }
@@ -187,7 +193,7 @@ export const dBEditPaper =(newData)=>{
 	return dispatch =>{
     $.ajax({method:'get',url:'/me/edit-piece/', data:{...newData}})
     .done(response =>{
-			console.log("Updated done from behind toooo!");
+			
 			//put some notification here, but for now.....
 		})
 	}
@@ -197,7 +203,7 @@ export const dBDelete = (id) =>{
     $.ajax({method:'get',url:'/me/delete-paper/'+id})
     .done(response =>{
 			//put some notification handler out here... but for now, just log some shit 
-			console.log("Your paper has been deleted from the database!");
+		
 		});
 	}
 }
@@ -229,6 +235,13 @@ export const dBSaveAction = (dataTrain) =>{
 export const notifierAction = (data)=>{ 
 	return({type:'application/NOTIFY',payload:data})
 }
+export const paginatorTextValuesAction = (data) =>{
+  return dispatch =>{
+    console.log("I am alive!");
+    dispatch(loadUserPiecesAction(data));
+  }
+};
+
 export const getUserPiecesAction = ()=>{
 	return dispatch =>{
     $.ajax({method:'get',url:'/me/get-all-text-papers'})
