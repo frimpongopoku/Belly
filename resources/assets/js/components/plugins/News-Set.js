@@ -27,7 +27,6 @@ class Set extends Component {
             course={item.course}
             coins={Math.round(Math.random(50000) * 1000)}
             school={item.user.school}
-
           />
         </li>
       );

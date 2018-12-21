@@ -208,16 +208,18 @@ class Uploader extends React.Component{
             <input type='file' className='input-file' name="image[]" style={{opacity:0, width:1}} multiple/> 
           </form>
 
-            {/* <form action ="/up-test"> 
-            <input type = 'file' />
-            <CourseSelector
-              allCourses={this.props.allCourses}
-              name="pic_course_selection"
-              user_course={this.props.course}
-            />
+                    {/* <form action ="/upload-image" method="post" encType="multipart/form-data"> 
+                      <input type='hidden' name='_token' defaultValue={this.props.token} />
+                        <input type='hidden' name='pic_course_select' defaultValue="Computer Science" />
+                      <input type='file' name="image[]" multiple/>
+                        <CourseSelector
+                          allCourses={this.props.allCourses}
+                          name="pic_course_selection"
+                          user_course={this.props.course}
+                        />
 
-            <input type = "submit" />
-            </form> */}
+                    <input type = "submit" />
+                    </form> */}
 	               
 			</div>
 		);

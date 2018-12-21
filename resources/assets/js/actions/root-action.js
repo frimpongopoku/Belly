@@ -3,16 +3,54 @@ import { initialState } from './../reducers/dummy';
 
 
 
-
-  
-  export const getCommentsForPieceAction=(id,type) =>{
-    return dispatch=>{
-      $.ajax({method:'get',url:'/me/get-comments/'+id+"/"+type})
-      .done((response)=>{
-          dispatch(loadCurrentComment(response));
-      });
-    }
+export const deletePDFAction =(id) =>{
+  return dispatch =>{
+    $.ajax({ method: 'get', url: '/delete-pdf/' + id });
   }
+}
+export const getPdfNewsAction=(point) =>{
+  return dispatch => {
+    $.ajax({ method: 'get', url: '/get-pdf-news/'+point })
+      .done((response) => {
+        dispatch(loadPdfNews(response));
+      });
+  }
+}
+
+export const getMorePDFNewsAction=(oldTrain,point)=>{
+
+  return dispatch => {
+    $.ajax({ method: 'get', url: '/get-pdf-news/' + point })
+      .done((response) => {
+        let newSet = [...oldTrain,...response]
+        dispatch(loadPdfNews(newSet));
+      });
+  }
+}
+const loadPdfNews = (dataTrain)=>{
+  return {type:'user/GET_PDF_NEWS',payload:dataTrain};
+}
+export const getRelationsAction =()=>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'/get-user-relations'})
+    .done((response)=>{
+      dispatch(loadRelations(response));
+    });
+  }
+}
+export const loadRelations= (dataTrain)=>{
+  return { type:"user/GET_RELATIONS",payload:dataTrain};
+}
+
+export const getCommentsForPieceAction=(id,type) =>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'/me/get-comments/'+id+"/"+type})
+    .done((response)=>{
+        dispatch(loadCurrentComment(response));
+    });
+  }
+}
+
 export const loadCurrentComment = (dataTrain)=>{
   return{ type:"user/PIECE_COMMENT_GET", payload:dataTrain};
 }
@@ -29,6 +67,7 @@ export const picLikeAction =(miniTrain, allNews)=>{
         });
         newState.texts = [...allNews.texts];
         dispatch(loadNewsPiecesAction(newState));
+        dispatch(getRelationsAction());
       });
   }
 }
@@ -36,7 +75,6 @@ export const newLikeAction = (miniTrain,allNews) =>{
     return dispatch =>{
       $.ajax({method:"get",url:"/me/like",data:miniTrain})
       .done((response)=>{ 
-        console.log("I am in root-action:rec_liked::::: ",response);
         let newState ={texts:[],pics:[],active:true};
         allNews.texts.forEach(function(textNews){
           if(textNews.id === response.id){
@@ -46,6 +84,7 @@ export const newLikeAction = (miniTrain,allNews) =>{
         });
         newState.pics = [...allNews.pics];
         dispatch(loadNewsPiecesAction(newState));
+        dispatch(getRelationsAction());
       });
     }
 }
@@ -102,7 +141,6 @@ export const deleteDBPic = (id) =>{
 	return dispatch =>{ 
     $.ajax({	method:'get',url:'/me/delete-pic-item-'+id})
     .done(response=>{
-			console.log("Your Image has been deleted nigga!!");
 		}); 
 	}
 	//what if something happens and it doesnt save.... Well, I wil be back 
@@ -111,7 +149,6 @@ export const newPicPieceAction =( newData,oldPieces)=>{
 	//new dataTrain contains the newName, id, and other details of the 'just' uploaded file... 
 	//so get it , and check if oldPics is up to othe pagination number which is "6" for now
 	//if its not up to, just add it, if it is already up to, replace the new data with one... 
-	console.log("I am all the picture pieces in newAction:", oldPieces);
 	let newDataSet = oldPieces.length === 6 ? oldPieces.slice(0,5) : oldPieces; 
 	return dispatch=>{
 		dispatch(loadPicsPiecesAction([newData, ...newDataSet]));
@@ -237,7 +274,6 @@ export const notifierAction = (data)=>{
 }
 export const paginatorTextValuesAction = (data) =>{
   return dispatch =>{
-    console.log("I am alive!");
     dispatch(loadUserPiecesAction(data));
   }
 };

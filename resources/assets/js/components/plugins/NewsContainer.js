@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import Set from "./News-Set";
 import ImageCard from "./GistImageCard"; 
 import TextCard from "./GistPaperCard";
-import UniCommentBoard from "./../plugins/UniversalComment";
+import UniCommentBoard from "./UniversalComment";
+import UniversalDelete from "./UniversalDelete";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { gistActions} from "./../imports/actions";
+
+
 
 class NewsContainer extends Component{
   //this class contains all the necessary functions that will load the next sets of data for the gist page
@@ -19,15 +22,30 @@ class NewsContainer extends Component{
     this.create= this.create.bind(this);
     this.createTitle = this.createTitle.bind(this);
     this.clearTitle = this.clearTitle.bind(this);
+    this.insertDelDetails = this.insertDelDetails.bind(this);
     this.state = {
       news: null,
       badgeNumber:0,
-      next_page_url:'/me/get-news/'
+      next_page_url:'/me/get-news/',
+      currentPieceCommentsViewed:null,
+      deleteDetails:{
+        title:null, 
+        itemID:null,
+        type:null,
+      }
     }
+  }
+  insertDelDetails(title,itemID,type){
+    console.log("dfsdfsdf" ,title)
+    console.log("aaaa",itemID)
+    console.log("mmsdjf",type);
+    
+    this.setState({deleteDetails:{title:title,itemID:itemID,type:type}});
   }
   componentDidMount() {
     this.props.getNews(0,this.props.allNews);
-    this.setState({badgeNumber: Number(this.state.badgeNumber+1)})
+    this.setState({badgeNumber: Number(this.state.badgeNumber+1)}); 
+    this.spinnerTrick();
   };
  
   ejectPictures(){
@@ -47,8 +65,8 @@ class NewsContainer extends Component{
              image_link={item.picture_link}
              created_at={item.created_at}
              likesArray={item.likes}
-             likes={item.likes.length}
-             comments={item.comments.length}
+            likes={item.likes.length}
+            comments={item.comments.length}
              showComments={thisClass.create}
              course={item.course}
              coins={Math.round(Math.random(50000) * 1000)}
@@ -57,13 +75,14 @@ class NewsContainer extends Component{
              allNews={thisClass.props.allNews}
              school={item.user.school}
            />
+           
          </li>
        );
      })
    }
   }
 
-  ejectTexts() {
+  ejectTexts(){
     let thisClass= this;
     if(this.props.allNews.active !==false){
       return this.props.allNews.texts.map(function(item,index){
@@ -90,7 +109,9 @@ class NewsContainer extends Component{
               newLikeFunction={thisClass.props.newLikeFunction}
               allNews= { thisClass.props.allNews}
               school = { item.user.school}
+              insertDetailsFunction= { thisClass.insertDelDetails}
             />
+            
           </li>
         );
       });
@@ -120,30 +141,58 @@ class NewsContainer extends Component{
     }
   }
 
-
   clearTitle(){
     document.getElementById('js-piece-title') !== null ? document.getElementById('js-piece-title').remove() : '';
   }
   cleanUp(){  
-    document.getElementById('js-comment-container') !==null ?document.getElementById('js-comment-container').remove():''; 
+    document.getElementById('js-comment-container') !==null ? document.getElementById('js-comment-container').remove():''; 
     document.getElementById('js-comment-button') !==null ?document.getElementById('js-comment-button').remove():'';
-   
   }
 
-  createIndCommentDisplays(user,body,parent){
+  backEndDelComment(id){
+    $.ajax({method:'get',url:'/delete-comment/'+id})
+    .done(function(){
+
+    });
+  }
+  removeCommentItem(id){
+    $("#"+id).fadeOut();
+  }
+  createIndCommentDisplays(user,body,parent,userID,commentID){
+    var thisClass = this;
+    var hook = Math.round(Math.random() * 1000 ).toString()+'-hook';
     let commentItem = document.createElement('div');
     commentItem.className = "js-comment-item";
     let commentItemText = document.createElement('small');
-    commentItemText.className = "comment-item-text rounded";
+    commentItemText.className = "comment-item-text rounded cursor";
+    commentItemText.id = hook;
     commentItem.style.marginBottom = "10px";
     let commentTitle = document.createElement('small');
-    commentTitle.className = "comment-item-title black-text";
+    commentTitle.className = "comment-item-title black-text cursor";
     let bold = document.createElement('b');
+    if(userID === this.props.authenticatedUser.id){
+      var delSm = document.createElement('small');
+      var delA = document.createElement('a'); 
+      delA.textContent ="delete";
+      delA.style.cursor = "pointer";
+      delA.addEventListener('click',function(){
+        thisClass.backEndDelComment(commentID);
+        thisClass.removeCommentItem(hook);
+        console.log("I am the hookd::::: ",hook);
+      });
+      delA.style.color = "crimson"; 
+      delSm.style.paddingLeft = "7px";
+    
+      delSm.appendChild(delA);
+    }
     bold.textContent = user;
     commentTitle.appendChild(bold);
     let bodyText = document.createElement('p');
     bodyText.textContent = body;
     commentItemText.appendChild(commentTitle);
+    if (userID === this.props.authenticatedUser.id){
+      commentItemText.appendChild(delSm);
+    }
     commentItemText.appendChild(bodyText);
     commentItem.appendChild(commentItemText);
     parent.appendChild(commentItem);
@@ -157,17 +206,15 @@ class NewsContainer extends Component{
   }
   createCommentComponents(commentsArray,piece_title,pieceID,type){
     let thisClass= this;
-    //if (this.props.currentPieceComments !==null){
     let commentContainer = document.createElement('div');
     commentContainer.id = "js-comment-container";
     commentsArray.forEach(function(comment){
-      thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer);
+      thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer,comment.user.id,comment.id);
     });
     let footerButtonDiv = document.createElement('div');
     footerButtonDiv.className = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
     footerButtonDiv.id = "js-comment-button";
     let commentButton = document.createElement('button');
-
     commentButton.className = "user-badge-comment btn btn-default rounded pull-right";
     commentButton.style.padding = 7;
     commentButton.style.fontSize = "1.2rem";
@@ -176,49 +223,66 @@ class NewsContainer extends Component{
     });
     commentButton.textContent = "@"+this.props.authenticatedUser.name;
     footerButtonDiv.appendChild(commentButton);
-    console.log("I am the  CommentContainer:::: ", commentContainer);
-    console.log("I am the footerdiv::: ", footerButtonDiv);
     document.getElementById('js-comment-modal-body').appendChild(commentContainer);
     document.getElementById('js-comment-board-footer').appendChild(footerButtonDiv);
-    //}
   
   }
-
+  
   create(pieceID,type,pieceTitle){
     let thisClass = this;
-    $('#js-comment-spinner').fadeIn(50);
-    this.cleanUp(); 
-    this.clearTitle();
-    $.ajax({method:'get',url:'/me/get-comments/'+pieceID+'/'+type})
-    .done(function(response){
-      setTimeout(() => {
+    if(pieceID !== this.state.currentPieceCommentsViewed ){
+      $('#js-comment-spinner').fadeIn(50);
+      this.cleanUp(); 
+      this.clearTitle();
+      $.ajax({method:'get',url:'/me/get-comments/'+pieceID+'/'+type})
+      .done(function(response){
         $('#js-comment-spinner').fadeOut();
-        thisClass.createTitle(pieceTitle);
-        thisClass.createCommentComponents(response,pieceTitle,pieceID,type);
-      },2000);
-     
-    });
+        setTimeout(() => {
+          thisClass.createTitle(pieceTitle);
+          thisClass.createCommentComponents(response,pieceTitle,pieceID,type);
+        },1000);
+      });
+      this.setState({currentPieceCommentsViewed:pieceID});
+    }
   }
+
+  spinnerTrick(){
+    let thisClass = this;
+   setInterval(function(){
+     let old = $("#load-spinner").attr('data-old-news');
+     if( old !== thisClass.state.news){
+       $("#load-spinner").fadeOut();
+     }
+   },200);
+  }
+  loadIndicator(){
+    $("#load-spinner").fadeIn(); 
+    $("load-spinner").attr('data-old-news',this.state.news);
+  }
+
   render() {
     return (
       <div id="app-news-container">
-        <button className="btn btn-warning" data-target="#universal-comment-board" data-toggle="modal"
-          onClick={() => {
-            this.props.getNews(this.state.badgeNumber,this.props.allNews);
-            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) })
-          }}>
-          Next Data
-          <i className="fa fa-forward" style={{ margin: 5 }}></i>
-        </button>
         <ul style = {styles.ulFix}>
           {this.ejectTexts()}
         </ul>
         <ul style={styles.ulFix}>
           {this.ejectPictures()}
         </ul>
-        <p>{JSON.stringify(this.props.currentPieceComments)}</p>
         <br />
+        <button className="btn btn-default btn-block"
+          onClick={() => {
+            this.props.getNews(this.state.badgeNumber, this.props.allNews);
+            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) });
+            this.loadIndicator();
+          }}>
+          Load More
+          <span className = "fa fa-spinner fa-spin" style={{marginLeft:5}}id="load-spinner"></span>
+        </button>
+       
+       <button className = "btn btn-danger" onClick={()=>{console.log("I am the state of newsContainer: ",this.state)}}>modal</button>
         <UniCommentBoard comments={this.props.currentPieceComments}></UniCommentBoard>
+        <UniversalDelete paperType={this.state.deleteDetails.type} title={this.state.deleteDetails.title} paperID ={this.state.deleteDetails.itemID}/>
       </div>
     );
   }
@@ -231,7 +295,6 @@ const styles = {
     padding: 0
   }
 }
-
 function mapStateToProps(state){
   return({
     allNews: state.newsFeed,
@@ -245,10 +308,6 @@ function mapDispatchToProps(dispatch){
     newLikeFunction : gistActions.newLikeAction,
     getNews: gistActions.getNewsAction, 
     getCommentsForPiece:gistActions.getCommentsForPieceAction, 
-   
- 
-   
-
   },dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);

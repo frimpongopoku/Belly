@@ -10,13 +10,14 @@ class GistPaperCard extends React.Component{
     this.checkIfUserLiked = this.checkIfUserLiked.bind(this);
     this.state ={ 
       auth_user_liked:false,
-      my_comments:null
+      my_comments:null,
+      authorise:false, 
+      refinedOptions:[]
     }
     
 		this.options = [ 
-      { title:'Unpublish', fa:'fa-globe',function:null}, 
       { title:'facebook', fa:'fa-facebook',function:null}, 
-      { title:'whatsapp', fa:'fa-whatsapp', function:null}
+      
     ];
 	}
   
@@ -34,25 +35,26 @@ class GistPaperCard extends React.Component{
     });
   }
   componentDidMount(){
-    this.checkIfUserLiked();
+    var thisClass = this;
+    thisClass.checkOwner();
+  
   }
   checkIfUserLiked(){
-    let thisClass = this;
-    for (let i = 0; i < this.props.likesArray.length; i++) {
-      console.log("I am just in the lopooooop")
-      const aLike = this.props.likesArray[i];
-      if(aLike.user_id === this.props.user.id && aLike.paper_piece_id === this.props.id){
-        this.setState({auth_user_liked:true});
-        console.log("Iam in the for if loop show thine self!!!!!!")
-        return null;
-
+    var thisClass =this;
+    console.log("deye dyed eyd eyd eyd eye dye dy")
+    this.props.likesArray.forEach(function(itm){
+      if(itm.user_id === thisClass.props.user.id){
+        thisClass.setState({auth_user_liked:true});
+        console.log("User had liked it!!!");
+        return
       }
-    }
-    //thisClass.setState({auth_user_liked:false})
+      else{
+        console.log("dfs fa f d s d fd f")
+      }
+    });
   }
   doLike(){
     this.props.newLikeFunction({user_id:this.props.user.id,paper_piece_id:this.props.id},this.props.allNews);
-    console.log("Your like has been sent");
   }
 	zoomText(id){
 		let val = $('.t-d-'+id).attr('data-zoomed'); 
@@ -88,17 +90,50 @@ class GistPaperCard extends React.Component{
 			$('.js-comment-on-piece-'+type+'-'+ID).removeClass('comment-box-entry');
 			$('#comment-button-'+type+'-'+ID).attr('data-shown','false');
 		}
-	}
+  }
+  
+  checkOwner() {
+    if (this.props.user.id === this.props.details.owner.id) {
+      let opt = [...this.options, { title: 'special', type: 'delete' }];
+      this.setState({ authorise: true, refinedOptions: opt });
+    }
+    else{
+      this.setState({ refinedOptions: this.options });
+    }
+  }
+  bringLike(){
+    if(this.state.auth_user_liked === true){
+      return(
+        <a href='#' id="like-action" className='action-btn font-small-ish' style={this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {}}
+          onClick={(e) => { e.preventDefault(); this.doLike() }}>
+          <i className='fa fa-thumbs-up'></i> DO DO Like
+        </a>
+
+      );
+    }
+    else{
+      <a href='#' id="like-action" className='action-btn font-small-ish' style={this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {}}
+        onClick={(e) => { e.preventDefault(); this.doLike() }}>
+        <i className='fa fa-thumbs-up'></i> Like
+              </a>
+    }
+  }
 	render(){
-    console.log("logthegistThis::: ",this.state);
+    this.checkIfUserLiked();
 		return (
-				<div className ="">
+				<div>
 					<div className ='panel panel-default' style = {{width:"100%",marginBottom:0,marginTop:50}}> 
 						<div className = ' panel-body clearfix' style={{paddingLeft:0, paddingRight:0}}> 
 							<div className = ' pull-right ' style={{paddingRight:10}}> 
-								<Dropdown  options = { this.options } name="Frimpi"></Dropdown>
+                <Dropdown  insertDetailsFunction = {this.props.insertDetailsFunction} 
+                  options = { this.state.refinedOptions } 
+                  name={Math.round(Math.random()*1000).toString()+'-'+this.props.id}>
+                  paperTitle ={this.props.title}
+                  paperID = {this.props.id}
+                  paperType = "paper"
+                </Dropdown>
 							</div>
-							<a href='#' className = 'name-badge   my-depth-2 margin-climb-up'  
+            <a href={ "/profile/ImU8iwby1xOdiru-"+this.props.details.owner.id+"-PputaKIShq9/"+this.props.details.owner.name} className = 'name-badge   my-depth-2 margin-climb-up'  
               	style={{background:this.props.details.bcolor,position:'absolute', marginTop:-30, marginLeft:-36 }}> @{this.props.details.owner.name} 
           		</a> 
           		<div className =" paper-title-div " >
@@ -123,7 +158,7 @@ class GistPaperCard extends React.Component{
                     <span className = "fa fa-thumbs-up"></span> 
                     <span> { this.props.likes} </span> 
                   </small> 
-		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"></span> <span> { this.props.commentsCount} </span> </small> 
+		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"> </span> <span> { this.props.commentsCount} </span> </small> 
 		              <small className = " label label-primary pull-right gist-coin-display number-font"> 
                     <b>C</b> {this.props.coins} 
                   </small>
@@ -131,27 +166,27 @@ class GistPaperCard extends React.Component{
           		</div>
 						</div>
 						<div className = 'panel-footer'> 
-            <a href='#' className= 'action-btn font-small-ish' style={ this.state.auth_user_liked ? styles.likedColor:{} }
-              onClick={(e) => { e.preventDefault(); this.doLike() }}>
-              <i className = 'fa fa-thumbs-up'></i> Like
-              </a>
+              {/* <a href='#' id="like-action" className= 'action-btn font-small-ish' style={ this.state.auth_user_liked===true ? $('like-action').removeClass('action-btn') :{} }
+                onClick={(e) => { e.preventDefault(); this.doLike() }}>
+                <i className = 'fa fa-thumbs-up'></i> Like
+                </a> */}
+
+                {this.bringLike()}
 	            <a  className='action-btn font-small-ish ' 
 	            	id ={'comment-button-'+this.props.type+'-'+this.props.id} 
 	            	data-shown="false" data-toggle="modal" data-target="#universal-comment-board"
 	            	onClick={(e)=>{e.preventDefault();this.props.showComments(this.props.id,"paper",this.props.title);}}>
-	            	<i className='fa fa-comment'></i> 
+	            	<i className='fa fa-comment p-r-fix'></i> 
 	            	 Comment
 	            </a>
-	            <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-grab-o'></i> Grab</a>
+            <a href='#' className='action-btn font-small-ish' onClick={() => { console.log("I am the state->>", this.state) }}><i className='fa fa-hand-grab-o'></i> Grab</a>
 						</div>
 					</div>
 										{/*======================+++END OF PANEL ====================*/}
             <CommentPad 
               id ={this.props.id} 
               type={this.props.type} 
-             
             />
-						
 				</div>
 			);
 	}

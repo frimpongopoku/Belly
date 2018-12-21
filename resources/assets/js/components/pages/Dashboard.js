@@ -582,7 +582,7 @@ class Dashboard extends Component {
                 <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}} > 
                   <button onClick = {()=>{this.tabClick('text-section')}} id='text-section-btn'className = 'p-activate-section z-depth-1 d-tab zero-border btn-undefault'><i className = 'fa fa-file-text'></i> Text</button>
                   <button onClick = {()=>{this.tabClick('picture-section')}} id='picture-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-camera'></i> Shots</button>
-                  <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button>
+                    {/* <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button> */}
                 </div>
                 {/* Found Papers area  */}
                 <div> 
@@ -609,9 +609,9 @@ class Dashboard extends Component {
                             </ul>
                           </div>
                          </div>
-                         <div id = 'pdf-section' className = 'vanish'> 
-                            <center><h1>ADEY HERE TOOO </h1></center>
-                         </div>
+                          {/* <div id = 'pdf-section' className = 'vanish'> 
+                              <center><h1>ADEY HERE TOOO </h1></center>
+                          </div> */}
                       </div>
                     </div>
                   </div>

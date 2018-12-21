@@ -4,8 +4,11 @@ import   {
     allCoursesReducer,
     authenticatedUserReducer, 
     userPicturePiecesReducer,
+    pdfNewsReducer,
     newsFeedReducer, 
-    currentCommentReducer 
+    currentCommentReducer,
+    userRelationsReducer, 
+    
   }  
 from './users-reducer'; 
 import { saveMenuItemsReducer, notifierReducer,tokenReducer} from './application-reducer';
@@ -13,13 +16,15 @@ import { saveMenuItemsReducer, notifierReducer,tokenReducer} from './application
 const allReducers = combineReducers({ 
  	textPieces: userPiecesReducer, 
  	picturePieces:userPicturePiecesReducer,
- 	authUser: authenticatedUserReducer, 
+  authUser: authenticatedUserReducer, 
+  authUserRelations:userRelationsReducer,
  	menuItems: saveMenuItemsReducer, 
   notification: notifierReducer, 
   newsFeed:newsFeedReducer, 
   token:tokenReducer, 
   allCourses: allCoursesReducer, 
-  currentPieceComments:currentCommentReducer
+  currentPieceComments:currentCommentReducer,
+  pdfNews:pdfNewsReducer
  });
 
 export default allReducers; 

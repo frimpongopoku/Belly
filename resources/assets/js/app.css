@@ -1,5 +1,41 @@
 
 
+.pdf-profile-name{
+  color:black !important; 
+  font-weight: 400;
+}
+.pdf-profile-name:hover{
+  color:rgb(0, 140, 255) !important; 
+  transition: .2s ease-in;
+}
+.remove-trick{
+  transform: rotateX(70deg); 
+  transition: .4s ease-in;
+}
+.pdf-card-title{
+  font-weight:600;
+  font-size:1.6rem;
+  color:black;
+}
+.pdf-page-card{
+  padding:20px;
+  background:whitesmoke; 
+
+  margin-top:5px;
+ 
+}
+
+.pdf-page-card:hover{
+  background:burlywood; 
+  transition: .4s ease-in-out all;
+  border:burlywood;
+   box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+}
+
+.pdf-page-card:focus{
+  background:green ; 
+  color:white;
+}
 .view-thumbnail{
   cursor:pointer; 
   background: antiquewhite;

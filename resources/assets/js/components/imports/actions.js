@@ -19,7 +19,10 @@ import {
   getCommentsForPieceAction,
   paginatorTextValuesAction,
   paginatorPicValuesAction,
-
+  getRelationsAction,
+  getPdfNewsAction,
+  getMorePDFNewsAction,
+  deletePDFAction,
 
 } from './../../actions/root-action';
 
@@ -41,7 +44,11 @@ export const appActions = {
   getNewsAction: getNewsAction, 
   getAllCoursesAction: getAllCoursesAction, 
   paginatorTextValuesAction:paginatorTextValuesAction,
-  paginatorPicValuesAction:paginatorPicValuesAction
+  paginatorPicValuesAction:paginatorPicValuesAction,
+  getRelationsAction: getRelationsAction,
+  getPdfNewsAction: getPdfNewsAction,
+  getMorePDFNewsAction:getMorePDFNewsAction,
+  deletePDFAction:deletePDFAction
   
 };
 export const likeActions = { 

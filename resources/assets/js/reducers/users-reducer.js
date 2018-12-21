@@ -1,6 +1,27 @@
 
 
+export const pdfNewsReducer = (state = null, action) => {
+  switch (action.type) {
+    case "user/GET_PDF_NEWS":
+      return action.payload
+      break;
 
+    default:
+      break;
+  }
+  return state;
+}
+export const userRelationsReducer = (state =null, action)=>{
+  switch (action.type) {
+    case "user/GET_RELATIONS":
+      return action.payload
+      break;
+
+    default:
+      break;
+  }
+  return state;
+}
 export const currentCommentReducer = (state = null, action)=>{
   switch (action.type) {
     case "user/PIECE_COMMENT_GET":

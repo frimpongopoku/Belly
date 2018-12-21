@@ -9,11 +9,9 @@ class GistImageCard extends Component {
     this.doLike = this.doLike.bind(this);
     this.zoom= this.zoom.bind(this);
     this.options = [ 
-      { title:'Unpublish', fa:'fa-globe',function:null}, 
       { title:'facebook', fa:'fa-facebook',function:null}, 
-      { title:'whatsapp', fa:'fa-whatsapp', function:null},
-      { title:'Report', fa:'fa-flag', function:null}
     ];
+    this.state = { authorise:false, refinedOptions:[]}
   }
   showComment(ID,type){
     let togVal = $('#comment-button-'+type+'-'+ID).attr('data-shown');
@@ -32,6 +30,10 @@ class GistImageCard extends Component {
       $('#comment-button-'+type+'-'+ID).attr('data-shown','false');
     }
   }
+  componentDidMount() {
+    this.checkOwner();
+  };
+  
   zoom(ID){
     var zoomed = $('#img-zoom-pointer-'+ID).attr('data-zoomed'); 
     if (zoomed=== "false"){
@@ -57,19 +59,26 @@ class GistImageCard extends Component {
 
   doLike() {
     this.props.likeFunction({ user_id: this.props.user.id, picture_piece_id: this.props.id }, this.props.allNews);
-    console.log("Your like has been sent");
   }
-  nothing(){};
+  checkOwner(){
+    if(this.props.user.id === this.props.details.owner.id){
+      let opt = [...this.options, { title: 'delete', fa: 'fa-trash', function: null }, ];
+      this.setState({authorise: true,refinedOptions:opt});
+    }
+    else{
+      this.setState({refinedOptions:this.options});
+    }
+  }
   render() {
     return (
       <div style={{marginTop:40}}>
         <div className = 'panel panel-default solid-p-w' style={{ marginBottom:0}}> 
-          <a href='#' className = 'name-badge   my-depth-2 margin-climb-up'  
+          <a href={"/profile/ImU8iwby1xOdiru-" + this.props.details.owner.id + "-PputaKIShq9/" + this.props.details.owner.name} className = 'name-badge   my-depth-2 margin-climb-up'  
               style={{background:this.props.details.bcolor,position:'absolute' }}> @{this.props.details.owner.name} 
           </a> 
           <div style={{marginBottom:15, paddingTop:15}} ></div>
-          <div className = ' pull-right ' style={{paddingRight:10}}> 
-                <Dropdown  options = { this.options } name="Frimpi"></Dropdown>
+          <div className = 'pull-right' style={{padding:10}}> 
+                <Dropdown  options = { this.state.refinedOptions } name={"dropy-pic-"+this.props.id}></Dropdown>
           </div>
           {/* ================== PANEL-BODY ============== */}
           <div className = 'panel-body clearfix' style ={{padding:'0px '}}> 
@@ -87,12 +96,11 @@ class GistImageCard extends Component {
               onClick={()=>{this.zoom(this.props.id)}} 
               className='img-responsive gist-img cursor' id={"img-zoom-pointer-"+this.props.id} 
               data-zoomed="false" 
-
             />
-            <div className = ' semi-footer clearfix' style={{padding:"5px 20px"}}>
+            <div className = 'semi-footer clearfix' style={{padding:"5px 20px"}}>
               <small className = "number-font t-black"><span className = "fa fa-thumbs-up"></span> <span> {this.props.likes} </span> </small> 
               <small className = "number-font t-black"><span className = "fa fa-comments"></span> <span> {this.props.comments} </span></small> 
-              <small className = " label label-primary pull-right gist-coin-display number-font"> <b>C</b> {this.props.coins} </small>
+               {/* <small className = " label label-primary pull-right gist-coin-display number-font"> <b>C</b> {this.props.coins} </small> */}
             </div>
           {/* ================== WAGER BOX ============== */}
             <Wager></Wager>
@@ -104,7 +112,7 @@ class GistImageCard extends Component {
             className = ' btn-sm btn btn-default pull-right zero-radius'>
             <i className = 'fa fa-eye'></i>
           </button> 
-            <a href='#' className = 'action-btn font-small-ish'onClick = {()=>{this.doLike()}}>
+            <a  className = 'action-btn font-small-ish'onClick = {(e)=>{e.preventDefault();this.doLike()}}>
               <i className = 'fa fa-thumbs-up'></i> Like</a>
             <a 
             id ={'comment-button-'+this.props.type+'-'+this.props.id} 

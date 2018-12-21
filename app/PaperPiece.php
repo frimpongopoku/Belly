@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class PaperPiece extends Model
-
+ 
 {
 
 	protected $fillable = ['title','body','deleted'];

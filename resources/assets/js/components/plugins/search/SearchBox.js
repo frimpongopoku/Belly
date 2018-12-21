@@ -71,7 +71,7 @@ class SearchBox extends Component {
   registerCriteria(name){
     this.setState({criteria:name});
   }
-  indResultDisplay(title,creatorName,likeCount,commentCount,id,type,parent){
+  indResultDisplay(title,creatorName,likeCount,commentCount,id,type,parent,pdf_link){
     let grabButton = document.createElement('button');
     let faGrab =document.createElement('i');
     let link = document.createElement('a');
@@ -85,8 +85,7 @@ class SearchBox extends Component {
     let userSmall = document.createElement('small'); 
     let cameraSmall= document.createElement('small'); 
     let faCamera=document.createElement('i'); 
-    faCamera.className = "fa fa-camera"
-    cameraSmall.appendChild(faCamera);
+   
     grabButton.className= "btn btn-default btn-sm pull-right grab-button";
     faGrab.className = "fa fa-hand-grab-o";
     grabButton.appendChild(faGrab);
@@ -96,8 +95,12 @@ class SearchBox extends Component {
       link.href = "/shot-view/J3zUZ9WoGvD3M3OcszZ8skHvoPputaKIShq9uPmW6ZqImU8iwby1xOdirul1wgGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/" + id;
       link.target = "_blank";
     }
-    else{
+    else if(type==="paper"){
       link.href = "/paper-view/MBZyU9WoGvD3M3OcszZ8skHvoPputaKIhq9uPmW6ZqImU8iwby1xOdirul1w2gGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/" + id;
+      link.target = "_blank";
+    }
+    else{
+      link.href =pdf_link;
       link.target = "_blank";
     }
     link.appendChild(para);
@@ -108,6 +111,13 @@ class SearchBox extends Component {
     parent.appendChild(grabButton);
     parent.appendChild(userSmall);
     if (type === "pic") {
+      faCamera.className = "fa fa-camera"
+      cameraSmall.appendChild(faCamera);
+      parent.appendChild(cameraSmall);
+    }
+    if (type === "pdf") {
+      faCamera.className = "fa fa-file-pdf-o";
+      cameraSmall.appendChild(faCamera);
       parent.appendChild(cameraSmall);
     }
     parent.appendChild(link); 
@@ -137,10 +147,13 @@ class SearchBox extends Component {
     picEnvelope.id = "js-pic-envelope";
     picEnvelope.className = "clearfix";
     searchResults.papers.data.forEach(function(item){
-      thisClass.indResultDisplay(item.title, item.user.name,4,5,item.id,"paper",envelope);
+      thisClass.indResultDisplay(item.title, item.user.name,4,5,item.id,"paper",envelope,null);
     });
+    searchResults.pdfs.data.forEach(function(item){
+      thisClass.indResultDisplay(item.title, item.user.name, 4, 5, item.id, "pdf", envelope,item.pdf_link);
+    })
     searchResults.pics.data.forEach(function(item){
-      thisClass.indResultDisplay(item.description, item.user.name, 5, 4, item.id, "pic", picEnvelope);
+      thisClass.indResultDisplay(item.description, item.user.name, 5, 4, item.id, "pic", picEnvelope,null);
     });
     document.getElementById('js-paper-results-container').appendChild(envelope);
     document.getElementById('js-pic-results-container').appendChild(picEnvelope); 

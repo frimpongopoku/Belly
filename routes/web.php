@@ -40,25 +40,21 @@ Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
 
 });
 Route::group(['middleware'=>'auth'],function(){
-  Route::post('upload-image','UploadController@saveUserImageUpload');
+  Route::post('upload-image','UploadController@saveUserUploads');
   Route::get('paper-view/MBZyU9WoGvD3M3OcszZ8skHvoPputaKIhq9uPmW6ZqImU8iwby1xOdirul1w2gGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/{id}','Main@paperView');
   Route::get('shot-view/J3zUZ9WoGvD3M3OcszZ8skHvoPputaKIShq9uPmW6ZqImU8iwby1xOdirul1wgGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/{id}','Main@shotView');
   Route::get('delete-comment/{id}','Main@deleteComment');
+  Route::get('profile/ImU8iwby1xOdiru-{id}-PputaKIShq9/{name}','Main@viewProfile');
+  Route::get('get-user-relations','Main@getRelations');
+  Route::get('get-pdf-news/{point}','Main@getPdfNews');
+  Route::get('delete-pdf/{id}',"Main@deletePDF");
 });
 
 
 Route::get('do-search','SearchController@doSearch');
 Route::get('dummy','Main@dummy');
 Route::post('check','UploadController@check');
-Route::get('up-test',"UploadController@upTest");
+Route::post('up-test',"UploadController@upTest");
 Route::get('testing',function(){
-	$arr = [1,'something',2,3,4,5,6,6,69]; 
-	foreach (array_slice($arr,5) as  $value) {
-		echo $value;
-		echo "<br>"; 
-		echo "<br>";
-	}
-	echo count($arr); 
-	echo "<br>"; 
-	echo count([1,0]);
+	echo uniqid();
 });

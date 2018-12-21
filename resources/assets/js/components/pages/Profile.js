@@ -128,9 +128,9 @@ class Profile extends Component {
                     <p className =""><i className = "fa fa-graduation-cap m-right-bit"></i>{ this.props.user.school }</p>
                     <p className =""><i className = "fa  fa-book m-right-bit"></i> { this.props.user.course }</p>
                     <p className =""><i className = "fa fa-globe m-right-bit"></i> <i className = "number-font">400</i> Plubishes </p>
-                    <a className ="btn btn-primary p-r-fix zero-radius"><i className = 'fa fa-facebook'></i></a> 
-                    <a className ="btn btn-info p-r-fix zero-radius"><i className = 'fa fa-linkedin'></i></a> 
-                    <a className ="btn btn-success p-r-fix zero-radius"><i className = 'fa fa-whatsapp'></i></a> 
+                   <button className="btn btn-primary z-depth-1 p-r-fix"><i className="fa fa-facebook"></i></button>
+            <button className="btn btn-default z-depth-1 p-r-fix"><i className="fa fa-linkedin"></i></button>
+            <button className="btn btn-success z-depth-1 p-r-fix"><i className="fa fa-whatsapp"></i></button> 
                 </div> 
                 <div className = "pull-right"> 
                    <p className =""><i className = "fa  fa-home m-right-bit"></i> { this.props.user.hall }</p>

@@ -117,7 +117,6 @@ class MakeNew extends Component {
     this.props.switchPageFunction('dashboard');
   }
   render() {
-    console.log("I am in make::: ",this.props.allCourses)
     return (
       <div className = 'page-margin' style={{marginLeft:0}}>
         <div className='container'>

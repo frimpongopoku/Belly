@@ -5,21 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\PicturePiece;
+use App\PdfPiece;
 class UploadController extends Controller
 {
 
   public function upTest(Request $request){
-    return $request->pic_course_selection;
+		$type = $request->image[0]->getClientOriginalExtension(); 
+    $request->image[0]->move('users/PDF/','asdfasdf'.time().'.'.$type);
+    return 'Done';
   }
+
+
 	public function check(Request $request){
 		print_r($request->image[0]);
 		echo "<br>"; 
 		echo "<br>"; 
-			// foreach( $request->image as $blob){
-			// 	echo $blob->getClientOriginalName(); 
-			// 	echo "<br>"; 
-
-			// }
 	}
 
 	public function extraImagesStringMaker($images){
@@ -38,14 +38,13 @@ class UploadController extends Controller
 			$results = $this->checkFile($image); 
 			//if the image passes,
 			if ($results['status'] =='pass'){
-				$directory = 'users/pictures/';
+        $directory = "users/pictures/";
 				//generate a distinct file name
 				$newFileName = uniqid().'-USER-ID-'.Auth::user()->id.'-time-'.time().'.'.$results['info']['ext'];
 				//upload it,
 				$this->uploadFile($image,$directory, $newFileName); 
 				//update the "prepList": this list that will be sent to another fxn later to be stringified
 				array_push($prepList ,$directory.$newFileName); 
-
 			}
 			else{
 				//if the image doesnt pass, dont upload, just skip this one
@@ -57,65 +56,110 @@ class UploadController extends Controller
 		//return the stringified version of the successfully uploaded extra images
 		return $stringified;
 
-	}
-	public function saveUserImageUpload(Request $request){
-		//1. check if the file is an accepted type
-		//2. create a new instance of the picture piece DB 
-		//fix the appro. details into the instance 
-		//check if the user left description blank, then put in some default text
-		//3. if the image passes the type test, pass it on for upload, 
-		//4. if the upload is successfull, save the instance of the picture piece DB then.. 
-		//5. return information about the piece
-		$results = $this->checkFile($request->image[0]); 
-		$picture = new PicturePiece();
-    	$picture->name = Auth::user()->name; 
+  }
+  public function separateImageAndPDF($content){
+    //this function will only be ran, after the filetype check has already taken place
+    $imageArray =[]; 
+    $PDFArray  =[]; 
+    foreach ($content as $item) {
+      if($item->getClientOriginalExtension() =="pdf"){
+        array_push($PDFArray, $item);
+      }
+      else{
+        array_push($imageArray, $item);
+      }
+    }
+    return ['PDFArray'=>$PDFArray, 'imageArray'=>$imageArray];
+  }
+
+  public function pdfUpload($content,$title,$course){
+    foreach ($content as $file) {
+      $results = $this->checkFile($file); 
+      $newFileName = uniqid().'-USER-ID-'.Auth::user()->id.'-time-PDF-'.time().'.'.$results['info']['ext'];
+      $path = "users/PDFs/";
+      if($results['status']=="pass"){
+        if( $this->uploadFile($file,$path,$newFileName) =="true"){
+           $this->saveUserPDFDetails($title,$path.$newFileName,$course);
+        }
+      }
+    }
+    return "It is finished";
+  }
+  public function saveUserPDFDetails($title,$path,$course){
+    $new = new PdfPiece(); 
+    $new->title = $title; 
+    $new->user_id = Auth::user()->id; 
+    $new->pdf_link = $path; 
+    $new->course = $course;
+    $new->name = Auth::user()->name; 
+    $new->save();
+  }
+  
+	public function saveUserUploads(Request $request){
+    //1. extract the tile,
+    //2. separet image files from PDFs 
+    //3. upload PDFs save PDF details
+    //4. upload images save image details 
+    $description = "";
+    if($request->description != "" && $this->fullOfSpaces($request->description) !="true"){
+        $description = $request->description ;
+      }
+    else{
+      $description = " Brand new gist from @". Auth::user()->name;
+    }
+    $splitFiles = $this->separateImageAndPDF($request->image);
+    $imageArray = $splitFiles['imageArray']; 
+    $PDFArray = $splitFiles['PDFArray']; 
+    
+    $this->pdfUpload($PDFArray,$description,$request->pic_course_select);
+    $firstImageCheck= $this->checkFile($imageArray[0]);
+    if($firstImageCheck['status']=="pass"){
+      $picture = new PicturePiece();
+      $picture->name = Auth::user()->name; 
       $picture->user_id = Auth::user()->id; 
       $picture->course = $request->pic_course_select;
-    	if($request->description != "" && $this->fullOfSpaces($request->description) !="true"){
-    		$picture->description = $request->description ;
-    	}
-    	else{
-    		$picture->description = " Brand new gist from @". Auth::user()->name;
-    	}
-    	if($results['status']=='pass'){
-    		$newFileName = uniqid().'-USER-ID-'.Auth::user()->id.'-time-'.time().'.'.$results['info']['ext'];
-    		$picturePath = 'users/pictures/';
-    		$picture->picture_link = $picturePath.$newFileName;
-    		//if upload is successfull
-    		if($this->uploadFile($request->image[0], $picturePath, $newFileName) =='true'){
-    			//return details about the upload text 
-    			$results['info']['newName'] = $newFileName;
-    			//if there is more than one image 
-    			if( count($request->image) > 1 ){
-    				$extraImages = array_slice($request->image,1); // remove the first image from the whole buch and return the rest 
-    				$extraImgsToString = $this->extraImagesUpload($extraImages); 
-    				$picture->type = 'multiple';
-    				$picture->extra_images = $extraImgsToString; 
-    				$picture->save(); 
-    			}
-    			else{
-    				$picture->save(); 
-    			}
-    			//return picture >> laravel has added the id into the |$picture array .... so I am gonna send that over to my javascript, loool hoolalaaaaa!
-    			return $picture;
-    		}
-    		else{
-    			return ['errors'=>'File could not upload'];
-    		}
-    	}
-    	else{
-    		//return error and other details
-    		return ['status'=>'fail','errors'=>$results['errors']]; 
-    	}
-	}
+      $picture->description = $description;
+      $newFileName = uniqid().'-USER-ID-'.Auth::user()->id.'-time-'.time().'.'.$firstImageCheck['info']['ext'];
+      $picturePath = "users/pictures/";
+      $picture->picture_link = $picturePath.$newFileName;
+      $this->uploadFile($imageArray[0],$picturePath, $newFileName);
+      if(count($imageArray) >1){
+        $extraImages = array_slice($imageArray,1); //start cut the list form the second item
+        $extraImagesToString = $this->extraImagesUpload($extraImages); 
+        $picture->extra_images = $extraImagesToString; 
+        $picture->type = "multiple";
+        if($picture->save()){
+          return $picture;
+        }
+        else{
+          return "Save not successful!";
+        }
+      }
+      else{
+        $picture->type="single"; 
+        if($picture->save()){
+          return $picture;
+        }
+        else{
+          return "Save not successfull!";
+        }
+      }
+    }
+    else{
+      return $firstImageCheck;
+    }
+    
+  }
+  
+  
     public function uploadFile($image,$directory, $fileName){
-		//upload the file
-		if($image->move($directory,$fileName)){
-			return 'true';
-		}
-		else{
-			return 'false';
-		}  	
+      //upload the file
+      if($image->move($directory,$fileName)){
+        return 'true';
+      }
+      else{
+        return 'false';
+      }  	
     }
 
     public function checkFile($image){

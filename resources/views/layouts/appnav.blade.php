@@ -16,7 +16,7 @@
     <link href='/css/welcome.css' />
 
     
-
+@yield('custom-style')
 <style> 
     .dropy-style{
     color:white !important;

@@ -9,17 +9,40 @@ use App\User;
 use App\Course;
 use App\Like;
 use App\Comment;
+use App\Rep;
+use App\PdfPiece;
 class Main extends Controller
 {
-  
 
- 
+
+
+    public function deletePDF($id){
+      $found = PdfPiece::findOrFail($id); 
+      $found->delete();
+    }
+  public function getPdfNews($point){
+    $related  = PdfPiece::where('course','!=',Auth::user()->course)->with('user')->skip($point * 3)->take(3)->get();
+    return $related;
+  }
+  public function getRelations(){
+    $user = User::where('id',Auth::user()->id)->with('reputation')->first();
+    return $user;
+  }
+
+  public function viewProfile($id, $name){
+    $user = User::where(['id'=>$id,'name'=>$name])->with('picturePieces','paperPieces')->firstOrFail(); 
+    $papers = PaperPiece::where('user_id',$user->id)->latest()->paginate(2); 
+    $pictures = PicturePiece::where('user_id',$user->id)->latest()->paginate(2);
+    return view('profile',compact('user','papers','pictures'));
+  }
+
   public function deleteComment($id){
     $comment = Comment::find($id);
     if($comment){
       $comment->delete();
     }
   }
+
   public function paperView($id){
     $found = PaperPiece::where('id',$id)->with('comments','likes','user')->firstOrFail();
     $similar = PaperPiece::latest()->search($found->course)->where('id','!=',$found->id)->with('user')->paginate(6);
@@ -27,6 +50,7 @@ class Main extends Controller
     $app_comments = Comment::where('paper_piece_id',$id)->orderBy('id','DESC')->with('user')->paginate(30);
     return view('search',compact('found','similar','app_comments','user_has_liked'));
   }
+  
   public function shotView($id){
     $found = PicturePiece::where('id',$id)->with('comments','likes','user')->firstOrFail();
     $similar = PicturePiece::latest()->search($found->course)->where('id','!=',$found->id)->with('user')->paginate(6);
@@ -34,6 +58,7 @@ class Main extends Controller
     $app_comments = Comment::where('picture_piece_id',$id)->orderBy('id','DESC')->with('user')->paginate(30);
     return view('picsearch',compact('found','similar','app_comments','user_has_liked'));
   }
+
   public function saveComment(Request $request){
     $newCom = new Comment(); 
     $newCom->body= $request->body; 
@@ -47,11 +72,21 @@ class Main extends Controller
       $newCom->picture_piece_id= $request->pieceID;
     }
     if($newCom->save()){
+      //find the owner of the piece that has been commented on
+      if($request->type == "paper"){
+        $ownerOfPiece = PaperPiece::where('id',$request->id)->first();
+      }
+      elseif($request->type =="picture"){
+         $ownerOfPiece = PicturePiece::where('id',$request->id)->first();
+      }
+      $this->addReputation(5,$ownerOfPiece->user_id);
       return "TRUE";
+    }
+    else{
+      return "FALSE";
     }
   }
   public function getComments($id,$type){
-
     if($type == "picture"){
       $commentsOfPiece =Comment::where('picture_piece_id',$id)->with('user')->get();
       return $commentsOfPiece;
@@ -66,6 +101,8 @@ class Main extends Controller
     if($exists){
       $exists->delete();
       $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
+      $this->decreaseReputation(5,Auth::user()->id);
+      $this->decreaseReputation(10,$likedPiece->user_id);
       return $likedPiece;
     }
     else{
@@ -75,6 +112,8 @@ class Main extends Controller
       if($like->save()){
         //return the paper's new set of likes NB: newly added too
         $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
+         $this->addReputation(5,Auth::user()->id); 
+         $this->addReputation(10,$likedPiece->user_id);
         return $likedPiece;
       }
     }
@@ -84,6 +123,7 @@ class Main extends Controller
     if($exists){
       $exists->delete();
       $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first(); 
+      $this->decreaseReputation(10,Auth::user()->id);
       return $likedPiece;
     }
     else{
@@ -92,7 +132,8 @@ class Main extends Controller
       $like->paper_piece_id = $request->paper_piece_id;
       if($like->save()){
         //return the paper's new set of likes NB: newly added too
-        $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first(); 
+        $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first();
+        $this->addReputation(10,Auth::user()->id); 
         return $likedPiece;
       }
     }
@@ -109,6 +150,7 @@ class Main extends Controller
     //now get paginated values with respect to "nextSetPoint" 
     //then cut away the oldValues with "alreadySent" point then send only the next 10
     //*make the users choose other courses they would like to see news(questions) on
+    //there is actually an eloquent fxnality called "skip" use it later!
     $alreadySent = $point * 3;
     $nextSetPoint  = $alreadySent + 3;
     $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes","comments")->orderBy('id','DESC')->paginate($nextSetPoint);
@@ -164,7 +206,24 @@ class Main extends Controller
 				$foundPaper->update(['deleted'=>1]);
 			}
 		}
-	}
+  }
+  
+  public function addReputation($number,$user_id){
+    $user = Rep::where('user_id',$user_id)->first();
+    if($user){
+      $user->update(['points'=>$user->points +$number]);
+    }
+    else{
+      $new = new Rep(); 
+      $new->user_id = $user_id; 
+      $new->points = $number; 
+      $new->save();
+    }
+  }
+  public function decreaseReputation($number,$user_id){
+     $user = Rep::where('user_id',$user_id)->first();
+     $user->update(['points'=>$user->points -$number]);
+  }
 	public function saveTextPiece(Request $request){
 		$Paper = new PaperPiece(); 
 		$Paper->name = $request->name;
@@ -173,6 +232,7 @@ class Main extends Controller
     $Paper->body = $request->body; 
     $Paper->course = $request->course;
 		if( $Paper->save()){
+      $this->addReputation(20,Auth::user()->id);
 			return 'True'; 
 		}
 	}

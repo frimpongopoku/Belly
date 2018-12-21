@@ -18049,33 +18049,37 @@ var SnackBar = function (_React$Component) {
 
 
 var appActions = {
-  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* saveProfileEditsAction */],
-  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* test */],
-  deletePicturePieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["c" /* deletePicturePieceAction */],
-  editPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["d" /* editPaperAction */],
-  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* newPicPieceAction */],
-  getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["i" /* getPicPiecesAction */],
-  getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getTokenAction */],
-  getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["k" /* getUserPiecesAction */],
-  fetchUserAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["e" /* fetchUserAction */],
-  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* loadUserPiecesAction */],
+  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* saveProfileEditsAction */],
+  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* test */],
+  deletePicturePieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["d" /* deletePicturePieceAction */],
+  editPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["e" /* editPaperAction */],
+  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* newPicPieceAction */],
+  getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getPicPiecesAction */],
+  getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getTokenAction */],
+  getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getUserPiecesAction */],
+  fetchUserAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["f" /* fetchUserAction */],
+  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* loadUserPiecesAction */],
   createNewPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["a" /* createNewPaperAction */],
-  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* saveMenuToRemoteAction */],
-  deletePaperPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["b" /* deletePaperPieceAction */],
-  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["h" /* getNewsAction */],
-  getAllCoursesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["f" /* getAllCoursesAction */],
-  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* paginatorTextValuesAction */],
-  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* paginatorPicValuesAction */]
+  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* saveMenuToRemoteAction */],
+  deletePaperPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["c" /* deletePaperPieceAction */],
+  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getNewsAction */],
+  getAllCoursesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["g" /* getAllCoursesAction */],
+  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* paginatorTextValuesAction */],
+  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* paginatorPicValuesAction */],
+  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getRelationsAction */],
+  getPdfNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["k" /* getPdfNewsAction */],
+  getMorePDFNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["i" /* getMorePDFNewsAction */],
+  deletePDFAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["b" /* deletePDFAction */]
 
 };
 var likeActions = {
-  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* newLikeAction */]
+  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* newLikeAction */]
 };
 var gistActions = {
-  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* picLikeAction */],
-  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* newLikeAction */],
-  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["h" /* getNewsAction */],
-  getCommentsForPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["g" /* getCommentsForPieceAction */]
+  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* picLikeAction */],
+  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* newLikeAction */],
+  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getNewsAction */],
+  getCommentsForPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["h" /* getCommentsForPieceAction */]
 
 };
 
@@ -22547,6 +22551,8 @@ ComboBox.PropTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CommentPad__ = __webpack_require__(109);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -22569,7 +22575,8 @@ var GistImageCard = function (_Component) {
 
     _this.doLike = _this.doLike.bind(_this);
     _this.zoom = _this.zoom.bind(_this);
-    _this.options = [{ title: 'Unpublish', fa: 'fa-globe', function: null }, { title: 'facebook', fa: 'fa-facebook', function: null }, { title: 'whatsapp', fa: 'fa-whatsapp', function: null }, { title: 'Report', fa: 'fa-flag', function: null }];
+    _this.options = [{ title: 'facebook', fa: 'fa-facebook', function: null }];
+    _this.state = { authorise: false, refinedOptions: [] };
     return _this;
   }
 
@@ -22590,6 +22597,11 @@ var GistImageCard = function (_Component) {
         $('.js-comment-on-piece-' + type + '-' + ID).removeClass('comment-box-entry');
         $('#comment-button-' + type + '-' + ID).attr('data-shown', 'false');
       }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.checkOwner();
     }
   }, {
     key: 'zoom',
@@ -22617,11 +22629,17 @@ var GistImageCard = function (_Component) {
     key: 'doLike',
     value: function doLike() {
       this.props.likeFunction({ user_id: this.props.user.id, picture_piece_id: this.props.id }, this.props.allNews);
-      console.log("Your like has been sent");
     }
   }, {
-    key: 'nothing',
-    value: function nothing() {}
+    key: 'checkOwner',
+    value: function checkOwner() {
+      if (this.props.user.id === this.props.details.owner.id) {
+        var opt = [].concat(_toConsumableArray(this.options), [{ title: 'delete', fa: 'fa-trash', function: null }]);
+        this.setState({ authorise: true, refinedOptions: opt });
+      } else {
+        this.setState({ refinedOptions: this.options });
+      }
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -22635,7 +22653,7 @@ var GistImageCard = function (_Component) {
           { className: 'panel panel-default solid-p-w', style: { marginBottom: 0 } },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'a',
-            { href: '#', className: 'name-badge   my-depth-2 margin-climb-up',
+            { href: "/profile/ImU8iwby1xOdiru-" + this.props.details.owner.id + "-PputaKIShq9/" + this.props.details.owner.name, className: 'name-badge   my-depth-2 margin-climb-up',
               style: { background: this.props.details.bcolor, position: 'absolute' } },
             ' @',
             this.props.details.owner.name
@@ -22643,8 +22661,8 @@ var GistImageCard = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { style: { marginBottom: 15, paddingTop: 15 } }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: ' pull-right ', style: { paddingRight: 10 } },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MyDropdown__["a" /* default */], { options: this.options, name: 'Frimpi' })
+            { className: 'pull-right', style: { padding: 10 } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__MyDropdown__["a" /* default */], { options: this.state.refinedOptions, name: "dropy-pic-" + this.props.id })
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -22691,11 +22709,10 @@ var GistImageCard = function (_Component) {
               },
               className: 'img-responsive gist-img cursor', id: "img-zoom-pointer-" + this.props.id,
               'data-zoomed': 'false'
-
             }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: ' semi-footer clearfix', style: { padding: "5px 20px" } },
+              { className: 'semi-footer clearfix', style: { padding: "5px 20px" } },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'small',
                 { className: 'number-font t-black' },
@@ -22722,19 +22739,6 @@ var GistImageCard = function (_Component) {
                   this.props.comments,
                   ' '
                 )
-              ),
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'small',
-                { className: ' label label-primary pull-right gist-coin-display number-font' },
-                ' ',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'b',
-                  null,
-                  'C'
-                ),
-                ' ',
-                this.props.coins,
-                ' '
               )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Wager__["a" /* default */], null)
@@ -22753,8 +22757,8 @@ var GistImageCard = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
-              { href: '#', className: 'action-btn font-small-ish', onClick: function onClick() {
-                  _this2.doLike();
+              { className: 'action-btn font-small-ish', onClick: function onClick(e) {
+                  e.preventDefault();_this2.doLike();
                 } },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
               ' Like'
@@ -22815,65 +22819,83 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-//Rename your class 
 
 var MyDropdown = function (_React$Component) {
-	_inherits(MyDropdown, _React$Component);
+		_inherits(MyDropdown, _React$Component);
 
-	function MyDropdown(props) {
-		_classCallCheck(this, MyDropdown);
+		function MyDropdown(props) {
+				_classCallCheck(this, MyDropdown);
 
-		var _this = _possibleConstructorReturn(this, (MyDropdown.__proto__ || Object.getPrototypeOf(MyDropdown)).call(this, props));
+				var _this = _possibleConstructorReturn(this, (MyDropdown.__proto__ || Object.getPrototypeOf(MyDropdown)).call(this, props));
 
-		_this.showItems = _this.showItems.bind(_this);
-		return _this;
-	}
-
-	_createClass(MyDropdown, [{
-		key: 'showItems',
-		value: function showItems() {
-			var _this2 = this;
-
-			return this.props.options.map(function (option, index) {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'li',
-					{ key: index + '-' + _this2.props.name },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'a',
-						{ href: '#', onClick: function onClick() {
-								option.function;
-							} },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: ' fa ' + option.fa + ' fa-pull-left p-r-fix' }),
-						option.title
-					)
-				);
-			});
+				_this.showItems = _this.showItems.bind(_this);
+				return _this;
 		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
-				null,
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					{ className: 'btn-group' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-ellipsis-h font-medium pull-right', style: { cursor: 'pointer' }, id: 'el-drop-1', 'data-toggle': 'dropdown' }),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'ul',
-						{ className: 'dropdown-menu pull-right', 'aria-labelledby': 'el-drop-1' },
-						this.showItems()
-					)
-				)
-			);
-		}
-	}]);
 
-	return MyDropdown;
+		_createClass(MyDropdown, [{
+				key: 'showItems',
+				value: function showItems() {
+						var _this2 = this;
+
+						return this.props.options.map(function (option, index) {
+								if (option.title === 'special' && option.type === 'delete') {
+										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'li',
+												{ key: index },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'a',
+														{ 'data-toggle': 'modal', 'data-target': '#universal-delete-board',
+																onClick: function onClick() {
+																		console.log(("I am the ::: ", _this2.props.paperTitle));
+																}
+														},
+														' ',
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-trash' }),
+														' delete'
+												)
+										);
+								} else {
+										return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'li',
+												{ key: index + '-' + _this2.props.name },
+												__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+														'a',
+														{ href: '#', onClick: function onClick() {
+																		option.function;
+																} },
+														__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: ' fa ' + option.fa + ' fa-pull-left p-r-fix' }),
+														option.title
+												)
+										);
+								}
+						});
+				}
+		}, {
+				key: 'render',
+				value: function render() {
+						console.log("I am dropdown: ", this.props.paperTitle);
+						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								null,
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+										'div',
+										{ className: 'btn-group' },
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-ellipsis-h font-medium pull-right', style: { cursor: 'pointer' }, id: 'el-drop-1', 'data-toggle': 'dropdown' }),
+										__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+												'ul',
+												{ className: 'dropdown-menu pull-right', 'aria-labelledby': 'el-drop-1' },
+												this.showItems()
+										)
+								)
+						);
+				}
+		}]);
+
+		return MyDropdown;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
 MyDropdown.propTypes = {
-	items: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array
+		items: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array
 };
 /* harmony default export */ __webpack_exports__["a"] = (MyDropdown);
 
@@ -23013,6 +23035,8 @@ var CommentPad = function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CommentPad__ = __webpack_require__(109);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -23035,10 +23059,12 @@ var GistPaperCard = function (_React$Component) {
     _this.checkIfUserLiked = _this.checkIfUserLiked.bind(_this);
     _this.state = {
       auth_user_liked: false,
-      my_comments: null
+      my_comments: null,
+      authorise: false,
+      refinedOptions: []
     };
 
-    _this.options = [{ title: 'Unpublish', fa: 'fa-globe', function: null }, { title: 'facebook', fa: 'fa-facebook', function: null }, { title: 'whatsapp', fa: 'fa-whatsapp', function: null }];
+    _this.options = [{ title: 'facebook', fa: 'fa-facebook', function: null }];
     return _this;
   }
 
@@ -23060,28 +23086,28 @@ var GistPaperCard = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.checkIfUserLiked();
+      var thisClass = this;
+      thisClass.checkOwner();
     }
   }, {
     key: 'checkIfUserLiked',
     value: function checkIfUserLiked() {
       var thisClass = this;
-      for (var i = 0; i < this.props.likesArray.length; i++) {
-        console.log("I am just in the lopooooop");
-        var aLike = this.props.likesArray[i];
-        if (aLike.user_id === this.props.user.id && aLike.paper_piece_id === this.props.id) {
-          this.setState({ auth_user_liked: true });
-          console.log("Iam in the for if loop show thine self!!!!!!");
-          return null;
+      console.log("deye dyed eyd eyd eyd eye dye dy");
+      this.props.likesArray.forEach(function (itm) {
+        if (itm.user_id === thisClass.props.user.id) {
+          thisClass.setState({ auth_user_liked: true });
+          console.log("User had liked it!!!");
+          return;
+        } else {
+          console.log("dfs fa f d s d fd f");
         }
-      }
-      //thisClass.setState({auth_user_liked:false})
+      });
     }
   }, {
     key: 'doLike',
     value: function doLike() {
       this.props.newLikeFunction({ user_id: this.props.user.id, paper_piece_id: this.props.id }, this.props.allNews);
-      console.log("Your like has been sent");
     }
   }, {
     key: 'zoomText',
@@ -23120,14 +23146,51 @@ var GistPaperCard = function (_React$Component) {
       }
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: 'checkOwner',
+    value: function checkOwner() {
+      if (this.props.user.id === this.props.details.owner.id) {
+        var opt = [].concat(_toConsumableArray(this.options), [{ title: 'special', type: 'delete' }]);
+        this.setState({ authorise: true, refinedOptions: opt });
+      } else {
+        this.setState({ refinedOptions: this.options });
+      }
+    }
+  }, {
+    key: 'bringLike',
+    value: function bringLike() {
       var _this2 = this;
 
-      console.log("logthegistThis::: ", this.state);
+      if (this.state.auth_user_liked === true) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { href: '#', id: 'like-action', className: 'action-btn font-small-ish', style: this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {},
+            onClick: function onClick(e) {
+              e.preventDefault();_this2.doLike();
+            } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
+          ' DO DO Like'
+        );
+      } else {
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { href: '#', id: 'like-action', className: 'action-btn font-small-ish', style: this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {},
+            onClick: function onClick(e) {
+              e.preventDefault();_this2.doLike();
+            } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
+          ' Like'
+        );
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      this.checkIfUserLiked();
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: '' },
+        null,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'panel panel-default', style: { width: "100%", marginBottom: 0, marginTop: 50 } },
@@ -23137,11 +23200,21 @@ var GistPaperCard = function (_React$Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               { className: ' pull-right ', style: { paddingRight: 10 } },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__MyDropdown__["a" /* default */], { options: this.options, name: 'Frimpi' })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1__MyDropdown__["a" /* default */],
+                { insertDetailsFunction: this.props.insertDetailsFunction,
+                  options: this.state.refinedOptions,
+                  name: Math.round(Math.random() * 1000).toString() + '-' + this.props.id },
+                'paperTitle =',
+                this.props.title,
+                'paperID = ',
+                this.props.id,
+                'paperType = "paper"'
+              )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
-              { href: '#', className: 'name-badge   my-depth-2 margin-climb-up',
+              { href: "/profile/ImU8iwby1xOdiru-" + this.props.details.owner.id + "-PputaKIShq9/" + this.props.details.owner.name, className: 'name-badge   my-depth-2 margin-climb-up',
                 style: { background: this.props.details.bcolor, position: 'absolute', marginTop: -30, marginLeft: -36 } },
               ' @',
               this.props.details.owner.name
@@ -23168,7 +23241,7 @@ var GistPaperCard = function (_React$Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               { 'data-zoomed': 'false', onClick: function onClick() {
-                  _this2.zoomText(_this2.props.id);
+                  _this3.zoomText(_this3.props.id);
                 }, className: " gist-paper-body-text " + "t-d-" + this.props.id, style: { padding: 20, cursor: 'pointer', minHeight: 200, maxHeight: 200, overflowY: 'hidden' } },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'p',
@@ -23215,7 +23288,11 @@ var GistPaperCard = function (_React$Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'small',
                   { className: 'number-font t-black ' },
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fa fa-comments p-r-fix' }),
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    { className: 'fa fa-comments p-r-fix' },
+                    ' '
+                  ),
                   ' ',
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'span',
@@ -23243,29 +23320,23 @@ var GistPaperCard = function (_React$Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'panel-footer' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'a',
-              { href: '#', className: 'action-btn font-small-ish', style: this.state.auth_user_liked ? styles.likedColor : {},
-                onClick: function onClick(e) {
-                  e.preventDefault();_this2.doLike();
-                } },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
-              ' Like'
-            ),
+            this.bringLike(),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
               { className: 'action-btn font-small-ish ',
                 id: 'comment-button-' + this.props.type + '-' + this.props.id,
                 'data-shown': 'false', 'data-toggle': 'modal', 'data-target': '#universal-comment-board',
                 onClick: function onClick(e) {
-                  e.preventDefault();_this2.props.showComments(_this2.props.id, "paper", _this2.props.title);
+                  e.preventDefault();_this3.props.showComments(_this3.props.id, "paper", _this3.props.title);
                 } },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-comment' }),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-comment p-r-fix' }),
               'Comment'
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
-              { href: '#', className: 'action-btn font-small-ish' },
+              { href: '#', className: 'action-btn font-small-ish', onClick: function onClick() {
+                  console.log("I am the state->>", _this3.state);
+                } },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-hand-grab-o' }),
               ' Grab'
             )
@@ -23274,7 +23345,6 @@ var GistPaperCard = function (_React$Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CommentPad__["a" /* default */], {
           id: this.props.id,
           type: this.props.type
-
         })
       );
     }
@@ -23296,38 +23366,43 @@ var styles = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getCommentsForPieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return deletePDFAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getPdfNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getMorePDFNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getRelationsAction; });
+/* unused harmony export loadRelations */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getCommentsForPieceAction; });
 /* unused harmony export loadCurrentComment */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return picLikeAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return newLikeAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return getAllCoursesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return picLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return newLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getAllCoursesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getNewsAction; });
 /* unused harmony export loadNewsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return saveProfileEditsAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return deletePicturePieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return saveProfileEditsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return deletePicturePieceAction; });
 /* unused harmony export deleteDBPic */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return newPicPieceAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getPicPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return paginatorPicValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return newPicPieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getPicPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return paginatorPicValuesAction; });
 /* unused harmony export loadPicsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return test; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getTokenAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return test; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getTokenAction; });
 /* unused harmony export editPaper */
 /* unused harmony export addPaper */
 /* unused harmony export delPaper */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return editPaperAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return deletePaperPieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return editPaperAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return deletePaperPieceAction; });
 /* unused harmony export dBEditPaper */
 /* unused harmony export dBDelete */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return saveMenuToRemoteAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return saveMenuToRemoteAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createNewPaperAction; });
 /* unused harmony export dBSaveAction */
 /* unused harmony export notifierAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return paginatorTextValuesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getUserPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return loadUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return paginatorTextValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return loadUserPiecesAction; });
 /* unused harmony export saveAuthenticatedUserAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return fetchUserAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return fetchUserAction; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducers_dummy__ = __webpack_require__(285);
@@ -23338,255 +23413,289 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
-var getCommentsForPieceAction = function getCommentsForPieceAction(id, type) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-comments/' + id + "/" + type }).done(function (response) {
-			dispatch(loadCurrentComment(response));
-		});
-	};
+var deletePDFAction = function deletePDFAction(id) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/delete-pdf/' + id });
+  };
 };
+var getPdfNewsAction = function getPdfNewsAction(point) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/get-pdf-news/' + point }).done(function (response) {
+      dispatch(loadPdfNews(response));
+    });
+  };
+};
+
+var getMorePDFNewsAction = function getMorePDFNewsAction(oldTrain, point) {
+
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/get-pdf-news/' + point }).done(function (response) {
+      var newSet = [].concat(_toConsumableArray(oldTrain), _toConsumableArray(response));
+      dispatch(loadPdfNews(newSet));
+    });
+  };
+};
+var loadPdfNews = function loadPdfNews(dataTrain) {
+  return { type: 'user/GET_PDF_NEWS', payload: dataTrain };
+};
+var getRelationsAction = function getRelationsAction() {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/get-user-relations' }).done(function (response) {
+      dispatch(loadRelations(response));
+    });
+  };
+};
+var loadRelations = function loadRelations(dataTrain) {
+  return { type: "user/GET_RELATIONS", payload: dataTrain };
+};
+
+var getCommentsForPieceAction = function getCommentsForPieceAction(id, type) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-comments/' + id + "/" + type }).done(function (response) {
+      dispatch(loadCurrentComment(response));
+    });
+  };
+};
+
 var loadCurrentComment = function loadCurrentComment(dataTrain) {
-	return { type: "user/PIECE_COMMENT_GET", payload: dataTrain };
+  return { type: "user/PIECE_COMMENT_GET", payload: dataTrain };
 };
 var picLikeAction = function picLikeAction(miniTrain, allNews) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/picture-like", data: miniTrain }).done(function (response) {
-			var newState = { texts: [], pics: [], active: true };
-			allNews.pics.forEach(function (picNews) {
-				if (picNews.id === response.id) {
-					picNews.likes = response.likes;
-				}
-				newState.pics.push(picNews);
-			});
-			newState.texts = [].concat(_toConsumableArray(allNews.texts));
-			dispatch(loadNewsPiecesAction(newState));
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/picture-like", data: miniTrain }).done(function (response) {
+      var newState = { texts: [], pics: [], active: true };
+      allNews.pics.forEach(function (picNews) {
+        if (picNews.id === response.id) {
+          picNews.likes = response.likes;
+        }
+        newState.pics.push(picNews);
+      });
+      newState.texts = [].concat(_toConsumableArray(allNews.texts));
+      dispatch(loadNewsPiecesAction(newState));
+      dispatch(getRelationsAction());
+    });
+  };
 };
 var newLikeAction = function newLikeAction(miniTrain, allNews) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/like", data: miniTrain }).done(function (response) {
-			console.log("I am in root-action:rec_liked::::: ", response);
-			var newState = { texts: [], pics: [], active: true };
-			allNews.texts.forEach(function (textNews) {
-				if (textNews.id === response.id) {
-					textNews.likes = response.likes;
-				}
-				newState.texts.push(textNews);
-			});
-			newState.pics = [].concat(_toConsumableArray(allNews.pics));
-			dispatch(loadNewsPiecesAction(newState));
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/like", data: miniTrain }).done(function (response) {
+      var newState = { texts: [], pics: [], active: true };
+      allNews.texts.forEach(function (textNews) {
+        if (textNews.id === response.id) {
+          textNews.likes = response.likes;
+        }
+        newState.texts.push(textNews);
+      });
+      newState.pics = [].concat(_toConsumableArray(allNews.pics));
+      dispatch(loadNewsPiecesAction(newState));
+      dispatch(getRelationsAction());
+    });
+  };
 };
 
 var getAllCoursesAction = function getAllCoursesAction() {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-all-courses' }).done(function (response) {
-			dispatch({ type: "user/GET_ALL_COURSES", payload: response });
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-all-courses' }).done(function (response) {
+      dispatch({ type: "user/GET_ALL_COURSES", payload: response });
+    });
+  };
 };
 var getNewsAction = function getNewsAction(point, oldNews) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-news/' + point }).done(function (data) {
-			if (data.texts.length === 0 && data.pics.length === 0) {
-				dispatch(loadNewsPiecesAction(oldNews));
-			} else {
-				var textNews = [].concat(_toConsumableArray(oldNews.texts), _toConsumableArray(data.texts));
-				var picNews = [].concat(_toConsumableArray(oldNews.pics), _toConsumableArray(data.pics));
-				var finishedState = { texts: textNews, pics: picNews, active: true };
-				dispatch(loadNewsPiecesAction(finishedState));
-			}
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-news/' + point }).done(function (data) {
+      if (data.texts.length === 0 && data.pics.length === 0) {
+        dispatch(loadNewsPiecesAction(oldNews));
+      } else {
+        var textNews = [].concat(_toConsumableArray(oldNews.texts), _toConsumableArray(data.texts));
+        var picNews = [].concat(_toConsumableArray(oldNews.pics), _toConsumableArray(data.pics));
+        var finishedState = { texts: textNews, pics: picNews, active: true };
+        dispatch(loadNewsPiecesAction(finishedState));
+      }
+    });
+  };
 };
 var loadNewsPiecesAction = function loadNewsPiecesAction(dataTrain) {
-	//this fxn has access to the portion in the store, so you can pass anykinda data to the store to represent news.. 
-	//this fxn is just the link, otherFxnsLikethisInclude: loadUserPieces,loadUserPicPieces
-	return { type: "user/LOAD_NEWS", payload: dataTrain };
+  //this fxn has access to the portion in the store, so you can pass anykinda data to the store to represent news.. 
+  //this fxn is just the link, otherFxnsLikethisInclude: loadUserPieces,loadUserPicPieces
+  return { type: "user/LOAD_NEWS", payload: dataTrain };
 };
 var saveProfileEditsAction = function saveProfileEditsAction(dataTrain) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/save-profile-edits", data: dataTrain }).done(function (user) {
-			dispatch(saveAuthenticatedUserAction(user));
-			dispatch(notifierAction("Profile Saved"));
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/save-profile-edits", data: dataTrain }).done(function (user) {
+      dispatch(saveAuthenticatedUserAction(user));
+      dispatch(notifierAction("Profile Saved"));
+    });
+  };
 };
 var deletePicturePieceAction = function deletePicturePieceAction(id, allPieces) {
-	var filtered = allPieces.filter(function (item) {
-		return item.id != id;
-	});
-	return function (dispatch) {
-		dispatch(deleteDBPic(id));
-		dispatch(loadPicsPiecesAction(filtered));
-	};
+  var filtered = allPieces.filter(function (item) {
+    return item.id != id;
+  });
+  return function (dispatch) {
+    dispatch(deleteDBPic(id));
+    dispatch(loadPicsPiecesAction(filtered));
+  };
 };
 
 var deleteDBPic = function deleteDBPic(id) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/delete-pic-item-' + id }).done(function (response) {
-			console.log("Your Image has been deleted nigga!!");
-		});
-	};
-	//what if something happens and it doesnt save.... Well, I wil be back 
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/delete-pic-item-' + id }).done(function (response) {});
+  };
+  //what if something happens and it doesnt save.... Well, I wil be back 
 };
 var newPicPieceAction = function newPicPieceAction(newData, oldPieces) {
-	//new dataTrain contains the newName, id, and other details of the 'just' uploaded file... 
-	//so get it , and check if oldPics is up to othe pagination number which is "6" for now
-	//if its not up to, just add it, if it is already up to, replace the new data with one... 
-	console.log("I am all the picture pieces in newAction:", oldPieces);
-	var newDataSet = oldPieces.length === 6 ? oldPieces.slice(0, 5) : oldPieces;
-	return function (dispatch) {
-		dispatch(loadPicsPiecesAction([newData].concat(_toConsumableArray(newDataSet))));
-	};
+  //new dataTrain contains the newName, id, and other details of the 'just' uploaded file... 
+  //so get it , and check if oldPics is up to othe pagination number which is "6" for now
+  //if its not up to, just add it, if it is already up to, replace the new data with one... 
+  var newDataSet = oldPieces.length === 6 ? oldPieces.slice(0, 5) : oldPieces;
+  return function (dispatch) {
+    dispatch(loadPicsPiecesAction([newData].concat(_toConsumableArray(newDataSet))));
+  };
 };
 
 var getPicPiecesAction = function getPicPiecesAction() {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-all-pic-papers' }).done(function (response) {
-			dispatch(loadPicsPiecesAction(response.data));
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-all-pic-papers' }).done(function (response) {
+      dispatch(loadPicsPiecesAction(response.data));
+    });
+  };
 };
 var paginatorPicValuesAction = function paginatorPicValuesAction(data) {
-	return function (dispatch) {
-		dispatch(loadPicsPiecesAction(data));
-	};
+  return function (dispatch) {
+    dispatch(loadPicsPiecesAction(data));
+  };
 };
 
 var loadPicsPiecesAction = function loadPicsPiecesAction(newDataTrain) {
-	return { type: 'user/PICTURE_PIECES_GET', payload: newDataTrain };
+  return { type: 'user/PICTURE_PIECES_GET', payload: newDataTrain };
 };
 
 var test = function test() {
-	console.log(" I have been called upon!");
-	return notifierAction('new shit!');
+  console.log(" I have been called upon!");
+  return notifierAction('new shit!');
 };
 
 var getTokenAction = function getTokenAction() {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-token' }).done(function (response) {
-			dispatch({ type: "application/GET_TOKEN", payload: response });
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-token' }).done(function (response) {
+      dispatch({ type: "application/GET_TOKEN", payload: response });
+    });
+  };
 };
 
 var editPaper = function editPaper(newData, oldPieces) {
-	//find the piece that is to be edited from the whole bunch, 
-	//insert the edits into the isolated piece, 
-	//now remove the outdated piece from the whole bunch
-	//now create a new object that would be stored in the state and add the updated version of the piece
-	var oldData = oldPieces.find(function (piece) {
-		return newData.id === piece.id;
-	});
-	var latestData = _extends({}, oldData, { title: newData.title, body: newData.body });
-	var newTrain = oldPieces.filter(function (piece) {
-		return piece.id !== newData.id;
-	});
-	var newState = [latestData].concat(_toConsumableArray(newTrain));
-	return newState;
+  //find the piece that is to be edited from the whole bunch, 
+  //insert the edits into the isolated piece, 
+  //now remove the outdated piece from the whole bunch
+  //now create a new object that would be stored in the state and add the updated version of the piece
+  var oldData = oldPieces.find(function (piece) {
+    return newData.id === piece.id;
+  });
+  var latestData = _extends({}, oldData, { title: newData.title, body: newData.body });
+  var newTrain = oldPieces.filter(function (piece) {
+    return piece.id !== newData.id;
+  });
+  var newState = [latestData].concat(_toConsumableArray(newTrain));
+  return newState;
 };
 
 var addPaper = function addPaper(dataTrain, oldPieces) {
-	var old = oldPieces.length === 6 ? oldPieces.slice(0, 5) : oldPieces; //This will make sure to written only 5 elements + the new one so It will much my pagination
-	var newState = [dataTrain].concat(_toConsumableArray(old));
-	return newState;
+  var old = oldPieces.length === 6 ? oldPieces.slice(0, 5) : oldPieces; //This will make sure to written only 5 elements + the new one so It will much my pagination
+  var newState = [dataTrain].concat(_toConsumableArray(old));
+  return newState;
 };
 var delPaper = function delPaper(id, oldPieces) {
-	var filtered = oldPieces.filter(function (piece) {
-		return piece.id !== id;
-	});
-	return filtered;
+  var filtered = oldPieces.filter(function (piece) {
+    return piece.id !== id;
+  });
+  return filtered;
 };
 var editPaperAction = function editPaperAction(newData, oldPieces) {
-	return function (dispatch) {
-		dispatch(dBEditPaper(newData));
-		dispatch(loadUserPiecesAction(editPaper(newData, oldPieces)));
-	};
+  return function (dispatch) {
+    dispatch(dBEditPaper(newData));
+    dispatch(loadUserPiecesAction(editPaper(newData, oldPieces)));
+  };
 };
 var deletePaperPieceAction = function deletePaperPieceAction(id, oldPieces) {
-	//get the oldState(array) for the pieces in the store as a parameter
-	//remove items from the store and then load the rest back in to the store.
-	return function (dispatch) {
-		dispatch(dBDelete(id));
-		dispatch(loadUserPiecesAction(delPaper(id, oldPieces)));
-	};
+  //get the oldState(array) for the pieces in the store as a parameter
+  //remove items from the store and then load the rest back in to the store.
+  return function (dispatch) {
+    dispatch(dBDelete(id));
+    dispatch(loadUserPiecesAction(delPaper(id, oldPieces)));
+  };
 };
 var dBEditPaper = function dBEditPaper(newData) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/edit-piece/', data: _extends({}, newData) }).done(function (response) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/edit-piece/', data: _extends({}, newData) }).done(function (response) {
 
-			//put some notification here, but for now.....
-		});
-	};
+      //put some notification here, but for now.....
+    });
+  };
 };
 var dBDelete = function dBDelete(id) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/delete-paper/' + id }).done(function (response) {
-			//put some notification handler out here... but for now, just log some shit 
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/delete-paper/' + id }).done(function (response) {
+      //put some notification handler out here... but for now, just log some shit 
 
-		});
-	};
+    });
+  };
 };
 
 var saveMenuToRemoteAction = function saveMenuToRemoteAction(menuItems) {
-	return { type: 'application/SAVE_MENU', payload: menuItems };
+  return { type: 'application/SAVE_MENU', payload: menuItems };
 };
 var createNewPaperAction = function createNewPaperAction(dataObj, oldPieces) {
 
-	return function (dispatch) {
-		dispatch(dBSaveAction(dataObj));
-		dispatch(loadUserPiecesAction(addPaper(dataObj, oldPieces)));
-	};
+  return function (dispatch) {
+    dispatch(dBSaveAction(dataObj));
+    dispatch(loadUserPiecesAction(addPaper(dataObj, oldPieces)));
+  };
 };
 
 var dBSaveAction = function dBSaveAction(dataTrain) {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/save-text-piece', data: { name: dataTrain.name, course: dataTrain.course, body: dataTrain.body, user_id: dataTrain.user_id, title: dataTrain.title } }).done(function (response) {
-			if (response === "True") {
-				setTimeout(function () {
-					dispatch(notifierAction(dataTrain.title));
-				}, 2000);
-			}
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/save-text-piece', data: { name: dataTrain.name, course: dataTrain.course, body: dataTrain.body, user_id: dataTrain.user_id, title: dataTrain.title } }).done(function (response) {
+      if (response === "True") {
+        setTimeout(function () {
+          dispatch(notifierAction(dataTrain.title));
+        }, 2000);
+      }
+    });
+  };
 };
 
 var notifierAction = function notifierAction(data) {
-	return { type: 'application/NOTIFY', payload: data };
+  return { type: 'application/NOTIFY', payload: data };
 };
 var paginatorTextValuesAction = function paginatorTextValuesAction(data) {
-	return function (dispatch) {
-		console.log("I am alive!");
-		dispatch(loadUserPiecesAction(data));
-	};
+  return function (dispatch) {
+    dispatch(loadUserPiecesAction(data));
+  };
 };
 
 var getUserPiecesAction = function getUserPiecesAction() {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-all-text-papers' }).done(function (response) {
-			dispatch(loadUserPiecesAction(response.data));
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-all-text-papers' }).done(function (response) {
+      dispatch(loadUserPiecesAction(response.data));
+    });
+  };
 };
 
 var loadUserPiecesAction = function loadUserPiecesAction(newDataTrain) {
-	//this action's sole fxn is to pass data on to the txtreducer part in the store >> it has direct access
-	return { type: 'user/TEXT_PIECES_GET', payload: newDataTrain === null ? __WEBPACK_IMPORTED_MODULE_1__reducers_dummy__["a" /* initialState */] : newDataTrain };
+  //this action's sole fxn is to pass data on to the txtreducer part in the store >> it has direct access
+  return { type: 'user/TEXT_PIECES_GET', payload: newDataTrain === null ? __WEBPACK_IMPORTED_MODULE_1__reducers_dummy__["a" /* initialState */] : newDataTrain };
 };
 
 var saveAuthenticatedUserAction = function saveAuthenticatedUserAction(user) {
-	return { type: 'user/AUTHENTICATED', payload: user };
+  return { type: 'user/AUTHENTICATED', payload: user };
 };
 
 var fetchUserAction = function fetchUserAction() {
-	return function (dispatch) {
-		__WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-auth-user' }).done(function (response) {
-			dispatch(saveAuthenticatedUserAction(response));
-		});
-	};
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-auth-user' }).done(function (response) {
+      dispatch(saveAuthenticatedUserAction(response));
+    });
+  };
 };
 
 /***/ }),
@@ -23596,9 +23705,9 @@ var fetchUserAction = function fetchUserAction() {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return store; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducers_root_reducer__ = __webpack_require__(287);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux_logger__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducers_root_reducer__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_redux_thunk__ = __webpack_require__(291);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux_logger__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_redux_logger___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_redux_logger__);
 
 
@@ -23612,7 +23721,7 @@ var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(_
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(114);
-module.exports = __webpack_require__(295);
+module.exports = __webpack_require__(298);
 
 
 /***/ }),
@@ -56096,10 +56205,11 @@ module.exports = ReactDOMInvalidARIAHook;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Makenew__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Gist__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__imports_actions__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Blood__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Blood__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__plugins_SnackBar__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__plugins_NavBar__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__actions_root_action__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__plugins_NavBar__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Pdfs__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__actions_root_action__ = __webpack_require__(111);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56107,6 +56217,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -56148,6 +56259,8 @@ var Home = function (_Component) {
       this.props.getToken();
       this.props.getNews(0);
       this.props.getAllCourses();
+      this.props.getRelations();
+      this.props.getPdfNews(0);
     }
   }, {
     key: 'snack',
@@ -56195,12 +56308,24 @@ var Home = function (_Component) {
               'div',
               { className: 'col-md-2 col-lg-2 col-xs-12' },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__navigation_Sidebar__["a" /* default */], { saveMenuFunction: this.props.saveMenu,
-                user: this.props.authenticatedUser === null ? null : this.props.authenticatedUser })
+                user: this.props.authenticatedUser === null ? null : this.props.authenticatedUser,
+                userRelations: this.props.userRelations
+              })
             )
           ),
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
             'div',
-            { className: ' col-md-10 col-lg-10' },
+            { className: 'col-md-10 col-lg-10' },
+            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+              'div',
+              { id: 'pdfs', className: 'vanish' },
+              __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__Pdfs__["a" /* default */], {
+                getMorePDFNewsFunction: this.props.getMorePDFNews,
+                pdfNews: this.props.pdfNews,
+                user: this.props.authenticatedUser === null ? null : this.props.authenticatedUser,
+                deletePDFFunction: this.props.deletePDF
+              })
+            ),
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
               'div',
               { id: 'dashboard', className: '' },
@@ -56240,16 +56365,6 @@ var Home = function (_Component) {
           'div',
           { id: 'gist', className: 'vanish', style: styles.noteReady },
           __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__Gist__["a" /* default */], { allNews: this.props.news === null ? null : this.props.news })
-        ),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          'center',
-          null,
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-            'h1',
-            null,
-            ' ',
-            __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement('i', { className: 'fa fa-spinner fa-spin' })
-          )
         )
       );
     }
@@ -56276,7 +56391,9 @@ function mapStateToProps(state) {
     notification: state.notification,
     news: state.newsFeed,
     token: state.token,
-    allCourses: state.allCourses
+    allCourses: state.allCourses,
+    userRelations: state.authUserRelations,
+    pdfNews: state.pdfNews
   };
 };
 function matchDispatchToProps(dispatch) {
@@ -56297,7 +56414,11 @@ function matchDispatchToProps(dispatch) {
     getNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getNewsAction,
     getAllCourses: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getAllCoursesAction,
     paginatorTextValuesInsert: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].paginatorTextValuesAction,
-    paginatorPicValuesInsert: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].paginatorPicValuesAction
+    paginatorPicValuesInsert: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].paginatorPicValuesAction,
+    getRelations: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getRelationsAction,
+    getPdfNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getPdfNewsAction,
+    getMorePDFNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getMorePDFNewsAction,
+    deletePDF: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].deletePDFAction
   }, dispatch);
 };
 
@@ -56312,7 +56433,7 @@ exports = module.exports = __webpack_require__(240)(false);
 
 
 // module
-exports.push([module.i, "\n\n.view-thumbnail{\n  cursor:pointer; \n  background: antiquewhite;\n}\n.similar{\n  cursor:pointer;\n  padding:30px;min-height:200px;max-height:200px;overflow:hidden; background:#282828;border:solid 1px black; border-top-width:3px;\n}\n.similar:hover{\n  transform: translateY(-10px);\n  transition:.5s ease-in-out;\n}\n.view-thumbnail:hover{\n  cursor:pointer; \n  background:whitesmoke; \n  color:black;\n  transition: .3s ease-in-out all; \n}\n.v-c-b{\n  cursor:pointer; \n  color:black !important;\n}\n.v-c-b:hover{\n  transform: scale(1.1);\n  background:white !important;\n  transition: .5s ease-in-out all;\n}\n.grab-button{\n  border-width: 0px; \n  background:floralwhite !important;\n}\n.grab-button:hover{\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n  transition: .3s ease-in-out all;\n  border-width: 2px;\n  border-color:white;\n  -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.grab-button:focus{\n  outline:0 !important; \n  border-width: 2px;\n  border-color:white !important;\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n\n}\n.margin-right-5{\n  margin-right: 5px;\n}\n.envelope-correction{\n  margin:7px;\n}\n.results-pad{\n\n  border-top-right-radius: 0px; \n  border-top-left-radius: 0px; \n  border-top-width: 5px; \n  border-top-color: black; \n  background: floralwhite;\n  margin-left:-13px;\n}\n\n.upload-button-design{\n  background:rgb(255, 169, 8) !important; \n  color:black!important;\n  border-color:rgb(255, 169, 8) !important; \n}\n.upload-button-design:hover{\n  background:#202020 !important; \n  color:white !important;\n  border-color:#202020 !important; \n  transition: .3s ease-in-out all;\n}\n.nav-icon{\n    cursor:pointer;\n}\n.nav-icon:hover{\n    transform:scale(1.3);\n    color:yellowgreen;\n    transition:0.3s ease-in all;\n\n}\n\n.pic-modal-envelope{\n  margin-left: -23px; \n  width:800px;\n}\n.QB{\n    font-size:3rem;\n    color:white !important; \n}\n\n.tint-focus{\n    position:relative; \n    cursor:pointer;\n    animation: jump infinite 0.5s linear;\n\n}\n.confidence-level{\n    margin-top:-10px !important;\n    cursor:pointer;\n    font-size:1.8rem;\n    padding:10px;\n    color:limegreen;\n\n}\n\n.tint-focus:hover{\n    transform: scale(2);\n}\n@keyframes jump{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n        transfrom:translateY(-5px);\n    }\n    100%{\n        transform:translateY(0px);\n    }\n}\n.rating-belt{\n    height: 70px;\n    position: absolute;\n    width: 100%;\n    margin-left: -15px;\n    margin-top: -70px;\n    border-color: #272727;\n\n}\n.QB-tint{\n    color:white; \n    font-size:1.7rem;\n    text-shadow: 0 2px 2px dimgrey;\n\n}\n.nav-bar-stick{\n    position:fixed; \n    top:0; \n    width:100%; \n    z-index:1;\n}\n.z-text-depth-1{\n    text-shadow: 0 2px 2px dimgrey;\n}\n.QB-Brand{\n    height:100px !important; \n    width:100px !important;\n    object-fit:cover;\n    object-position: center center;\n}\n.phone-textbox-design{\n    border: solid 0px #C8C8C8; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray; \n    border-radius:0;\n    margin:10px;\n}\n.phone-textbox-design:focus{\n    border: solid 0px #6c757d; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray !important; \n    border-radius:0;\n    outline:0;\n}\n.m-right-bit{\n    margin-right:6px;\n}\n\n.c-m-height{\n    max-height:250px !important;\n}\n.f-d-card{\n    background:\"white\";\n    padding:30px !important; \n    min-height:250px;\n    max-height:350px; \n    background:white;\n}\n.corner-10{\n    margin:2px 2px !important; \n    border-radius:3px;\n}\n.extra-img-div{\n    margin-bottom:10px;\n}\n.p-space-1{\n    margin:5px 7px;\n}\n.inside-popover{\n    margin:10px; \n    padding:10px;\n    text-align:center;\n}\n.file-check{\n    padding:10px;\n}\n.anoda{\n    animation-name:fa-spin;\n    animation-duration: infinite;\n}\n\n.modal-pic-div-image{\n  background-position: center center; \n  background-size: auto 100%; \n  opacity: 1; \n  background-repeat: no-repeat !important; \n  transition: .5s ease-in-out;\n}\n.pic-piece-image{\n    width:100% !important;\n    min-height:620px !important;\n    overflow-y:hidden;\n    cursor:pointer;\n    border-radius:0px;\n    \n}\n.pic-piece-image:hover{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    transition: 0.2s ease-in all;\n}\n.spinner-logo {\n  animation: spinner-logo-spin infinite .5s linear;\n  height: 80px;\n}\n@keyframes spinner-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n\n\n.font-red{\n    color:red;\n}\n.font-blue{\n    background: rgb(63, 158, 247) !important;\n}\n.number-font{\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.p-r-fix{\n        /*pull-right-fx*/\n    margin:5px;\n}\n\n.i-p-overlay{\n    background:black; \n    opacity:0.5; \n    height:200px;\n    z-index: 1;\n}\n\n.zero-border{\n    border:solid 0px black !important;\n}\n.btn-undefault:focus{\n    outline:0; \n    border: solid 0px black !important;\n}\n\n.p-activate-section{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n.p-activate-section-green{\n    /*paper - activate -section*/\n    background:green !important;\n    color:white !important;\n}\n.p-activate-section-blue{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n\n.d-tab{\n    font-weight: 500;\n    padding:8px 15px; \n     background:inherit; \n    margin:0;\n    cursor:pointer;\n    height:100%;\n    overflow-x:hidden;\n}\n\n.d-tab:hover{\n    background:orange;\n    color:black;\n    transition:0.3s ease-in all;\n}\n\n\n\n.margin-5{\n    margin:5px;\n}\n.centerness{\n    padding:120px 30px;\n}\n.relative{\n    position: relative;\n}\n.input-file-textbox{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n    margin-bottom:6px;\n}\n\n.input-file-textbox:focus{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n}\n.zero-radius{\n    border-radius:0px;\n}\n.multiple-side-active{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.m-side-active{\n        /*modal side option active*/\n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.search-box{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n}\n.search-box:focus{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n\n}\n.round-float-button{\n    float:right;\n    z-index:1;\n    position:fixed;\n    right:50px;\n    font-size:1.5rem;\n    position: fixed;\n    bottom:70px;\n    border-radius:50%;\n    padding:10px 16px; \n    color:white;\n}\n\n.float-red{ \n    bottom:120px; \n    background: red;\n }\n .float-red:hover{ \n    background: black;\n    color:white;\n    transition: 0.3s ease-in all; \n  }\n  .float-green{ \n\n    background:green;\n }\n  .float-green:hover{ \n    background:black;\n    color:white;\n    transition: 0.3s ease-in all; \n }\n.round-float-button:focus{ \n    border-radius:50% !important;\n    border-color:green !important;\n    color:white !important;\n    outline:0;\n }\n.modal-ed-title{ \n    margin:10px;\n    margin-left:0; \n    border:solid 0px rgb(98,97,97);\n    font-size:2.5rem;\n    border-bottom-width: 2px;\n    padding:25px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n  \n\n\n }\n .modal-ed-title:focus{ \n    border:solid 0px rgb(98,97,97) !important;\n    border-bottom-width: 2px !important;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n    outline:0;\n\n  }\n\n  .modal-ed-body{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n\n  .modal-ed-body:focus{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n.modal-bottom{\n    bottom:0 !important;\n}\n.piece-title{ \n    border:solid 0px rgb(98,97,97);\n    border-bottom-width: 2px; \n    \n    margin:5px;\n    margin-bottom:15px;\n    border-bottom-right-radius: 30px;\n    padding:5px;\n    padding-right:20px;\n    left:90px; \n    display:inline-block;\n\n }\n .piece-body{ \n    min-height: 400px; \n    max-height: 400px;  \n    overflow-y:scroll;\n    width:100%; \n\n  }\n.modal-side-items{ \n    \n    padding:10px;  \n    text-align: center; \n    border: solid 0px white;\n    /*border-bottom-width:1px;    */\n\n }\n     /*.modal-body:hover{ \n         background: rgb(207, 225, 241); \n         transition: 0.3s ease-in; \n         cursor: pointer;\n      }*/\n .modal-s-i-c{\n        /*modal-side-item-correction*/\n    font-size: 2.2rem;\n    color:white;\n   \n }\n .modal-s-i-c:hover{\n    color:white;\n    text-decoration: none;\n\n }\n .modal-s-i-c:focus{ \n    color:white;\n  }\n\n  .modal-s-i-c:active{ \n        color: rgb(63, 158, 247);\n   }\n.multiple-m-pages-btn{\n     padding:10px;  \n     text-align: center; \n     border: solid 0px white;\n}\n\n.multiple-m-pages-btn:hover{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n    }\n    .modal-side-items:hover{ \n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n\n}\n.modal-height{\n    min-height:500px;\n    overflow-y:scroll;\n    padding-top:0;\n    padding-right:0px !important;\n}\n\n.pic-modal-height{\n    min-height:620px;\n\n    padding-top:0;\n    padding-right:0 !important;\n    padding-left:64px;\n}\n\n.modal-side-bar{\n    /*padding-top:20px;   */\n    left:0;\n    position:fixed;\n    width:80px;\n    background: #272727;\n    height:100%;\n    margin-top:0;\n\n\n}\n.red{\n    background: crimson; \n    color:white;\n}\n.b-app-color{\n    border-color:royalblue;\n}\n.app-color{ \n    background:royalblue;\n        /*background: rgb(65, 85, 255) !important;*/\n    color:white !important;\n }\n.p-black-color{\n    background: #272727; \n    color:white !important;\n}\n.z-depth-1-half{\n    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n.z-depth-1{\n    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.z-depth-2{\n    -webkit-box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);\n    box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)\n}\n.z-depth-3{\n    -webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);\n    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)}\n.z-depth-4{\n    -webkit-box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21);\n    box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21)}\n.z-depth-5{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22)}\n    \n.my-depth-1 { \n    box-shadow: 0px 1px 2px gray;\n }\n .my-depth-half { \n    box-shadow: 0px 1px 1px gray;\n }\n .my-depth-half-b { \n    box-shadow: 0px 1px 1px black;\n }\n .my-depth-2 { \n    box-shadow: 0px 3px 3px gray;\n }\n .my-depth-4 { \n    box-shadow: 0px 4px 4px gray;\n }\n .my-active{ \n    background: #aceaf9;\n  }\n\n.snack-bar{\n    width:200px;\n    background: #148e0e;\n    color:white;\n    z-index:1;\n    position: fixed;\n    text-align: center;\n    padding:10px; \n    margin-left:35%;\n    margin-right:auto !important;\n    cursor:pointer;\n    bottom:0;\n    margin-bottom:10px;\n}\n.my-input{ \n    border: solid 0px gray;\n    border-bottom-width:3px; \n    border-bottom-color:rgb(98,97,97);\n    padding:20px;\n    margin-bottom:10px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    font-size: 2rem;\n    \n\n }\n .gist-coin-display{\n    margin-top: 5px;\n    padding: 5px;\n    background: mediumvioletred;\n    cursor:pointer;\n }\n .gist-coin-display:hover{\n    transform:scale(1.2);\n    box-shadow: 0 2px 2px gray;\n    transition:0.3s ease-in all;\n }\n.t-black{\n    color:black;\n}\n .my-input:focus{\n    border: solid 0px gray;\n    border-bottom-color:rgb(98,97,97);\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    border-bottom-width:3px; \n    padding:20px;\n    margin-bottom:10px;\n }\n.sides-padding{\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n}\n\n.my-txt-area{ \n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    font-size:1.6rem;\n    resize:none;\n }\n\n.my-txt-area:focus{\n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    resize:none;\n}\n.rounded{\n    border-top-right-radius: 50px; \n    border-bottom-right-radius: 50px; \n    border-top-left-radius: 50px; \n    border-bottom-left-radius: 50px;\n}\nbody{\n    color:rgb(117, 116, 116);   \n    background:white;\n    padding:0 !important;\n}\n.info-bg-color{\n    background: #66CCFF;\n}\n.gist-title{\n    padding:7px;\n}\n.padding-bit{\n    padding:5px;\n    margin:3px;\n}\n.solid-p-w{\n    /* solid-paper-weight */\n    box-shadow: 0px 1px 1px rgb(163, 161, 161);\n}\n.margin-climb-up{\n    margin-top: -20px;\n}\n.name-badge-n{\n    padding:10px; \n    background: #272727; \n    color:white; \n    margin-left:10px;\n    border-radius:10px;\n\n}\n.comment-box{\n    height:35px !important;\n    word-wrap:break-word;\n}\n.ease-in-slow{\n     transform:scale(1);\n     transition:0.2s ease-in all;\n}\n.cursor{\n    cursor:pointer;\n}\n.awesome-margin{\n    margin:5px;\n}\n.comment-item-title{\n    padding:5px; \n}\n.black-text{\n    color:black;\n}\n.comment-box-initial{\n    height: 1px;\n    position: absolute;\n    opacity:0;\n  \n}\n.comment-item-text{\n    background:whitesmoke; \n    padding:6px 15px; \n    display:inline-block;\n}\n.appear{\n    display:block;\n}\n.comment-box-entry{\n    position:absolute;\n    z-index:1;\n    opacity:1;\n    transition-delay:3s;\n    transition:0.5s ease-in-out;\n   \n}\n.paper-title-div{\n    background: whitesmoke;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n\n}\n.user-badge-comment{\n    outline: 0 !important;\n    background:#e6e5e5 !important;\n    border:solid 0px black !important;\n    box-shadow:4px 0 0 gray !important;\n}\n.user-badge:focus{\n    outline: 0 !important;\n    border:solid 0px black !important;\n}\n.triangle{\n    border:solid 15px navajowhite;\n    width:30px;\n    border-left-color:transparent;\n    border-right-color:transparent;\n\n    border-top-color:transparent;\n    background:transparent;\n\n}\n.p-text-view{\n    background:antiquewhite;\n    color:black;\n     transform:scale(1.3);\n     overflow-y:scroll !important;\n     transition:0.2s ease-in all;\n     padding:30px !important;\n     max-height:400px !important; \n     box-shadow:0 2px 2px gray;\n     \n}\n.gist-paper-body-text:hover{\n    background:whitesmoke; \n    transition:0.5s ease-in all;\n    cursor:pointer; \n}\n.semi-footer{\n    background: antiquewhite;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n}\n.paper-panel:hover{\n    box-shadow:0 6px 6px gray;\n    z-index:1;\n    transition:0.3s ease-in all;\n    cursor:pointer;\n}\n.name-badge-n:hover{\n    transform: rotateY(20deg);\n    transition: 0.5s ease-in all;\n}\n.name-badge{\n    padding:10px; \n    background:black; \n    color:white;\n    margin-left:-20px;\n}\n.gist-img{\n    height:400px; \n    width:100%; \n    object-fit: cover !important; \n    margin:0;\n}\n.action-btn-act-liked{\n  color:crimson !important;\n}\n.action-btn-act-liked:hover{\n  cursor:pointer; \n  color:black;\n  transition:0.2s ease-in; \n}\n.action-btn {\n    color: rgb(107, 106, 106); \n    margin:5px;\n    text-decoration: none !important;\n}\n.action-btn:active{\n     \n    color:crimson; \n}\n\n.action-btn:hover{\n    cursor:pointer; \n    color:black;\n    \n    transition:0.2s ease-in; \n}\n.input-file{\n    font-size: 1em;\n    color: white;\n    background-color: black;\n    display: inline-block;\n    margin:10px;\n}\n.input-file:focus + label,\n.input-file + label:hover {\n    background-color: red;\n}\n.tab-back-color{\n    background: rgb(241, 240, 240) !important;\n}\n.tab-h-5{\n    height:500px;\n}\n.my-tab{\n    margin-top:70px;\n}\n.tab-text{\n    border-bottom-color:crimson;\n}\n.tab-upload{\n    border-bottom-color:green;\n}\n.tab-umb{\n    border:solid 2px #585858 !important; \n    border-bottom-width:0 !important;\n}\n.tab-option{\n    background: inherit; \n    color:rgb(107, 106, 106);\n    text-align:center; \n    padding:10px 0 !important; \n    margin:0 !important;\n    width:100%; \n    border:solid 0px black;\n    border-bottom-width:2px;\n    border-top-right-radius:10px; \n    border-top-left-radius: 10px;\n}\n.tab-option:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.2s ease-in all;\n}\n .tab-option:focus{ \n    border:solid 2px #585858 !important;\n    border-color: #585858 !important;\n    border-bottom-width:0 !important;\n    margin:0 !important;\n    outline:0;\n  }\n\n.font-small{\n    font-size:1rem; \n}\n.font-tiny{\n    font-size:0.8rem;\n}\n.font-small-ish{\n    font-size:1.3rem;\n}\n.font-medium{\n    font-size:1.7rem;\n}\n.font-big{\n    font-size:2rem;\n}\n.margin-10{\n    margin:15px 6px;\n}\n.page-margin{\n    margin:30px;\n}\n.angel{\n    color:white !important;\n}\n.my-card-footer{\n    margin-top:0px; \n    padding:10px;\n    /*background:rgb(63, 158, 247);   */\n    background:#272727;\n    /*border:solid 2px rgb(63, 158, 247); */ \n    border:solid 2px #272727;\n    border-top-width:0px;\n}\n.my-card > p{\n    margin:2px;\n    padding:2px;   \n}\n\n.side-li{\n    padding:10px; \n    color:white; \n    font-size:1.5rem;\n    text-align: left; \n    margin:0px 0px;\n}\n\n\n.side-active {\n    background: white; \n    color:black;\n\n}\n.side-li:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.title-flag{\n    padding:5px; \n    border:solid 0px #585858; \n    border-bottom-width:0px;\n    text-transform:uppercase;\n    \n}\n.side-ul{\n    list-style-type: none; \n    padding:0px; \n    margin:0px;\n\n\n}\n.s-vanish{\n        /*stylish vanish*/\n    opacity:0;\n    transition:0.5s ease-out all;\n    display:none;\n}\n.vanish{\n    display: none;\n\n   \n   \n}\n.my-thumbnail{\n  \n    overflow-y:'scroll';\n    background:white; \n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;\n    font-size:1.5rem;\n    \n}\n.pic-trans{\n    opacity:1;\n    transition: 0.5s ease-in all;\n}\n.my-pic-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    /*padding:20px;            */\n    font-size:1.5rem;\n    cursor:pointer;\n    \n    \n}\n\n.shots-img:hover{\n    transform:scale(1.1);\n}\n.my-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;        \n    font-size:1.5rem;\n    \n    \n}\n.my-card:hover{\n    background:#585858; \n    color:white; \n    transition:0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.my-checkbox-label{\n     margin:10px; \n     margin-left:3px;\n    font-size:1.2rem;\n    cursor:pointer;\n}\n.my-checkbox{\n    margin:10px; \n    font-size:1.2rem;\n    cursor:pointer;\n}\n.side-nav-container{\n    left:0; \n    top:0;\n    z-index:1;\n    position:fixed;\n    height:100%; \n    width:200px; \n    background:rgb(8, 8, 8);\n    color:white;\n    \n}\n.side-nav-profile-box{\n    padding:15px; \n    margin:0px; \n    background:rgb(63, 158, 247); \n    border:solid px rgb(5, 53, 68); \n    border-bottom-width:3px; \n    height:170px;\n\n}\n\n.big-profile-pic {\n    margin-top:20px;\n    height:250px; \n    width:250px; \n    border-radius:100%;\n    border:solid 4px rgb(233, 229, 229);\n     box-shadow: 0px 2px 2px black;\n    object-fit: cover !important;\n\n}\n.side-profile-pic{\n  \n    height:110px; \n    width:110px; \n    border:solid 4px rgb(233, 229, 229); \n    box-shadow: 0px 2px 2px black;\n    border-radius:100%; \n    \n}", ""]);
+exports.push([module.i, "\n\n.pdf-profile-name{\n  color:black !important; \n  font-weight: 400;\n}\n.pdf-profile-name:hover{\n  color:rgb(0, 140, 255) !important; \n  transition: .2s ease-in;\n}\n.remove-trick{\n  transform: rotateX(70deg); \n  transition: .4s ease-in;\n}\n.pdf-card-title{\n  font-weight:600;\n  font-size:1.6rem;\n  color:black;\n}\n.pdf-page-card{\n  padding:20px;\n  background:whitesmoke; \n\n  margin-top:5px;\n \n}\n\n.pdf-page-card:hover{\n  background:burlywood; \n  transition: .4s ease-in-out all;\n  border:burlywood;\n   box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n\n.pdf-page-card:focus{\n  background:green ; \n  color:white;\n}\n.view-thumbnail{\n  cursor:pointer; \n  background: antiquewhite;\n}\n.similar{\n  cursor:pointer;\n  padding:30px;min-height:200px;max-height:200px;overflow:hidden; background:#282828;border:solid 1px black; border-top-width:3px;\n}\n.similar:hover{\n  transform: translateY(-10px);\n  transition:.5s ease-in-out;\n}\n.view-thumbnail:hover{\n  cursor:pointer; \n  background:whitesmoke; \n  color:black;\n  transition: .3s ease-in-out all; \n}\n.v-c-b{\n  cursor:pointer; \n  color:black !important;\n}\n.v-c-b:hover{\n  transform: scale(1.1);\n  background:white !important;\n  transition: .5s ease-in-out all;\n}\n.grab-button{\n  border-width: 0px; \n  background:floralwhite !important;\n}\n.grab-button:hover{\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n  transition: .3s ease-in-out all;\n  border-width: 2px;\n  border-color:white;\n  -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.grab-button:focus{\n  outline:0 !important; \n  border-width: 2px;\n  border-color:white !important;\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n\n}\n.margin-right-5{\n  margin-right: 5px;\n}\n.envelope-correction{\n  margin:7px;\n}\n.results-pad{\n\n  border-top-right-radius: 0px; \n  border-top-left-radius: 0px; \n  border-top-width: 5px; \n  border-top-color: black; \n  background: floralwhite;\n  margin-left:-13px;\n}\n\n.upload-button-design{\n  background:rgb(255, 169, 8) !important; \n  color:black!important;\n  border-color:rgb(255, 169, 8) !important; \n}\n.upload-button-design:hover{\n  background:#202020 !important; \n  color:white !important;\n  border-color:#202020 !important; \n  transition: .3s ease-in-out all;\n}\n.nav-icon{\n    cursor:pointer;\n}\n.nav-icon:hover{\n    transform:scale(1.3);\n    color:yellowgreen;\n    transition:0.3s ease-in all;\n\n}\n\n.pic-modal-envelope{\n  margin-left: -23px; \n  width:800px;\n}\n.QB{\n    font-size:3rem;\n    color:white !important; \n}\n\n.tint-focus{\n    position:relative; \n    cursor:pointer;\n    animation: jump infinite 0.5s linear;\n\n}\n.confidence-level{\n    margin-top:-10px !important;\n    cursor:pointer;\n    font-size:1.8rem;\n    padding:10px;\n    color:limegreen;\n\n}\n\n.tint-focus:hover{\n    transform: scale(2);\n}\n@keyframes jump{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n        transfrom:translateY(-5px);\n    }\n    100%{\n        transform:translateY(0px);\n    }\n}\n.rating-belt{\n    height: 70px;\n    position: absolute;\n    width: 100%;\n    margin-left: -15px;\n    margin-top: -70px;\n    border-color: #272727;\n\n}\n.QB-tint{\n    color:white; \n    font-size:1.7rem;\n    text-shadow: 0 2px 2px dimgrey;\n\n}\n.nav-bar-stick{\n    position:fixed; \n    top:0; \n    width:100%; \n    z-index:1;\n}\n.z-text-depth-1{\n    text-shadow: 0 2px 2px dimgrey;\n}\n.QB-Brand{\n    height:100px !important; \n    width:100px !important;\n    object-fit:cover;\n    object-position: center center;\n}\n.phone-textbox-design{\n    border: solid 0px #C8C8C8; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray; \n    border-radius:0;\n    margin:10px;\n}\n.phone-textbox-design:focus{\n    border: solid 0px #6c757d; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray !important; \n    border-radius:0;\n    outline:0;\n}\n.m-right-bit{\n    margin-right:6px;\n}\n\n.c-m-height{\n    max-height:250px !important;\n}\n.f-d-card{\n    background:\"white\";\n    padding:30px !important; \n    min-height:250px;\n    max-height:350px; \n    background:white;\n}\n.corner-10{\n    margin:2px 2px !important; \n    border-radius:3px;\n}\n.extra-img-div{\n    margin-bottom:10px;\n}\n.p-space-1{\n    margin:5px 7px;\n}\n.inside-popover{\n    margin:10px; \n    padding:10px;\n    text-align:center;\n}\n.file-check{\n    padding:10px;\n}\n.anoda{\n    animation-name:fa-spin;\n    animation-duration: infinite;\n}\n\n.modal-pic-div-image{\n  background-position: center center; \n  background-size: auto 100%; \n  opacity: 1; \n  background-repeat: no-repeat !important; \n  transition: .5s ease-in-out;\n}\n.pic-piece-image{\n    width:100% !important;\n    min-height:620px !important;\n    overflow-y:hidden;\n    cursor:pointer;\n    border-radius:0px;\n    \n}\n.pic-piece-image:hover{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    transition: 0.2s ease-in all;\n}\n.spinner-logo {\n  animation: spinner-logo-spin infinite .5s linear;\n  height: 80px;\n}\n@keyframes spinner-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n\n\n.font-red{\n    color:red;\n}\n.font-blue{\n    background: rgb(63, 158, 247) !important;\n}\n.number-font{\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.p-r-fix{\n        /*pull-right-fx*/\n    margin:5px;\n}\n\n.i-p-overlay{\n    background:black; \n    opacity:0.5; \n    height:200px;\n    z-index: 1;\n}\n\n.zero-border{\n    border:solid 0px black !important;\n}\n.btn-undefault:focus{\n    outline:0; \n    border: solid 0px black !important;\n}\n\n.p-activate-section{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n.p-activate-section-green{\n    /*paper - activate -section*/\n    background:green !important;\n    color:white !important;\n}\n.p-activate-section-blue{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n\n.d-tab{\n    font-weight: 500;\n    padding:8px 15px; \n     background:inherit; \n    margin:0;\n    cursor:pointer;\n    height:100%;\n    overflow-x:hidden;\n}\n\n.d-tab:hover{\n    background:orange;\n    color:black;\n    transition:0.3s ease-in all;\n}\n\n\n\n.margin-5{\n    margin:5px;\n}\n.centerness{\n    padding:120px 30px;\n}\n.relative{\n    position: relative;\n}\n.input-file-textbox{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n    margin-bottom:6px;\n}\n\n.input-file-textbox:focus{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n}\n.zero-radius{\n    border-radius:0px;\n}\n.multiple-side-active{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.m-side-active{\n        /*modal side option active*/\n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.search-box{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n}\n.search-box:focus{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n\n}\n.round-float-button{\n    float:right;\n    z-index:1;\n    position:fixed;\n    right:50px;\n    font-size:1.5rem;\n    position: fixed;\n    bottom:70px;\n    border-radius:50%;\n    padding:10px 16px; \n    color:white;\n}\n\n.float-red{ \n    bottom:120px; \n    background: red;\n }\n .float-red:hover{ \n    background: black;\n    color:white;\n    transition: 0.3s ease-in all; \n  }\n  .float-green{ \n\n    background:green;\n }\n  .float-green:hover{ \n    background:black;\n    color:white;\n    transition: 0.3s ease-in all; \n }\n.round-float-button:focus{ \n    border-radius:50% !important;\n    border-color:green !important;\n    color:white !important;\n    outline:0;\n }\n.modal-ed-title{ \n    margin:10px;\n    margin-left:0; \n    border:solid 0px rgb(98,97,97);\n    font-size:2.5rem;\n    border-bottom-width: 2px;\n    padding:25px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n  \n\n\n }\n .modal-ed-title:focus{ \n    border:solid 0px rgb(98,97,97) !important;\n    border-bottom-width: 2px !important;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n    outline:0;\n\n  }\n\n  .modal-ed-body{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n\n  .modal-ed-body:focus{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n.modal-bottom{\n    bottom:0 !important;\n}\n.piece-title{ \n    border:solid 0px rgb(98,97,97);\n    border-bottom-width: 2px; \n    \n    margin:5px;\n    margin-bottom:15px;\n    border-bottom-right-radius: 30px;\n    padding:5px;\n    padding-right:20px;\n    left:90px; \n    display:inline-block;\n\n }\n .piece-body{ \n    min-height: 400px; \n    max-height: 400px;  \n    overflow-y:scroll;\n    width:100%; \n\n  }\n.modal-side-items{ \n    \n    padding:10px;  \n    text-align: center; \n    border: solid 0px white;\n    /*border-bottom-width:1px;    */\n\n }\n     /*.modal-body:hover{ \n         background: rgb(207, 225, 241); \n         transition: 0.3s ease-in; \n         cursor: pointer;\n      }*/\n .modal-s-i-c{\n        /*modal-side-item-correction*/\n    font-size: 2.2rem;\n    color:white;\n   \n }\n .modal-s-i-c:hover{\n    color:white;\n    text-decoration: none;\n\n }\n .modal-s-i-c:focus{ \n    color:white;\n  }\n\n  .modal-s-i-c:active{ \n        color: rgb(63, 158, 247);\n   }\n.multiple-m-pages-btn{\n     padding:10px;  \n     text-align: center; \n     border: solid 0px white;\n}\n\n.multiple-m-pages-btn:hover{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n    }\n    .modal-side-items:hover{ \n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n\n}\n.modal-height{\n    min-height:500px;\n    overflow-y:scroll;\n    padding-top:0;\n    padding-right:0px !important;\n}\n\n.pic-modal-height{\n    min-height:620px;\n\n    padding-top:0;\n    padding-right:0 !important;\n    padding-left:64px;\n}\n\n.modal-side-bar{\n    /*padding-top:20px;   */\n    left:0;\n    position:fixed;\n    width:80px;\n    background: #272727;\n    height:100%;\n    margin-top:0;\n\n\n}\n.red{\n    background: crimson; \n    color:white;\n}\n.b-app-color{\n    border-color:royalblue;\n}\n.app-color{ \n    background:royalblue;\n        /*background: rgb(65, 85, 255) !important;*/\n    color:white !important;\n }\n.p-black-color{\n    background: #272727; \n    color:white !important;\n}\n.z-depth-1-half{\n    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n.z-depth-1{\n    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.z-depth-2{\n    -webkit-box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);\n    box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)\n}\n.z-depth-3{\n    -webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);\n    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)}\n.z-depth-4{\n    -webkit-box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21);\n    box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21)}\n.z-depth-5{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22)}\n    \n.my-depth-1 { \n    box-shadow: 0px 1px 2px gray;\n }\n .my-depth-half { \n    box-shadow: 0px 1px 1px gray;\n }\n .my-depth-half-b { \n    box-shadow: 0px 1px 1px black;\n }\n .my-depth-2 { \n    box-shadow: 0px 3px 3px gray;\n }\n .my-depth-4 { \n    box-shadow: 0px 4px 4px gray;\n }\n .my-active{ \n    background: #aceaf9;\n  }\n\n.snack-bar{\n    width:200px;\n    background: #148e0e;\n    color:white;\n    z-index:1;\n    position: fixed;\n    text-align: center;\n    padding:10px; \n    margin-left:35%;\n    margin-right:auto !important;\n    cursor:pointer;\n    bottom:0;\n    margin-bottom:10px;\n}\n.my-input{ \n    border: solid 0px gray;\n    border-bottom-width:3px; \n    border-bottom-color:rgb(98,97,97);\n    padding:20px;\n    margin-bottom:10px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    font-size: 2rem;\n    \n\n }\n .gist-coin-display{\n    margin-top: 5px;\n    padding: 5px;\n    background: mediumvioletred;\n    cursor:pointer;\n }\n .gist-coin-display:hover{\n    transform:scale(1.2);\n    box-shadow: 0 2px 2px gray;\n    transition:0.3s ease-in all;\n }\n.t-black{\n    color:black;\n}\n .my-input:focus{\n    border: solid 0px gray;\n    border-bottom-color:rgb(98,97,97);\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    border-bottom-width:3px; \n    padding:20px;\n    margin-bottom:10px;\n }\n.sides-padding{\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n}\n\n.my-txt-area{ \n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    font-size:1.6rem;\n    resize:none;\n }\n\n.my-txt-area:focus{\n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    resize:none;\n}\n.rounded{\n    border-top-right-radius: 50px; \n    border-bottom-right-radius: 50px; \n    border-top-left-radius: 50px; \n    border-bottom-left-radius: 50px;\n}\nbody{\n    color:rgb(117, 116, 116);   \n    background:white;\n    padding:0 !important;\n}\n.info-bg-color{\n    background: #66CCFF;\n}\n.gist-title{\n    padding:7px;\n}\n.padding-bit{\n    padding:5px;\n    margin:3px;\n}\n.solid-p-w{\n    /* solid-paper-weight */\n    box-shadow: 0px 1px 1px rgb(163, 161, 161);\n}\n.margin-climb-up{\n    margin-top: -20px;\n}\n.name-badge-n{\n    padding:10px; \n    background: #272727; \n    color:white; \n    margin-left:10px;\n    border-radius:10px;\n\n}\n.comment-box{\n    height:35px !important;\n    word-wrap:break-word;\n}\n.ease-in-slow{\n     transform:scale(1);\n     transition:0.2s ease-in all;\n}\n.cursor{\n    cursor:pointer;\n}\n.awesome-margin{\n    margin:5px;\n}\n.comment-item-title{\n    padding:5px; \n}\n.black-text{\n    color:black;\n}\n.comment-box-initial{\n    height: 1px;\n    position: absolute;\n    opacity:0;\n  \n}\n.comment-item-text{\n    background:whitesmoke; \n    padding:6px 15px; \n    display:inline-block;\n}\n.appear{\n    display:block;\n}\n.comment-box-entry{\n    position:absolute;\n    z-index:1;\n    opacity:1;\n    transition-delay:3s;\n    transition:0.5s ease-in-out;\n   \n}\n.paper-title-div{\n    background: whitesmoke;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n\n}\n.user-badge-comment{\n    outline: 0 !important;\n    background:#e6e5e5 !important;\n    border:solid 0px black !important;\n    box-shadow:4px 0 0 gray !important;\n}\n.user-badge:focus{\n    outline: 0 !important;\n    border:solid 0px black !important;\n}\n.triangle{\n    border:solid 15px navajowhite;\n    width:30px;\n    border-left-color:transparent;\n    border-right-color:transparent;\n\n    border-top-color:transparent;\n    background:transparent;\n\n}\n.p-text-view{\n    background:antiquewhite;\n    color:black;\n     transform:scale(1.3);\n     overflow-y:scroll !important;\n     transition:0.2s ease-in all;\n     padding:30px !important;\n     max-height:400px !important; \n     box-shadow:0 2px 2px gray;\n     \n}\n.gist-paper-body-text:hover{\n    background:whitesmoke; \n    transition:0.5s ease-in all;\n    cursor:pointer; \n}\n.semi-footer{\n    background: antiquewhite;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n}\n.paper-panel:hover{\n    box-shadow:0 6px 6px gray;\n    z-index:1;\n    transition:0.3s ease-in all;\n    cursor:pointer;\n}\n.name-badge-n:hover{\n    transform: rotateY(20deg);\n    transition: 0.5s ease-in all;\n}\n.name-badge{\n    padding:10px; \n    background:black; \n    color:white;\n    margin-left:-20px;\n}\n.gist-img{\n    height:400px; \n    width:100%; \n    object-fit: cover !important; \n    margin:0;\n}\n.action-btn-act-liked{\n  color:crimson !important;\n}\n.action-btn-act-liked:hover{\n  cursor:pointer; \n  color:black;\n  transition:0.2s ease-in; \n}\n.action-btn {\n    color: rgb(107, 106, 106); \n    margin:5px;\n    text-decoration: none !important;\n}\n.action-btn:active{\n     \n    color:crimson; \n}\n\n.action-btn:hover{\n    cursor:pointer; \n    color:black;\n    \n    transition:0.2s ease-in; \n}\n.input-file{\n    font-size: 1em;\n    color: white;\n    background-color: black;\n    display: inline-block;\n    margin:10px;\n}\n.input-file:focus + label,\n.input-file + label:hover {\n    background-color: red;\n}\n.tab-back-color{\n    background: rgb(241, 240, 240) !important;\n}\n.tab-h-5{\n    height:500px;\n}\n.my-tab{\n    margin-top:70px;\n}\n.tab-text{\n    border-bottom-color:crimson;\n}\n.tab-upload{\n    border-bottom-color:green;\n}\n.tab-umb{\n    border:solid 2px #585858 !important; \n    border-bottom-width:0 !important;\n}\n.tab-option{\n    background: inherit; \n    color:rgb(107, 106, 106);\n    text-align:center; \n    padding:10px 0 !important; \n    margin:0 !important;\n    width:100%; \n    border:solid 0px black;\n    border-bottom-width:2px;\n    border-top-right-radius:10px; \n    border-top-left-radius: 10px;\n}\n.tab-option:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.2s ease-in all;\n}\n .tab-option:focus{ \n    border:solid 2px #585858 !important;\n    border-color: #585858 !important;\n    border-bottom-width:0 !important;\n    margin:0 !important;\n    outline:0;\n  }\n\n.font-small{\n    font-size:1rem; \n}\n.font-tiny{\n    font-size:0.8rem;\n}\n.font-small-ish{\n    font-size:1.3rem;\n}\n.font-medium{\n    font-size:1.7rem;\n}\n.font-big{\n    font-size:2rem;\n}\n.margin-10{\n    margin:15px 6px;\n}\n.page-margin{\n    margin:30px;\n}\n.angel{\n    color:white !important;\n}\n.my-card-footer{\n    margin-top:0px; \n    padding:10px;\n    /*background:rgb(63, 158, 247);   */\n    background:#272727;\n    /*border:solid 2px rgb(63, 158, 247); */ \n    border:solid 2px #272727;\n    border-top-width:0px;\n}\n.my-card > p{\n    margin:2px;\n    padding:2px;   \n}\n\n.side-li{\n    padding:10px; \n    color:white; \n    font-size:1.5rem;\n    text-align: left; \n    margin:0px 0px;\n}\n\n\n.side-active {\n    background: white; \n    color:black;\n\n}\n.side-li:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.title-flag{\n    padding:5px; \n    border:solid 0px #585858; \n    border-bottom-width:0px;\n    text-transform:uppercase;\n    \n}\n.side-ul{\n    list-style-type: none; \n    padding:0px; \n    margin:0px;\n\n\n}\n.s-vanish{\n        /*stylish vanish*/\n    opacity:0;\n    transition:0.5s ease-out all;\n    display:none;\n}\n.vanish{\n    display: none;\n\n   \n   \n}\n.my-thumbnail{\n  \n    overflow-y:'scroll';\n    background:white; \n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;\n    font-size:1.5rem;\n    \n}\n.pic-trans{\n    opacity:1;\n    transition: 0.5s ease-in all;\n}\n.my-pic-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    /*padding:20px;            */\n    font-size:1.5rem;\n    cursor:pointer;\n    \n    \n}\n\n.shots-img:hover{\n    transform:scale(1.1);\n}\n.my-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;        \n    font-size:1.5rem;\n    \n    \n}\n.my-card:hover{\n    background:#585858; \n    color:white; \n    transition:0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.my-checkbox-label{\n     margin:10px; \n     margin-left:3px;\n    font-size:1.2rem;\n    cursor:pointer;\n}\n.my-checkbox{\n    margin:10px; \n    font-size:1.2rem;\n    cursor:pointer;\n}\n.side-nav-container{\n    left:0; \n    top:0;\n    z-index:1;\n    position:fixed;\n    height:100%; \n    width:200px; \n    background:rgb(8, 8, 8);\n    color:white;\n    \n}\n.side-nav-profile-box{\n    padding:15px; \n    margin:0px; \n    background:rgb(63, 158, 247); \n    border:solid px rgb(5, 53, 68); \n    border-bottom-width:3px; \n    height:170px;\n\n}\n\n.big-profile-pic {\n    margin-top:20px;\n    height:250px; \n    width:250px; \n    border-radius:100%;\n    border:solid 4px rgb(233, 229, 229);\n     box-shadow: 0px 2px 2px black;\n    object-fit: cover !important;\n\n}\n.side-profile-pic{\n  \n    height:110px; \n    width:110px; \n    border:solid 4px rgb(233, 229, 229); \n    box-shadow: 0px 2px 2px black;\n    border-radius:100%; \n    \n}", ""]);
 
 // exports
 
@@ -57984,6 +58105,9 @@ var SideNav = function (_Component) {
     }, {
       fa: 'fa-plus',
       name: 'create-page'
+    }, {
+      fa: 'fa-file-pdf-o',
+      name: 'pdfs'
     }];
     _this.logout = _this.logout.bind(_this);
     return _this;
@@ -58017,7 +58141,8 @@ var SideNav = function (_Component) {
       return this.menuItems.map(function (option, index) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'li',
-          { className: option.name === 'dashboard' ? ' side-li side-active ' : 'side-li ', id: option.name + '-button', onClick: function onClick() {
+          { className: option.name === 'dashboard' ? ' side-li side-active ' : 'side-li ', id: option.name + '-button',
+            onClick: function onClick() {
               _this2.switchPage(option.name);
             }, key: index },
           ' ',
@@ -58083,14 +58208,39 @@ var SideNav = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
+            { style: { background: '#282828', padding: 7, color: 'orange' } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'center',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'h5',
+                { className: 'number-font' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'small',
+                  { style: { color: 'cyan' } },
+                  this.props.user !== null ? this.props.user.course : '',
+                  ' '
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-arrow-up', style: { color: 'lime' } }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'b',
+                  null,
+                  ' ',
+                  this.props.userRelations !== null ? this.props.userRelations.reputation.points : ''
+                )
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'ul',
               { className: 'side-ul' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'li',
-                { className: ' side-li' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-bell ', style: { color: 'lime' } }),
+                { className: 'side-li' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-bell', style: { color: 'lime' } }),
                 ' notification ',
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'i',
@@ -58829,14 +58979,6 @@ var Dashboard = function (_Component) {
                     }, id: 'picture-section-btn', className: ' d-tab zero-border btn-undefault' },
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-camera' }),
                   ' Shots'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'button',
-                  { onClick: function onClick() {
-                      _this5.tabClick('pdf-section');
-                    }, id: 'pdf-section-btn', className: ' d-tab zero-border btn-undefault' },
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-file-pdf-o' }),
-                  ' PDF'
                 )
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -58876,19 +59018,6 @@ var Dashboard = function (_Component) {
                             'ul',
                             { style: { listStyleType: 'none', padding: 0 } },
                             this.props.picPieces === null ? '' : this.spillPicPieces()
-                          )
-                        )
-                      ),
-                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { id: 'pdf-section', className: 'vanish' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                          'center',
-                          null,
-                          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'h1',
-                            null,
-                            'ADEY HERE TOOO '
                           )
                         )
                       )
@@ -60328,7 +60457,7 @@ var SearchBox = function (_Component) {
     }
   }, {
     key: 'indResultDisplay',
-    value: function indResultDisplay(title, creatorName, likeCount, commentCount, id, type, parent) {
+    value: function indResultDisplay(title, creatorName, likeCount, commentCount, id, type, parent, pdf_link) {
       var grabButton = document.createElement('button');
       var faGrab = document.createElement('i');
       var link = document.createElement('a');
@@ -60342,8 +60471,7 @@ var SearchBox = function (_Component) {
       var userSmall = document.createElement('small');
       var cameraSmall = document.createElement('small');
       var faCamera = document.createElement('i');
-      faCamera.className = "fa fa-camera";
-      cameraSmall.appendChild(faCamera);
+
       grabButton.className = "btn btn-default btn-sm pull-right grab-button";
       faGrab.className = "fa fa-hand-grab-o";
       grabButton.appendChild(faGrab);
@@ -60352,8 +60480,11 @@ var SearchBox = function (_Component) {
       if (type === "pic") {
         link.href = "/shot-view/J3zUZ9WoGvD3M3OcszZ8skHvoPputaKIShq9uPmW6ZqImU8iwby1xOdirul1wgGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/" + id;
         link.target = "_blank";
-      } else {
+      } else if (type === "paper") {
         link.href = "/paper-view/MBZyU9WoGvD3M3OcszZ8skHvoPputaKIhq9uPmW6ZqImU8iwby1xOdirul1w2gGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/" + id;
+        link.target = "_blank";
+      } else {
+        link.href = pdf_link;
         link.target = "_blank";
       }
       link.appendChild(para);
@@ -60364,6 +60495,13 @@ var SearchBox = function (_Component) {
       parent.appendChild(grabButton);
       parent.appendChild(userSmall);
       if (type === "pic") {
+        faCamera.className = "fa fa-camera";
+        cameraSmall.appendChild(faCamera);
+        parent.appendChild(cameraSmall);
+      }
+      if (type === "pdf") {
+        faCamera.className = "fa fa-file-pdf-o";
+        cameraSmall.appendChild(faCamera);
         parent.appendChild(cameraSmall);
       }
       parent.appendChild(link);
@@ -60397,10 +60535,13 @@ var SearchBox = function (_Component) {
       picEnvelope.id = "js-pic-envelope";
       picEnvelope.className = "clearfix";
       searchResults.papers.data.forEach(function (item) {
-        thisClass.indResultDisplay(item.title, item.user.name, 4, 5, item.id, "paper", envelope);
+        thisClass.indResultDisplay(item.title, item.user.name, 4, 5, item.id, "paper", envelope, null);
+      });
+      searchResults.pdfs.data.forEach(function (item) {
+        thisClass.indResultDisplay(item.title, item.user.name, 4, 5, item.id, "pdf", envelope, item.pdf_link);
       });
       searchResults.pics.data.forEach(function (item) {
-        thisClass.indResultDisplay(item.description, item.user.name, 5, 4, item.id, "pic", picEnvelope);
+        thisClass.indResultDisplay(item.description, item.user.name, 5, 4, item.id, "pic", picEnvelope, null);
       });
       document.getElementById('js-paper-results-container').appendChild(envelope);
       document.getElementById('js-pic-results-container').appendChild(picEnvelope);
@@ -61040,18 +61181,18 @@ var Profile = function (_Component) {
                     ' Plubishes '
                   ),
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'a',
-                    { className: 'btn btn-primary p-r-fix zero-radius' },
+                    'button',
+                    { className: 'btn btn-primary z-depth-1 p-r-fix' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-facebook' })
                   ),
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'a',
-                    { className: 'btn btn-info p-r-fix zero-radius' },
+                    'button',
+                    { className: 'btn btn-default z-depth-1 p-r-fix' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-linkedin' })
                   ),
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'a',
-                    { className: 'btn btn-success p-r-fix zero-radius' },
+                    'button',
+                    { className: 'btn btn-success z-depth-1 p-r-fix' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-whatsapp' })
                   )
                 ),
@@ -61341,7 +61482,6 @@ var MakeNew = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log("I am in make::: ", this.props.allCourses);
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'page-margin', style: { marginLeft: 0 } },
@@ -61888,11 +62028,38 @@ var Gist = function (_Component) {
   }
 
   _createClass(Gist, [{
+    key: "goPDFNews",
+    value: function goPDFNews() {
+      //fade out the news/gist page, and get the value stored in the currentpage box and then fade to that page! 
+      $('#gist').fadeOut(500);
+      $('#nav-bar').fadeOut(500);
+      setTimeout(function () {
+        // let curr = $('#current-page-box').val();
+        $('#gist-button').removeClass('side-active');
+        $('#pdfs-button').addClass('side-active');
+        $('#pdfs').fadeIn(200);
+        $('.side-nav').fadeIn(200);
+        $('#current-page-box').val("pdfs");
+        //$('#'+curr).css({marginLeft:50});
+      }, 600);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         { className: "page-margin", style: { marginTop: 80 } },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border",
+            onClick: function onClick() {
+              _this2.goPDFNews();
+            },
+            style: { background: "crimson", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 100, right: 0 } },
+          "PDF Gist"
+        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
           { className: "container" },
@@ -61940,10 +62107,11 @@ var Gist = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__News_Set__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__GistImageCard__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__GistPaperCard__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__plugins_UniversalComment__ = __webpack_require__(286);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_react_redux__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_redux__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__imports_actions__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UniversalComment__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__UniversalDelete__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_redux__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_redux__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__imports_actions__ = __webpack_require__(62);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -61953,6 +62121,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -61980,19 +62149,36 @@ var NewsContainer = function (_Component) {
     _this.create = _this.create.bind(_this);
     _this.createTitle = _this.createTitle.bind(_this);
     _this.clearTitle = _this.clearTitle.bind(_this);
+    _this.insertDelDetails = _this.insertDelDetails.bind(_this);
     _this.state = {
       news: null,
       badgeNumber: 0,
-      next_page_url: '/me/get-news/'
+      next_page_url: '/me/get-news/',
+      currentPieceCommentsViewed: null,
+      deleteDetails: {
+        title: null,
+        itemID: null,
+        type: null
+      }
     };
     return _this;
   }
 
   _createClass(NewsContainer, [{
+    key: 'insertDelDetails',
+    value: function insertDelDetails(title, itemID, type) {
+      console.log("dfsdfsdf", title);
+      console.log("aaaa", itemID);
+      console.log("mmsdjf", type);
+
+      this.setState({ deleteDetails: { title: title, itemID: itemID, type: type } });
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.getNews(0, this.props.allNews);
       this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) });
+      this.spinnerTrick();
     }
   }, {
     key: 'ejectPictures',
@@ -62030,12 +62216,14 @@ var NewsContainer = function (_Component) {
       var thisClass = this;
       if (this.props.allNews.active !== false) {
         return this.props.allNews.texts.map(function (item, index) {
+          var _React$createElement2;
+
           var num = Math.round(Math.random(1000000) * 100000000000);
           var loopIndex = "news-text-" + num.toString();
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
             { key: loopIndex },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__GistPaperCard__["a" /* default */], _defineProperty({
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__GistPaperCard__["a" /* default */], (_React$createElement2 = {
               type: item.type,
               details: { bcolor: 'black', owner: item.user },
               id: item.id,
@@ -62053,7 +62241,7 @@ var NewsContainer = function (_Component) {
               school: item.user.school,
               newLikeFunction: thisClass.props.newLikeFunction,
               allNews: thisClass.props.allNews
-            }, 'school', item.user.school))
+            }, _defineProperty(_React$createElement2, 'school', item.user.school), _defineProperty(_React$createElement2, 'insertDetailsFunction', thisClass.insertDelDetails), _React$createElement2))
           );
         });
       }
@@ -62091,21 +62279,52 @@ var NewsContainer = function (_Component) {
       document.getElementById('js-comment-button') !== null ? document.getElementById('js-comment-button').remove() : '';
     }
   }, {
+    key: 'backEndDelComment',
+    value: function backEndDelComment(id) {
+      $.ajax({ method: 'get', url: '/delete-comment/' + id }).done(function () {});
+    }
+  }, {
+    key: 'removeCommentItem',
+    value: function removeCommentItem(id) {
+      $("#" + id).fadeOut();
+    }
+  }, {
     key: 'createIndCommentDisplays',
-    value: function createIndCommentDisplays(user, body, parent) {
+    value: function createIndCommentDisplays(user, body, parent, userID, commentID) {
+      var thisClass = this;
+      var hook = Math.round(Math.random() * 1000).toString() + '-hook';
       var commentItem = document.createElement('div');
       commentItem.className = "js-comment-item";
       var commentItemText = document.createElement('small');
-      commentItemText.className = "comment-item-text rounded";
+      commentItemText.className = "comment-item-text rounded cursor";
+      commentItemText.id = hook;
       commentItem.style.marginBottom = "10px";
       var commentTitle = document.createElement('small');
-      commentTitle.className = "comment-item-title black-text";
+      commentTitle.className = "comment-item-title black-text cursor";
       var bold = document.createElement('b');
+      if (userID === this.props.authenticatedUser.id) {
+        var delSm = document.createElement('small');
+        var delA = document.createElement('a');
+        delA.textContent = "delete";
+        delA.style.cursor = "pointer";
+        delA.addEventListener('click', function () {
+          thisClass.backEndDelComment(commentID);
+          thisClass.removeCommentItem(hook);
+          console.log("I am the hookd::::: ", hook);
+        });
+        delA.style.color = "crimson";
+        delSm.style.paddingLeft = "7px";
+
+        delSm.appendChild(delA);
+      }
       bold.textContent = user;
       commentTitle.appendChild(bold);
       var bodyText = document.createElement('p');
       bodyText.textContent = body;
       commentItemText.appendChild(commentTitle);
+      if (userID === this.props.authenticatedUser.id) {
+        commentItemText.appendChild(delSm);
+      }
       commentItemText.appendChild(bodyText);
       commentItem.appendChild(commentItemText);
       parent.appendChild(commentItem);
@@ -62123,17 +62342,15 @@ var NewsContainer = function (_Component) {
     key: 'createCommentComponents',
     value: function createCommentComponents(commentsArray, piece_title, pieceID, type) {
       var thisClass = this;
-      //if (this.props.currentPieceComments !==null){
       var commentContainer = document.createElement('div');
       commentContainer.id = "js-comment-container";
       commentsArray.forEach(function (comment) {
-        thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer);
+        thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer, comment.user.id, comment.id);
       });
       var footerButtonDiv = document.createElement('div');
       footerButtonDiv.className = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
       footerButtonDiv.id = "js-comment-button";
       var commentButton = document.createElement('button');
-
       commentButton.className = "user-badge-comment btn btn-default rounded pull-right";
       commentButton.style.padding = 7;
       commentButton.style.fontSize = "1.2rem";
@@ -62142,26 +62359,43 @@ var NewsContainer = function (_Component) {
       });
       commentButton.textContent = "@" + this.props.authenticatedUser.name;
       footerButtonDiv.appendChild(commentButton);
-      console.log("I am the  CommentContainer:::: ", commentContainer);
-      console.log("I am the footerdiv::: ", footerButtonDiv);
       document.getElementById('js-comment-modal-body').appendChild(commentContainer);
       document.getElementById('js-comment-board-footer').appendChild(footerButtonDiv);
-      //}
     }
   }, {
     key: 'create',
     value: function create(pieceID, type, pieceTitle) {
       var thisClass = this;
-      $('#js-comment-spinner').fadeIn(50);
-      this.cleanUp();
-      this.clearTitle();
-      $.ajax({ method: 'get', url: '/me/get-comments/' + pieceID + '/' + type }).done(function (response) {
-        setTimeout(function () {
+      if (pieceID !== this.state.currentPieceCommentsViewed) {
+        $('#js-comment-spinner').fadeIn(50);
+        this.cleanUp();
+        this.clearTitle();
+        $.ajax({ method: 'get', url: '/me/get-comments/' + pieceID + '/' + type }).done(function (response) {
           $('#js-comment-spinner').fadeOut();
-          thisClass.createTitle(pieceTitle);
-          thisClass.createCommentComponents(response, pieceTitle, pieceID, type);
-        }, 2000);
-      });
+          setTimeout(function () {
+            thisClass.createTitle(pieceTitle);
+            thisClass.createCommentComponents(response, pieceTitle, pieceID, type);
+          }, 1000);
+        });
+        this.setState({ currentPieceCommentsViewed: pieceID });
+      }
+    }
+  }, {
+    key: 'spinnerTrick',
+    value: function spinnerTrick() {
+      var thisClass = this;
+      setInterval(function () {
+        var old = $("#load-spinner").attr('data-old-news');
+        if (old !== thisClass.state.news) {
+          $("#load-spinner").fadeOut();
+        }
+      }, 200);
+    }
+  }, {
+    key: 'loadIndicator',
+    value: function loadIndicator() {
+      $("#load-spinner").fadeIn();
+      $("load-spinner").attr('data-old-news', this.state.news);
     }
   }, {
     key: 'render',
@@ -62172,16 +62406,6 @@ var NewsContainer = function (_Component) {
         'div',
         { id: 'app-news-container' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'button',
-          { className: 'btn btn-warning', 'data-target': '#universal-comment-board', 'data-toggle': 'modal',
-            onClick: function onClick() {
-              _this2.props.getNews(_this2.state.badgeNumber, _this2.props.allNews);
-              _this2.setState({ badgeNumber: Number(_this2.state.badgeNumber + 1) });
-            } },
-          'Next Data',
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-forward', style: { margin: 5 } })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'ul',
           { style: styles.ulFix },
           this.ejectTexts()
@@ -62191,13 +62415,27 @@ var NewsContainer = function (_Component) {
           { style: styles.ulFix },
           this.ejectPictures()
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'p',
-          null,
-          JSON.stringify(this.props.currentPieceComments)
-        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__plugins_UniversalComment__["a" /* default */], { comments: this.props.currentPieceComments })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'btn btn-default btn-block',
+            onClick: function onClick() {
+              _this2.props.getNews(_this2.state.badgeNumber, _this2.props.allNews);
+              _this2.setState({ badgeNumber: Number(_this2.state.badgeNumber + 1) });
+              _this2.loadIndicator();
+            } },
+          'Load More',
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fa fa-spinner fa-spin', style: { marginLeft: 5 }, id: 'load-spinner' })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'btn btn-danger', onClick: function onClick() {
+              console.log("I am the state of newsContainer: ", _this2.state);
+            } },
+          'modal'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__UniversalComment__["a" /* default */], { comments: this.props.currentPieceComments }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__UniversalDelete__["a" /* default */], { paperType: this.state.deleteDetails.type, title: this.state.deleteDetails.title, paperID: this.state.deleteDetails.itemID })
       );
     }
   }]);
@@ -62212,7 +62450,6 @@ var styles = {
     padding: 0
   }
 };
-
 function mapStateToProps(state) {
   return {
     allNews: state.newsFeed,
@@ -62221,15 +62458,14 @@ function mapStateToProps(state) {
   };
 }
 function mapDispatchToProps(dispatch) {
-  return Object(__WEBPACK_IMPORTED_MODULE_7_redux__["b" /* bindActionCreators */])({
-    picLikeFunction: __WEBPACK_IMPORTED_MODULE_8__imports_actions__["b" /* gistActions */].picLikeAction,
-    newLikeFunction: __WEBPACK_IMPORTED_MODULE_8__imports_actions__["b" /* gistActions */].newLikeAction,
-    getNews: __WEBPACK_IMPORTED_MODULE_8__imports_actions__["b" /* gistActions */].getNewsAction,
-    getCommentsForPiece: __WEBPACK_IMPORTED_MODULE_8__imports_actions__["b" /* gistActions */].getCommentsForPieceAction
-
+  return Object(__WEBPACK_IMPORTED_MODULE_8_redux__["b" /* bindActionCreators */])({
+    picLikeFunction: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].picLikeAction,
+    newLikeFunction: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].newLikeAction,
+    getNews: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getNewsAction,
+    getCommentsForPiece: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getCommentsForPieceAction
   }, dispatch);
 }
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_6_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(NewsContainer));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(NewsContainer));
 /*
   SIDE NOTES: 
   When this component is mounted, a request is sent to fetch the first set of news. 
@@ -62639,134 +62875,274 @@ var UniversalComment = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users_reducer__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__application_reducer__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
+var UniversalDelete = function (_Component) {
+  _inherits(UniversalDelete, _Component);
 
-var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
-  textPieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["f" /* userPiecesReducer */],
-  picturePieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["e" /* userPicturePiecesReducer */],
-  authUser: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["b" /* authenticatedUserReducer */],
-  menuItems: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["b" /* saveMenuItemsReducer */],
-  notification: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["a" /* notifierReducer */],
-  newsFeed: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["d" /* newsFeedReducer */],
-  token: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["c" /* tokenReducer */],
-  allCourses: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["a" /* allCoursesReducer */],
-  currentPieceComments: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["c" /* currentCommentReducer */]
-});
+  function UniversalDelete() {
+    _classCallCheck(this, UniversalDelete);
 
-/* harmony default export */ __webpack_exports__["a"] = (allReducers);
+    return _possibleConstructorReturn(this, (UniversalDelete.__proto__ || Object.getPrototypeOf(UniversalDelete)).apply(this, arguments));
+  }
+
+  _createClass(UniversalDelete, [{
+    key: 'deletePaper',
+    value: function deletePaper() {
+      if (this.props.paperType === "paper") {
+        $.ajax({ method: 'GET', url: 'delete-paper/' + this.props.paperID }).done(function () {
+          //dismiss modal
+          //reload news 
+        });
+      } else {
+        //picturelink
+
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { id: 'le-delete-board' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'modal fade my-depth-1', id: 'universal-delete-board' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'modal-dialog modal-sm' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'modal-content' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'modal-body' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'center',
+                  null,
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'p',
+                    null,
+                    'Are you sure you want to delete ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      'i',
+                      { style: { color: "crimson" } },
+                      '"',
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        this.props.paperTitle
+                      ),
+                      '"'
+                    )
+                  )
+                )
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'modal-footer ' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'button',
+                  { className: 'btn btn-danger', 'data-dismiss': 'modal' },
+                  'No'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'button',
+                  { className: 'btn btn-success', onClick: function onClick() {
+                      _this2.deletePaper();
+                    } },
+                  'Yes'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return UniversalDelete;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (UniversalDelete);
 
 /***/ }),
 /* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return currentCommentReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allCoursesReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return newsFeedReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return userPicturePiecesReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return userPiecesReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return authenticatedUserReducer; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users_reducer__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__application_reducer__ = __webpack_require__(290);
 
 
-var currentCommentReducer = function currentCommentReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-		var action = arguments[1];
 
-		switch (action.type) {
-				case "user/PIECE_COMMENT_GET":
-						return action.payload;
-						break;
 
-				default:
-						break;
-		}
-		return state;
-};
-var allCoursesReducer = function allCoursesReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-		var action = arguments[1];
+var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
+  textPieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["g" /* userPiecesReducer */],
+  picturePieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["f" /* userPicturePiecesReducer */],
+  authUser: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["b" /* authenticatedUserReducer */],
+  authUserRelations: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["h" /* userRelationsReducer */],
+  menuItems: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["b" /* saveMenuItemsReducer */],
+  notification: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["a" /* notifierReducer */],
+  newsFeed: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["d" /* newsFeedReducer */],
+  token: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["c" /* tokenReducer */],
+  allCourses: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["a" /* allCoursesReducer */],
+  currentPieceComments: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["c" /* currentCommentReducer */],
+  pdfNews: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["e" /* pdfNewsReducer */]
+});
 
-		switch (action.type) {
-				case "user/GET_ALL_COURSES":
-						return action.payload;
-						break;
-
-				default:
-						return state;
-						break;
-		}
-		return state;
-};
-var newsFeedReducer = function newsFeedReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { texts: [], pics: [], active: false };
-		var action = arguments[1];
-
-		switch (action.type) {
-				case "user/LOAD_NEWS":
-						return action.payload;
-						break;
-
-				default:
-						return state;
-						break;
-		}
-		return state;
-};
-var userPicturePiecesReducer = function userPicturePiecesReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-		var action = arguments[1];
-
-		switch (action.type) {
-				case "user/PICTURE_PIECES_GET":
-						return action.payload;
-						break;
-
-				default:
-						return state;
-						break;
-		}
-		return state;
-};
-
-var userPiecesReducer = function userPiecesReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-		var action = arguments[1];
-
-		switch (action.type) {
-				case "user/TEXT_PIECES_GET":
-						return action.payload;
-						break;
-
-				default:
-						return state;
-						break;
-		}
-		return state;
-};
-
-var authenticatedUserReducer = function authenticatedUserReducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-		var action = arguments[1];
-
-		switch (action.type) {
-				case "user/AUTHENTICATED":
-
-						return action.payload === null ? state : action.payload;
-						break;
-				default:
-						return state;
-						break;
-		}
-		return state;
-};
+/* harmony default export */ __webpack_exports__["a"] = (allReducers);
 
 /***/ }),
 /* 289 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return pdfNewsReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return userRelationsReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return currentCommentReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allCoursesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return newsFeedReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return userPicturePiecesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return userPiecesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return authenticatedUserReducer; });
+
+
+var pdfNewsReducer = function pdfNewsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/GET_PDF_NEWS":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
+var userRelationsReducer = function userRelationsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/GET_RELATIONS":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
+var currentCommentReducer = function currentCommentReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/PIECE_COMMENT_GET":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
+var allCoursesReducer = function allCoursesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/GET_ALL_COURSES":
+      return action.payload;
+      break;
+
+    default:
+      return state;
+      break;
+  }
+  return state;
+};
+var newsFeedReducer = function newsFeedReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { texts: [], pics: [], active: false };
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/LOAD_NEWS":
+      return action.payload;
+      break;
+
+    default:
+      return state;
+      break;
+  }
+  return state;
+};
+var userPicturePiecesReducer = function userPicturePiecesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/PICTURE_PIECES_GET":
+      return action.payload;
+      break;
+
+    default:
+      return state;
+      break;
+  }
+  return state;
+};
+
+var userPiecesReducer = function userPiecesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/TEXT_PIECES_GET":
+      return action.payload;
+      break;
+
+    default:
+      return state;
+      break;
+  }
+  return state;
+};
+
+var authenticatedUserReducer = function authenticatedUserReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/AUTHENTICATED":
+
+      return action.payload === null ? state : action.payload;
+      break;
+    default:
+      return state;
+      break;
+  }
+  return state;
+};
+
+/***/ }),
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62814,7 +63190,7 @@ var notifierReducer = function notifierReducer() {
 };
 
 /***/ }),
-/* 290 */
+/* 291 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62840,7 +63216,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 /* harmony default export */ __webpack_exports__["a"] = (thunk);
 
 /***/ }),
-/* 291 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {!function(e,t){ true?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t(e.reduxLogger=e.reduxLogger||{})}(this,function(e){"use strict";function t(e,t){e.super_=t,e.prototype=Object.create(t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}})}function r(e,t){Object.defineProperty(this,"kind",{value:e,enumerable:!0}),t&&t.length&&Object.defineProperty(this,"path",{value:t,enumerable:!0})}function n(e,t,r){n.super_.call(this,"E",e),Object.defineProperty(this,"lhs",{value:t,enumerable:!0}),Object.defineProperty(this,"rhs",{value:r,enumerable:!0})}function o(e,t){o.super_.call(this,"N",e),Object.defineProperty(this,"rhs",{value:t,enumerable:!0})}function i(e,t){i.super_.call(this,"D",e),Object.defineProperty(this,"lhs",{value:t,enumerable:!0})}function a(e,t,r){a.super_.call(this,"A",e),Object.defineProperty(this,"index",{value:t,enumerable:!0}),Object.defineProperty(this,"item",{value:r,enumerable:!0})}function f(e,t,r){var n=e.slice((r||t)+1||e.length);return e.length=t<0?e.length+t:t,e.push.apply(e,n),e}function u(e){var t="undefined"==typeof e?"undefined":N(e);return"object"!==t?t:e===Math?"math":null===e?"null":Array.isArray(e)?"array":"[object Date]"===Object.prototype.toString.call(e)?"date":"function"==typeof e.toString&&/^\/.*\//.test(e.toString())?"regexp":"object"}function l(e,t,r,c,s,d,p){s=s||[],p=p||[];var g=s.slice(0);if("undefined"!=typeof d){if(c){if("function"==typeof c&&c(g,d))return;if("object"===("undefined"==typeof c?"undefined":N(c))){if(c.prefilter&&c.prefilter(g,d))return;if(c.normalize){var h=c.normalize(g,d,e,t);h&&(e=h[0],t=h[1])}}}g.push(d)}"regexp"===u(e)&&"regexp"===u(t)&&(e=e.toString(),t=t.toString());var y="undefined"==typeof e?"undefined":N(e),v="undefined"==typeof t?"undefined":N(t),b="undefined"!==y||p&&p[p.length-1].lhs&&p[p.length-1].lhs.hasOwnProperty(d),m="undefined"!==v||p&&p[p.length-1].rhs&&p[p.length-1].rhs.hasOwnProperty(d);if(!b&&m)r(new o(g,t));else if(!m&&b)r(new i(g,e));else if(u(e)!==u(t))r(new n(g,e,t));else if("date"===u(e)&&e-t!==0)r(new n(g,e,t));else if("object"===y&&null!==e&&null!==t)if(p.filter(function(t){return t.lhs===e}).length)e!==t&&r(new n(g,e,t));else{if(p.push({lhs:e,rhs:t}),Array.isArray(e)){var w;e.length;for(w=0;w<e.length;w++)w>=t.length?r(new a(g,w,new i(void 0,e[w]))):l(e[w],t[w],r,c,g,w,p);for(;w<t.length;)r(new a(g,w,new o(void 0,t[w++])))}else{var x=Object.keys(e),S=Object.keys(t);x.forEach(function(n,o){var i=S.indexOf(n);i>=0?(l(e[n],t[n],r,c,g,n,p),S=f(S,i)):l(e[n],void 0,r,c,g,n,p)}),S.forEach(function(e){l(void 0,t[e],r,c,g,e,p)})}p.length=p.length-1}else e!==t&&("number"===y&&isNaN(e)&&isNaN(t)||r(new n(g,e,t)))}function c(e,t,r,n){return n=n||[],l(e,t,function(e){e&&n.push(e)},r),n.length?n:void 0}function s(e,t,r){if(r.path&&r.path.length){var n,o=e[t],i=r.path.length-1;for(n=0;n<i;n++)o=o[r.path[n]];switch(r.kind){case"A":s(o[r.path[n]],r.index,r.item);break;case"D":delete o[r.path[n]];break;case"E":case"N":o[r.path[n]]=r.rhs}}else switch(r.kind){case"A":s(e[t],r.index,r.item);break;case"D":e=f(e,t);break;case"E":case"N":e[t]=r.rhs}return e}function d(e,t,r){if(e&&t&&r&&r.kind){for(var n=e,o=-1,i=r.path?r.path.length-1:0;++o<i;)"undefined"==typeof n[r.path[o]]&&(n[r.path[o]]="number"==typeof r.path[o]?[]:{}),n=n[r.path[o]];switch(r.kind){case"A":s(r.path?n[r.path[o]]:n,r.index,r.item);break;case"D":delete n[r.path[o]];break;case"E":case"N":n[r.path[o]]=r.rhs}}}function p(e,t,r){if(r.path&&r.path.length){var n,o=e[t],i=r.path.length-1;for(n=0;n<i;n++)o=o[r.path[n]];switch(r.kind){case"A":p(o[r.path[n]],r.index,r.item);break;case"D":o[r.path[n]]=r.lhs;break;case"E":o[r.path[n]]=r.lhs;break;case"N":delete o[r.path[n]]}}else switch(r.kind){case"A":p(e[t],r.index,r.item);break;case"D":e[t]=r.lhs;break;case"E":e[t]=r.lhs;break;case"N":e=f(e,t)}return e}function g(e,t,r){if(e&&t&&r&&r.kind){var n,o,i=e;for(o=r.path.length-1,n=0;n<o;n++)"undefined"==typeof i[r.path[n]]&&(i[r.path[n]]={}),i=i[r.path[n]];switch(r.kind){case"A":p(i[r.path[n]],r.index,r.item);break;case"D":i[r.path[n]]=r.lhs;break;case"E":i[r.path[n]]=r.lhs;break;case"N":delete i[r.path[n]]}}}function h(e,t,r){if(e&&t){var n=function(n){r&&!r(e,t,n)||d(e,t,n)};l(e,t,n)}}function y(e){return"color: "+F[e].color+"; font-weight: bold"}function v(e){var t=e.kind,r=e.path,n=e.lhs,o=e.rhs,i=e.index,a=e.item;switch(t){case"E":return[r.join("."),n,"→",o];case"N":return[r.join("."),o];case"D":return[r.join(".")];case"A":return[r.join(".")+"["+i+"]",a];default:return[]}}function b(e,t,r,n){var o=c(e,t);try{n?r.groupCollapsed("diff"):r.group("diff")}catch(e){r.log("diff")}o?o.forEach(function(e){var t=e.kind,n=v(e);r.log.apply(r,["%c "+F[t].text,y(t)].concat(P(n)))}):r.log("—— no diff ——");try{r.groupEnd()}catch(e){r.log("—— diff end —— ")}}function m(e,t,r,n){switch("undefined"==typeof e?"undefined":N(e)){case"object":return"function"==typeof e[n]?e[n].apply(e,P(r)):e[n];case"function":return e(t);default:return e}}function w(e){var t=e.timestamp,r=e.duration;return function(e,n,o){var i=["action"];return i.push("%c"+String(e.type)),t&&i.push("%c@ "+n),r&&i.push("%c(in "+o.toFixed(2)+" ms)"),i.join(" ")}}function x(e,t){var r=t.logger,n=t.actionTransformer,o=t.titleFormatter,i=void 0===o?w(t):o,a=t.collapsed,f=t.colors,u=t.level,l=t.diff,c="undefined"==typeof t.titleFormatter;e.forEach(function(o,s){var d=o.started,p=o.startedTime,g=o.action,h=o.prevState,y=o.error,v=o.took,w=o.nextState,x=e[s+1];x&&(w=x.prevState,v=x.started-d);var S=n(g),k="function"==typeof a?a(function(){return w},g,o):a,j=D(p),E=f.title?"color: "+f.title(S)+";":"",A=["color: gray; font-weight: lighter;"];A.push(E),t.timestamp&&A.push("color: gray; font-weight: lighter;"),t.duration&&A.push("color: gray; font-weight: lighter;");var O=i(S,j,v);try{k?f.title&&c?r.groupCollapsed.apply(r,["%c "+O].concat(A)):r.groupCollapsed(O):f.title&&c?r.group.apply(r,["%c "+O].concat(A)):r.group(O)}catch(e){r.log(O)}var N=m(u,S,[h],"prevState"),P=m(u,S,[S],"action"),C=m(u,S,[y,h],"error"),F=m(u,S,[w],"nextState");if(N)if(f.prevState){var L="color: "+f.prevState(h)+"; font-weight: bold";r[N]("%c prev state",L,h)}else r[N]("prev state",h);if(P)if(f.action){var T="color: "+f.action(S)+"; font-weight: bold";r[P]("%c action    ",T,S)}else r[P]("action    ",S);if(y&&C)if(f.error){var M="color: "+f.error(y,h)+"; font-weight: bold;";r[C]("%c error     ",M,y)}else r[C]("error     ",y);if(F)if(f.nextState){var _="color: "+f.nextState(w)+"; font-weight: bold";r[F]("%c next state",_,w)}else r[F]("next state",w);l&&b(h,w,r,k);try{r.groupEnd()}catch(e){r.log("—— log end ——")}})}function S(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=Object.assign({},L,e),r=t.logger,n=t.stateTransformer,o=t.errorTransformer,i=t.predicate,a=t.logErrors,f=t.diffPredicate;if("undefined"==typeof r)return function(){return function(e){return function(t){return e(t)}}};if(e.getState&&e.dispatch)return console.error("[redux-logger] redux-logger not installed. Make sure to pass logger instance as middleware:\n// Logger with default options\nimport { logger } from 'redux-logger'\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n// Or you can create your own logger with custom options http://bit.ly/redux-logger-options\nimport createLogger from 'redux-logger'\nconst logger = createLogger({\n  // ...options\n});\nconst store = createStore(\n  reducer,\n  applyMiddleware(logger)\n)\n"),function(){return function(e){return function(t){return e(t)}}};var u=[];return function(e){var r=e.getState;return function(e){return function(l){if("function"==typeof i&&!i(r,l))return e(l);var c={};u.push(c),c.started=O.now(),c.startedTime=new Date,c.prevState=n(r()),c.action=l;var s=void 0;if(a)try{s=e(l)}catch(e){c.error=o(e)}else s=e(l);c.took=O.now()-c.started,c.nextState=n(r());var d=t.diff&&"function"==typeof f?f(r,l):t.diff;if(x(u,Object.assign({},t,{diff:d})),u.length=0,c.error)throw c.error;return s}}}}var k,j,E=function(e,t){return new Array(t+1).join(e)},A=function(e,t){return E("0",t-e.toString().length)+e},D=function(e){return A(e.getHours(),2)+":"+A(e.getMinutes(),2)+":"+A(e.getSeconds(),2)+"."+A(e.getMilliseconds(),3)},O="undefined"!=typeof performance&&null!==performance&&"function"==typeof performance.now?performance:Date,N="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},P=function(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)},C=[];k="object"===("undefined"==typeof global?"undefined":N(global))&&global?global:"undefined"!=typeof window?window:{},j=k.DeepDiff,j&&C.push(function(){"undefined"!=typeof j&&k.DeepDiff===c&&(k.DeepDiff=j,j=void 0)}),t(n,r),t(o,r),t(i,r),t(a,r),Object.defineProperties(c,{diff:{value:c,enumerable:!0},observableDiff:{value:l,enumerable:!0},applyDiff:{value:h,enumerable:!0},applyChange:{value:d,enumerable:!0},revertChange:{value:g,enumerable:!0},isConflict:{value:function(){return"undefined"!=typeof j},enumerable:!0},noConflict:{value:function(){return C&&(C.forEach(function(e){e()}),C=null),c},enumerable:!0}});var F={E:{color:"#2196F3",text:"CHANGED:"},N:{color:"#4CAF50",text:"ADDED:"},D:{color:"#F44336",text:"DELETED:"},A:{color:"#2196F3",text:"ARRAY:"}},L={level:"log",logger:console,logErrors:!0,collapsed:void 0,predicate:void 0,duration:!1,timestamp:!0,stateTransformer:function(e){return e},actionTransformer:function(e){return e},errorTransformer:function(e){return e},colors:{title:function(){return"inherit"},prevState:function(){return"#9E9E9E"},action:function(){return"#03A9F4"},nextState:function(){return"#4CAF50"},error:function(){return"#F20404"}},diff:!1,diffPredicate:void 0,transformer:void 0},T=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=e.dispatch,r=e.getState;return"function"==typeof t||"function"==typeof r?S()({dispatch:t,getState:r}):void console.error("\n[redux-logger v3] BREAKING CHANGE\n[redux-logger v3] Since 3.0.0 redux-logger exports by default logger with default settings.\n[redux-logger v3] Change\n[redux-logger v3] import createLogger from 'redux-logger'\n[redux-logger v3] to\n[redux-logger v3] import { createLogger } from 'redux-logger'\n")};e.defaults=L,e.createLogger=S,e.logger=T,e.default=T,Object.defineProperty(e,"__esModule",{value:!0})});
@@ -62848,7 +63224,7 @@ thunk.withExtraArgument = createThunkMiddleware;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(30)))
 
 /***/ }),
-/* 292 */
+/* 293 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62915,13 +63291,13 @@ var Blood = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Blood);
 
 /***/ }),
-/* 293 */
+/* 294 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imgs_QB_png__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imgs_QB_png__ = __webpack_require__(295);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imgs_QB_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__imgs_QB_png__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -63016,13 +63392,271 @@ var NavBar = function (_React$Component) {
 /* harmony default export */ __webpack_exports__["a"] = (NavBar);
 
 /***/ }),
-/* 294 */
+/* 295 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/QB.png?f770af41c525fe70e2f3f46f22f22eda";
 
 /***/ }),
-/* 295 */
+/* 296 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugins_PdfCard__ = __webpack_require__(297);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var PDFs = function (_Component) {
+  _inherits(PDFs, _Component);
+
+  function PDFs(props) {
+    _classCallCheck(this, PDFs);
+
+    var _this = _possibleConstructorReturn(this, (PDFs.__proto__ || Object.getPrototypeOf(PDFs)).call(this, props));
+
+    _this.state = { badgeNumber: 0 };
+    return _this;
+  }
+
+  _createClass(PDFs, [{
+    key: 'searchForMoreNews',
+    value: function searchForMoreNews() {
+      var nextBadge = Number(this.state.badgeNumber + 1);
+      console.log("I am the badgeNUmberkjkdjfk: ", nextBadge);
+      this.props.getMorePDFNewsFunction(this.props.pdfNews, nextBadge);
+      this.setState({ badgeNumber: nextBadge });
+    }
+  }, {
+    key: 'ejectFiles',
+    value: function ejectFiles() {
+      if (this.props.pdfNews !== null) {
+        var thisClass = this;
+        return this.props.pdfNews.map(function (file) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__plugins_PdfCard__["a" /* default */], { deletePDFFunction: thisClass.props.deletePDFFunction, id: file.id, user: thisClass.props.user, pdf_link: file.pdf_link, title: file.title, course: file.course, created_at: file.created_at, owner: file.user });
+        });
+      }
+    }
+  }, {
+    key: 'spinnerTrick',
+    value: function spinnerTrick() {
+      $('#pdf-load-spinner').fadeIn(function () {
+        setTimeout(function () {
+          $('#pdf-load-spinner').fadeOut();
+        }, 1000);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { style: { margin: 10, padding: 20 } },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'center',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'p',
+            { style: { fontSize: "1.9rem", color: "black" } },
+            'All the latest PDFs in ',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'b',
+              null,
+              this.props.user !== null ? this.props.user.course : ''
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'col-lg-10 col-md-offset-1 col-md-10', style: { padding: 20 } },
+          this.ejectFiles(),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'button',
+            { className: 'btn btn-default btn-block', onClick: function onClick() {
+                _this2.searchForMoreNews();_this2.spinnerTrick();
+              } },
+            'Load More',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fa fa-spinner fa-spin', style: { marginLeft: 5, display: "none", color: "black" }, id: 'pdf-load-spinner' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return PDFs;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (PDFs);
+//WHERE YOU ARE NOW, YOU GOTTA WIRE "LOAD MORE"
+
+/***/ }),
+/* 297 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var PDFCard = function (_Component) {
+  _inherits(PDFCard, _Component);
+
+  function PDFCard() {
+    _classCallCheck(this, PDFCard);
+
+    return _possibleConstructorReturn(this, (PDFCard.__proto__ || Object.getPrototypeOf(PDFCard)).apply(this, arguments));
+  }
+
+  _createClass(PDFCard, [{
+    key: "generateColor",
+    value: function generateColor() {
+      var num = Number(Math.round(Math.random(3) * 100));
+      console.log("sdfkjslkdjfd:::: ", num);
+      switch (num) {
+        case num < 50:
+          return "label-success";
+          break;
+        case num > 50 && num < 90:
+          return "label-danger";
+          break;
+        case num > 90:
+          return "label-warning";
+          break;
+        default:
+          return "";
+          break;
+      }
+    }
+  }, {
+    key: "deleteAuthority",
+    value: function deleteAuthority() {
+      var _this2 = this;
+
+      if (this.props.user.id === this.props.owner.id) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "small",
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "a",
+            { style: { color: "crimson", paddingLeft: 4 }, onClick: function onClick() {
+                _this2.doDelete();
+              } },
+            "delete"
+          )
+        );
+      }
+    }
+  }, {
+    key: "doDelete",
+    value: function doDelete() {
+      var pdfItem = $("#pdf-item-box-" + this.props.id);
+      var thisClass = this;
+      //this.props.deletePDFFunction(this.props.id);
+      setTimeout(function () {
+        pdfItem.addClass("remove-trick");
+        pdfItem.fadeOut();
+      }, 200);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { id: "pdf-item-box-" + this.props.id },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          { className: "thumbnail cursor clearfix pdf-page-card" },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "small",
+            { className: " rounded pull-right " + this.generateColor(), style: { padding: 7, marginRight: 4 } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "a",
+              { style: { textDecoration: "none" }, className: "pdf-profile-name", target: "_blank", href: "profile/ImU8iwby1xOdiru-" + this.props.owner.id + "-PputaKIShq9/" + this.props.owner.name },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "b",
+                null,
+                "@",
+                this.props.owner.name
+              )
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "p",
+            { className: "pdf-card-title" },
+            "   ",
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "a",
+              { href: this.props.pdf_link, target: "_blank" },
+              this.props.title
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "small",
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-eye" }),
+            " ",
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "span",
+              { className: "number-font" },
+              "35 people have seen this "
+            )
+          ),
+          this.deleteAuthority(),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "pull-right" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "small",
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "b",
+                null,
+                "posted:"
+              ),
+              " ",
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "span",
+                { className: "number-font" },
+                this.props.created_at
+              )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "small",
+              { className: " rounded label label-success", style: { padding: 7, marginLeft: 4 } },
+              this.props.course
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return PDFCard;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (PDFCard);
+
+/***/ }),
+/* 298 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

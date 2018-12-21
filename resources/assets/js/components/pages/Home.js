@@ -13,6 +13,7 @@ import { appActions } from './../imports/actions';
 import Blood from './../Blood';
 import SnackBar from './../plugins/SnackBar';
 import NavBar from './../plugins/NavBar';
+import PDF from './Pdfs';
 import { paginatorPicValuesAction } from '../../actions/root-action';
 
 class Home extends Component {
@@ -30,6 +31,8 @@ class Home extends Component {
     this.props.getToken();
     this.props.getNews(0);
     this.props.getAllCourses();
+    this.props.getRelations();
+    this.props.getPdfNews(0);
   }
 
   snack(notice,ID,color){
@@ -61,11 +64,21 @@ class Home extends Component {
           <div className = 'side-nav' >
             <div className = 'col-md-2 col-lg-2 col-xs-12'>
               <SideNav saveMenuFunction = { this.props.saveMenu } 
-                user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }>
+                user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }
+                userRelations = {this.props.userRelations}
+                >
               </SideNav> 
              </div>
           </div>
-          <div className = ' col-md-10 col-lg-10'>
+          <div className = 'col-md-10 col-lg-10'>
+            <div id="pdfs" className="vanish"> 
+              <PDF 
+                getMorePDFNewsFunction = {this.props.getMorePDFNews}
+                pdfNews = { this.props.pdfNews } 
+                user={this.props.authenticatedUser === null ? null : this.props.authenticatedUser}
+                deletePDFFunction = { this.props.deletePDF}
+              ></PDF>
+            </div>
             <div id='dashboard' className = ''> 
              
                <Dashboard 
@@ -104,7 +117,7 @@ class Home extends Component {
         <div id='gist' className='vanish' style={ styles.noteReady}> 
           <Gist allNews = { this.props.news ===null ? null : this.props.news }></Gist>
         </div>
-        <center><h1> <i className = 'fa fa-spinner fa-spin'></i></h1></center>
+       
       </div>
     );
    }
@@ -120,14 +133,16 @@ const styles = {
 };
 function mapStateToProps(state){
   return { 
-      userPieces: state.textPieces ,
-      userPicPieces: state.picturePieces,
-      authenticatedUser: state.authUser, 
-      store:state,
-      notification:state.notification,
-      news: state.newsFeed,
-      token:state.token, 
-      allCourses: state.allCourses
+    userPieces: state.textPieces ,
+    userPicPieces: state.picturePieces,
+    authenticatedUser: state.authUser, 
+    store:state,
+    notification:state.notification,
+    news: state.newsFeed,
+    token:state.token, 
+    allCourses: state.allCourses,
+    userRelations: state.authUserRelations,
+    pdfNews:state.pdfNews
   };
 };
 function matchDispatchToProps(dispatch){
@@ -148,7 +163,11 @@ function matchDispatchToProps(dispatch){
     getNews: appActions.getNewsAction,
     getAllCourses: appActions.getAllCoursesAction, 
     paginatorTextValuesInsert: appActions.paginatorTextValuesAction,
-    paginatorPicValuesInsert: appActions.paginatorPicValuesAction
+    paginatorPicValuesInsert: appActions.paginatorPicValuesAction,
+    getRelations : appActions.getRelationsAction,
+    getPdfNews:appActions.getPdfNewsAction,
+    getMorePDFNews:appActions.getMorePDFNewsAction,
+    deletePDF: appActions.deletePDFAction
   },dispatch)
 };
 
