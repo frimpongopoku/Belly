@@ -23,6 +23,7 @@ import {
   getPdfNewsAction,
   getMorePDFNewsAction,
   deletePDFAction,
+  getUserSettingsAction,
 
 } from './../../actions/root-action';
 
@@ -48,7 +49,8 @@ export const appActions = {
   getRelationsAction: getRelationsAction,
   getPdfNewsAction: getPdfNewsAction,
   getMorePDFNewsAction:getMorePDFNewsAction,
-  deletePDFAction:deletePDFAction
+  deletePDFAction:deletePDFAction,
+  getUserSettingsAction:getUserSettingsAction,
   
 };
 export const likeActions = { 

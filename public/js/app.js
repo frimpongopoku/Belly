@@ -18049,35 +18049,36 @@ var SnackBar = function (_React$Component) {
 
 
 var appActions = {
-  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* saveProfileEditsAction */],
-  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* test */],
+  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* saveProfileEditsAction */],
+  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["y" /* test */],
   deletePicturePieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["d" /* deletePicturePieceAction */],
   editPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["e" /* editPaperAction */],
-  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* newPicPieceAction */],
+  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* newPicPieceAction */],
   getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getPicPiecesAction */],
   getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getTokenAction */],
   getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getUserPiecesAction */],
   fetchUserAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["f" /* fetchUserAction */],
-  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* loadUserPiecesAction */],
+  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* loadUserPiecesAction */],
   createNewPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["a" /* createNewPaperAction */],
-  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* saveMenuToRemoteAction */],
+  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* saveMenuToRemoteAction */],
   deletePaperPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["c" /* deletePaperPieceAction */],
   getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getNewsAction */],
   getAllCoursesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["g" /* getAllCoursesAction */],
-  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* paginatorTextValuesAction */],
-  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* paginatorPicValuesAction */],
+  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* paginatorTextValuesAction */],
+  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* paginatorPicValuesAction */],
   getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getRelationsAction */],
   getPdfNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["k" /* getPdfNewsAction */],
   getMorePDFNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["i" /* getMorePDFNewsAction */],
-  deletePDFAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["b" /* deletePDFAction */]
+  deletePDFAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["b" /* deletePDFAction */],
+  getUserSettingsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* getUserSettingsAction */]
 
 };
 var likeActions = {
-  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* newLikeAction */]
+  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* newLikeAction */]
 };
 var gistActions = {
-  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* picLikeAction */],
-  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* newLikeAction */],
+  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* picLikeAction */],
+  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* newLikeAction */],
   getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getNewsAction */],
   getCommentsForPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["h" /* getCommentsForPieceAction */]
 
@@ -22604,6 +22605,59 @@ var GistImageCard = function (_Component) {
       this.checkOwner();
     }
   }, {
+    key: 'bringLike',
+    value: function bringLike() {
+      var _this2 = this;
+
+      var thisClass = this;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.props.likesArray[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          if (Number(item.user_id) === Number(thisClass.props.user.id)) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', id: 'like-action', className: 'action-btn-act-liked font-small-ish', style: {},
+                onClick: function onClick(e) {
+                  e.preventDefault();thisClass.doLike();
+                } },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
+              ' Like'
+            );
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      ;
+      //if it actually gets to this point then user prolly hasnt like it nti show the other type
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'a',
+        { href: '#', id: 'like-action', className: 'action-btn font-small-ish', style: {},
+          onClick: function onClick(e) {
+            e.preventDefault();_this2.doLike();
+          } },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
+        ' Like'
+      );
+    }
+  }, {
     key: 'zoom',
     value: function zoom(ID) {
       var zoomed = $('#img-zoom-pointer-' + ID).attr('data-zoomed');
@@ -22643,7 +22697,7 @@ var GistImageCard = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -22705,7 +22759,7 @@ var GistImageCard = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.props.image_link,
               onClick: function onClick() {
-                _this2.zoom(_this2.props.id);
+                _this3.zoom(_this3.props.id);
               },
               className: 'img-responsive gist-img cursor', id: "img-zoom-pointer-" + this.props.id,
               'data-zoomed': 'false'
@@ -22750,25 +22804,18 @@ var GistImageCard = function (_Component) {
               'button',
               {
                 onClick: function onClick() {
-                  _this2.zoom(_this2.props.id);
+                  _this3.zoom(_this3.props.id);
                 },
                 className: ' btn-sm btn btn-default pull-right zero-radius' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-eye' })
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'a',
-              { className: 'action-btn font-small-ish', onClick: function onClick(e) {
-                  e.preventDefault();_this2.doLike();
-                } },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
-              ' Like'
-            ),
+            this.bringLike(),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
               {
                 id: 'comment-button-' + this.props.type + '-' + this.props.id,
                 onClick: function onClick(e) {
-                  e.preventDefault();_this2.props.showComments(_this2.props.id, "picture", "Shot");
+                  e.preventDefault();_this3.props.showComments(_this3.props.id, "picture", "Shot");
                 },
                 className: 'action-btn font-small-ish',
                 'data-shown': 'false', 'data-toggle': 'modal', 'data-target': '#universal-comment-board' },
@@ -23093,7 +23140,6 @@ var GistPaperCard = function (_React$Component) {
     key: 'checkIfUserLiked',
     value: function checkIfUserLiked() {
       var thisClass = this;
-      console.log("deye dyed eyd eyd eyd eye dye dy");
       this.props.likesArray.forEach(function (itm) {
         if (itm.user_id === thisClass.props.user.id) {
           thisClass.setState({ auth_user_liked: true });
@@ -23160,27 +23206,53 @@ var GistPaperCard = function (_React$Component) {
     value: function bringLike() {
       var _this2 = this;
 
-      if (this.state.auth_user_liked === true) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'a',
-          { href: '#', id: 'like-action', className: 'action-btn font-small-ish', style: this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {},
-            onClick: function onClick(e) {
-              e.preventDefault();_this2.doLike();
-            } },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
-          ' DO DO Like'
-        );
-      } else {
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'a',
-          { href: '#', id: 'like-action', className: 'action-btn font-small-ish', style: this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {},
-            onClick: function onClick(e) {
-              e.preventDefault();_this2.doLike();
-            } },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
-          ' Like'
-        );
+      var thisClass = this;
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = this.props.likesArray[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var item = _step.value;
+
+          if (Number(item.user_id) === Number(thisClass.props.user.id)) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', id: 'like-action', className: 'action-btn-act-liked font-small-ish', style: {},
+                onClick: function onClick(e) {
+                  e.preventDefault();thisClass.doLike();
+                } },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
+              ' Like'
+            );
+          }
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
       }
+
+      ;
+      //if it actually gets to this point then user prolly hasnt like it nti show the other type
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'a',
+        { href: '#', id: 'like-action', className: 'action-btn font-small-ish', style: {},
+          onClick: function onClick(e) {
+            e.preventDefault();_this2.doLike();
+          } },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-thumbs-up' }),
+        ' Like'
+      );
     }
   }, {
     key: 'render',
@@ -23367,25 +23439,27 @@ var styles = {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return deletePDFAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getUserSettingsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getPdfNewsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getMorePDFNewsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getRelationsAction; });
 /* unused harmony export loadRelations */
+/* unused harmony export loadUserSettings */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getCommentsForPieceAction; });
 /* unused harmony export loadCurrentComment */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return picLikeAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return newLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return picLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return newLikeAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getAllCoursesAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getNewsAction; });
 /* unused harmony export loadNewsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return saveProfileEditsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return saveProfileEditsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return deletePicturePieceAction; });
 /* unused harmony export deleteDBPic */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return newPicPieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return newPicPieceAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getPicPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return paginatorPicValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return paginatorPicValuesAction; });
 /* unused harmony export loadPicsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return test; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return test; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getTokenAction; });
 /* unused harmony export editPaper */
 /* unused harmony export addPaper */
@@ -23394,13 +23468,13 @@ var styles = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return deletePaperPieceAction; });
 /* unused harmony export dBEditPaper */
 /* unused harmony export dBDelete */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return saveMenuToRemoteAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return saveMenuToRemoteAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createNewPaperAction; });
 /* unused harmony export dBSaveAction */
 /* unused harmony export notifierAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return paginatorTextValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return paginatorTextValuesAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getUserPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return loadUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return loadUserPiecesAction; });
 /* unused harmony export saveAuthenticatedUserAction */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return fetchUserAction; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(14);
@@ -23416,6 +23490,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var deletePDFAction = function deletePDFAction(id) {
   return function (dispatch) {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/delete-pdf/' + id });
+  };
+};
+var getUserSettingsAction = function getUserSettingsAction() {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/get-settings' }).done(function (response) {
+      dispatch(loadUserSettings(response));
+    });
   };
 };
 var getPdfNewsAction = function getPdfNewsAction(point) {
@@ -23448,6 +23529,9 @@ var getRelationsAction = function getRelationsAction() {
 var loadRelations = function loadRelations(dataTrain) {
   return { type: "user/GET_RELATIONS", payload: dataTrain };
 };
+var loadUserSettings = function loadUserSettings(dataTrain) {
+  return { type: "user/GET_SETTINGS", payload: dataTrain };
+};
 
 var getCommentsForPieceAction = function getCommentsForPieceAction(id, type) {
   return function (dispatch) {
@@ -23463,14 +23547,14 @@ var loadCurrentComment = function loadCurrentComment(dataTrain) {
 var picLikeAction = function picLikeAction(miniTrain, allNews) {
   return function (dispatch) {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/picture-like", data: miniTrain }).done(function (response) {
-      var newState = { texts: [], pics: [], active: true };
-      allNews.pics.forEach(function (picNews) {
-        if (picNews.id === response.id) {
+      var newState = { news: [], badgeNumber: null, active: true };
+      allNews.news.forEach(function (picNews) {
+        if (picNews.id === response.id && picNews.file_type === response.file_type) {
           picNews.likes = response.likes;
         }
-        newState.pics.push(picNews);
+        newState.news.push(picNews);
       });
-      newState.texts = [].concat(_toConsumableArray(allNews.texts));
+      //you gotta bring the badge number here too
       dispatch(loadNewsPiecesAction(newState));
       dispatch(getRelationsAction());
     });
@@ -23479,14 +23563,13 @@ var picLikeAction = function picLikeAction(miniTrain, allNews) {
 var newLikeAction = function newLikeAction(miniTrain, allNews) {
   return function (dispatch) {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/like", data: miniTrain }).done(function (response) {
-      var newState = { texts: [], pics: [], active: true };
-      allNews.texts.forEach(function (textNews) {
-        if (textNews.id === response.id) {
+      var newState = { news: [], badgeNumber: null, active: true };
+      allNews.news.forEach(function (textNews) {
+        if (textNews.id === response.id && textNews.file_type === response.file_type) {
           textNews.likes = response.likes;
         }
-        newState.texts.push(textNews);
+        newState.news.push(textNews);
       });
-      newState.pics = [].concat(_toConsumableArray(allNews.pics));
       dispatch(loadNewsPiecesAction(newState));
       dispatch(getRelationsAction());
     });
@@ -23503,12 +23586,11 @@ var getAllCoursesAction = function getAllCoursesAction() {
 var getNewsAction = function getNewsAction(point, oldNews) {
   return function (dispatch) {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/me/get-news/' + point }).done(function (data) {
-      if (data.texts.length === 0 && data.pics.length === 0) {
+      if (data.news.length === 0) {
         dispatch(loadNewsPiecesAction(oldNews));
       } else {
-        var textNews = [].concat(_toConsumableArray(oldNews.texts), _toConsumableArray(data.texts));
-        var picNews = [].concat(_toConsumableArray(oldNews.pics), _toConsumableArray(data.pics));
-        var finishedState = { texts: textNews, pics: picNews, active: true };
+        var fNews = oldNews !== null ? oldNews.news : [];
+        var finishedState = { news: [].concat(_toConsumableArray(fNews), _toConsumableArray(data.news)), active: data.active, badgeNumber: data.setNumber };
         dispatch(loadNewsPiecesAction(finishedState));
       }
     });
@@ -23521,8 +23603,9 @@ var loadNewsPiecesAction = function loadNewsPiecesAction(dataTrain) {
 };
 var saveProfileEditsAction = function saveProfileEditsAction(dataTrain) {
   return function (dispatch) {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/save-profile-edits", data: dataTrain }).done(function (user) {
-      dispatch(saveAuthenticatedUserAction(user));
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: "get", url: "/me/save-profile-edits", data: dataTrain }).done(function (response) {
+      dispatch(saveAuthenticatedUserAction(response.user));
+      dispatch(loadUserSettings(response.settings));
       dispatch(notifierAction("Profile Saved"));
     });
   };
@@ -56257,10 +56340,11 @@ var Home = function (_Component) {
       this.props.getUserPieces();
       this.props.getPicPieces();
       this.props.getToken();
-      this.props.getNews(0);
+      this.props.getNews(0, null);
       this.props.getAllCourses();
       this.props.getRelations();
       this.props.getPdfNews(0);
+      this.props.getUserSettings();
     }
   }, {
     key: 'snack',
@@ -56344,6 +56428,8 @@ var Home = function (_Component) {
               { id: 'profile', className: 'vanish', style: styles.noteReady },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__Profile__["a" /* default */], {
                 user: this.props.authenticatedUser === null ? { name: "", email: "", school: "", number: "", hall: "", gui: "" } : this.props.authenticatedUser,
+                userRelations: this.props.userRelations,
+                settings: this.props.userSettings === null ? { facebook_link: "", whatsapp_number: "", linked_in_link: "" } : this.props.userSettings,
                 notification: this.props.notification,
                 saveProfileEditsFunction: this.props.saveProfileEdits })
             ),
@@ -56393,7 +56479,8 @@ function mapStateToProps(state) {
     token: state.token,
     allCourses: state.allCourses,
     userRelations: state.authUserRelations,
-    pdfNews: state.pdfNews
+    pdfNews: state.pdfNews,
+    userSettings: state.userSettings
   };
 };
 function matchDispatchToProps(dispatch) {
@@ -56418,7 +56505,8 @@ function matchDispatchToProps(dispatch) {
     getRelations: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getRelationsAction,
     getPdfNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getPdfNewsAction,
     getMorePDFNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getMorePDFNewsAction,
-    deletePDF: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].deletePDFAction
+    deletePDF: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].deletePDFAction,
+    getUserSettings: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getUserSettingsAction
   }, dispatch);
 };
 
@@ -56433,7 +56521,7 @@ exports = module.exports = __webpack_require__(240)(false);
 
 
 // module
-exports.push([module.i, "\n\n.pdf-profile-name{\n  color:black !important; \n  font-weight: 400;\n}\n.pdf-profile-name:hover{\n  color:rgb(0, 140, 255) !important; \n  transition: .2s ease-in;\n}\n.remove-trick{\n  transform: rotateX(70deg); \n  transition: .4s ease-in;\n}\n.pdf-card-title{\n  font-weight:600;\n  font-size:1.6rem;\n  color:black;\n}\n.pdf-page-card{\n  padding:20px;\n  background:whitesmoke; \n\n  margin-top:5px;\n \n}\n\n.pdf-page-card:hover{\n  background:burlywood; \n  transition: .4s ease-in-out all;\n  border:burlywood;\n   box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n\n.pdf-page-card:focus{\n  background:green ; \n  color:white;\n}\n.view-thumbnail{\n  cursor:pointer; \n  background: antiquewhite;\n}\n.similar{\n  cursor:pointer;\n  padding:30px;min-height:200px;max-height:200px;overflow:hidden; background:#282828;border:solid 1px black; border-top-width:3px;\n}\n.similar:hover{\n  transform: translateY(-10px);\n  transition:.5s ease-in-out;\n}\n.view-thumbnail:hover{\n  cursor:pointer; \n  background:whitesmoke; \n  color:black;\n  transition: .3s ease-in-out all; \n}\n.v-c-b{\n  cursor:pointer; \n  color:black !important;\n}\n.v-c-b:hover{\n  transform: scale(1.1);\n  background:white !important;\n  transition: .5s ease-in-out all;\n}\n.grab-button{\n  border-width: 0px; \n  background:floralwhite !important;\n}\n.grab-button:hover{\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n  transition: .3s ease-in-out all;\n  border-width: 2px;\n  border-color:white;\n  -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.grab-button:focus{\n  outline:0 !important; \n  border-width: 2px;\n  border-color:white !important;\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n\n}\n.margin-right-5{\n  margin-right: 5px;\n}\n.envelope-correction{\n  margin:7px;\n}\n.results-pad{\n\n  border-top-right-radius: 0px; \n  border-top-left-radius: 0px; \n  border-top-width: 5px; \n  border-top-color: black; \n  background: floralwhite;\n  margin-left:-13px;\n}\n\n.upload-button-design{\n  background:rgb(255, 169, 8) !important; \n  color:black!important;\n  border-color:rgb(255, 169, 8) !important; \n}\n.upload-button-design:hover{\n  background:#202020 !important; \n  color:white !important;\n  border-color:#202020 !important; \n  transition: .3s ease-in-out all;\n}\n.nav-icon{\n    cursor:pointer;\n}\n.nav-icon:hover{\n    transform:scale(1.3);\n    color:yellowgreen;\n    transition:0.3s ease-in all;\n\n}\n\n.pic-modal-envelope{\n  margin-left: -23px; \n  width:800px;\n}\n.QB{\n    font-size:3rem;\n    color:white !important; \n}\n\n.tint-focus{\n    position:relative; \n    cursor:pointer;\n    animation: jump infinite 0.5s linear;\n\n}\n.confidence-level{\n    margin-top:-10px !important;\n    cursor:pointer;\n    font-size:1.8rem;\n    padding:10px;\n    color:limegreen;\n\n}\n\n.tint-focus:hover{\n    transform: scale(2);\n}\n@keyframes jump{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n        transfrom:translateY(-5px);\n    }\n    100%{\n        transform:translateY(0px);\n    }\n}\n.rating-belt{\n    height: 70px;\n    position: absolute;\n    width: 100%;\n    margin-left: -15px;\n    margin-top: -70px;\n    border-color: #272727;\n\n}\n.QB-tint{\n    color:white; \n    font-size:1.7rem;\n    text-shadow: 0 2px 2px dimgrey;\n\n}\n.nav-bar-stick{\n    position:fixed; \n    top:0; \n    width:100%; \n    z-index:1;\n}\n.z-text-depth-1{\n    text-shadow: 0 2px 2px dimgrey;\n}\n.QB-Brand{\n    height:100px !important; \n    width:100px !important;\n    object-fit:cover;\n    object-position: center center;\n}\n.phone-textbox-design{\n    border: solid 0px #C8C8C8; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray; \n    border-radius:0;\n    margin:10px;\n}\n.phone-textbox-design:focus{\n    border: solid 0px #6c757d; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray !important; \n    border-radius:0;\n    outline:0;\n}\n.m-right-bit{\n    margin-right:6px;\n}\n\n.c-m-height{\n    max-height:250px !important;\n}\n.f-d-card{\n    background:\"white\";\n    padding:30px !important; \n    min-height:250px;\n    max-height:350px; \n    background:white;\n}\n.corner-10{\n    margin:2px 2px !important; \n    border-radius:3px;\n}\n.extra-img-div{\n    margin-bottom:10px;\n}\n.p-space-1{\n    margin:5px 7px;\n}\n.inside-popover{\n    margin:10px; \n    padding:10px;\n    text-align:center;\n}\n.file-check{\n    padding:10px;\n}\n.anoda{\n    animation-name:fa-spin;\n    animation-duration: infinite;\n}\n\n.modal-pic-div-image{\n  background-position: center center; \n  background-size: auto 100%; \n  opacity: 1; \n  background-repeat: no-repeat !important; \n  transition: .5s ease-in-out;\n}\n.pic-piece-image{\n    width:100% !important;\n    min-height:620px !important;\n    overflow-y:hidden;\n    cursor:pointer;\n    border-radius:0px;\n    \n}\n.pic-piece-image:hover{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    transition: 0.2s ease-in all;\n}\n.spinner-logo {\n  animation: spinner-logo-spin infinite .5s linear;\n  height: 80px;\n}\n@keyframes spinner-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n\n\n.font-red{\n    color:red;\n}\n.font-blue{\n    background: rgb(63, 158, 247) !important;\n}\n.number-font{\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.p-r-fix{\n        /*pull-right-fx*/\n    margin:5px;\n}\n\n.i-p-overlay{\n    background:black; \n    opacity:0.5; \n    height:200px;\n    z-index: 1;\n}\n\n.zero-border{\n    border:solid 0px black !important;\n}\n.btn-undefault:focus{\n    outline:0; \n    border: solid 0px black !important;\n}\n\n.p-activate-section{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n.p-activate-section-green{\n    /*paper - activate -section*/\n    background:green !important;\n    color:white !important;\n}\n.p-activate-section-blue{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n\n.d-tab{\n    font-weight: 500;\n    padding:8px 15px; \n     background:inherit; \n    margin:0;\n    cursor:pointer;\n    height:100%;\n    overflow-x:hidden;\n}\n\n.d-tab:hover{\n    background:orange;\n    color:black;\n    transition:0.3s ease-in all;\n}\n\n\n\n.margin-5{\n    margin:5px;\n}\n.centerness{\n    padding:120px 30px;\n}\n.relative{\n    position: relative;\n}\n.input-file-textbox{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n    margin-bottom:6px;\n}\n\n.input-file-textbox:focus{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n}\n.zero-radius{\n    border-radius:0px;\n}\n.multiple-side-active{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.m-side-active{\n        /*modal side option active*/\n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.search-box{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n}\n.search-box:focus{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n\n}\n.round-float-button{\n    float:right;\n    z-index:1;\n    position:fixed;\n    right:50px;\n    font-size:1.5rem;\n    position: fixed;\n    bottom:70px;\n    border-radius:50%;\n    padding:10px 16px; \n    color:white;\n}\n\n.float-red{ \n    bottom:120px; \n    background: red;\n }\n .float-red:hover{ \n    background: black;\n    color:white;\n    transition: 0.3s ease-in all; \n  }\n  .float-green{ \n\n    background:green;\n }\n  .float-green:hover{ \n    background:black;\n    color:white;\n    transition: 0.3s ease-in all; \n }\n.round-float-button:focus{ \n    border-radius:50% !important;\n    border-color:green !important;\n    color:white !important;\n    outline:0;\n }\n.modal-ed-title{ \n    margin:10px;\n    margin-left:0; \n    border:solid 0px rgb(98,97,97);\n    font-size:2.5rem;\n    border-bottom-width: 2px;\n    padding:25px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n  \n\n\n }\n .modal-ed-title:focus{ \n    border:solid 0px rgb(98,97,97) !important;\n    border-bottom-width: 2px !important;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n    outline:0;\n\n  }\n\n  .modal-ed-body{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n\n  .modal-ed-body:focus{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n.modal-bottom{\n    bottom:0 !important;\n}\n.piece-title{ \n    border:solid 0px rgb(98,97,97);\n    border-bottom-width: 2px; \n    \n    margin:5px;\n    margin-bottom:15px;\n    border-bottom-right-radius: 30px;\n    padding:5px;\n    padding-right:20px;\n    left:90px; \n    display:inline-block;\n\n }\n .piece-body{ \n    min-height: 400px; \n    max-height: 400px;  \n    overflow-y:scroll;\n    width:100%; \n\n  }\n.modal-side-items{ \n    \n    padding:10px;  \n    text-align: center; \n    border: solid 0px white;\n    /*border-bottom-width:1px;    */\n\n }\n     /*.modal-body:hover{ \n         background: rgb(207, 225, 241); \n         transition: 0.3s ease-in; \n         cursor: pointer;\n      }*/\n .modal-s-i-c{\n        /*modal-side-item-correction*/\n    font-size: 2.2rem;\n    color:white;\n   \n }\n .modal-s-i-c:hover{\n    color:white;\n    text-decoration: none;\n\n }\n .modal-s-i-c:focus{ \n    color:white;\n  }\n\n  .modal-s-i-c:active{ \n        color: rgb(63, 158, 247);\n   }\n.multiple-m-pages-btn{\n     padding:10px;  \n     text-align: center; \n     border: solid 0px white;\n}\n\n.multiple-m-pages-btn:hover{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n    }\n    .modal-side-items:hover{ \n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n\n}\n.modal-height{\n    min-height:500px;\n    overflow-y:scroll;\n    padding-top:0;\n    padding-right:0px !important;\n}\n\n.pic-modal-height{\n    min-height:620px;\n\n    padding-top:0;\n    padding-right:0 !important;\n    padding-left:64px;\n}\n\n.modal-side-bar{\n    /*padding-top:20px;   */\n    left:0;\n    position:fixed;\n    width:80px;\n    background: #272727;\n    height:100%;\n    margin-top:0;\n\n\n}\n.red{\n    background: crimson; \n    color:white;\n}\n.b-app-color{\n    border-color:royalblue;\n}\n.app-color{ \n    background:royalblue;\n        /*background: rgb(65, 85, 255) !important;*/\n    color:white !important;\n }\n.p-black-color{\n    background: #272727; \n    color:white !important;\n}\n.z-depth-1-half{\n    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n.z-depth-1{\n    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.z-depth-2{\n    -webkit-box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);\n    box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)\n}\n.z-depth-3{\n    -webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);\n    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)}\n.z-depth-4{\n    -webkit-box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21);\n    box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21)}\n.z-depth-5{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22)}\n    \n.my-depth-1 { \n    box-shadow: 0px 1px 2px gray;\n }\n .my-depth-half { \n    box-shadow: 0px 1px 1px gray;\n }\n .my-depth-half-b { \n    box-shadow: 0px 1px 1px black;\n }\n .my-depth-2 { \n    box-shadow: 0px 3px 3px gray;\n }\n .my-depth-4 { \n    box-shadow: 0px 4px 4px gray;\n }\n .my-active{ \n    background: #aceaf9;\n  }\n\n.snack-bar{\n    width:200px;\n    background: #148e0e;\n    color:white;\n    z-index:1;\n    position: fixed;\n    text-align: center;\n    padding:10px; \n    margin-left:35%;\n    margin-right:auto !important;\n    cursor:pointer;\n    bottom:0;\n    margin-bottom:10px;\n}\n.my-input{ \n    border: solid 0px gray;\n    border-bottom-width:3px; \n    border-bottom-color:rgb(98,97,97);\n    padding:20px;\n    margin-bottom:10px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    font-size: 2rem;\n    \n\n }\n .gist-coin-display{\n    margin-top: 5px;\n    padding: 5px;\n    background: mediumvioletred;\n    cursor:pointer;\n }\n .gist-coin-display:hover{\n    transform:scale(1.2);\n    box-shadow: 0 2px 2px gray;\n    transition:0.3s ease-in all;\n }\n.t-black{\n    color:black;\n}\n .my-input:focus{\n    border: solid 0px gray;\n    border-bottom-color:rgb(98,97,97);\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    border-bottom-width:3px; \n    padding:20px;\n    margin-bottom:10px;\n }\n.sides-padding{\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n}\n\n.my-txt-area{ \n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    font-size:1.6rem;\n    resize:none;\n }\n\n.my-txt-area:focus{\n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    resize:none;\n}\n.rounded{\n    border-top-right-radius: 50px; \n    border-bottom-right-radius: 50px; \n    border-top-left-radius: 50px; \n    border-bottom-left-radius: 50px;\n}\nbody{\n    color:rgb(117, 116, 116);   \n    background:white;\n    padding:0 !important;\n}\n.info-bg-color{\n    background: #66CCFF;\n}\n.gist-title{\n    padding:7px;\n}\n.padding-bit{\n    padding:5px;\n    margin:3px;\n}\n.solid-p-w{\n    /* solid-paper-weight */\n    box-shadow: 0px 1px 1px rgb(163, 161, 161);\n}\n.margin-climb-up{\n    margin-top: -20px;\n}\n.name-badge-n{\n    padding:10px; \n    background: #272727; \n    color:white; \n    margin-left:10px;\n    border-radius:10px;\n\n}\n.comment-box{\n    height:35px !important;\n    word-wrap:break-word;\n}\n.ease-in-slow{\n     transform:scale(1);\n     transition:0.2s ease-in all;\n}\n.cursor{\n    cursor:pointer;\n}\n.awesome-margin{\n    margin:5px;\n}\n.comment-item-title{\n    padding:5px; \n}\n.black-text{\n    color:black;\n}\n.comment-box-initial{\n    height: 1px;\n    position: absolute;\n    opacity:0;\n  \n}\n.comment-item-text{\n    background:whitesmoke; \n    padding:6px 15px; \n    display:inline-block;\n}\n.appear{\n    display:block;\n}\n.comment-box-entry{\n    position:absolute;\n    z-index:1;\n    opacity:1;\n    transition-delay:3s;\n    transition:0.5s ease-in-out;\n   \n}\n.paper-title-div{\n    background: whitesmoke;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n\n}\n.user-badge-comment{\n    outline: 0 !important;\n    background:#e6e5e5 !important;\n    border:solid 0px black !important;\n    box-shadow:4px 0 0 gray !important;\n}\n.user-badge:focus{\n    outline: 0 !important;\n    border:solid 0px black !important;\n}\n.triangle{\n    border:solid 15px navajowhite;\n    width:30px;\n    border-left-color:transparent;\n    border-right-color:transparent;\n\n    border-top-color:transparent;\n    background:transparent;\n\n}\n.p-text-view{\n    background:antiquewhite;\n    color:black;\n     transform:scale(1.3);\n     overflow-y:scroll !important;\n     transition:0.2s ease-in all;\n     padding:30px !important;\n     max-height:400px !important; \n     box-shadow:0 2px 2px gray;\n     \n}\n.gist-paper-body-text:hover{\n    background:whitesmoke; \n    transition:0.5s ease-in all;\n    cursor:pointer; \n}\n.semi-footer{\n    background: antiquewhite;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n}\n.paper-panel:hover{\n    box-shadow:0 6px 6px gray;\n    z-index:1;\n    transition:0.3s ease-in all;\n    cursor:pointer;\n}\n.name-badge-n:hover{\n    transform: rotateY(20deg);\n    transition: 0.5s ease-in all;\n}\n.name-badge{\n    padding:10px; \n    background:black; \n    color:white;\n    margin-left:-20px;\n}\n.gist-img{\n    height:400px; \n    width:100%; \n    object-fit: cover !important; \n    margin:0;\n}\n.action-btn-act-liked{\n  color:crimson !important;\n}\n.action-btn-act-liked:hover{\n  cursor:pointer; \n  color:black;\n  transition:0.2s ease-in; \n}\n.action-btn {\n    color: rgb(107, 106, 106); \n    margin:5px;\n    text-decoration: none !important;\n}\n.action-btn:active{\n     \n    color:crimson; \n}\n\n.action-btn:hover{\n    cursor:pointer; \n    color:black;\n    \n    transition:0.2s ease-in; \n}\n.input-file{\n    font-size: 1em;\n    color: white;\n    background-color: black;\n    display: inline-block;\n    margin:10px;\n}\n.input-file:focus + label,\n.input-file + label:hover {\n    background-color: red;\n}\n.tab-back-color{\n    background: rgb(241, 240, 240) !important;\n}\n.tab-h-5{\n    height:500px;\n}\n.my-tab{\n    margin-top:70px;\n}\n.tab-text{\n    border-bottom-color:crimson;\n}\n.tab-upload{\n    border-bottom-color:green;\n}\n.tab-umb{\n    border:solid 2px #585858 !important; \n    border-bottom-width:0 !important;\n}\n.tab-option{\n    background: inherit; \n    color:rgb(107, 106, 106);\n    text-align:center; \n    padding:10px 0 !important; \n    margin:0 !important;\n    width:100%; \n    border:solid 0px black;\n    border-bottom-width:2px;\n    border-top-right-radius:10px; \n    border-top-left-radius: 10px;\n}\n.tab-option:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.2s ease-in all;\n}\n .tab-option:focus{ \n    border:solid 2px #585858 !important;\n    border-color: #585858 !important;\n    border-bottom-width:0 !important;\n    margin:0 !important;\n    outline:0;\n  }\n\n.font-small{\n    font-size:1rem; \n}\n.font-tiny{\n    font-size:0.8rem;\n}\n.font-small-ish{\n    font-size:1.3rem;\n}\n.font-medium{\n    font-size:1.7rem;\n}\n.font-big{\n    font-size:2rem;\n}\n.margin-10{\n    margin:15px 6px;\n}\n.page-margin{\n    margin:30px;\n}\n.angel{\n    color:white !important;\n}\n.my-card-footer{\n    margin-top:0px; \n    padding:10px;\n    /*background:rgb(63, 158, 247);   */\n    background:#272727;\n    /*border:solid 2px rgb(63, 158, 247); */ \n    border:solid 2px #272727;\n    border-top-width:0px;\n}\n.my-card > p{\n    margin:2px;\n    padding:2px;   \n}\n\n.side-li{\n    padding:10px; \n    color:white; \n    font-size:1.5rem;\n    text-align: left; \n    margin:0px 0px;\n}\n\n\n.side-active {\n    background: white; \n    color:black;\n\n}\n.side-li:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.title-flag{\n    padding:5px; \n    border:solid 0px #585858; \n    border-bottom-width:0px;\n    text-transform:uppercase;\n    \n}\n.side-ul{\n    list-style-type: none; \n    padding:0px; \n    margin:0px;\n\n\n}\n.s-vanish{\n        /*stylish vanish*/\n    opacity:0;\n    transition:0.5s ease-out all;\n    display:none;\n}\n.vanish{\n    display: none;\n\n   \n   \n}\n.my-thumbnail{\n  \n    overflow-y:'scroll';\n    background:white; \n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;\n    font-size:1.5rem;\n    \n}\n.pic-trans{\n    opacity:1;\n    transition: 0.5s ease-in all;\n}\n.my-pic-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    /*padding:20px;            */\n    font-size:1.5rem;\n    cursor:pointer;\n    \n    \n}\n\n.shots-img:hover{\n    transform:scale(1.1);\n}\n.my-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;        \n    font-size:1.5rem;\n    \n    \n}\n.my-card:hover{\n    background:#585858; \n    color:white; \n    transition:0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.my-checkbox-label{\n     margin:10px; \n     margin-left:3px;\n    font-size:1.2rem;\n    cursor:pointer;\n}\n.my-checkbox{\n    margin:10px; \n    font-size:1.2rem;\n    cursor:pointer;\n}\n.side-nav-container{\n    left:0; \n    top:0;\n    z-index:1;\n    position:fixed;\n    height:100%; \n    width:200px; \n    background:rgb(8, 8, 8);\n    color:white;\n    \n}\n.side-nav-profile-box{\n    padding:15px; \n    margin:0px; \n    background:rgb(63, 158, 247); \n    border:solid px rgb(5, 53, 68); \n    border-bottom-width:3px; \n    height:170px;\n\n}\n\n.big-profile-pic {\n    margin-top:20px;\n    height:250px; \n    width:250px; \n    border-radius:100%;\n    border:solid 4px rgb(233, 229, 229);\n     box-shadow: 0px 2px 2px black;\n    object-fit: cover !important;\n\n}\n.side-profile-pic{\n  \n    height:110px; \n    width:110px; \n    border:solid 4px rgb(233, 229, 229); \n    box-shadow: 0px 2px 2px black;\n    border-radius:100%; \n    \n}", ""]);
+exports.push([module.i, "\n\n.pdf-profile-name{\n  color:black !important; \n  font-weight: 400;\n}\n.pdf-profile-name:hover{\n  color:rgb(0, 140, 255) !important; \n  transition: .2s ease-in;\n}\n.remove-trick{\n  transform: rotateX(70deg); \n  transition: .4s ease-in;\n}\n.pdf-card-title{\n  font-weight:600;\n  font-size:1.6rem;\n  color:black;\n}\n.pdf-page-card{\n  padding:20px;\n  background:whitesmoke; \n\n  margin-top:5px;\n \n}\n\n.pdf-page-card:hover{\n  background:burlywood; \n  transition: .4s ease-in-out all;\n  border:burlywood;\n   box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n\n.pdf-page-card:focus{\n  background:green ; \n  color:white;\n}\n.view-thumbnail{\n  cursor:pointer; \n  background: antiquewhite;\n}\n.similar{\n  cursor:pointer;\n  padding:30px;min-height:200px;max-height:200px;overflow:hidden; background:#282828;border:solid 1px black; border-top-width:3px;\n}\n.similar:hover{\n  transform: translateY(-10px);\n  transition:.5s ease-in-out;\n}\n.view-thumbnail:hover{\n  cursor:pointer; \n  background:whitesmoke; \n  color:black;\n  transition: .3s ease-in-out all; \n}\n.v-c-b{\n  cursor:pointer; \n  color:black !important;\n}\n.v-c-b:hover{\n  transform: scale(1.1);\n  background:white !important;\n  transition: .5s ease-in-out all;\n}\n.grab-button{\n  border-width: 0px; \n  background:floralwhite !important;\n}\n.grab-button:hover{\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n  transition: .3s ease-in-out all;\n  border-width: 2px;\n  border-color:white;\n  -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.grab-button:focus{\n  outline:0 !important; \n  border-width: 2px;\n  border-color:white !important;\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n\n}\n.margin-right-5{\n  margin-right: 5px;\n}\n.envelope-correction{\n  margin:7px;\n}\n.results-pad{\n\n  border-top-right-radius: 0px; \n  border-top-left-radius: 0px; \n  border-top-width: 5px; \n  border-top-color: black; \n  background: floralwhite;\n  margin-left:-13px;\n}\n\n.upload-button-design{\n  background:rgb(255, 169, 8) !important; \n  color:black!important;\n  border-color:rgb(255, 169, 8) !important; \n}\n.upload-button-design:hover{\n  background:#202020 !important; \n  color:white !important;\n  border-color:#202020 !important; \n  transition: .3s ease-in-out all;\n}\n.nav-icon{\n    cursor:pointer;\n}\n.nav-icon:hover{\n    transform:scale(1.3);\n    color:yellowgreen;\n    transition:0.3s ease-in all;\n\n}\n\n.pic-modal-envelope{\n  margin-left: -23px; \n  width:800px;\n}\n.QB{\n    font-size:3rem;\n    color:white !important; \n}\n\n.tint-focus{\n    position:relative; \n    cursor:pointer;\n    animation: jump infinite 0.5s linear;\n\n}\n.confidence-level{\n    margin-top:-10px !important;\n    cursor:pointer;\n    font-size:1.8rem;\n    padding:10px;\n    color:limegreen;\n\n}\n\n.tint-focus:hover{\n    transform: scale(2);\n}\n@keyframes jump{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n        transfrom:translateY(-5px);\n    }\n    100%{\n        transform:translateY(0px);\n    }\n}\n.rating-belt{\n    height: 70px;\n    position: absolute;\n    width: 100%;\n    margin-left: -15px;\n    margin-top: -70px;\n    border-color: #272727;\n\n}\n.QB-tint{\n    color:white; \n    font-size:1.7rem;\n    text-shadow: 0 2px 2px dimgrey;\n\n}\n.nav-bar-stick{\n    position:fixed; \n    top:0; \n    width:100%; \n    z-index:1;\n}\n.z-text-depth-1{\n    text-shadow: 0 2px 2px dimgrey;\n}\n.QB-Brand{\n    height:100px !important; \n    width:100px !important;\n    object-fit:cover;\n    object-position: center center;\n}\n.phone-textbox-design{\n    border: solid 0px #C8C8C8; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray; \n    border-radius:0;\n    margin:10px;\n}\n.phone-textbox-design:focus{\n    border: solid 0px #6c757d; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray !important; \n    border-radius:0;\n    outline:0;\n}\n.m-right-bit{\n    margin-right:6px;\n}\n\n.c-m-height{\n    max-height:250px !important;\n}\n.f-d-card{\n    background:\"white\";\n    padding:30px !important; \n    min-height:250px;\n    max-height:350px; \n    background:white;\n}\n.corner-10{\n    margin:2px 2px !important; \n    border-radius:3px;\n}\n.extra-img-div{\n    margin-bottom:10px;\n}\n.p-space-1{\n    margin:5px 7px;\n}\n.inside-popover{\n    margin:10px; \n    padding:10px;\n    text-align:center;\n}\n.file-check{\n    padding:10px;\n}\n.anoda{\n    animation-name:fa-spin;\n    animation-duration: infinite;\n}\n\n.modal-pic-div-image{\n  background-position: center center; \n  background-size: auto 100%; \n  opacity: 1; \n  background-repeat: no-repeat !important; \n  transition: .5s ease-in-out;\n}\n.pic-piece-image{\n    width:100% !important;\n    min-height:620px !important;\n    overflow-y:hidden;\n    cursor:pointer;\n    border-radius:0px;\n    \n}\n.pic-piece-image:hover{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    transition: 0.2s ease-in all;\n}\n.spinner-logo {\n  animation: spinner-logo-spin infinite .5s linear;\n  height: 80px;\n}\n@keyframes spinner-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n\n\n.font-red{\n    color:red;\n}\n.font-blue{\n    background: rgb(63, 158, 247) !important;\n}\n.number-font{\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.p-r-fix{\n        /*pull-right-fx*/\n    margin:5px;\n}\n\n.i-p-overlay{\n    background:black; \n    opacity:0.5; \n    height:200px;\n    z-index: 1;\n}\n\n.zero-border{\n    border:solid 0px black !important;\n}\n.btn-undefault:focus{\n    outline:0; \n    border: solid 0px black !important;\n}\n\n.p-activate-section{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n.p-activate-section-green{\n    /*paper - activate -section*/\n    background:green !important;\n    color:white !important;\n}\n.p-activate-section-blue{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n\n.d-tab{\n    font-weight: 500;\n    padding:8px 15px; \n     background:inherit; \n    margin:0;\n    cursor:pointer;\n    height:100%;\n    overflow-x:hidden;\n}\n\n.d-tab:hover{\n    background:orange;\n    color:black;\n    transition:0.3s ease-in all;\n}\n\n\n\n.margin-5{\n    margin:5px;\n}\n.centerness{\n    padding:120px 30px;\n}\n.relative{\n    position: relative;\n}\n.input-file-textbox{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n    margin-bottom:6px;\n}\n\n.input-file-textbox:focus{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n}\n.zero-radius{\n    border-radius:0px;\n}\n.multiple-side-active{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.m-side-active{\n        /*modal side option active*/\n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.search-box{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n}\n.search-box:focus{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n\n}\n.round-float-button{\n    float:right;\n    z-index:1;\n    position:fixed;\n    right:50px;\n    font-size:1.5rem;\n    position: fixed;\n    bottom:70px;\n    border-radius:50%;\n    padding:10px 16px; \n    color:white;\n}\n\n.float-red{ \n    bottom:120px; \n    background: red;\n }\n .float-red:hover{ \n    background: black;\n    color:white;\n    transition: 0.3s ease-in all; \n  }\n  .float-green{ \n\n    background:green;\n }\n  .float-green:hover{ \n    background:black;\n    color:white;\n    transition: 0.3s ease-in all; \n }\n.round-float-button:focus{ \n    border-radius:50% !important;\n    border-color:green !important;\n    color:white !important;\n    outline:0;\n }\n.modal-ed-title{ \n    margin:10px;\n    margin-left:0; \n    border:solid 0px rgb(98,97,97);\n    font-size:2.5rem;\n    border-bottom-width: 2px;\n    padding:25px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n  \n\n\n }\n .modal-ed-title:focus{ \n    border:solid 0px rgb(98,97,97) !important;\n    border-bottom-width: 2px !important;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n    outline:0;\n\n  }\n\n  .modal-ed-body{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n\n  .modal-ed-body:focus{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n.modal-bottom{\n    bottom:0 !important;\n}\n.piece-title{ \n    border:solid 0px rgb(98,97,97);\n    border-bottom-width: 2px; \n    \n    margin:5px;\n    margin-bottom:15px;\n    border-bottom-right-radius: 30px;\n    padding:5px;\n    padding-right:20px;\n    left:90px; \n    display:inline-block;\n\n }\n .piece-body{ \n    min-height: 400px; \n    max-height: 400px;  \n    overflow-y:scroll;\n    width:100%; \n\n  }\n.modal-side-items{ \n    \n    padding:10px;  \n    text-align: center; \n    border: solid 0px white;\n    /*border-bottom-width:1px;    */\n\n }\n     /*.modal-body:hover{ \n         background: rgb(207, 225, 241); \n         transition: 0.3s ease-in; \n         cursor: pointer;\n      }*/\n .modal-s-i-c{\n        /*modal-side-item-correction*/\n    font-size: 2.2rem;\n    color:white;\n   \n }\n .modal-s-i-c:hover{\n    color:white;\n    text-decoration: none;\n\n }\n .modal-s-i-c:focus{ \n    color:white;\n  }\n\n  .modal-s-i-c:active{ \n        color: rgb(63, 158, 247);\n   }\n.multiple-m-pages-btn{\n     padding:10px;  \n     text-align: center; \n     border: solid 0px white;\n}\n\n.multiple-m-pages-btn:hover{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n    }\n    .modal-side-items:hover{ \n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n\n}\n.modal-height{\n    min-height:500px;\n    overflow-y:scroll;\n    padding-top:0;\n    padding-right:0px !important;\n}\n\n.pic-modal-height{\n    min-height:620px;\n\n    padding-top:0;\n    padding-right:0 !important;\n    padding-left:64px;\n}\n\n.modal-side-bar{\n    /*padding-top:20px;   */\n    left:0;\n    position:fixed;\n    width:80px;\n    background: #272727;\n    height:100%;\n    margin-top:0;\n\n\n}\n.red{\n    background: crimson; \n    color:white;\n}\n.b-app-color{\n    border-color:royalblue;\n}\n.app-color{ \n    background:royalblue;\n        /*background: rgb(65, 85, 255) !important;*/\n    color:white !important;\n }\n.p-black-color{\n    background: #272727; \n    color:white !important;\n}\n.z-depth-1-half{\n    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n.z-depth-1{\n    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.z-depth-2{\n    -webkit-box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);\n    box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)\n}\n.z-depth-3{\n    -webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);\n    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)}\n.z-depth-4{\n    -webkit-box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21);\n    box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21)}\n.z-depth-5{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22)}\n    \n.my-depth-1 { \n    box-shadow: 0px 1px 2px gray;\n }\n .my-depth-half { \n    box-shadow: 0px 1px 1px gray;\n }\n .my-depth-half-b { \n    box-shadow: 0px 1px 1px black;\n }\n .my-depth-2 { \n    box-shadow: 0px 3px 3px gray;\n }\n .my-depth-4 { \n    box-shadow: 0px 4px 4px gray;\n }\n .my-active{ \n    background: #aceaf9;\n  }\n\n.snack-bar{\n    width:200px;\n    background: #148e0e;\n    color:white;\n    z-index:1;\n    position: fixed;\n    text-align: center;\n    padding:10px; \n    margin-left:35%;\n    margin-right:auto !important;\n    cursor:pointer;\n    bottom:0;\n    margin-bottom:10px;\n}\n.my-input{ \n    border: solid 0px gray;\n    border-bottom-width:3px; \n    border-bottom-color:rgb(98,97,97);\n    padding:20px;\n    margin-bottom:10px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    font-size: 2rem;\n    \n\n }\n .gist-coin-display{\n    margin-top: 5px;\n    padding: 5px;\n    background: mediumvioletred;\n    cursor:pointer;\n }\n .gist-coin-display:hover{\n    transform:scale(1.2);\n    box-shadow: 0 2px 2px gray;\n    transition:0.3s ease-in all;\n }\n.t-black{\n    color:black;\n}\n .my-input:focus{\n    border: solid 0px gray;\n    border-bottom-color:rgb(98,97,97);\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    border-bottom-width:3px; \n    padding:20px;\n    margin-bottom:10px;\n }\n.sides-padding{\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n}\n\n.my-txt-area{ \n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    font-size:1.6rem;\n    resize:none;\n }\n\n.my-txt-area:focus{\n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    resize:none;\n}\n.rounded{\n    border-top-right-radius: 50px; \n    border-bottom-right-radius: 50px; \n    border-top-left-radius: 50px; \n    border-bottom-left-radius: 50px;\n}\nbody{\n    color:rgb(117, 116, 116);   \n    background:white;\n    padding:0 !important;\n}\n.info-bg-color{\n    background: #66CCFF;\n}\n.gist-title{\n    padding:7px;\n}\n.padding-bit{\n    padding:5px;\n    margin:3px;\n}\n.solid-p-w{\n    /* solid-paper-weight */\n    box-shadow: 0px 1px 1px rgb(163, 161, 161);\n}\n.margin-climb-up{\n    margin-top: -20px;\n}\n.name-badge-n{\n    padding:10px; \n    background: #272727; \n    color:white; \n    margin-left:10px;\n    border-radius:10px;\n\n}\n.comment-box{\n    height:35px !important;\n    word-wrap:break-word;\n}\n.ease-in-slow{\n     transform:scale(1);\n     transition:0.2s ease-in all;\n}\n.cursor{\n    cursor:pointer;\n}\n.awesome-margin{\n    margin:5px;\n}\n.comment-item-title{\n    padding:5px; \n}\n.black-text{\n    color:black;\n}\n.comment-box-initial{\n    height: 1px;\n    position: absolute;\n    opacity:0;\n  \n}\n.comment-item-text{\n    background:whitesmoke; \n    padding:6px 15px; \n    display:inline-block;\n}\n.appear{\n    display:block;\n}\n.comment-box-entry{\n    position:absolute;\n    z-index:1;\n    opacity:1;\n    transition-delay:3s;\n    transition:0.5s ease-in-out;\n   \n}\n.paper-title-div{\n    background: whitesmoke;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n\n}\n.user-badge-comment{\n    outline: 0 !important;\n    background:#e6e5e5 !important;\n    border:solid 0px black !important;\n    box-shadow:4px 0 0 gray !important;\n}\n.user-badge:focus{\n    outline: 0 !important;\n    border:solid 0px black !important;\n}\n.triangle{\n    border:solid 15px navajowhite;\n    width:30px;\n    border-left-color:transparent;\n    border-right-color:transparent;\n\n    border-top-color:transparent;\n    background:transparent;\n\n}\n.p-text-view{\n    background:antiquewhite;\n    color:black;\n     transform:scale(1.3);\n     overflow-y:scroll !important;\n     transition:0.2s ease-in all;\n     padding:30px !important;\n     max-height:400px !important; \n     box-shadow:0 2px 2px gray;\n     \n}\n.gist-paper-body-text:hover{\n    background:whitesmoke; \n    transition:0.5s ease-in all;\n    cursor:pointer; \n}\n.semi-footer{\n    background: antiquewhite;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n}\n.paper-panel:hover{\n    box-shadow:0 6px 6px gray;\n    z-index:1;\n    transition:0.3s ease-in all;\n    cursor:pointer;\n}\n.name-badge-n:hover{\n    transform: rotateY(20deg);\n    transition: 0.5s ease-in all;\n}\n.name-badge{\n    padding:10px; \n    background:black; \n    color:white;\n    margin-left:-20px;\n}\n.gist-img{\n    height:400px; \n    width:100%; \n    object-fit: cover !important; \n    margin:0;\n}\n.action-btn-act-liked{\n  color:crimson;\n  text-decoration:none !important;\n}\n.action-btn-act-liked:hover{\n  cursor:pointer; \n  color:rgb(75, 27, 27);\n  transition:0.2s ease-in; \n}\n.action-btn {\n    color: rgb(107, 106, 106); \n    margin:5px;\n    text-decoration: none !important;\n}\n.action-btn:active{\n    color:crimson; \n}\n\n.action-btn:hover{\n    cursor:pointer; \n    color:black; \n    transition:0.2s ease-in; \n}\n.input-file{\n    font-size: 1em;\n    color: white;\n    background-color: black;\n    display: inline-block;\n    margin:10px;\n}\n.input-file:focus + label,\n.input-file + label:hover {\n    background-color: red;\n}\n.tab-back-color{\n    background: rgb(241, 240, 240) !important;\n}\n.tab-h-5{\n    height:500px;\n}\n.my-tab{\n    margin-top:70px;\n}\n.tab-text{\n    border-bottom-color:crimson;\n}\n.tab-upload{\n    border-bottom-color:green;\n}\n.tab-umb{\n    border:solid 2px #585858 !important; \n    border-bottom-width:0 !important;\n}\n.tab-option{\n    background: inherit; \n    color:rgb(107, 106, 106);\n    text-align:center; \n    padding:10px 0 !important; \n    margin:0 !important;\n    width:100%; \n    border:solid 0px black;\n    border-bottom-width:2px;\n    border-top-right-radius:10px; \n    border-top-left-radius: 10px;\n}\n.tab-option:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.2s ease-in all;\n}\n .tab-option:focus{ \n    border:solid 2px #585858 !important;\n    border-color: #585858 !important;\n    border-bottom-width:0 !important;\n    margin:0 !important;\n    outline:0;\n  }\n\n.font-small{\n    font-size:1rem; \n}\n.font-tiny{\n    font-size:0.8rem;\n}\n.font-small-ish{\n    font-size:1.3rem;\n}\n.font-medium{\n    font-size:1.7rem;\n}\n.font-big{\n    font-size:2rem;\n}\n.margin-10{\n    margin:15px 6px;\n}\n.page-margin{\n    margin:30px;\n}\n.angel{\n    color:white !important;\n}\n.my-card-footer{\n    margin-top:0px; \n    padding:10px;\n    /*background:rgb(63, 158, 247);   */\n    background:#272727;\n    /*border:solid 2px rgb(63, 158, 247); */ \n    border:solid 2px #272727;\n    border-top-width:0px;\n}\n.my-card > p{\n    margin:2px;\n    padding:2px;   \n}\n\n.side-li{\n    padding:10px; \n    color:white; \n    font-size:1.5rem;\n    text-align: left; \n    margin:0px 0px;\n}\n\n\n.side-active {\n    background: white; \n    color:black;\n\n}\n.side-li:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.title-flag{\n    padding:5px; \n    border:solid 0px #585858; \n    border-bottom-width:0px;\n    text-transform:uppercase;\n    \n}\n.side-ul{\n    list-style-type: none; \n    padding:0px; \n    margin:0px;\n\n\n}\n.s-vanish{\n        /*stylish vanish*/\n    opacity:0;\n    transition:0.5s ease-out all;\n    display:none;\n}\n.vanish{\n    display: none;\n\n   \n   \n}\n.my-thumbnail{\n  \n    overflow-y:'scroll';\n    background:white; \n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;\n    font-size:1.5rem;\n    \n}\n.pic-trans{\n    opacity:1;\n    transition: 0.5s ease-in all;\n}\n.my-pic-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    /*padding:20px;            */\n    font-size:1.5rem;\n    cursor:pointer;\n    \n    \n}\n\n.shots-img:hover{\n    transform:scale(1.1);\n}\n.my-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;        \n    font-size:1.5rem;\n    \n    \n}\n.my-card:hover{\n    background:#585858; \n    color:white; \n    transition:0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.my-checkbox-label{\n     margin:10px; \n     margin-left:3px;\n    font-size:1.2rem;\n    cursor:pointer;\n}\n.my-checkbox{\n    margin:10px; \n    font-size:1.2rem;\n    cursor:pointer;\n}\n.side-nav-container{\n    left:0; \n    top:0;\n    z-index:1;\n    position:fixed;\n    height:100%; \n    width:200px; \n    background:rgb(8, 8, 8);\n    color:white;\n    \n}\n.side-nav-profile-box{\n    padding:15px; \n    margin:0px; \n    background:rgb(63, 158, 247); \n    border:solid px rgb(5, 53, 68); \n    border-bottom-width:3px; \n    height:170px;\n\n}\n\n.big-profile-pic {\n    margin-top:20px;\n    height:250px; \n    width:250px; \n    border-radius:100%;\n    border:solid 4px rgb(233, 229, 229);\n     box-shadow: 0px 2px 2px black;\n    object-fit: cover !important;\n\n}\n.side-profile-pic{\n  \n    height:110px; \n    width:110px; \n    border:solid 4px rgb(233, 229, 229); \n    box-shadow: 0px 2px 2px black;\n    border-radius:100%; \n    \n}", ""]);
 
 // exports
 
@@ -58237,17 +58325,6 @@ var SideNav = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'ul',
               { className: 'side-ul' },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'li',
-                { className: 'side-li' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-bell', style: { color: 'lime' } }),
-                ' notification ',
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'i',
-                  { className: 'badge' },
-                  ' 3 '
-                )
-              ),
               this.spillMenu(),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'li',
@@ -58337,6 +58414,7 @@ var Dashboard = function (_Component) {
     _this.editPaper = _this.editPaper.bind(_this);
     _this.handleImgDivs = _this.handleImgDivs.bind(_this);
     _this.zoom = _this.zoom.bind(_this);
+    _this.deletePicture = _this.deletePicture.bind(_this);
     _this.state = {
       currentTextPiece: null,
       currentTextState: false,
@@ -58350,7 +58428,7 @@ var Dashboard = function (_Component) {
 
   _createClass(Dashboard, [{
     key: 'setPicCurrentState',
-    value: function setPicCurrentState(dataTrain) {
+    value: function setPicCurrentState() {
       this.setState({ currentPicPieceState: true });
     }
   }, {
@@ -58673,7 +58751,8 @@ var Dashboard = function (_Component) {
     }
   }, {
     key: 'handleImgDivs',
-    value: function handleImgDivs(imageLink, parent) {
+    value: function handleImgDivs(imageLink, parent, id) {
+      var thisClass = this;
       var imageDiv = document.createElement('div');
       imageDiv.style.background = 'url(' + imageLink + ')';
       imageDiv.className = 'pic-piece-image modal-image';
@@ -58700,9 +58779,9 @@ var Dashboard = function (_Component) {
       var thisClass = this;
       var parent = document.createElement('div');
       this.handleImgDivs(imageLink, parent);
-      if (type === 'mulltiple') {
+      if (type === 'multiple') {
         this.separateExtrasToSingles(extras).forEach(function (link) {
-          _this4.handleImgDivs(link, parent);
+          _this4.handleImgDivs(link, parent, id);
         });
       }
       var textDiv = document.createElement('div');
@@ -58730,7 +58809,7 @@ var Dashboard = function (_Component) {
       var btnFa = document.createElement('i');
       parent.id = 'universal-p-delete-mode';
       parent.className = 'vanish';
-      text.textContent = 'Are you sure you want to delete this? ';
+      text.textContent = 'Are you sure you want to delete this ? ';
       textSpan.style.color = 'black';
       btn.setAttribute('data-toggle', 'modal-dismiss');
       btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
@@ -58939,7 +59018,7 @@ var Dashboard = function (_Component) {
     value: function deletePicture(id) {
       $('.modal .close').click();
       this.props.deletePictureFunction(id, this.props.picPieces);
-      var idImageArray = this.props.idImageArrayManufacture(this.props.picPieces);
+      var idImageArray = this.idImageArrayManufacture(this.props.picPieces);
       this.runAllImages(idImageArray);
     }
   }, {
@@ -60026,12 +60105,12 @@ var PicPiece = function (_React$Component) {
       var dataTrain = {
         imageURL: this.props.image_url,
         body: this.props.body,
-        id: this.props.id,
+        id: this.props.piece_id,
         created_at: this.props.created_at,
         type: this.props.type,
         extras: this.props.extras
       };
-      if (this.props.indicator !== this.props.id) {
+      if (this.props.indicator !== this.props.piece_id) {
         this.props.currentPicStateFunction();
         this.props.openPieceFunction(dataTrain);
         this.createAllOptionsAndPages();
@@ -60042,7 +60121,7 @@ var PicPiece = function (_React$Component) {
     value: function createAllOptionsAndPages() {
       this.props.cleanUpFunction();
       this.props.createSideOptionsFunction();
-      this.props.initAllPagesFunction(this.props.id, this.props.body, this.props.image_url, this.props.type, this.props.extras);
+      this.props.initAllPagesFunction(this.props.piece_id, this.props.body, this.props.image_url, this.props.type, this.props.extras);
     }
   }, {
     key: 'render',
@@ -60990,7 +61069,7 @@ var Profile = function (_Component) {
     _this.handleChange = _this.handleChange.bind(_this);
     _this.saveNewEdits = _this.saveNewEdits.bind(_this);
     _this.state = {
-      dataTrain: { name: "", email: "", number: "", university: "", course: "", hall: "" },
+      dataTrain: { name: "", email: "", phone: "", university: "", course: "", hall: "" },
       old: {}
     };
     return _this;
@@ -61016,7 +61095,16 @@ var Profile = function (_Component) {
       if (this.state.dataTrain.course !== old.course) {
         successCount = successCount + 1;
       }
-      if (this.state.dataTrain.hall !== old.hall) {
+      //   if ( this.state.dataTrain.hall !== old.hall){
+      //   successCount = successCount + 1; 
+      // }
+      if (this.state.dataTrain.facebook_link !== old.facebook_link) {
+        successCount = successCount + 1;
+      }
+      if (this.state.dataTrain.linked_in_link !== old.linked_in_link) {
+        successCount = successCount + 1;
+      }
+      if (this.state.dataTrain.whatsapp_number !== old.whatsapp_number) {
         successCount = successCount + 1;
       }
 
@@ -61036,18 +61124,24 @@ var Profile = function (_Component) {
             old: {
               name: thisClass.props.user.name,
               email: thisClass.props.user.email,
-              number: thisClass.props.user.phone,
+              phone: thisClass.props.user.phone,
               university: thisClass.props.user.school,
               course: thisClass.props.user.course,
-              hall: thisClass.props.user.hall
+              // hall:thisClass.props.user.hall,
+              facebook_link: thisClass.props.settings.facebook_link,
+              linked_in_link: thisClass.props.settings.linked_in_link,
+              whatsapp_number: thisClass.props.settings.whatsapp_number
             },
             dataTrain: {
               name: thisClass.props.user.name,
               email: thisClass.props.user.email,
-              number: thisClass.props.user.phone,
+              phone: thisClass.props.user.phone,
               university: thisClass.props.user.school,
               course: thisClass.props.user.course,
-              hall: thisClass.props.user.hall
+              // hall:thisClass.props.user.hall ,
+              facebook_link: thisClass.props.settings.facebook_link,
+              linked_in_link: thisClass.props.settings.linked_in_link,
+              whatsapp_number: thisClass.props.settings.whatsapp_number
             }
           });
         }, 3000);
@@ -61060,10 +61154,13 @@ var Profile = function (_Component) {
         dataTrain: {
           name: this.refs.profileName.value,
           email: this.refs.profileEmail.value,
-          number: this.refs.profileNumber.value,
+          phone: this.refs.profileNumber.value,
           university: this.refs.profileUniversity.value,
           course: this.refs.profileCourse.value,
-          hall: this.refs.profileHall.value
+          //hall:this.refs.profileHall.value
+          facebook_link: this.refs.facebookLink.value,
+          linked_in_link: this.refs.linkedInLink.value,
+          whatsapp_number: this.refs.whatsappNumber.value
         }
       });
     }
@@ -61088,7 +61185,7 @@ var Profile = function (_Component) {
           thisClass.saveNewEdits();
         }, 400);
       } else {
-        alert("LOOOL! You aint changes shit!");
+        alert("You have not yet made any changes.");
       }
     }
   }, {
@@ -61124,7 +61221,7 @@ var Profile = function (_Component) {
                     null,
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                       'h2',
-                      { className: 'devil profile-name-tag' },
+                      { className: 'black-text profile-name-tag' },
                       this.props.user.name
                     )
                   ),
@@ -61137,14 +61234,14 @@ var Profile = function (_Component) {
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { id: 'second-div-box', className: ' clearfix thumbnail z-depth-1 zero-radius f-d-card ' },
+                { id: 'second-div-box', className: ' clearfix thumbnail z-depth-1 zero-radius f-d-card ', style: { background: "navajowhite", color: "black" } },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'div',
                   { className: 'pull-left' },
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'p',
                     { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-envelope m-right-bit' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-envelope m-right-bit number-font' }),
                     ' ',
                     this.props.user.email
                   ),
@@ -61162,6 +61259,25 @@ var Profile = function (_Component) {
                     this.props.user.school
                   ),
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'a',
+                    { className: 'btn btn-primary z-depth-1 p-r-fix', target: '_blank', href: this.state.dataTrain.facebook_link },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-facebook' })
+                  ),
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'a',
+                    { className: 'btn btn-default z-depth-1 p-r-fix', href: this.state.dataTrain.linked_in_link, target: '_blank' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-linkedin' })
+                  ),
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { className: 'btn btn-success z-depth-1 p-r-fix', 'data-toggle': 'modal', 'data-target': '#whatsapp-display' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-whatsapp' })
+                  )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'div',
+                  { className: 'pull-right' },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'p',
                     { className: '' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa  fa-book m-right-bit' }),
@@ -61172,63 +61288,29 @@ var Profile = function (_Component) {
                     'p',
                     { className: '' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-globe m-right-bit' }),
-                    ' ',
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                       'i',
                       { className: 'number-font' },
-                      '400'
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'b',
+                        null,
+                        this.props.userRelations !== null ? this.props.userRelations.numOfPapers + this.props.userRelations.numOfPictures : ''
+                      ),
+                      ' '
                     ),
-                    ' Plubishes '
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { className: 'btn btn-primary z-depth-1 p-r-fix' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-facebook' })
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { className: 'btn btn-default z-depth-1 p-r-fix' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-linkedin' })
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'button',
-                    { className: 'btn btn-success z-depth-1 p-r-fix' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-whatsapp' })
-                  )
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'div',
-                  { className: 'pull-right' },
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa  fa-home m-right-bit' }),
-                    ' ',
-                    this.props.user.hall
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    { className: '' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-hand-grab-o m-right-bit' }),
-                    ' ',
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                      'i',
-                      { className: 'number-font' },
-                      ' 50 '
-                    ),
-                    ' Grabs'
+                    'Publishes'
                   ),
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'p',
                     { className: 'number-font' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-hand-lizard-o m-right-bit' }),
-                    ' 30  Grabbed'
-                  ),
-                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'p',
-                    { className: 'number-font' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-money m-right-bit' }),
-                    ' 100 '
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-arrow-up m-right-bit' }),
+                    ' ',
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      'b',
+                      null,
+                      this.props.userRelations !== null ? this.props.userRelations.reputation.points : ''
+                    ),
+                    ' '
                   )
                 )
               ),
@@ -61273,9 +61355,9 @@ var Profile = function (_Component) {
                       'div',
                       { className: 'col-md-6' },
                       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: 'profileNumber', type: 'number', className: 'form-control number-font number phone-textbox-design',
-                        placeholder: 'Whatsapp number', onChange: function onChange() {
+                        placeholder: 'Phone number', onChange: function onChange() {
                           return _this2.handleChange();
-                        }, value: this.state.dataTrain.number })
+                        }, value: this.state.dataTrain.phone })
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                       'div',
@@ -61296,10 +61378,66 @@ var Profile = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                       'div',
                       { className: 'col-md-6' },
-                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: 'profileHall', type: 'text', className: 'form-control hall phone-textbox-design',
-                        placeholder: 'Hall', onChange: function onChange() {
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: 'facebookLink', type: 'text', className: 'form-control facebookLink phone-textbox-design',
+                        placeholder: 'your facebook link', onChange: function onChange() {
                           return _this2.handleChange();
-                        }, value: this.state.dataTrain.hall })
+                        }, value: this.state.dataTrain.facebook_link })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      'div',
+                      { className: 'col-md-6' },
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: 'linkedInLink', type: 'text', className: 'form-control linkedInLink phone-textbox-design',
+                        placeholder: 'your linked in link', onChange: function onChange() {
+                          return _this2.handleChange();
+                        }, value: this.state.dataTrain.linked_in_link })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      'div',
+                      { className: 'col-md-6' },
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { ref: 'whatsappNumber', type: 'text', className: 'number-font form-control whatsappNumber phone-textbox-design',
+                        placeholder: 'your whatsapp number', onChange: function onChange() {
+                          return _this2.handleChange();
+                        }, value: this.state.dataTrain.whatsapp_number })
+                    )
+                  )
+                )
+              )
+            )
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'modal fade my-depth-1', id: 'whatsapp-display' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'modal-dialog modal-sm' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'modal-content' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'modal-body' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'center',
+                  null,
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'small',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      'b',
+                      null,
+                      this.props.user.name,
+                      '\'s'
+                    ),
+                    ' whatsapp number '
+                  ),
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'p',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                      'h3',
+                      { className: 'number-font black-text' },
+                      this.state.dataTrain.whatsapp_number
                     )
                   )
                 )
@@ -62211,19 +62349,78 @@ var NewsContainer = function (_Component) {
       }
     }
   }, {
+    key: 'ejectNews',
+    value: function ejectNews() {
+      console.log("I am the newss feeed>>>>", this.props.allNews);
+      var thisClass = this;
+      if (this.props.allNews !== null) {
+        return this.props.allNews.news.map(function (item, index) {
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "news-text-" + num.toString();
+          if (item.file_type === "text") {
+            var _React$createElement2;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              { key: loopIndex },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__GistPaperCard__["a" /* default */], (_React$createElement2 = {
+                type: item.type,
+                details: { bcolor: 'black', owner: item.user },
+                id: item.id,
+                user: thisClass.props.authenticatedUser,
+                title: item.title,
+                body: item.body,
+                created_at: item.created_at,
+                likesArray: item.likes,
+                likes: item.likes.length,
+                commentsArray: item.comments,
+                commentsCount: item.comments.length,
+                showComments: thisClass.create,
+                course: item.course,
+                coins: Math.round(Math.random(50000) * 1000),
+                school: item.user.school,
+                newLikeFunction: thisClass.props.newLikeFunction,
+                allNews: thisClass.props.allNews
+              }, _defineProperty(_React$createElement2, 'school', item.user.school), _defineProperty(_React$createElement2, 'insertDetailsFunction', thisClass.insertDelDetails), _React$createElement2))
+            );
+          } else if (item.file_type === "image") {
+            var _React$createElement3;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              { key: loopIndex },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__GistImageCard__["a" /* default */], (_React$createElement3 = {
+                id: item.id,
+                details: { bcolor: 'green', owner: item.user },
+                description: item.description,
+                user: thisClass.props.authenticatedUser,
+                course: item.course,
+                image_link: item.picture_link,
+                created_at: item.created_at,
+                likesArray: item.likes,
+                likes: item.likes.length,
+                comments: item.comments.length,
+                showComments: thisClass.create
+              }, _defineProperty(_React$createElement3, 'course', item.course), _defineProperty(_React$createElement3, 'coins', Math.round(Math.random(50000) * 1000)), _defineProperty(_React$createElement3, 'school', item.user.school), _defineProperty(_React$createElement3, 'likeFunction', thisClass.props.picLikeFunction), _defineProperty(_React$createElement3, 'allNews', thisClass.props.allNews), _defineProperty(_React$createElement3, 'school', item.user.school), _React$createElement3))
+            );
+          }
+        });
+      }
+    }
+  }, {
     key: 'ejectTexts',
     value: function ejectTexts() {
       var thisClass = this;
       if (this.props.allNews.active !== false) {
         return this.props.allNews.texts.map(function (item, index) {
-          var _React$createElement2;
+          var _React$createElement4;
 
           var num = Math.round(Math.random(1000000) * 100000000000);
           var loopIndex = "news-text-" + num.toString();
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'li',
             { key: loopIndex },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__GistPaperCard__["a" /* default */], (_React$createElement2 = {
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__GistPaperCard__["a" /* default */], (_React$createElement4 = {
               type: item.type,
               details: { bcolor: 'black', owner: item.user },
               id: item.id,
@@ -62241,7 +62438,7 @@ var NewsContainer = function (_Component) {
               school: item.user.school,
               newLikeFunction: thisClass.props.newLikeFunction,
               allNews: thisClass.props.allNews
-            }, _defineProperty(_React$createElement2, 'school', item.user.school), _defineProperty(_React$createElement2, 'insertDetailsFunction', thisClass.insertDelDetails), _React$createElement2))
+            }, _defineProperty(_React$createElement4, 'school', item.user.school), _defineProperty(_React$createElement4, 'insertDetailsFunction', thisClass.insertDelDetails), _React$createElement4))
           );
         });
       }
@@ -62408,12 +62605,7 @@ var NewsContainer = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'ul',
           { style: styles.ulFix },
-          this.ejectTexts()
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'ul',
-          { style: styles.ulFix },
-          this.ejectPictures()
+          this.ejectNews()
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -63001,7 +63193,8 @@ var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReduc
   token: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["c" /* tokenReducer */],
   allCourses: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["a" /* allCoursesReducer */],
   currentPieceComments: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["c" /* currentCommentReducer */],
-  pdfNews: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["e" /* pdfNewsReducer */]
+  pdfNews: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["e" /* pdfNewsReducer */],
+  userSettings: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["i" /* userSettingsReducer */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -63011,6 +63204,7 @@ var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReduc
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return userSettingsReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return pdfNewsReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return userRelationsReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return currentCommentReducer; });
@@ -63021,6 +63215,20 @@ var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReduc
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return authenticatedUserReducer; });
 
 
+var userSettingsReducer = function userSettingsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/GET_SETTINGS":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
 var pdfNewsReducer = function pdfNewsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments[1];
@@ -63079,7 +63287,7 @@ var allCoursesReducer = function allCoursesReducer() {
   return state;
 };
 var newsFeedReducer = function newsFeedReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { texts: [], pics: [], active: false };
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   var action = arguments[1];
 
   switch (action.type) {

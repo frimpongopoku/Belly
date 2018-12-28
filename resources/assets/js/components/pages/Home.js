@@ -29,10 +29,11 @@ class Home extends Component {
     this.props.getUserPieces();
     this.props.getPicPieces();
     this.props.getToken();
-    this.props.getNews(0);
+    this.props.getNews(0,null);
     this.props.getAllCourses();
     this.props.getRelations();
     this.props.getPdfNews(0);
+    this.props.getUserSettings();
   }
 
   snack(notice,ID,color){
@@ -97,6 +98,8 @@ class Home extends Component {
                 user = { this.props.authenticatedUser === null ? 
                   {name:"",email:"",school:"",number:"",hall:"", gui:""} : 
                   this.props.authenticatedUser }
+                userRelations={this.props.userRelations}
+                settings = {this.props.userSettings === null? {facebook_link:"",whatsapp_number:"",linked_in_link:""} : this.props.userSettings}
                 notification = { this.props.notification } 
                 saveProfileEditsFunction = { this.props.saveProfileEdits }>
               </Profile>    
@@ -142,8 +145,9 @@ function mapStateToProps(state){
     token:state.token, 
     allCourses: state.allCourses,
     userRelations: state.authUserRelations,
-    pdfNews:state.pdfNews
-  };
+    pdfNews:state.pdfNews,
+    userSettings: state.userSettings
+  }; 
 };
 function matchDispatchToProps(dispatch){
   return bindActionCreators({ 
@@ -167,7 +171,8 @@ function matchDispatchToProps(dispatch){
     getRelations : appActions.getRelationsAction,
     getPdfNews:appActions.getPdfNewsAction,
     getMorePDFNews:appActions.getMorePDFNewsAction,
-    deletePDF: appActions.deletePDFAction
+    deletePDF: appActions.deletePDFAction,
+    getUserSettings:appActions.getUserSettingsAction
   },dispatch)
 };
 

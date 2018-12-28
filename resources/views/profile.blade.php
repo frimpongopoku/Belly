@@ -44,23 +44,23 @@
       }
   </style>
 @endsection
-
+ 
 @section('content')
   <div class="container"> 
     <div class ="row b-margin" > 
       <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 dark-text" style="margin-bottom:10px;">
         <center>
-          <h4 class="dark-text"><b>PROFILE</b></h4>
+          <h4 class="dark-text"><b>{{$user->name}}'s PROFILE</b></h4>
           <img src="/imgs/avatars/female-avatar.png" class="p-pic" />
-          <h3>Matthew Roberts</h3> 
-            <h5>Kwame Nkrumah University Of Technology</h5>
-            <h4 class="number-font">14000+ rep</h4>
+          <h3>{{$user->name}}</h3> 
+            <h5>{{$user->school}}</h5>
+            <h4 class="number-font">{{$user->reputation->points}}+ rep</h4>
             <div>
-              <small class="number-font">4500 <i class="fa fa-newspaper-o"></i> | 5000 <i class="fa fa-camera"></i></small>
+              <small class="number-font">{{$paperNumber}} <i class="fa fa-newspaper-o"></i> | {{$pictureNumber}} <i class="fa fa-camera"></i></small>
             </div>
-            <button class="btn btn-primary z-depth-1"><i class="fa fa-facebook"></i></button>
-            <button class="btn btn-default z-depth-1"><i class="fa fa-linkedin"></i></button>
-            <button class="btn btn-success z-depth-1"><i class="fa fa-whatsapp"></i></button>
+            <a class="btn btn-primary z-depth-1" target="_blank" href="/{{$settings->facebook_link}}" ><i class="fa fa-facebook"></i></a>
+            <a class="btn btn-default z-depth-1" target="_blank" href="/{{$settings->linked_in_link}}"><i class="fa fa-linkedin"></i></a>
+            <button class="btn btn-success z-depth-1" data-toggle="modal" data-target="#whatsapp-display"><i class="fa fa-whatsapp"></i></button>
         </center>
       </div>
       <div class="col-md-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -82,4 +82,16 @@
       </div>
     </div> 
   </div> 
+   <div class='modal fade my-depth-1' id="whatsapp-display">
+      <div class='modal-dialog modal-sm'>
+        <div class='modal-content'>
+          <div class='modal-body'> 
+            <center> 
+                  <small><b>{{$user->name}}'s</b> whatsapp number </small>
+              <p><h3 class="number-font black-text">{{$settings->whatsapp_number}}</h3></p>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
 @endsection

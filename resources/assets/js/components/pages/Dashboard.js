@@ -30,6 +30,7 @@ class Dashboard extends Component {
     this.editPaper = this.editPaper.bind(this);
     this.handleImgDivs = this.handleImgDivs.bind(this);
     this.zoom =this.zoom.bind(this);
+    this.deletePicture = this.deletePicture.bind(this);
     this.state = { 
         currentTextPiece:null,
         currentTextState:false,
@@ -39,7 +40,7 @@ class Dashboard extends Component {
         currentPicIndicator:0
       }
   }
-  setPicCurrentState(dataTrain){
+  setPicCurrentState(){
     this.setState({currentPicPieceState:true});
   }
   currentPicPieceSetter(dataTrain){
@@ -93,9 +94,8 @@ class Dashboard extends Component {
     })
   }
   spillPicPieces(){
-      //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
+    //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
     return this.props.picPieces.map( (piece,index)=>{
-      
         return (
           <li key={index}> 
             <PicPiece 
@@ -330,7 +330,8 @@ class Dashboard extends Component {
     }
   }
 
-  handleImgDivs(imageLink,parent){
+  handleImgDivs(imageLink,parent,id){
+    let thisClass = this;
     let imageDiv = document.createElement('div');
     imageDiv.style.background = 'url(' + imageLink + ')';
     imageDiv.className = 'pic-piece-image modal-image';
@@ -352,9 +353,9 @@ class Dashboard extends Component {
     let thisClass = this;
     let parent = document.createElement('div'); 
     this.handleImgDivs(imageLink,parent);
-    if( type ==='mulltiple'){
+    if( type ==='multiple'){
       this.separateExtrasToSingles(extras).forEach(link =>{
-        this.handleImgDivs(link,parent)
+        this.handleImgDivs(link,parent,id)
       });
     }
     let textDiv = document.createElement('div'); 
@@ -368,7 +369,6 @@ class Dashboard extends Component {
     parent.appendChild(textDiv);
     console.log("I am the image div....: ",parent)
     document.getElementById('pic-modal-envelope').appendChild(parent);
-
   }
   createPictureDeletePage(id){
     let thisClass = this;
@@ -381,7 +381,7 @@ class Dashboard extends Component {
     let btnFa = document.createElement('i');
     parent.id = 'universal-p-delete-mode';
     parent.className = 'vanish';
-    text.textContent = 'Are you sure you want to delete this? ';
+    text.textContent = 'Are you sure you want to delete this ? ';
     textSpan.style.color = 'black';
     btn.setAttribute('data-toggle', 'modal-dismiss');
     btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
@@ -565,9 +565,8 @@ class Dashboard extends Component {
   deletePicture(id) {
     $('.modal .close').click();
     this.props.deletePictureFunction(id, this.props.picPieces);
-    let idImageArray = this.props.idImageArrayManufacture(this.props.picPieces);
+    let idImageArray = this.idImageArrayManufacture(this.props.picPieces);
     this.runAllImages(idImageArray);
-
   }
   render() {
     return (

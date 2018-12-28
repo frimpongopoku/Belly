@@ -8,6 +8,14 @@ export const deletePDFAction =(id) =>{
     $.ajax({ method: 'get', url: '/delete-pdf/' + id });
   }
 }
+export const getUserSettingsAction=() =>{
+  return dispatch => {
+    $.ajax({ method: 'get', url: '/get-settings'})
+      .done((response) => {
+        dispatch(loadUserSettings(response));
+      });
+  }
+}
 export const getPdfNewsAction=(point) =>{
   return dispatch => {
     $.ajax({ method: 'get', url: '/get-pdf-news/'+point })
@@ -16,6 +24,8 @@ export const getPdfNewsAction=(point) =>{
       });
   }
 }
+
+
 
 export const getMorePDFNewsAction=(oldTrain,point)=>{
 
@@ -41,6 +51,9 @@ export const getRelationsAction =()=>{
 export const loadRelations= (dataTrain)=>{
   return { type:"user/GET_RELATIONS",payload:dataTrain};
 }
+export const loadUserSettings= (dataTrain)=>{
+  return { type:"user/GET_SETTINGS",payload:dataTrain};
+}
 
 export const getCommentsForPieceAction=(id,type) =>{
   return dispatch=>{
@@ -58,14 +71,14 @@ export const picLikeAction =(miniTrain, allNews)=>{
   return dispatch => {
     $.ajax({ method: "get", url: "/me/picture-like", data: miniTrain })
       .done((response) => {
-        let newState = { texts: [], pics: [], active: true };
-        allNews.pics.forEach(function (picNews) {
-          if (picNews.id === response.id) {
+        let newState = { news: [], badgeNumber:null, active: true };
+        allNews.news.forEach(function (picNews) {
+          if (picNews.id === response.id && picNews.file_type === response.file_type) {
             picNews.likes = response.likes;
           }
-          newState.pics.push(picNews);
+          newState.news.push(picNews);
         });
-        newState.texts = [...allNews.texts];
+        //you gotta bring the badge number here too
         dispatch(loadNewsPiecesAction(newState));
         dispatch(getRelationsAction());
       });
@@ -75,14 +88,13 @@ export const newLikeAction = (miniTrain,allNews) =>{
     return dispatch =>{
       $.ajax({method:"get",url:"/me/like",data:miniTrain})
       .done((response)=>{ 
-        let newState ={texts:[],pics:[],active:true};
-        allNews.texts.forEach(function(textNews){
-          if(textNews.id === response.id){
+        let newState ={news:[],badgeNumber:null,active:true};
+        allNews.news.forEach(function(textNews){
+          if(textNews.id === response.id && textNews.file_type === response.file_type){
             textNews.likes = response.likes;
           }
-          newState.texts.push(textNews);
+          newState.news.push(textNews);
         });
-        newState.pics = [...allNews.pics];
         dispatch(loadNewsPiecesAction(newState));
         dispatch(getRelationsAction());
       });
@@ -101,13 +113,12 @@ export const getNewsAction =(point,oldNews)=>{
   return dispatch=>{
     $.ajax({method:'get',url:'/me/get-news/'+point})
     .done((data)=>{
-      if(data.texts.length ===0 && data.pics.length === 0){
+      if(data.news.length === 0){
         dispatch(loadNewsPiecesAction(oldNews));
       }
       else{
-        let textNews = [...oldNews.texts,...data.texts]; 
-        let picNews = [...oldNews.pics, ...data.pics];
-        let finishedState ={ texts:textNews, pics: picNews,active:true};
+        let fNews = oldNews !==null? oldNews.news : [];
+        let finishedState ={ news:[...fNews,...data.news],active:data.active, badgeNumber:data.setNumber};
         dispatch(loadNewsPiecesAction(finishedState));
       }
     });
@@ -121,8 +132,9 @@ export const loadNewsPiecesAction =(dataTrain) =>{
 export const saveProfileEditsAction = (dataTrain)=>{
 	return dispatch =>{ 
     $.ajax({ method:"get",	url:"/me/save-profile-edits",	data: dataTrain})
-    .done(user=>{ 
-			dispatch(saveAuthenticatedUserAction(user));
+    .done(response=>{ 
+      dispatch(saveAuthenticatedUserAction(response.user));
+      dispatch(loadUserSettings(response.settings));
 			dispatch( notifierAction("Profile Saved"));
 		});
 	}

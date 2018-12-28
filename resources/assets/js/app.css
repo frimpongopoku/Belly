@@ -836,11 +836,12 @@ body{
     margin:0;
 }
 .action-btn-act-liked{
-  color:crimson !important;
+  color:crimson;
+  text-decoration:none !important;
 }
 .action-btn-act-liked:hover{
   cursor:pointer; 
-  color:black;
+  color:rgb(75, 27, 27);
   transition:0.2s ease-in; 
 }
 .action-btn {
@@ -849,14 +850,12 @@ body{
     text-decoration: none !important;
 }
 .action-btn:active{
-     
     color:crimson; 
 }
 
 .action-btn:hover{
     cursor:pointer; 
-    color:black;
-    
+    color:black; 
     transition:0.2s ease-in; 
 }
 .input-file{

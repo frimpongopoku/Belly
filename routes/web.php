@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+ 
 Auth::routes();
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -48,6 +48,7 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('get-user-relations','Main@getRelations');
   Route::get('get-pdf-news/{point}','Main@getPdfNews');
   Route::get('delete-pdf/{id}',"Main@deletePDF");
+  Route::get('get-settings',"Main@getUserSettings");
 });
 
 

@@ -1,5 +1,16 @@
 
 
+export const userSettingsReducer = (state = null, action) => {
+  switch (action.type) {
+    case "user/GET_SETTINGS":
+      return action.payload
+      break;
+
+    default:
+      break;
+  }
+  return state;
+}
 export const pdfNewsReducer = (state = null, action) => {
   switch (action.type) {
     case "user/GET_PDF_NEWS":
@@ -45,7 +56,7 @@ export const allCoursesReducer = (state = null, action) => {
   }
   return state
 }
-export const newsFeedReducer = ( state ={texts:[],pics:[],active:false}, action) =>{
+export const newsFeedReducer = ( state =null, action) =>{
   switch (action.type) {
     case "user/LOAD_NEWS":
       return action.payload

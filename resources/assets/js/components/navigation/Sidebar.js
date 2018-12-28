@@ -103,9 +103,9 @@ class SideNav extends Component {
           </div>
           <div> 
             <ul className = 'side-ul'> 
-              <li className = 'side-li'>
-                  <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
-              </li>
+                {/* <li className = 'side-li'>
+                    <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
+                </li> */}
               { this.spillMenu() }
               <li className = ' side-li' onClick = {()=>{ this.logout()}} >
                   <i className = 'fa fa-sign-out' style={{ color:'red' }}></i> Logout 

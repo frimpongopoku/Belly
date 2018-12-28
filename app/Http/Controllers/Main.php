@@ -11,29 +11,43 @@ use App\Like;
 use App\Comment;
 use App\Rep;
 use App\PdfPiece;
+use App\Setting;
 class Main extends Controller
 {
 
 
 
-    public function deletePDF($id){
-      $found = PdfPiece::findOrFail($id); 
-      $found->delete();
+
+    public function getUserSettings(){
+      $found = Setting::where('user_id',Auth::user()->id)->first(); 
+      return $found;
     }
+  public function deletePDF($id){
+    $found = PdfPiece::findOrFail($id); 
+    unlink($found->pdf_link);
+    $found->delete();
+  }
   public function getPdfNews($point){
     $related  = PdfPiece::where('course','!=',Auth::user()->course)->with('user')->skip($point * 3)->take(3)->get();
     return $related;
   }
   public function getRelations(){
     $user = User::where('id',Auth::user()->id)->with('reputation')->first();
-    return $user;
+    $publishes = User::where('id',Auth::user()->id)->with('picturePieces','paperPieces')->first();
+    $paperNumber = count($publishes->paperPieces);
+    $pictureNumber = count($publishes->picturePieces);
+    return ['reputation'=>$user->reputation,'numOfPapers'=>$paperNumber,'numOfPictures'=>$pictureNumber];
   }
 
   public function viewProfile($id, $name){
-    $user = User::where(['id'=>$id,'name'=>$name])->with('picturePieces','paperPieces')->firstOrFail(); 
+    $user = User::where(['id'=>$id,'name'=>$name])->with('picturePieces','paperPieces','reputation')->firstOrFail(); 
     $papers = PaperPiece::where('user_id',$user->id)->latest()->paginate(2); 
     $pictures = PicturePiece::where('user_id',$user->id)->latest()->paginate(2);
-    return view('profile',compact('user','papers','pictures'));
+    $settings = Setting::where('user_id',Auth::user()->id)->first();
+    $publishes = User::where('id',Auth::user()->id)->with('picturePieces','paperPieces')->first();
+    $paperNumber = count($publishes->paperPieces);
+    $pictureNumber = count($publishes->picturePieces);
+    return view('profile',compact('user','papers','pictures','settings','paperNumber','pictureNumber'));
   }
 
   public function deleteComment($id){
@@ -138,10 +152,12 @@ class Main extends Controller
       }
     }
   }
+
   public function getAllCourses(){
     $allCourses = Course::all(); 
     return $allCourses;
-  }
+  } 
+  
   public function gatherNews($point){
     //10 is the number of posts the user can retrieve each time they hit this link
     //point will be sent via the route to rep where in the db the user has reached
@@ -153,11 +169,13 @@ class Main extends Controller
     //there is actually an eloquent fxnality called "skip" use it later!
     $alreadySent = $point * 3;
     $nextSetPoint  = $alreadySent + 3;
-    $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes","comments")->orderBy('id','DESC')->paginate($nextSetPoint);
-    $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes","comments")->orderBy('id','DESC')->paginate($nextSetPoint);
-    $texts = array_slice($this->objectToArray($texts),$alreadySent,$nextSetPoint+1);
-    $pics = array_slice($this->objectToArray($pics),$alreadySent,$nextSetPoint+1);
-    return [ 'texts'=>$texts , 'pics'=>$pics,"setNumber"=>$point +1];
+    $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes","comments")->skip($alreadySent)->take(3)->orderBy('id','DESC')->get();
+    $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes","comments")->skip($alreadySent)->take(3)->orderBy('id','DESC')->get();
+    $texts = $this->objectToArray($texts);
+    $pics = $this->objectToArray($pics);
+    $merged =  array_merge($texts,$pics);
+    $shuffled = shuffle($merged);
+    return [ "news"=>$merged, "active"=> count($merged) !=0 ?true:false ,"setNumber"=>$point +1];
   }
   public function objectToArray($obj){
     $temp = []; 
@@ -167,12 +185,24 @@ class Main extends Controller
     return $temp;
   }
 	public function saveProfile(Request $request){
-		$user = User::find(Auth::user()->id); 
+    $user = User::find(Auth::user()->id); 
+    $setting = Setting::where('user_id',Auth::user()->id)->first();
 		if($user){
-			$user->update(['name'=>$request->name, 'number'=>$request->number,'course'=>$request->course, 'hall'=>$request->hall, 'school'=>$request->university,'email'=>$request->email]);
-			return $user;
+      $user->update(['name'=>$request->name, 'phone'=>$request->phone,'course'=>$request->course, 'school'=>$request->university,'email'=>$request->email]);
+      if($setting){
+        $setting->update(['facebook_link'=>$request->facebook_link,'linked_in_link'=>$request->linked_in_link,'whatsapp_number'=>$request->whatsapp_number]);
+        return ['user'=>$user,'settings'=>$setting];
+      }
+      else{
+        $new = new Setting(); 
+        $new->facebook_link = $request->facebook_link; 
+        $new->linked_in_link = $request->linked_in_link; 
+        $new->whatsapp_number = $request->whatsapp_number;
+        $new->user_id = Auth::user()->id;
+        $new->save();
+        return ['user'=>$user,'settings'=>$new];
+      }
 		}
-		return $user;
 	}
 	public function deletePicture($id){
 		$found = PicturePiece::find($id); 
@@ -237,18 +267,11 @@ class Main extends Controller
 		}
 	}
     public function getAuthUser(){
-    	//header('Content-Type: application/json');
-    	return Auth::user();
+    	
+    	return User::where('id',Auth::user()->id)->with('reputation')->first();
     }
 
     public function dummy(){ 
-      $found = PaperPiece::orderBy('id','DESC')->paginate(10);
-      $temp =[];
-      foreach($found as $f){
-        array_push($temp,$f);
-      }
-      echo count($this->gatherNews(0));
-      echo "<br/><br/><br/>";
-      return $this->gatherNews(1);
+      return User::where('id',Auth::user()->id)->with('reputation')->first();
     }
 }

@@ -37,11 +37,9 @@ class GistPaperCard extends React.Component{
   componentDidMount(){
     var thisClass = this;
     thisClass.checkOwner();
-  
   }
   checkIfUserLiked(){
     var thisClass =this;
-    console.log("deye dyed eyd eyd eyd eye dye dy")
     this.props.likesArray.forEach(function(itm){
       if(itm.user_id === thisClass.props.user.id){
         thisClass.setState({auth_user_liked:true});
@@ -101,22 +99,28 @@ class GistPaperCard extends React.Component{
       this.setState({ refinedOptions: this.options });
     }
   }
-  bringLike(){
-    if(this.state.auth_user_liked === true){
-      return(
-        <a href='#' id="like-action" className='action-btn font-small-ish' style={this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {}}
-          onClick={(e) => { e.preventDefault(); this.doLike() }}>
-          <i className='fa fa-thumbs-up'></i> DO DO Like
-        </a>
+ 
+  
 
-      );
-    }
-    else{
-      <a href='#' id="like-action" className='action-btn font-small-ish' style={this.state.auth_user_liked === true ? $('like-action').removeClass('action-btn') : {}}
+  bringLike(){
+    let thisClass =  this;
+    for (var item of this.props.likesArray){
+      if(Number(item.user_id) === Number(thisClass.props.user.id)){
+        return (
+          <a href='#' id="like-action" className='action-btn-act-liked font-small-ish' style={{ }}
+            onClick={(e) => { e.preventDefault(); thisClass.doLike() }}>
+            <i className='fa fa-thumbs-up'></i> Like
+        </a>
+        );
+      }
+    };
+    //if it actually gets to this point then user prolly hasnt like it nti show the other type
+    return (
+      <a href='#' id="like-action" className='action-btn font-small-ish' style={{}}
         onClick={(e) => { e.preventDefault(); this.doLike() }}>
         <i className='fa fa-thumbs-up'></i> Like
-              </a>
-    }
+      </a>
+    );
   }
 	render(){
     this.checkIfUserLiked();

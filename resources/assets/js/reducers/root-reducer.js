@@ -8,6 +8,7 @@ import   {
     newsFeedReducer, 
     currentCommentReducer,
     userRelationsReducer, 
+    userSettingsReducer,
     
   }  
 from './users-reducer'; 
@@ -24,7 +25,8 @@ const allReducers = combineReducers({
   token:tokenReducer, 
   allCourses: allCoursesReducer, 
   currentPieceComments:currentCommentReducer,
-  pdfNews:pdfNewsReducer
+  pdfNews:pdfNewsReducer,
+  userSettings:userSettingsReducer,
  });
 
-export default allReducers; 
+export default allReducers;  

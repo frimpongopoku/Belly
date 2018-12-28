@@ -82,6 +82,66 @@ class NewsContainer extends Component{
    }
   }
 
+  ejectNews(){
+    console.log("I am the newss feeed>>>>", this.props.allNews);
+    let thisClass = this;
+    if(this.props.allNews !== null){
+      return this.props.allNews.news.map(function (item, index) {
+        var num = Math.round(Math.random(1000000) * 100000000000);
+        var loopIndex = "news-text-" + num.toString();
+        if(item.file_type ==="text"){
+         return (<li key={loopIndex}>
+          <TextCard
+              type={item.type}
+              details={{ bcolor: 'black', owner: item.user }}
+              id={item.id}
+              user={thisClass.props.authenticatedUser}
+              title={item.title}
+              body={item.body}
+              created_at={item.created_at}
+              likesArray={item.likes}
+              likes={item.likes.length}
+              commentsArray={item.comments}
+              commentsCount={item.comments.length}
+              showComments={thisClass.create}
+              course={item.course}
+              coins={Math.round(Math.random(50000) * 1000)}
+              school={item.user.school}
+              newLikeFunction={thisClass.props.newLikeFunction}
+              allNews={thisClass.props.allNews}
+              school={item.user.school}
+              insertDetailsFunction={thisClass.insertDelDetails}
+            />
+          </li>)
+        }
+        else if( item.file_type ==="image"){
+         return (<li key={loopIndex}>
+            <ImageCard
+              id={item.id}
+              details={{ bcolor: 'green', owner: item.user }}
+              description={item.description}
+              user={thisClass.props.authenticatedUser}
+              course={item.course}
+              image_link={item.picture_link}
+              created_at={item.created_at}
+              likesArray={item.likes}
+              likes={item.likes.length}
+              comments={item.comments.length}
+              showComments={thisClass.create}
+              course={item.course}
+              coins={Math.round(Math.random(50000) * 1000)}
+              school={item.user.school}
+              likeFunction={thisClass.props.picLikeFunction}
+              allNews={thisClass.props.allNews}
+              school={item.user.school}
+            />
+
+          </li>)
+        }
+
+      });
+    }
+  }
   ejectTexts(){
     let thisClass= this;
     if(this.props.allNews.active !==false){
@@ -264,16 +324,13 @@ class NewsContainer extends Component{
     return (
       <div id="app-news-container">
         <ul style = {styles.ulFix}>
-          {this.ejectTexts()}
-        </ul>
-        <ul style={styles.ulFix}>
-          {this.ejectPictures()}
+          {this.ejectNews()}
         </ul>
         <br />
         <button className="btn btn-default btn-block"
           onClick={() => {
             this.props.getNews(this.state.badgeNumber, this.props.allNews);
-            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) });
+            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1)});
             this.loadIndicator();
           }}>
           Load More

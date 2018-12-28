@@ -34,6 +34,28 @@ class GistImageCard extends Component {
     this.checkOwner();
   };
   
+
+  bringLike() {
+    let thisClass = this;
+    for (var item of this.props.likesArray) {
+      if (Number(item.user_id) === Number(thisClass.props.user.id)) {
+        return (
+          <a href='#' id="like-action" className='action-btn-act-liked font-small-ish' style={{}}
+            onClick={(e) => { e.preventDefault(); thisClass.doLike() }}>
+            <i className='fa fa-thumbs-up'></i> Like
+        </a>
+        );
+      }
+    };
+    //if it actually gets to this point then user prolly hasnt like it nti show the other type
+    return (
+      <a href='#' id="like-action" className='action-btn font-small-ish' style={{}}
+        onClick={(e) => { e.preventDefault(); this.doLike() }}>
+        <i className='fa fa-thumbs-up'></i> Like
+      </a>
+    );
+  }
+
   zoom(ID){
     var zoomed = $('#img-zoom-pointer-'+ID).attr('data-zoomed'); 
     if (zoomed=== "false"){
@@ -112,8 +134,9 @@ class GistImageCard extends Component {
             className = ' btn-sm btn btn-default pull-right zero-radius'>
             <i className = 'fa fa-eye'></i>
           </button> 
-            <a  className = 'action-btn font-small-ish'onClick = {(e)=>{e.preventDefault();this.doLike()}}>
-              <i className = 'fa fa-thumbs-up'></i> Like</a>
+              {/* <a  className = 'action-btn font-small-ish'onClick = {(e)=>{e.preventDefault();this.doLike()}}>
+                <i className = 'fa fa-thumbs-up'></i> Like</a> */}
+            {this.bringLike()}
             <a 
             id ={'comment-button-'+this.props.type+'-'+this.props.id} 
               onClick={(e) => { e.preventDefault(); this.props.showComments(this.props.id, "picture", "Shot")}} 
