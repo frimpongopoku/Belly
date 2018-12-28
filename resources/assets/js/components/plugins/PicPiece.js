@@ -2,18 +2,17 @@ import React from 'react';
 import logo from './../../imgs/f-spinner-2.png';
 
 class PicPiece extends React.Component{
-
-
+ 
   sendPieceInformation(){
     let dataTrain = { 
       imageURL:this.props.image_url,
       body:this.props.body,
-      id:this.props.id,
+      id:this.props.piece_id,
       created_at: this.props.created_at,
       type: this.props.type,
       extras: this.props.extras
     };
-    if ( this.props.indicator !== this.props.id ){
+    if ( this.props.indicator !== this.props.piece_id ){
       this.props.currentPicStateFunction();
       this.props.openPieceFunction(dataTrain);
       this.createAllOptionsAndPages();
@@ -22,7 +21,7 @@ class PicPiece extends React.Component{
   createAllOptionsAndPages(){
     this.props.cleanUpFunction();
     this.props.createSideOptionsFunction();
-    this.props.initAllPagesFunction(this.props.id, this.props.body,this.props.image_url,this.props.type,this.props.extras);
+    this.props.initAllPagesFunction(this.props.piece_id, this.props.body,this.props.image_url,this.props.type,this.props.extras);
   }
 
 	render(){

@@ -7,7 +7,9 @@ import logo from './../../imgs/f-spinner-2.png';
 import PicPiece from './../plugins/PicPiece';
 import UniversalTextDisplay from  './../plugins/UniversalTextDisplayModal';
 import UniversalPicDisplay from './../plugins/UniversalPicDisplayModal';
+import SearchBox from './../plugins/search/SearchBox';
 import ReactDOM from 'react-dom';
+import PageSwitcher from './../plugins/PageSwitcher';
 
 class Dashboard extends Component {
   constructor(props){
@@ -28,6 +30,7 @@ class Dashboard extends Component {
     this.editPaper = this.editPaper.bind(this);
     this.handleImgDivs = this.handleImgDivs.bind(this);
     this.zoom =this.zoom.bind(this);
+    this.deletePicture = this.deletePicture.bind(this);
     this.state = { 
         currentTextPiece:null,
         currentTextState:false,
@@ -37,7 +40,7 @@ class Dashboard extends Component {
         currentPicIndicator:0
       }
   }
-  setPicCurrentState(dataTrain){
+  setPicCurrentState(){
     this.setState({currentPicPieceState:true});
   }
   currentPicPieceSetter(dataTrain){
@@ -75,7 +78,7 @@ class Dashboard extends Component {
         <li key={ index }>
           <Piece 
           owner= { this.props.user.name } 
-          course={ this.props.user.course } 
+          course={ piece.course } 
           fileType = "text" 
           title={ piece.title }
           body = { piece.body }
@@ -91,9 +94,8 @@ class Dashboard extends Component {
     })
   }
   spillPicPieces(){
-      //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
+    //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
     return this.props.picPieces.map( (piece,index)=>{
-      
         return (
           <li key={index}> 
             <PicPiece 
@@ -328,7 +330,8 @@ class Dashboard extends Component {
     }
   }
 
-  handleImgDivs(imageLink,parent){
+  handleImgDivs(imageLink,parent,id){
+    let thisClass = this;
     let imageDiv = document.createElement('div');
     imageDiv.style.background = 'url(' + imageLink + ')';
     imageDiv.className = 'pic-piece-image modal-image';
@@ -350,9 +353,9 @@ class Dashboard extends Component {
     let thisClass = this;
     let parent = document.createElement('div'); 
     this.handleImgDivs(imageLink,parent);
-    if( type ==='mulltiple'){
+    if( type ==='multiple'){
       this.separateExtrasToSingles(extras).forEach(link =>{
-        this.handleImgDivs(link,parent)
+        this.handleImgDivs(link,parent,id)
       });
     }
     let textDiv = document.createElement('div'); 
@@ -366,7 +369,6 @@ class Dashboard extends Component {
     parent.appendChild(textDiv);
     console.log("I am the image div....: ",parent)
     document.getElementById('pic-modal-envelope').appendChild(parent);
-
   }
   createPictureDeletePage(id){
     let thisClass = this;
@@ -379,7 +381,7 @@ class Dashboard extends Component {
     let btnFa = document.createElement('i');
     parent.id = 'universal-p-delete-mode';
     parent.className = 'vanish';
-    text.textContent = 'Are you sure you want to delete this? ';
+    text.textContent = 'Are you sure you want to delete this ? ';
     textSpan.style.color = 'black';
     btn.setAttribute('data-toggle', 'modal-dismiss');
     btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
@@ -563,9 +565,8 @@ class Dashboard extends Component {
   deletePicture(id) {
     $('.modal .close').click();
     this.props.deletePictureFunction(id, this.props.picPieces);
-    let idImageArray = this.props.idImageArrayManufacture(this.props.picPieces);
+    let idImageArray = this.idImageArrayManufacture(this.props.picPieces);
     this.runAllImages(idImageArray);
-
   }
   render() {
     return (
@@ -575,65 +576,41 @@ class Dashboard extends Component {
           <div className = 'row' > 
             <div className = 'col-md-10 col-lg-10'> 
               {/* Search area */}
-              <div className='my-thumbnail z-depth-1' style={{ margin: '15px 0', marginLeft:0, width:'100%' }}> 
-                <div className =' ' >
-                  <input type = 'text' placeholder='search ' className='form-control search-box' />
-                  <div className="">
-                      <input type="radio" className=" my-checkbox" name='criteria' value = 'Name'id="Name" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="Name">By Name</label>
-
-                      <input type="radio" className=" my-checkbox" name='criteria' value='Title' id="Title" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="Title">By Title</label>
-
-                      <input type="radio" className=" my-checkbox" name='criteria' value='University' id="University" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="University">By University</label>
-                      
-                      <input type="radio" className=" my-checkbox" name='criteria' value='Year'id="Year" />
-                       <label className="form-check-label my-checkbox-label" htmlFor="Year">By Year</label>
-                 
-                      <input type="radio" className=" my-checkbox" name='criteria' value='Username'id="Username" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="Username">By Username</label>
-               
-                      <input type="radio" className=" my-checkbox" name='criteria' value='Programme' id="Programme" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="Programme">By Programme</label>
-         
-                      <input type="radio" className=" my-checkbox" name='criteria' value='Course' id="Course" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="Course">By Course</label>
-            
-                      <input type="radio" className=" my-checkbox" name='criteria' value='Rating' id="Rating" />
-                      <label className="form-check-label my-checkbox-label" htmlFor="Rating">By Rating</label>
-                    </div>
-                 </div>
-              </div>
+                 <SearchBox></SearchBox>
                 {/* User Papers Tabs for TEXT/PICTURE/PDFs*/}
                 <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}} > 
                   <button onClick = {()=>{this.tabClick('text-section')}} id='text-section-btn'className = 'p-activate-section z-depth-1 d-tab zero-border btn-undefault'><i className = 'fa fa-file-text'></i> Text</button>
                   <button onClick = {()=>{this.tabClick('picture-section')}} id='picture-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-camera'></i> Shots</button>
-                  <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button>
+                    {/* <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button> */}
                 </div>
                 {/* Found Papers area  */}
                 <div> 
-                  <div className = 'container' style={{padding:'0'}}>
-                    <div className = 'col-md-10' style={{padding:'0'}}>
-                      <div className = 'row'> 
-                        <div id = 'text-section'>
-                          <ul style={{listStyleType:'none',padding:0}}> 
-                             { 
-                                this.props.pieces ===null ? '' : this.spillTextPieces()
-                             }
-                           </ul>
-                         </div>
-                         <div id = 'picture-section' className = 'vanish' >  
-                          <ul style={{listStyleType:'none',padding:0}}> 
-                              {
-                                  this.props.picPieces === null ? '' : this.spillPicPieces()
+                  <div className = 'container' style={{padding:'0'}}>  
+                    <div className = 'col-md-10' style={{padding:'0'}}>  
+                    <div className='row' id="textons" style={{ position: 'relative' }}> 
+                        <div id = 'text-section'style={{position:'relative'}}>
+                            <PageSwitcher baseURL ="/me/get-all-text-papers" type="text" animateDiv="#text-portion" values={this.props.paginatorTextValuesInsert} unique="texty"></PageSwitcher>
+                          <div id="text-portion">
+                            <ul style={{listStyleType:'none',padding:0}}> 
+                              { 
+                                  this.props.pieces ===null ? '' : this.spillTextPieces()
                               }
-                          </ul>
-                            <center><h3>DIfferent Picture Test</h3></center>
+                            </ul>
+                           </div>
                          </div>
-                         <div id = 'pdf-section' className = 'vanish'> 
-                            <center><h1>ADEY HERE TOOO </h1></center>
+                         <div id = 'picture-section' className = 'vanish' >
+                        <PageSwitcher baseURL="/me/get-all-pic-papers" type="picture" animateDiv="#pic-portion" values={this.props.paginatorPicValuesInsert} unique="pixy"></PageSwitcher>  
+                          <div id='pic-portion'>
+                            <ul style={{listStyleType:'none',padding:0}}> 
+                                {
+                                    this.props.picPieces === null ? '' : this.spillPicPieces()
+                                }
+                            </ul>
+                          </div>
                          </div>
+                          {/* <div id = 'pdf-section' className = 'vanish'> 
+                              <center><h1>ADEY HERE TOOO </h1></center>
+                          </div> */}
                       </div>
                     </div>
                   </div>

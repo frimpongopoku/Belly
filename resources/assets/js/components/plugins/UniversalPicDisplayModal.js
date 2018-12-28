@@ -1,9 +1,6 @@
 import React from 'react';
 
 class UniversalPicModal extends React.Component {
-
-    
-  
   render() {
     return (
       <div id="universal">
@@ -16,7 +13,7 @@ class UniversalPicModal extends React.Component {
                 </div>
                 <div className='col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1'>
                   <div id="pic-modal-envelope" className = ' pic-modal-envelope'>
-
+                      
                   </div>
                 </div>
               </div>

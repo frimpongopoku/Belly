@@ -1,6 +1,7 @@
 import React from 'react'; 
 import $ from 'jquery';
 import ajaxSubmit from 'jquery-form';
+import CourseSelector from './ComboBox';
 
 class Uploader extends React.Component{
 	constructor(props){
@@ -157,32 +158,68 @@ class Uploader extends React.Component{
 		this.uploadOnSubmit();//check pongo.why to know why this happens out here.
 
 		return (
-			<div>
+			<div className = 'clearfix'>
 				 <center>
-                    <h3 style={{ marginTop: '10%' }}>Upload Picture OR PDF Of Questions </h3>
-                    <small>Here you can upload a picture of questions, or a PDF file that contains questions.</small><br />
-                    <small className = 'text text-success'>Maximum file size for pictures <b><span className ='text text-danger number-font'>2 MB</span> </b>.</small> <br/>
-                    <small className = 'text text-success'>Maximum file size for PDFs <b><span className ='text text-danger number-font'> 5 MB </span></b>.</small>
-                </center>
-                	{/* FORM AREA */}
-            	<form action="/upload-image" id='upload-form' method="post" encType = 'multipart/form-data'>
-            		<input type='hidden' name='_token' defaultValue ={ this.props.token } />
-                    <input type='text' placeholder='Choose file ' className ='form-control number-font pull-left input-file-textbox zero-radius' id='input-file-textbox'style={{width:'85%'}} readOnly/>
-                    <button className='btn btn-primary zero-radius green pull-right z-depth-1 ' id='test-button' onClick={(event)=>{
-                    	event.preventDefault();
-                        $('.input-file').trigger('click');
-                    }}><i className = 'fa fa-upload'></i> Select</button>
-                    <div onClick={()=>{ this.doUpload()}} className = 'btn btn-default zero-radius pull-right z-depth-1' style={{ marginTop:6, paddingLeft:22, paddingRight:22}}>Done</div>
-                    <input type='text' name='description' className = 'form-control zero-radius input-file-textbox pull-left' defaultValue="" id='post-description' style={{width:'85%',marginBottom:13}} placeholder='Say something'/>
-	                <div style ={{ width:'100%'}} id=" info-box">
-	               		 {  this.displayInfo() }
-	               	</div>
-                    <div className="progress" style={{height:"2px", display:'none',marginBottom:5}}>
-				 		<div className="progress-bar" role="progressbar" style={{width:0}} aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>	 		
-					</div>
+            <h3 style={{ marginTop: '10%' }}>Upload Picture OR PDF Of Questions </h3>
+            <small>Here you can upload a picture of questions, or a PDF file that contains questions.</small>
+              <br />
+            <small className = 'text text-success'>Maximum file size for pictures 
+              <b><span className ='text text-danger number-font'> 2 MB</span> </b>.</small> <br/>
+            <small className = 'text text-success'>Maximum file size for PDFs 
+              <b><span className ='text text-danger number-font'> 5 MB </span></b>.</small>
+              <br/>
+          </center>
+              {/* FORM AREA */}
+          <form action="/upload-image" id='upload-form' method="post" encType = 'multipart/form-data'>
+            <input type='hidden' name='_token' defaultValue ={ this.props.token } />
+                <input type='text' placeholder='Choose file ' className ='form-control col-md-8 col-lg-8 number-font pull-left input-file-textbox zero-radius' 
+                id='input-file-textbox'style={{width:'100%'}} readOnly/>
+               
+                
+                <input type='text' name='description' className = 'form-control zero-radius input-file-textbox pull-left' 
+                defaultValue="" id='post-description' style={{width:'100%',marginBottom:13}} placeholder='Say something'/>
+
+              <div className = "clearfix">
+                <div style={{marginLeft:-20}}>
+                  <CourseSelector
+                    allCourses={this.props.allCourses}
+                    name="pic_course_select"
+                    user_course={this.props.course}
+                  />
+                </div>
+                <div className = 'pull-right'>
+                  <button className='btn btn-primary  green   z-depth-1 ' style={{margin:5}}id='test-button' onClick={(event) => {
+                    event.preventDefault();
+                    $('.input-file').trigger('click');
+                  }}><i className='glyphicon glyphicon-hand-up'></i> Select</button>
+                  <div onClick={() => { this.doUpload() }} className='btn btn-success  upload-button-design z-depth-1'
+                    style={{ margin: 5, paddingLeft: 22, paddingRight: 22 }}><i className = "fa fa-upload"></i> Upload</div>
+                </div>
+              </div>
+
+              <div style ={{ width:'100%'}} id=" info-box">
+                  {  this.displayInfo() }
+              </div>
+                <div className="progress" style={{height:"2px", display:'none',marginBottom:5}}>
+          <div className="progress-bar" role="progressbar" style={{width:0}} 
+            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>	 		
+          </div>
 					<center><small className=' text text-default number-font progress-text vanish'>0% complete</small></center>
-                    <input type='file' className='input-file' name="image[]" style={{opacity:0, width:1}} multiple/> 
-                </form>
+            <input type='file' className='input-file' name="image[]" style={{opacity:0, width:1}} multiple/> 
+          </form>
+
+                    {/* <form action ="/upload-image" method="post" encType="multipart/form-data"> 
+                      <input type='hidden' name='_token' defaultValue={this.props.token} />
+                        <input type='hidden' name='pic_course_select' defaultValue="Computer Science" />
+                      <input type='file' name="image[]" multiple/>
+                        <CourseSelector
+                          allCourses={this.props.allCourses}
+                          name="pic_course_selection"
+                          user_course={this.props.course}
+                        />
+
+                    <input type = "submit" />
+                    </form> */}
 	               
 			</div>
 		);

@@ -1,6 +1,6 @@
 import React from 'react'; 
 import PropTypes from 'prop-types';
-//Rename your class 
+
 class MyDropdown extends React.Component{
 
 	constructor(props){
@@ -10,17 +10,29 @@ class MyDropdown extends React.Component{
 
 	showItems(){
 		return this.props.options.map( (option,index) => { 
-			return (			
-	          <li key={ index + '-'+this.props.name }>
-	          	<a href="#" onClick = { ()=>{ option.function }}>
-	          		<i className ={ ' fa ' + option.fa +' fa-pull-left p-r-fix' }></i> 
-	          		{ option.title }
-	          	</a>
-	          </li>
-				);
+      if(option.title ==='special' && option.type ==='delete'){
+        return (
+          <li key = {index}>
+            <a data-toggle="modal" data-target="#universal-delete-board"
+              onClick = {()=>{ console.log(("I am the ::: ", this.props.paperTitle))}}
+            > <i className = "fa fa-trash"></i> delete</a>
+          </li>
+        )
+      }
+      else{
+        return(			
+          <li key={ index + '-'+this.props.name }>
+            <a href="#" onClick = {()=>{ option.function }}>
+              <i className ={ ' fa ' + option.fa +' fa-pull-left p-r-fix' }></i> 
+              { option.title }
+            </a>
+          </li>
+          );
+        }
 		});
 	}
 	render(){
+    console.log("I am dropdown: ",this.props.paperTitle);
 		return (
 				<div>
 					 {/* Single button */}

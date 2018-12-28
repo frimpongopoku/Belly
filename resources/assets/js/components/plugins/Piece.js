@@ -22,7 +22,7 @@ class Piece extends React.Component{
     this.props.initAllPagesFunction(this.props.title,this.props.body,this.props.ID);
     this.props.createSideOptionsFunction();
   }
-
+ 
 	render(){
 		return (
 			<div>

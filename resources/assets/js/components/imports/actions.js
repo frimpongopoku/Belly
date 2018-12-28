@@ -11,7 +11,20 @@ import {
 	loadUserPiecesAction, 
 	createNewPaperAction, 
 	saveMenuToRemoteAction, 
-	deletePaperPieceAction 
+  deletePaperPieceAction, 
+  getNewsAction, 
+  getAllCoursesAction,
+  newLikeAction,
+  picLikeAction,
+  getCommentsForPieceAction,
+  paginatorTextValuesAction,
+  paginatorPicValuesAction,
+  getRelationsAction,
+  getPdfNewsAction,
+  getMorePDFNewsAction,
+  deletePDFAction,
+  getUserSettingsAction,
+
 } from './../../actions/root-action';
 
 
@@ -28,5 +41,25 @@ export const appActions = {
 	loadUserPiecesAction:loadUserPiecesAction ,
 	createNewPaperAction: createNewPaperAction, 
 	saveMenuToRemoteAction: saveMenuToRemoteAction, 
-	deletePaperPieceAction: deletePaperPieceAction
+  deletePaperPieceAction: deletePaperPieceAction, 
+  getNewsAction: getNewsAction, 
+  getAllCoursesAction: getAllCoursesAction, 
+  paginatorTextValuesAction:paginatorTextValuesAction,
+  paginatorPicValuesAction:paginatorPicValuesAction,
+  getRelationsAction: getRelationsAction,
+  getPdfNewsAction: getPdfNewsAction,
+  getMorePDFNewsAction:getMorePDFNewsAction,
+  deletePDFAction:deletePDFAction,
+  getUserSettingsAction:getUserSettingsAction,
+  
+};
+export const likeActions = { 
+  sendNewLike: newLikeAction
+};
+export const gistActions ={
+  picLikeAction:picLikeAction,
+  newLikeAction: newLikeAction,
+  getNewsAction: getNewsAction,
+  getCommentsForPieceAction:getCommentsForPieceAction,
+
 };

@@ -5,7 +5,6 @@ class SideNav extends Component {
     constructor(props){
         super(props);
         this.menuItems = [
-             
             {
                 fa:'fa-globe',
                 name: 'gist'
@@ -22,33 +21,34 @@ class SideNav extends Component {
                 fa:'fa-plus', 
                 name:'create-page'
             },
+            {
+              fa:'fa-file-pdf-o',
+              name:'pdfs'
+            },
         ];
         this.logout = this.logout.bind(this);
     }
     componentWillMount(){
       this.saveMenuToRemote();
     }
-
     logout(){
       window.location = "/logout";
     }
-
     saveMenuToRemote(){ 
       this.props.saveMenuFunction === undefined? '' : this.props.saveMenuFunction(this.menuItems);
     }
-
     capitalize(theString){
         return theString.charAt(0).toUpperCase() + theString.slice(1)
     }
-
     spillMenu(){
       return this.menuItems.map((option,index) => {
         return (
-            <li className={option.name === 'dashboard' ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } onClick={() => {
-                this.switchPage(option.name)
-              }} key = { index }> <i className={ 'fa  '+ option.fa }></i>
-              { " "+ this.capitalize(option.name) }
-             </li>
+          <li className={option.name === 'dashboard' ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } 
+          onClick={() => {
+              this.switchPage(option.name)
+            }} key = { index }> <i className={ 'fa  '+ option.fa }></i>
+            { " "+ this.capitalize(option.name) }
+          </li>
         );
        });
     }
@@ -56,18 +56,17 @@ class SideNav extends Component {
       this.menuItems.filter(item => choicePage !== item.name ).forEach(itemB =>{
         $('#' + itemB.name + '-button').removeClass('side-active');
       });
-      $('#' + choicePage + '-button').addClass('side-active');
+      $('#'+ choicePage + '-button').addClass('side-active');
       let currentPage = $('#current-page-box').val();
       if(choicePage === currentPage){} //do nothing 
       else{
-        $('#' + currentPage).fadeOut(300, function () {
-            $('#' + choicePage).fadeIn(200, function () {
+        $('#' + currentPage).fadeOut(300, function(){
+            $('#' + choicePage).fadeIn(200, function(){
               //if the page the user is attempting to enter is the news page, dont update the box
                 if(choicePage ==='gist'){}
                 else{
                   $('#current-page-box').val(choicePage);
                 }
-              
             });
         });
       }
@@ -93,11 +92,20 @@ class SideNav extends Component {
                <i className = 'fa fa-caret-down awesome-margin'></i></h4>
             </center>
           </div>
+          <div style={{background:'#282828',padding:7,color:'orange'}}> 
+            <center>
+              <h5 className ="number-font">
+                <small style={{color:'cyan'}}>{this.props.user !== null ? this.props.user.course : ''} </small>
+                <i className="fa fa-arrow-up" style={{color:'lime'}}></i> 
+                  <b> {this.props.userRelations !==null ? this.props.userRelations.reputation.points :''}</b>
+              </h5>
+            </center>
+          </div>
           <div> 
             <ul className = 'side-ul'> 
-              <li className = ' side-li' >
-                  <i className = 'fa fa-bell ' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
-              </li>
+                {/* <li className = 'side-li'>
+                    <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
+                </li> */}
               { this.spillMenu() }
               <li className = ' side-li' onClick = {()=>{ this.logout()}} >
                   <i className = 'fa fa-sign-out' style={{ color:'red' }}></i> Logout 

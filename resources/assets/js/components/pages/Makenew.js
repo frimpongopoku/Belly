@@ -3,6 +3,7 @@ import $ from 'jquery';
 import SnackBar from './../plugins/SnackBar';
 import Uploader from './../plugins/Uploader';
 import PropTypes from 'prop-types';
+import CourseSelector from './../plugins/ComboBox';
 
 class MakeNew extends Component {
   constructor(props){
@@ -10,9 +11,7 @@ class MakeNew extends Component {
     this.availableOptions = ['text','pdf','picture'];    
     this.switchPageAfterUpload = this.switchPageAfterUpload.bind(this); 
   }
-  componentDidlMount(){
-    console.log("I am in create:",this.props.allPicturePieces);
-  }
+  
   fullOfSpaces(string){
     //BUT THIS ALGORITHM ONLY WORKS AS LONG AS "string" is not empty
     //default asci value of space is 32
@@ -68,12 +67,13 @@ class MakeNew extends Component {
     }    
 
   }
+  
   extractData(){ 
     let title = this.refs.title.value; 
     let body = this.refs.body.value; 
     let owner = this.props.user.name; 
     let ownerID = this.props.user.id; 
-    let course = this.props.user.course;
+    let course = document.getElementById("text_course_select").value;
     let dataTrain =  {
       title: title,
       body:body,
@@ -84,10 +84,11 @@ class MakeNew extends Component {
       created_at:'4 days ago', 
       type:'text'
     };
+    console.log("I am the selected course: ",course)
     let validationResults = this.validate(title,body); 
     if(validationResults.status ==='Pass'){
       this.refs.title.value = ""; 
-      this.refs.body.title = "";
+      this.refs.body.value = "";
       this.props.createPaperFunction(dataTrain, this.props.allPieces); 
       this.props.switchPageFunction('dashboard');
       this.snack();
@@ -143,9 +144,15 @@ class MakeNew extends Component {
                       <div className = '' > 
                         <input type = 'text' ref ='title'className= 'form-control my-input' placeholder='title' />
                         <div className ='thumbnail  clearfix' style={styles.thumbnailFix}> 
-                          <button className = 'btn btn-default'><b> B </b></button> 
-                          <label className = '' style={{margin:'5px'}}><b> I </b></label>
-                            <input type='submit' onClick = {()=>{this.extractData()}} value = 'save' className = 'btn btn-success pull-right' />
+                        <CourseSelector 
+                          allCourses = { this.props.allCourses}
+                          name = "text_course_select"
+                          user_course = { this.props.user !==null ? this.props.user.course :null}
+                        />
+                          <div className = 'pull-right'>
+                          <input type='submit' onClick={() => { this.extractData() }} 
+                            value='save' className='btn btn-success pull-left' style={{ margin: 5 }} />
+                          </div>
                         </div>
                         <textarea ref = 'body' className= 'form-control  my-txt-area'  rows='25' placeholder ='Compose question '>Start,</textarea>                                           
                       </div>
@@ -153,7 +160,13 @@ class MakeNew extends Component {
                     <div className='my-tab vanish' id='picture' style={{marginTop:'2rem'}}>
                       <br />
                       <div className=' tab-h-5 clearfix'>
-                        <Uploader switchPageFunction= { this.switchPageAfterUpload } newPicFunction = {this.props.newPicFunction } allPicturePieces = { this.props.allPicturePieces }token = { this.props.token } />                                   
+                      <Uploader 
+                         course={this.props.user !== null ? this.props.user.course : null } 
+                         allCourses={this.props.allCourses} 
+                         switchPageFunction= { this.switchPageAfterUpload }
+                         newPicFunction = {this.props.newPicFunction } 
+                         allPicturePieces = { this.props.allPicturePieces }
+                         token = { this.props.token } />                                   
                       </div>                                      
                     </div>
                 </div>                          

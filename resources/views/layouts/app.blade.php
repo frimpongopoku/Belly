@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('font/css/font-awesome.min.css') }} ">
     <link href='/css/welcome.css' />
 
+    
 
 
 </head>
@@ -82,6 +83,7 @@
     <!-- Scripts -->
     @yield('scripts')
     <script src="{{ asset('js/app.js') }}"></script>
+    
 
 </body>
 </html>
