@@ -1,5 +1,6 @@
 import React from 'react'; 
 import logo from './../../imgs/f-spinner-2.png';
+import * as moment from 'moment';
 
 class PicPiece extends React.Component{
  
@@ -10,7 +11,9 @@ class PicPiece extends React.Component{
       id:this.props.piece_id,
       created_at: this.props.created_at,
       type: this.props.type,
-      extras: this.props.extras
+      extras: this.props.extras,
+      likes_count:this.props.likes_count,
+      comments_count:this.props.comments_count,
     };
     if ( this.props.indicator !== this.props.piece_id ){
       this.props.currentPicStateFunction();
@@ -27,8 +30,8 @@ class PicPiece extends React.Component{
 	render(){
 		return (
 				<div>
-					<div className ='col-md-4' style = { styles.pieceFinish } >
-            <div className = ''>
+					<div className ='col-md-4' >
+            <div className = '' style={{marginBottom: 10,}}>
               <div className ='my-pic-card z-depth-1-half' > 
                 <div onClick = {()=>{this.sendPieceInformation()}} className = {' shots-img  shots-img-'+this.props.piece_id} style={{ height:0, opacity:0.1}} 
                   data-toggle='modal' data-target='#universal-pic-modal'>
@@ -40,11 +43,11 @@ class PicPiece extends React.Component{
                 </div>
               </div>
                 <div className='my-card-footer z-depth-1-half clearfix' style={{borderBottomRightRadius:10, borderBottomLeftRadius:10}}>
-                  <small className = 'angel'><i className = 'fa fa-timer'></i> 3 months ago</small>
+              <small className='angel number-font'><i className='fa fa-timer'></i> {moment(this.props.created_at).format("LL")}</small>
                   <div className = 'pull-right'>
                     <small className = 'text text-default p-r-fix'><i className = ' fa fa-camera'></i></small>
-                    <small className = 'text text-default p-r-fix number-font'><i className = 'fa fa-money'></i> 40</small>
-                    <small className = 'text text-default p-r-fix number-font'><i className = 'fa fa-thumbs-up'></i> 10</small>
+                    <small className = 'text text-default p-r-fix '><i className = 'fa fa-book'></i> {this.props.course}</small>
+                    
                   </div>
                 </div>
             </div>

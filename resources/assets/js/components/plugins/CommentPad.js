@@ -33,7 +33,6 @@ class CommentPad extends React.Component{
     alert("Spaces");
   }
 	render(){
-    console.log("I am thecomments:::   ",this.props.myComments)
 		return (
       <div>
         <div id = "comment-on-piece " className = {' comment-box-initial vanish ' +'js-comment-on-piece-'+this.props.type+'-'+ this.props.id }> 

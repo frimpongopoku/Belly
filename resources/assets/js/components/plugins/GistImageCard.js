@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Dropdown from './MyDropdown';
 import Wager from './Wager';
-import CommentPad from './CommentPad';
+import * as moment from 'moment';
 class GistImageCard extends Component {
   constructor(props){
     super(props); 
@@ -11,7 +11,11 @@ class GistImageCard extends Component {
     this.options = [ 
       { title:'facebook', fa:'fa-facebook',function:null}, 
     ];
-    this.state = { authorise:false, refinedOptions:[]}
+    this.state = { 
+      authorise:false, 
+      refinedOptions:[],
+      current_date: new Date().toISOString()
+    }
   }
   showComment(ID,type){
     let togVal = $('#comment-button-'+type+'-'+ID).attr('data-shown');
@@ -108,10 +112,16 @@ class GistImageCard extends Component {
               <p> {this.props.description} </p>
             </div>
             <div className = ' school-course-div pull-right' style={{paddingLeft:5, marginBottom:5}}> 
-              <small className = ' label label-info info-bg-color z-depth-1 p-r-fix'><i className ='fa fa-graduation-cap p-r-fix'></i> {this.props.details.owner.school} </small>
-              <small className = ' label label-default z-depth-1 p-r-fix'><i className ='fa fa-book p-r-fix'></i> {this.props.course}</small>
+              <small className = ' label label-info info-bg-color rounded z-depth-1' style={{marginRight:5}}>
+                <i className='fa fa-graduation-cap ' ></i> {this.props.details.owner.school} 
+              </small>
+              <small className = ' label label-default z-depth-1 rounded p-r-fix'>
+                <i className ='fa fa-book' ></i> {this.props.course}
+              </small>
             </div>
-            <span style={{padding:10 }} className = ' text text-primary font-small number-font'><i className='fa fa-clock-o'></i> 3 seconds ago </span>
+            <span style={{ padding: 10 }} className=' text text-primary font-small number-font'><i className='fa fa-clock-o'></i>  
+              {' '+moment.duration(moment(this.state.current_date).diff(moment(this.props.created_at))).humanize()} ago 
+            </span>
             
           {/* ================== IMAGE  ============== */}
             <img src = {this.props.image_link}
@@ -131,7 +141,7 @@ class GistImageCard extends Component {
           <div className = 'panel-footer clearfix'>
           <button 
             onClick = {()=>{ this.zoom(this.props.id)}}
-            className = ' btn-sm btn btn-default pull-right zero-radius'>
+            className = ' btn-sm btn btn-default pull-right zero-radius zero-border'>
             <i className = 'fa fa-eye'></i>
           </button> 
               {/* <a  className = 'action-btn font-small-ish'onClick = {(e)=>{e.preventDefault();this.doLike()}}>
@@ -143,10 +153,10 @@ class GistImageCard extends Component {
               className='action-btn font-small-ish'
                data-shown="false" data-toggle="modal" data-target="#universal-comment-board">
               <i className='fa fa-comment'></i> Comment</a>
-            <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-grab-o'></i> Grab</a>
+           
           </div>
         </div> 
-        <CommentPad id = {this.props.id} type ={ this.props.type} />
+       
       </div>
     );
   }

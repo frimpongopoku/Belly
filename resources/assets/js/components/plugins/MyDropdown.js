@@ -32,7 +32,6 @@ class MyDropdown extends React.Component{
 		});
 	}
 	render(){
-    console.log("I am dropdown: ",this.props.paperTitle);
 		return (
 				<div>
 					 {/* Single button */}

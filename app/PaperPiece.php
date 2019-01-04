@@ -8,7 +8,7 @@ class PaperPiece extends Model
  
 {
 
-	protected $fillable = ['title','body','deleted'];
+	protected $fillable = ['title','body','deleted','likes_count','comments_count'];
   //remember, the belongsTO method has to have the same name as the Model class it belongs to....
     public function scopeSearch($query, $keyword){
       return $query->whereHas('user',function($query) use ($keyword){

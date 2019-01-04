@@ -15,6 +15,7 @@ import SnackBar from './../plugins/SnackBar';
 import NavBar from './../plugins/NavBar';
 import PDF from './Pdfs';
 import { paginatorPicValuesAction } from '../../actions/root-action';
+import MobileNav from './../navigation/MobileNav';
 
 class Home extends Component {
   constructor(props){
@@ -35,7 +36,6 @@ class Home extends Component {
     this.props.getPdfNews(0);
     this.props.getUserSettings();
   }
-
   snack(notice,ID,color){
       return (<SnackBar color={color} notice = { notice } ID ={ID} />)
   };
@@ -56,13 +56,17 @@ class Home extends Component {
     this.blood.changePage("create-page");     
   }
   render() {
+    //1039
     return (
       <div>  
-        <div id = 'nav-bar' className = 'vanish'> 
+        <div id="mobile-nav" className=" mobile-appearance-key tablet-appearance-key pc-vanish-key"> 
+          <MobileNav />
+        </div>
+        <div id='nav-bar' className={$('#home').attr('data-session-page') === "gist" ? '' : 'vanish'}> 
           <NavBar></NavBar>
         </div>
-        <div className = ' col-md-12 col-lg-12'>
-          <div className = 'side-nav' >
+        <div className = ' col-md-12 col-lg-12 mobile-commot-paddings mobile-commot-margins'>
+          <div className={$('#home').attr('data-session-page') === "gist" ? 'side-nav vanish mobile-vanish-key tablet-vanish-key' : 'side-nav mobile-vanish-key tablet-vanish-key'} >
             <div className = 'col-md-2 col-lg-2 col-xs-12'>
               <SideNav saveMenuFunction = { this.props.saveMenu } 
                 user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }
@@ -71,8 +75,8 @@ class Home extends Component {
               </SideNav> 
              </div>
           </div>
-          <div className = 'col-md-10 col-lg-10'>
-            <div id="pdfs" className="vanish"> 
+          <div className= 'col-md-10 col-lg-10 mobile-commot-paddings mobile-commot-margins'>
+            <div id="pdfs" className={$('#home').attr('data-session-page') === "pdfs" ? '' : 'vanish'}> 
               <PDF 
                 getMorePDFNewsFunction = {this.props.getMorePDFNews}
                 pdfNews = { this.props.pdfNews } 
@@ -80,8 +84,7 @@ class Home extends Component {
                 deletePDFFunction = { this.props.deletePDF}
               ></PDF>
             </div>
-            <div id='dashboard' className = ''> 
-             
+            <div id='dashboard' className={$('#home').attr('data-session-page') === "dashboard" ? '' : 'vanish'} > 
                <Dashboard 
                   deletePictureFunction = {this.props.deletePicturePiece} 
                   picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } 
@@ -93,7 +96,7 @@ class Home extends Component {
                   pieces = { this.props.userPieces === null ? null : this.props.userPieces }>
                 </Dashboard> 
             </div> 
-            <div id= 'profile' className='vanish' style = { styles.noteReady }> 
+            <div id='profile' className={$('#home').attr('data-session-page') ==="profile" ?'':'vanish'} style = { styles.noteReady }> 
               <Profile 
                 user = { this.props.authenticatedUser === null ? 
                   {name:"",email:"",school:"",number:"",hall:"", gui:""} : 
@@ -104,7 +107,7 @@ class Home extends Component {
                 saveProfileEditsFunction = { this.props.saveProfileEdits }>
               </Profile>    
             </div>
-            <div id='create-page' className='vanish' style={styles.noteReady}> 
+            <div id='create-page' className={$('#home').attr('data-session-page') === "create-page" ? '' : 'vanish'} style={styles.noteReady}> 
               <Create 
                 allPicturePieces={this.props.userPicPieces === null ? null : this.props.userPicPieces} 
                 newPicFunction = { this.props.newPic } token = { this.props.token } 
@@ -117,7 +120,7 @@ class Home extends Component {
             </div>
            </div>
           </div>
-        <div id='gist' className='vanish' style={ styles.noteReady}> 
+        <div id='gist' className={$('#home').attr('data-session-page') === "gist" ? '' : 'vanish'} style={ styles.noteReady}> 
           <Gist allNews = { this.props.news ===null ? null : this.props.news }></Gist>
         </div>
        

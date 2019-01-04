@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PicturePiece extends Model
 {
+
+  protected $fillable = ['likes_count','comments_count'];
     public function scopeSearch($query, $keyword){
       return $query->whereHas('user',function($query) use ($keyword){
           $query->where('name','LIKE','%'.$keyword.'%')

@@ -8,6 +8,7 @@ import UniversalDelete from "./UniversalDelete";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { gistActions} from "./../imports/actions";
+import * as moment from 'moment';
 
 
 
@@ -28,6 +29,7 @@ class NewsContainer extends Component{
       badgeNumber:0,
       next_page_url:'/me/get-news/',
       currentPieceCommentsViewed:null,
+      current_date:new Date().toISOString(),
       deleteDetails:{
         title:null, 
         itemID:null,
@@ -36,10 +38,6 @@ class NewsContainer extends Component{
     }
   }
   insertDelDetails(title,itemID,type){
-    console.log("dfsdfsdf" ,title)
-    console.log("aaaa",itemID)
-    console.log("mmsdjf",type);
-    
     this.setState({deleteDetails:{title:title,itemID:itemID,type:type}});
   }
   componentDidMount() {
@@ -48,42 +46,9 @@ class NewsContainer extends Component{
     this.spinnerTrick();
   };
  
-  ejectPictures(){
-   let thisClass =this; 
-   if(this.props.allNews.active !==false){
-     return this.props.allNews.pics.map(function(item,index){
-       var num = Math.round(Math.random(1000000) * 100000000000);
-       var loopIndex = "news-pic-" + num.toString();
-       return (
-         <li key={loopIndex}>
-           <ImageCard
-             id={item.id}
-             details={{ bcolor: 'green', owner: item.user }}
-             description={item.description}
-             user={thisClass.props.authenticatedUser}
-             course={item.course}
-             image_link={item.picture_link}
-             created_at={item.created_at}
-             likesArray={item.likes}
-            likes={item.likes.length}
-            comments={item.comments.length}
-             showComments={thisClass.create}
-             course={item.course}
-             coins={Math.round(Math.random(50000) * 1000)}
-             school={item.user.school}
-             likeFunction={thisClass.props.picLikeFunction}
-             allNews={thisClass.props.allNews}
-             school={item.user.school}
-           />
-           
-         </li>
-       );
-     })
-   }
-  }
+  
 
   ejectNews(){
-    console.log("I am the newss feeed>>>>", this.props.allNews);
     let thisClass = this;
     if(this.props.allNews !== null){
       return this.props.allNews.news.map(function (item, index) {
@@ -142,41 +107,6 @@ class NewsContainer extends Component{
       });
     }
   }
-  ejectTexts(){
-    let thisClass= this;
-    if(this.props.allNews.active !==false){
-      return this.props.allNews.texts.map(function(item,index){
-        var num = Math.round(Math.random(1000000) *100000000000);
-        var loopIndex = "news-text-"+num.toString();
-        return (
-          <li key={loopIndex}>
-            <TextCard
-              type={item.type}
-              details={{ bcolor: 'black', owner: item.user }}
-              id={item.id}
-              user={thisClass.props.authenticatedUser}
-              title={item.title}
-              body={item.body}
-              created_at={item.created_at}
-              likesArray = {item.likes}
-              likes={item.likes.length}
-              commentsArray = {item.comments}
-              commentsCount={ item.comments.length }
-              showComments = { thisClass.create}
-              course={item.course}
-              coins={Math.round(Math.random(50000) * 1000)}
-              school={item.user.school}
-              newLikeFunction={thisClass.props.newLikeFunction}
-              allNews= { thisClass.props.allNews}
-              school = { item.user.school}
-              insertDetailsFunction= { thisClass.insertDelDetails}
-            />
-            
-          </li>
-        );
-      });
-    }
-  }
 
   saveComment(piece_id,type,pieceTitle){
     //laravel save, and then recall createComment components
@@ -211,20 +141,22 @@ class NewsContainer extends Component{
 
   backEndDelComment(id){
     $.ajax({method:'get',url:'/delete-comment/'+id})
-    .done(function(){
-
-    });
+    .done(function(){});
   }
   removeCommentItem(id){
     $("#"+id).fadeOut();
   }
-  createIndCommentDisplays(user,body,parent,userID,commentID){
+  createIndCommentDisplays(user,body,parent,userID,commentID,created_at){
     var thisClass = this;
     var hook = Math.round(Math.random() * 1000 ).toString()+'-hook';
+    var createdAt = document.createElement('small');
     let commentItem = document.createElement('div');
+    createdAt.className = " text text-primary number-font"; 
+    createdAt.style.margin = "0 7px";
+    createdAt.textContent = moment.duration(moment(this.state.current_date).diff(moment(created_at))).humanize() + " ago" ;
     commentItem.className = "js-comment-item";
     let commentItemText = document.createElement('small');
-    commentItemText.className = "comment-item-text rounded cursor";
+    commentItemText.className = "comment-item-text rounded cursor clearfix";
     commentItemText.id = hook;
     commentItem.style.marginBottom = "10px";
     let commentTitle = document.createElement('small');
@@ -238,7 +170,6 @@ class NewsContainer extends Component{
       delA.addEventListener('click',function(){
         thisClass.backEndDelComment(commentID);
         thisClass.removeCommentItem(hook);
-        console.log("I am the hookd::::: ",hook);
       });
       delA.style.color = "crimson"; 
       delSm.style.paddingLeft = "7px";
@@ -253,6 +184,7 @@ class NewsContainer extends Component{
     if (userID === this.props.authenticatedUser.id){
       commentItemText.appendChild(delSm);
     }
+    commentItemText.appendChild(createdAt);
     commentItemText.appendChild(bodyText);
     commentItem.appendChild(commentItemText);
     parent.appendChild(commentItem);
@@ -269,7 +201,7 @@ class NewsContainer extends Component{
     let commentContainer = document.createElement('div');
     commentContainer.id = "js-comment-container";
     commentsArray.forEach(function(comment){
-      thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer,comment.user.id,comment.id);
+      thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer,comment.user.id,comment.id,comment.created_at);
     });
     let footerButtonDiv = document.createElement('div');
     footerButtonDiv.className = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
@@ -334,10 +266,8 @@ class NewsContainer extends Component{
             this.loadIndicator();
           }}>
           Load More
-          <span className = "fa fa-spinner fa-spin" style={{marginLeft:5}}id="load-spinner"></span>
+          <span className = "fa fa-spinner fa-spin" style={{marginLeft:5,marginBottom:10}}id="load-spinner"></span>
         </button>
-       
-       <button className = "btn btn-danger" onClick={()=>{console.log("I am the state of newsContainer: ",this.state)}}>modal</button>
         <UniCommentBoard comments={this.props.currentPieceComments}></UniCommentBoard>
         <UniversalDelete paperType={this.state.deleteDetails.type} title={this.state.deleteDetails.title} paperID ={this.state.deleteDetails.itemID}/>
       </div>

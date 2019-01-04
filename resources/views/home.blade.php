@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" style="padding:0; margin:0; width:100%">
-    <div id='home'></div>
+    <div id='home' data-session-page={{Session::get('page_name')}}></div>
 </div>
 @endsection
 @section('scripts')

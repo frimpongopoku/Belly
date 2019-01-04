@@ -39,7 +39,7 @@ class PDFCard extends Component {
   }
   render() {
     return (
-      <div id={"pdf-item-box-"+this.props.id}>
+      <div id={"pdf-item-box-"+this.props.id} >
         <div className="thumbnail cursor clearfix pdf-page-card">
           <small className={" rounded pull-right " + this.generateColor()} style={{ padding: 7, marginRight: 4 }}>
           <a style={{textDecoration:"none" }} className="pdf-profile-name" target="_blank" href={"profile/ImU8iwby1xOdiru-"+this.props.owner.id+"-PputaKIShq9/"+this.props.owner.name}>

@@ -7,34 +7,45 @@
 }
 
 .my-depth-1 {
-    box-shadow: 0px 2px 4px black;
+  box-shadow: 0px 2px 4px black;
 
 }
+@keyframes jump{
+    0%{
+        transform: translateY(5px);
+    }
+    50%{
+        transfrom:translateY(-5px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
 .blur{
-    
-    filter: blur(10px); 
-    transition:1s ease-out all;
+  filter: blur(10px); 
+  transition:1s ease-out all;
 }
 .noblur{
     transition: 1s ease-in all;
 }
 .register-font{
-    color:rgb(122, 119, 119); 
-    font-size:1.5em; 
+  color:rgb(122, 119, 119); 
+  font-size:1.5em; 
 }
 .founder-title{
-    color:#707070;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    padding:10px;
+  color:#707070;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding:10px;
 }
 .profile-pic{
-    border: solid 5px #cac8c8; 
-    border-radius:100% ; 
-    height:200px !important; 
-    width:200px !important; 
-    box-shadow: 0px 2px 4px black;
-    object-fit: cover !important;
+  border: solid 5px #cac8c8; 
+  border-radius:100% ; 
+  height:200px !important; 
+  width:200px !important; 
+  box-shadow: 0px 2px 4px black;
+  object-fit: cover !important;
 }
 .sign-paragraph{
     font-size:2em;
@@ -45,13 +56,12 @@
     background: rgb(198, 229, 247) !important;
 }
 .first{
-    height:600px; 
-    background-image: url('/imgs/blue-orange-small.jpg');
-    background-size:cover;
-    background-position: center center;
-    border: solid 0px #272727; 
-    border-bottom-width:5px;
-  
+  height:600px; 
+  background-image: url('/imgs/blue-orange-small.jpg');
+  background-size:cover;
+  background-position: center center;
+  border: solid 0px #272727; 
+  border-bottom-width:5px;
 }
 .paragraph-font{
     color:white; 

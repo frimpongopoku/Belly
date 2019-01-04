@@ -87,7 +87,7 @@ class PageSwitcher extends React.Component{
       }
     }
     else {
-      console.log("Yo u aint done shit!!ß")
+      console.log("Please input a correct page value!")
     }
   }
   mainCheck(){
@@ -96,21 +96,21 @@ class PageSwitcher extends React.Component{
         return (
           <div style={{ marginBottom: 10, padding: "auto 20px" }} id={this.props.unique}>
             <div className="" style={{ margin: 5 }}>
-              <button className="btn btn-danger" style={{ marginRight: 5 }}
+              <button className="btn btn-default black-text" style={{ marginRight: 5 }}
                 onClick={() => { this.previousPage(); this.shakeLeft(); }}
               >
                 <i className="fa fa-backward"></i>
               </button>
-              <button className="btn btn-success" style={{ marginRight: 5 }}
+              <button className="btn btn-default black-text" style={{ marginRight: 5 }}
                 onClick={() => { this.nextPage(); this.shakeRight(); }}
               >
                 <i className="fa fa-forward"></i>
               </button>
-              <small style={{ margin: 5 }}><b>Go to page</b></small>
+              <small style={{ margin: 5 }}><b>Page</b></small>
               <input type='number' max={this.state.items === null ? 4 : this.state.items.lp}
                 defaultValue={this.state.moreContent.current_page} ref="_goBox"
                 style={{ borderRadius: 5, width: "5%", padding: 5, marginRight: 5, textAlign: 'center' }} />
-              <button className="btn btn-default" onClick={() => { this.handleGoTo() }}>Go</button>
+              <button className="btn btn-default black-text" onClick={() => { this.handleGoTo() }}>Go</button>
               <small style={{ marginLeft: 15 }}>
                 <span style={{ marginRight: 5 }} className="number-font">
                   <b>{this.state.items !== null ? this.state.items.total : 0}</b>

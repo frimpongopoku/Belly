@@ -12,16 +12,34 @@ use App\Comment;
 use App\Rep;
 use App\PdfPiece;
 use App\Setting;
+use Session;
 class Main extends Controller
 {
 
-
-
-
-    public function getUserSettings(){
-      $found = Setting::where('user_id',Auth::user()->id)->first(); 
-      return $found;
-    }
+  public function goToNews(){
+    Session::put('page_name','gist');
+    return view('home');
+  }
+  public function goToDashboard(){
+    Session::put('page_name','dashboard');
+    return view('home');
+  }
+  public function goToDashProfile(){
+    Session::put('page_name','profile');
+    return view('home');
+  }
+  public function goToPdfGist(){
+    Session::put('page_name','pdfs');
+    return view('home');
+  }
+  public function goToCreatePage(){
+    Session::put('page_name','create-page');
+    return view('home');
+  }
+  public function getUserSettings(){
+    $found = Setting::where('user_id',Auth::user()->id)->first(); 
+    return $found;
+  }
   public function deletePDF($id){
     $found = PdfPiece::findOrFail($id); 
     unlink($found->pdf_link);
@@ -53,6 +71,14 @@ class Main extends Controller
   public function deleteComment($id){
     $comment = Comment::find($id);
     if($comment){
+      if($comment->paper_piece_id =="L"){
+        $found = PicturePiece::where('id',$comment->picture_piece_id)->first();
+        $found->update(["comments_count"=>$found->comments_count -1]);
+      }
+      else if($comment_->picture_piece_id =="L"){
+        $found = PaperPiece::where('id',$comment->paper_piece_id)->first();
+        $found->update(["comments_count"=>$found->comments_count -1]);
+      }
       $comment->delete();
     }
   }
@@ -88,12 +114,14 @@ class Main extends Controller
     if($newCom->save()){
       //find the owner of the piece that has been commented on
       if($request->type == "paper"){
-        $ownerOfPiece = PaperPiece::where('id',$request->id)->first();
+        $foundPiece = PaperPiece::where('id',$request->pieceID)->first();
+        $foundPiece->update(['comments_count'=>$foundPiece->comments_count]);
       }
       elseif($request->type =="picture"){
-         $ownerOfPiece = PicturePiece::where('id',$request->id)->first();
+         $foundPiece = PicturePiece::where('id',$request->pieceID)->first();
+          $foundPiece->update(['comments_count'=>$foundPiece->comments_count]);
       }
-      $this->addReputation(5,$ownerOfPiece->user_id);
+      $this->addReputation(5,$foundPiece->user_id);
       return "TRUE";
     }
     else{
@@ -115,8 +143,9 @@ class Main extends Controller
     if($exists){
       $exists->delete();
       $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
+        $likedPiece->update(["likes_count"=>$likedPiece->likes_count - 1]); 
       $this->decreaseReputation(5,Auth::user()->id);
-      $this->decreaseReputation(10,$likedPiece->user_id);
+     
       return $likedPiece;
     }
     else{
@@ -126,8 +155,9 @@ class Main extends Controller
       if($like->save()){
         //return the paper's new set of likes NB: newly added too
         $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
+         $likedPiece->update(["likes_count"=>$likedPiece->likes_count + 1]);
          $this->addReputation(5,Auth::user()->id); 
-         $this->addReputation(10,$likedPiece->user_id);
+       
         return $likedPiece;
       }
     }
@@ -136,7 +166,8 @@ class Main extends Controller
     $exists = Like::where(["user_id"=>$request->user_id, "paper_piece_id" =>$request->paper_piece_id])->first();
     if($exists){
       $exists->delete();
-      $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first(); 
+      $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first();
+      $likedPiece->update(["likes_count"=>$likedPiece->likes_count - 1]); 
       $this->decreaseReputation(10,Auth::user()->id);
       return $likedPiece;
     }
@@ -147,6 +178,7 @@ class Main extends Controller
       if($like->save()){
         //return the paper's new set of likes NB: newly added too
         $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first();
+        $likedPiece->update(["likes_count"=>$likedPiece->likes_count + 1]);
         $this->addReputation(10,Auth::user()->id); 
         return $likedPiece;
       }
@@ -233,11 +265,15 @@ class Main extends Controller
 		$foundPaper = PaperPiece::find($id); 
 		if($foundPaper){
 			if (Auth::user()->id == $foundPaper->user->id){
-				$foundPaper->update(['deleted'=>1]);
+        Comment::where('paper_piece_id',$foundPaper->id)->delete();
+        Like::where('paper_piece_id',$foundPaper->id)->delete();
+        $foundPaper->delete();
+      
 			}
 		}
   }
   
+ 
   public function addReputation($number,$user_id){
     $user = Rep::where('user_id',$user_id)->first();
     if($user){

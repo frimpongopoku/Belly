@@ -1,18 +1,18 @@
 import React from 'react'; 
 import Dropdown from './MyDropdown';
-import CommentPad from './CommentPad';
+import * as moment from 'moment';
 
 
 class GistPaperCard extends React.Component{
 	constructor(props){
 		super(props); 
     this.showComment = this.showComment.bind(this);
-    this.checkIfUserLiked = this.checkIfUserLiked.bind(this);
+ 
     this.state ={ 
-      auth_user_liked:false,
       my_comments:null,
       authorise:false, 
-      refinedOptions:[]
+      refinedOptions:[],
+      current_date: new Date().toISOString()
     }
     
 		this.options = [ 
@@ -38,19 +38,7 @@ class GistPaperCard extends React.Component{
     var thisClass = this;
     thisClass.checkOwner();
   }
-  checkIfUserLiked(){
-    var thisClass =this;
-    this.props.likesArray.forEach(function(itm){
-      if(itm.user_id === thisClass.props.user.id){
-        thisClass.setState({auth_user_liked:true});
-        console.log("User had liked it!!!");
-        return
-      }
-      else{
-        console.log("dfs fa f d s d fd f")
-      }
-    });
-  }
+ 
   doLike(){
     this.props.newLikeFunction({user_id:this.props.user.id,paper_piece_id:this.props.id},this.props.allNews);
   }
@@ -90,7 +78,7 @@ class GistPaperCard extends React.Component{
 		}
   }
   
-  checkOwner() {
+  checkOwner(){
     if (this.props.user.id === this.props.details.owner.id) {
       let opt = [...this.options, { title: 'special', type: 'delete' }];
       this.setState({ authorise: true, refinedOptions: opt });
@@ -100,8 +88,6 @@ class GistPaperCard extends React.Component{
     }
   }
  
-  
-
   bringLike(){
     let thisClass =  this;
     for (var item of this.props.likesArray){
@@ -123,7 +109,6 @@ class GistPaperCard extends React.Component{
     );
   }
 	render(){
-    this.checkIfUserLiked();
 		return (
 				<div>
 					<div className ='panel panel-default' style = {{width:"100%",marginBottom:0,marginTop:50}}> 
@@ -144,7 +129,7 @@ class GistPaperCard extends React.Component{
           			<h4>{this.props.title+ " - " + this.props.id }</h4>
           		</div>
           		<small style={{padding:10}}> 
-          			<span className = ' text text-primary font-small number-font'><i className='fa fa-clock-o'></i> 3 seconds ago </span>
+          			<span className = ' text text-primary font-small number-font'><i className='fa fa-clock-o'></i> {moment.duration(moment(this.state.current_date).diff(moment(this.props.created_at))).humanize()} ago </span>
           		</small>
           		<div data-zoomed="false" onClick = {()=>{this.zoomText(this.props.id);}} className = {" gist-paper-body-text "+"t-d-"+this.props.id} style={{padding:20,cursor:'pointer', minHeight:200, maxHeight:200,overflowY:'hidden' }}> 
 	          		<p className ={"paper-paragraph-"+this.props.id}>{this.props.body}
@@ -152,10 +137,10 @@ class GistPaperCard extends React.Component{
           		</div>
           		<div >
           			<div className = ' school-course-div' style={{paddingLeft:5}}> 
-                  <small className = ' label label-info info-bg-color z-depth-1 p-r-fix'><i className ='fa fa-graduation-cap p-r-fix'></i> 
+                  <small className = ' label label-info info-bg-color z-depth-1 p-r-fix rounded'><i className ='fa fa-graduation-cap'></i> 
                   { this.props.details.owner.school}
                   </small>
-          				<small className = ' label label-default z-depth-1'><i className ='fa fa-book p-r-fix'></i> { this.props.course } </small>
+          				<small className = ' label label-default z-depth-1 rounded'><i className ='fa fa-book '></i> { this.props.course } </small>
           			</div>
         			 <div className = ' semi-footer clearfix' style={{padding:"5px 20px"}}>
 		              <small className = "number-font t-black" >
@@ -163,9 +148,9 @@ class GistPaperCard extends React.Component{
                     <span> { this.props.likes} </span> 
                   </small> 
 		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"> </span> <span> { this.props.commentsCount} </span> </small> 
-		              <small className = " label label-primary pull-right gist-coin-display number-font"> 
-                    <b>C</b> {this.props.coins} 
-                  </small>
+                    {/* <small className = " label label-primary pull-right gist-coin-display number-font"> 
+                      <b>C</b> {this.props.coins} 
+                    </small> */}
 		            </div>
           		</div>
 						</div>
@@ -183,14 +168,11 @@ class GistPaperCard extends React.Component{
 	            	<i className='fa fa-comment p-r-fix'></i> 
 	            	 Comment
 	            </a>
-            <a href='#' className='action-btn font-small-ish' onClick={() => { console.log("I am the state->>", this.state) }}><i className='fa fa-hand-grab-o'></i> Grab</a>
+             {/* <a href='#' className='action-btn font-small-ish' onClick={() => { console.log("I am the state->>", this.state) }}><i className='fa fa-hand-grab-o'></i> Grab</a> */}
 						</div>
 					</div>
 										{/*======================+++END OF PANEL ====================*/}
-            <CommentPad 
-              id ={this.props.id} 
-              type={this.props.type} 
-            />
+          
 				</div>
 			);
 	}

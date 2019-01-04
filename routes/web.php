@@ -49,6 +49,11 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('get-pdf-news/{point}','Main@getPdfNews');
   Route::get('delete-pdf/{id}',"Main@deletePDF");
   Route::get('get-settings',"Main@getUserSettings");
+  Route::get('home/dashboard','Main@goToDashboard');
+  Route::get('home/profile','Main@goToDashProfile');
+  Route::get('home/create-page','Main@goToCreatePage');
+  Route::get('home/pdfs','Main@goToPdfGist');
+  Route::get('home/news','Main@goToNews');
 });
 
 

@@ -164,14 +164,14 @@ class SearchBox extends Component {
         <div className='my-thumbnail z-depth-1' style={{ margin: '15px 0', marginLeft: 0, width: '100%' }}>
           <div className=' clearfix' >
             <div className="col-lg-2 col-md-2 col-sm-2 col-xs-2 pull-right">
-              <button className="btn btn-default"
+              <button className="btn btn-default login-button" tabIndex="2"
                 onClick={()=>{this.doSearch();}}>
-                <span className="fa fa-search"></span>
+                <span className="fa fa-search" style={{textShadow:"1px 1px 3px #272727"}}></span>
               </button>
             </div>
             <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10">
               <form onSubmit ={(e)=>{e.preventDefault();this.doSearch();}}>
-                <input type='text' placeholder='search' className='form-control search-box' id="js-search-box" />
+                <input type='text' tabIndex="1"placeholder='search' className='form-control search-box' id="js-search-box" />
               </form>
             </div>
             <center>

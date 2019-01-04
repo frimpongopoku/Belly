@@ -4,10 +4,17 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="" style='margin-top:50px;'>
-
-                <div class="panel my-depth-1" style='padding:50px;box-shadow: 0px 1px 1px gray;'>
+                <center> 
+                    <p style="font-size:medium;color:#312e2e;">Create an account with <b><span style="color:black;font-weight:900;">Question</span> <span style="color:crimson;font-weight:900">Belly</span></b> to get unlimited access to <br> all questions per-course available in your school</p>
+                </center>
+                <div class="panel panel-finish z-depth-1" style='padding:30px;'>
+                   <center>
+                     <small style="color:#ccc;font-weight:500;">A D R O P I</small>
+                    <h1  style="margin-top:0px;padding-top:2px;color:black;font-weight:900;font-size:-webkit-xxx-large ; cursor:pointer;" id="the-ico">Q<span style="color:crimson">B</span><i class="tint-slow fa fa-tint" style="font-size:22px; position:relative"></i></h1>
+                   
+                  </center>
                     <div clasName = 'panel panel-default '>
-                        <div class='panel-body'>
+                        <div class='panel-body '>
                             <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                                 {{ csrf_field() }}
 
@@ -15,7 +22,7 @@
                                     <label for="name" class="col-md-4 control-label register-font"> Name</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                        <input id="name" type="text" placeholder="Name"class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                         @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
@@ -28,7 +35,7 @@
                                     <label for="email" class="col-md-4 control-label register-font">E-Mail Address</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                        <input id="email" placeholder="email"type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -42,7 +49,7 @@
                                     <input type='hidden' name='gender' class='gender-value' value='' />
                                     <div class="col-md-6">
                                         <select class='form-control gender'> 
-                                            <option></option>
+                                            <option>Choose</option>
                                            <option >Male</option> 
                                            <option>Female </option>
                                         </select>
@@ -50,31 +57,60 @@
                                    
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label register-font">School</label>
+                                    <label for="email" class="col-md-4 control-label register-font">University</label>
 
                                     <div class="col-md-6">
-                                        <input id="school" type="text" class="form-control" name="school"  required>
+                                        <input id="school" placeholder="University" type="hidden" class="form-control" name="school"  required>
+                                         <select class='form-control school-chooser'> 
+                                            <option>Choose</option>
+                                           <option >KNUST - Kwame Nukrumah University Of Science & Technology</option> 
+                                           <option>University Of Ghana, Legon</option>
+                                           <option>University Of Ghana, Cape Coast </option>
+                                           <option>Webster University Ghana</option>
+                                           <option>University Of Education, Winneba </option>
+                                           <option>All Nations University </option>
+                                           <option>University Of Mines And Technology </option>
+                                           <option>University Of Professional Studies</option>
+                                           <option>University Of Development Studies </option>
+                                           <option>Sikkim Manipal University DDE Ghana Learning Center</option>
+                                           <option>Ashesi University </option>
+                                           <option>Accra Institute Of Ghana</option>
+                                           <option>Christian Service University College</option>
+                                           <option>Islamic University College</option>
+                                           <option>Methodist University College, Ghana</option>
+                                           <option>Pentecost University College</option>
+                                           <option>Presbyterian University College</option>
+                                           <option>Central University College</option>
+                                           <option>Catholic Institute Of Business And Technology</option>
+                                           <option>Narh-Bita School Of Nursing</option>
+                                           <option>Ghana Institute Of Languages</option>
+                                           <option>Blue Crest College</option>
+                                           <option>Regional Maritime University</option>
+                                           <option>St. Paul Seminary</option>
+                                           <option>St. Peters Seminary</option>
+                                           <option>St. Victor's Seminary</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="course" class="col-md-4 control-label register-font">Course</label>
 
                                     <div class="col-md-6">
-                                        <input id="course" type="text" class="form-control" name="course"  required>
+                                        <input id="course" placeholder="Course" type="text" class="form-control" name="course"  required>
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="col-md-4 control-label register-font">Hall</label>
 
                                     <div class="col-md-6">
-                                        <input id="hall" type="text" class="form-control" name="hall"  required>
+                                        <input id="hall" type="text"placeholder="Hall"class="form-control" name="hall"  required>
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="col-md-4 control-label register-font">Phone</label>
 
                                     <div class="col-md-6">
-                                        <input id="phone" type="number" class="form-control" name="phone"  required>
+                                        <input id="phone" type="number" placeholder="phone"class="form-control" name="phone"  required>
                                     </div>
                                 </div>
                                 
@@ -103,9 +139,12 @@
 
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
+                                      
                                         <button type="submit" class="btn btn-primary">
                                             Register
                                         </button>
+                                         <a href="/login" class="btn btn-default">Login Instead</a>
+                                      
                                     </div>
                                 </div>
                             </form>
@@ -130,9 +169,13 @@
         
          setInterval(function(){
              var value = $('.gender').val();
+             var sChooser = $'.school-chooser').val();
               $('.gender-value').val(value);
-              console.log($('.gender-value').val());
-
+               $('.school').val(sChooser);
+            console.log(sChooser)
          },900);
+         $('#the-ico').click(function(){
+          window.location = "/";
+        })
     </script>
 @endsection

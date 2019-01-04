@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 import PageSwitcher from './../plugins/PageSwitcher';
 
 class Dashboard extends Component {
-  constructor(props){
+  constructor(props){ 
     super(props); 
     this.searchTypes = ['Name','Title','Year','Username','University','Programme','Course','Rating']; 
     this.availableOptions = ['text-section','picture-section','pdf-section'];
@@ -82,12 +82,15 @@ class Dashboard extends Component {
           fileType = "text" 
           title={ piece.title }
           body = { piece.body }
+          likes_count = { piece.likes_count}
+          comments_count = {piece.comments_count}
           openPieceFunction = { this.currentTextPieceSetter }
           currentTextStateFunction = { this.setTextCurrentState }
           createSideOptionsFunction ={ this.createAllOptions }
           textModalCleanUpFunction = { this.textModalCleanUp }
           initAllPagesFunction = { this.initAllPages }
           indicator = { this.state.currentTextIndicator }
+          created_at = {piece.created_at}
           ID={ piece.id } />
         </li>
         );
@@ -100,7 +103,10 @@ class Dashboard extends Component {
           <li key={index}> 
             <PicPiece 
               owner = { this.props.user.name }
+              course = {piece.course}
               image_url={piece.picture_link}
+              likes_count={piece.likes_count}
+              comments_count={piece.comments_count}
               piece_id={piece.id}
               created_at={piece.created_at}
               allPieces={this.props.picPieces} 
@@ -116,7 +122,6 @@ class Dashboard extends Component {
               />
         </li>
         );
-                 
     });
   }
   backgroundImageLoad(id,imageURL){
@@ -211,9 +216,6 @@ class Dashboard extends Component {
               thisClass.extraImageLoad(item.id,index, extra);
           });
       }
-            // thisClass.extraImageLoad(item.id,'1','imgs/avatars/blonde-avatar.jpg');
-            // thisClass.extraImageLoad(item.id,'2','imgs/avatars/female-avatar.png');
-            // thisClass.extraImageLoad(item.id,'3','imgs/avatars/hoodie-avatar.jpg');
     });
   }
 
@@ -367,7 +369,7 @@ class Dashboard extends Component {
     textDiv.appendChild(text);
     textDiv.className = ' vanish'; 
     parent.appendChild(textDiv);
-    console.log("I am the image div....: ",parent)
+   
     document.getElementById('pic-modal-envelope').appendChild(parent);
   }
   createPictureDeletePage(id){
@@ -394,7 +396,7 @@ class Dashboard extends Component {
     center.appendChild(text);
     center.appendChild(btn);
     parent.appendChild(center);
-    console.log("Dude I am the delete page inPic  __>:: ", parent)
+    
     document.getElementById('pic-modal-envelope').appendChild(parent);
   }
   createPicturePublishPage(body){
@@ -422,7 +424,7 @@ class Dashboard extends Component {
     center.appendChild(text);
     center.appendChild(btn);
     parent.appendChild(center);
-    console.log("Dude I am the publish page |||__>::||  ", parent)
+    
     document.getElementById('pic-modal-envelope').appendChild(parent);
   }
   createViewModalPage(title,body){
@@ -443,7 +445,7 @@ class Dashboard extends Component {
     bodyDiv.appendChild(realBody); 
     parent.appendChild(titleDiv); 
     parent.appendChild(bodyDiv);
-    console.log("I am the parent:::: ", parent);
+    
     document.getElementById('text-modal-envelope').appendChild(parent);
 
   }
@@ -480,7 +482,6 @@ class Dashboard extends Component {
     parent.appendChild(saveBtn); 
     parent.appendChild(titleInput); 
     parent.appendChild(bodyArea); 
-    console.log("Yoo I am the edit page ---->>: : ", parent);
     document.getElementById('text-modal-envelope').appendChild(parent);
 
   }
@@ -501,21 +502,21 @@ class Dashboard extends Component {
     btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
     btn.addEventListener('click',function(){thisClass.deletePaper(id)});
     btnFa.className = ' fa fa-trash'; 
+    btnFa.style.marginLeft = "4px";
     bold.textContent = ' "'+title+'" ';
     textSpan.appendChild(bold);
     text.appendChild(textSpan); 
     btn.textContent = 'Yes I want to';
-    btn.appendChild(btnFa); 
+    //btn.appendChild(btnFa); 
     center.appendChild(text); 
     center.appendChild(btn); 
     parent.appendChild(center); 
-    console.log("Dude I am the delete page __>:: ",parent)
     document.getElementById('text-modal-envelope').appendChild(parent);
   }
   createPublishModalPage(title){
     let parent = document.createElement('div');
     let center = document.createElement('center');
-    let text = document.createElement('h2');
+    let text = document.createElement('h3');
     let textSpan = document.createElement('span');
     let bold = document.createElement('b');
     let btn = document.createElement('button');
@@ -538,7 +539,6 @@ class Dashboard extends Component {
     center.appendChild(text);
     center.appendChild(btn);
     parent.appendChild(center);
-    console.log("Dude I am the publish page |||__>::||  ", parent)
     document.getElementById('text-modal-envelope').appendChild(parent);
   }
   initAllPicPages(id,body,imageLink,type,extras){
@@ -571,10 +571,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div className = 'container' style={{padding:'0'}}> 
+        <div className = 'container t-m-l-fix' style={{padding:'0'}}> 
           <input type='hidden' id = 'd-current-tab' value="text-section"/>
           <div className = 'row' > 
-            <div className = 'col-md-10 col-lg-10'> 
+            <div className = 'col-md-10 col-lg-10 mobile-dashboard-pad-fix'> 
               {/* Search area */}
                  <SearchBox></SearchBox>
                 {/* User Papers Tabs for TEXT/PICTURE/PDFs*/}
@@ -631,6 +631,8 @@ class Dashboard extends Component {
                   piece_id = {null}
                   piece_body={null}
                   created_at= {null}
+                  likes_count = {null}
+                  comments_count ={null}
                 />
               :  
                 <UniversalTextDisplay 
@@ -642,6 +644,8 @@ class Dashboard extends Component {
                   piece_id = {this.state.currentTextPiece.ID}
                   piece_body={this.state.currentTextPiece.body } 
                   created_at= { this.state.currentTextPiece.created_at}
+                  likes_count = {this.state.currentTextPiece.likes_count}
+                  comments_count = {this.state.currentTextPiece.comments_count}
                   createSideOptionFunction={this.createOptionElements}
                   textModalCleanUpFunction={this.textModalCleanUp}
                 />
@@ -655,6 +659,8 @@ class Dashboard extends Component {
             <UniversalPicDisplay
               owner = { this.props.user.name }
               created_at = {this.state.currentPicPiece.created_at}
+              likes_count={this.state.currentPicPiece.likes_count}
+              comments_count={this.state.currentPicPiece.comments_count}
             />
         }
       </div>

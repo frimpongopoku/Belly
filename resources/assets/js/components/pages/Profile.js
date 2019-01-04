@@ -130,7 +130,12 @@ class Profile extends Component {
               <div className={this.props.notification === null? ' prof-notifier' : ' s-vanish prof-notifier'} style ={{display:'none'}}>     
                   <SnackBar id ='profile-notifier' color='green' notice ='saving '/>
               </div>
-              <div id = "first-div-box"> 
+              <div className = "mobile-profile-box pc-vanish-key tablet-vanish-key"> 
+                <center>
+                  <img src="imgs/avatars/nose-mask-avatar.jpg" className="mobile-profile-pic" />
+                </center>
+              </div>
+              <div id = "first-div-box" className = "mobile-vanish-key tablet-appearance-key pc-appearance-key"> 
                 <div className = " thumbnail zero-radius z-depth-1 f-d-card c-m-height" >
                   <center>
                    <h2 className = "black-text profile-name-tag">{ this.props.user.name }</h2>
@@ -142,22 +147,33 @@ class Profile extends Component {
               </div > 
                {/* ===================================== END OF FIRST DIV ===============================*/}
               <div id="second-div-box" className = " clearfix thumbnail z-depth-1 zero-radius f-d-card " style={{background:"navajowhite",color:"black"}}> 
-                <div className = "pull-left"> 
-                    <p className =""><i className = "fa fa-envelope m-right-bit number-font"></i> { this.props.user.email }</p>
-                    <p className = "number-font"><i className = "fa fa-phone m-right-bit"></i>  { this.props.user.phone }</p>
-                    <p className =""><i className = "fa fa-graduation-cap m-right-bit"></i>{ this.props.user.school }</p>
-                   
-                   <a className="btn btn-primary z-depth-1 p-r-fix" target="_blank" href={this.state.dataTrain.facebook_link}><i className="fa fa-facebook"></i></a>
-            <a className="btn btn-default z-depth-1 p-r-fix" href={this.state.dataTrain.linked_in_link} target="_blank" ><i className="fa fa-linkedin"></i></a>
-            <button className="btn btn-success z-depth-1 p-r-fix" data-toggle="modal" data-target="#whatsapp-display"><i className="fa fa-whatsapp"></i></button> 
-                </div> 
-                <div className = "pull-right"> 
-                  <p className=""><i className="fa  fa-book m-right-bit"></i> {this.props.user.course}</p>
-                  <p className=""><i className="fa fa-globe m-right-bit"></i> 
-                    <i className="number-font"><b>{this.props.userRelations !==null? this.props.userRelations.numOfPapers + this.props.userRelations.numOfPictures :''}</b> </i> 
-                    Publishes 
-                  </p>
-                    <p className = "number-font"><i className = "fa fa-arrow-up m-right-bit"></i> <b>{this.props.userRelations !==null ? this.props.userRelations.reputation.points:''}</b> </p>
+                <div className="col-md-6 col-sm-6 col-xs-12 clearfix">
+                  <div className = "pull-left"> 
+                      <p className =""><i className = "fa fa-envelope m-right-bit number-font"></i> { this.props.user.email }</p>
+                      <p className = "number-font"><i className = "fa fa-phone m-right-bit"></i>  { this.props.user.phone }</p>
+                      <p className =""><i className = "fa fa-graduation-cap m-right-bit"></i>{ this.props.user.school }</p>
+                      <div className="mobile-appearance-key pc-vanish-key tablet-vanish-key">
+                        <p className=""><i className="fa  fa-book m-right-bit"></i> {this.props.user.course}</p>
+                        <p className=""><i className="fa fa-globe m-right-bit"></i>
+                          <i className="number-font"><b>{this.props.userRelations !== null ? this.props.userRelations.numOfPapers + this.props.userRelations.numOfPictures : ''}</b> </i>
+                          Publishes
+                      </p>
+                        <p className="number-font"><i className="fa fa-arrow-up m-right-bit"></i> <b>{this.props.userRelations !== null ? this.props.userRelations.reputation.points : ''}</b> </p>
+                      </div>
+                    <a className="btn btn-primary z-depth-1 p-r-fix" target="_blank" href={this.state.dataTrain.facebook_link}><i className="fa fa-facebook"></i></a>
+                    <a className="btn btn-default z-depth-1 p-r-fix" href={this.state.dataTrain.linked_in_link} target="_blank" ><i className="fa fa-linkedin"></i></a>
+                    <button className="btn btn-success z-depth-1 p-r-fix" data-toggle="modal" data-target="#whatsapp-display"><i className="fa fa-whatsapp"></i></button> 
+                  </div> 
+                </div>
+                <div className="col-md-6 col-sm-6 col-xs-12 clearfix mobile-vanish-key tablet-appearance-key pc-appearance-key">
+                  <div className = "pull-right"> 
+                    <p className=""><i className="fa  fa-book m-right-bit"></i> {this.props.user.course}</p>
+                    <p className=""><i className="fa fa-globe m-right-bit"></i> 
+                      <i className="number-font"><b>{this.props.userRelations !==null? this.props.userRelations.numOfPapers + this.props.userRelations.numOfPictures :''}</b> </i> 
+                      Publishes 
+                    </p>
+                      <p className = "number-font"><i className = "fa fa-arrow-up m-right-bit"></i> <b>{this.props.userRelations !==null ? this.props.userRelations.reputation.points:''}</b> </p>
+                  </div>
                 </div>
               </div> 
                {/* ===================================== END OF SECOND  DIV ===============================*/}
@@ -166,23 +182,23 @@ class Profile extends Component {
                    <button className = "btn btn-default pull-right z-depth-1" onClick={()=>{ this.submit() }}> Save </button>
                   <h3>Edit Profile</h3>
                   <form >
-                    <div className = "col-md-6"> 
+                    <div className = "col-md-6  col-sm-6"> 
                       <input ref="profileName" type="text" className = "form-control  phone-textbox-design" 
                       placeholder="Name" onChange={()=>this.handleChange()} value ={ this.state.dataTrain.name }/>
                     </div>
-                    <div className = "col-md-6"> 
+                    <div className = "col-md-6 col-sm-6"> 
                       <input ref="profileEmail" type="email" className = "form-control email phone-textbox-design" 
                       placeholder="email" onChange={()=>this.handleChange()} value ={ this.state.dataTrain.email }/>
                     </div>
-                    <div className = "col-md-6"> 
+                    <div className = "col-md-6 col-sm-6"> 
                       <input ref="profileNumber" type="number" className = "form-control number-font number phone-textbox-design" 
                       placeholder="Phone number" onChange={()=>this.handleChange()} value ={ this.state.dataTrain.phone }/>
                     </div>
-                    <div className = "col-md-6"> 
+                    <div className = "col-md-6 col-sm-6"> 
                       <input ref="profileCourse" type="text" className = "form-control course phone-textbox-design" 
                       placeholder="Course" onChange={()=>this.handleChange()} value ={ this.state.dataTrain.course }/>
                     </div>
-                    <div className = "col-md-6"> 
+                    <div className = "col-md-6 col-sm-6"> 
                       <input ref="profileUniversity" type="text" className = "form-control university phone-textbox-design" 
                       placeholder="University" onChange={()=>this.handleChange()} value ={ this.state.dataTrain.university }/>
                     </div>
@@ -190,15 +206,15 @@ class Profile extends Component {
                         <input ref="profileHall" type="text" className = "form-control hall phone-textbox-design" 
                         placeholder="Hall" onChange={()=>this.handleChange()} value = { this.state.dataTrain.hall } />
                       </div> */}
-                     <div className = "col-md-6"> 
+                     <div className = "col-md-6 col-sm-6"> 
                       <input ref="facebookLink" type="text" className = "form-control facebookLink phone-textbox-design" 
                       placeholder="your facebook link" onChange={()=>this.handleChange()} value = { this.state.dataTrain.facebook_link } />
                     </div>
-                     <div className = "col-md-6"> 
+                     <div className = "col-md-6 col-sm-6"> 
                       <input ref="linkedInLink" type="text" className = "form-control linkedInLink phone-textbox-design" 
                       placeholder="your linked in link" onChange={()=>this.handleChange()} value = { this.state.dataTrain.linked_in_link } />
                     </div>
-                     <div className = "col-md-6"> 
+                     <div className = "col-md-6 col-sm-6"> 
                       <input ref="whatsappNumber" type="text" className = "number-font form-control whatsappNumber phone-textbox-design" 
                       placeholder="your whatsapp number" onChange={()=>this.handleChange()} value = { this.state.dataTrain.whatsapp_number } />
                     </div>
@@ -215,7 +231,7 @@ class Profile extends Component {
               <div className='modal-body'> 
                 <center> 
                       <small><b>{this.props.user.name}'s</b> whatsapp number </small>
-                  <p><h3 className="number-font black-text">{this.state.dataTrain.whatsapp_number}</h3></p>
+                  <h3 className="number-font black-text">{this.state.dataTrain.whatsapp_number}</h3>
                 </center>
               </div>
             </div>

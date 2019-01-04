@@ -1,4 +1,106 @@
 
+  /* MOBILE PHONE */
+  @media only screen and (max-width: 785px){
+
+    .page-margin{
+      margin:0 !important;
+      margin-top:10px;
+    }
+    .mobile-appearance-key{
+      display:block;
+    }
+   
+    .mobile-vanish-key{
+      display:none;
+    }
+    .mobile-top-padding{
+      padding-top:100px;
+    }
+    .mobile-commot-paddings{
+      padding:0px !important;
+    }
+    .mobile-commot-margins{
+      margin:0px !important;
+    }
+    .mobile-dashboard-pad-fix{
+      padding:30px !important;
+    }
+    .mobile-results-fix{
+      width:90% !important;
+    }
+    .f-d-card{
+        background:"white";
+        padding:30px !important; 
+        min-height:250px;
+        max-height:500px !important; 
+        background:white;
+    }
+
+      .mobile-p-fix{
+        margin-top:-120px;
+      }
+      .mobile-modal-b-left{
+        margin-left:70px;
+      }
+   
+  }
+
+    @media only screen and (min-width: 786px) and ( max-width:991px){
+      
+      .tablet-vanish-key{
+        display:none;
+      }
+      .tablet-appearance-key{
+        display:block;
+      }
+      .tablet-results-fix{
+        margin-left:5px !important;
+      }
+
+      .t-m-l-fix{
+          /* tablet margin left fix */
+          margin-left:10px !important;
+      }
+      .tablet-create-margin{
+        margin:60px !important;
+      }
+        
+      .tablet-modal-b-left{
+        margin-left:70px;
+      }
+    }
+    @media only screen and (min-width: 992px){
+      .desktop-width-fix{
+        width:1000px !important; 
+        margin-left:10px !important;
+      }
+      .pc-vanish-key{
+        display:none;
+      }
+      .pc-appearance-key{
+        display:block;
+      }
+
+    }
+
+  .mobile-profile-pic{
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    border:solid 1px gray;
+    border-bottom-width: 5px;
+    background-color: white;
+}
+.panel-finish{
+  
+    padding: 30px;
+    border-top-width: 5px;
+    border-top-color: crimson;
+    border-bottom-width: 5px;
+    border-bottom-color:black;
+}
+
+
 
 .pdf-profile-name{
   color:black !important; 
@@ -25,10 +127,21 @@
  
 }
 
+.login-button{
+  background:crimson; 
+  color:white;
+  border-color:crimson;
+}
+.login-button:hover{
+  background:black; 
+  border-color:black;
+  color:white;
+  transition: .3s ease-in-out;
+}
 .pdf-page-card:hover{
-  background:burlywood; 
+  background:navajowhite; 
   transition: .4s ease-in-out all;
-  border:burlywood;
+  border:navajowhite;
    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
 }
 
@@ -138,6 +251,12 @@
     animation: jump infinite 0.5s linear;
 
 }
+.tint-slow{
+   position:relative; 
+    cursor:pointer;
+    animation: jumpy infinite 2s linear;
+    animation-delay:.5s;
+}
 .confidence-level{
     margin-top:-10px !important;
     cursor:pointer;
@@ -150,6 +269,24 @@
 .tint-focus:hover{
     transform: scale(2);
 }
+@keyframes jumpy{
+    0%{
+        transform: translateY(5px);
+    }
+    50%{
+          transfrom:translateY(8px);
+          opacity:.5;
+    }
+    80%{
+        transform:translateY(12px);
+        opacity:0;
+    }
+    100%{
+     transform:translateY(-12px);
+        opacity:0;
+    }
+}
+
 @keyframes jump{
     0%{
         transform: translateY(5px);
@@ -292,7 +429,7 @@
     background:black; 
     opacity:0.5; 
     height:200px;
-    z-index: 1;
+    z-index: 1; 
 }
 
 .zero-border{
@@ -315,7 +452,7 @@
 }
 .p-activate-section-blue{
     /*paper - activate -section*/
-    background:crimson !important;
+    background:crimson  !important;
     color:white !important;
 }
 
@@ -565,10 +702,10 @@
     color:white;
 }
 .b-app-color{
-    border-color:royalblue;
+    border-color:crimson;
 }
 .app-color{ 
-    background:royalblue;
+    background:crimson;
         /*background: rgb(65, 85, 255) !important;*/
     color:white !important;
  }
@@ -931,6 +1068,10 @@ body{
 .margin-10{
     margin:15px 6px;
 }
+.margin-r-10{
+    /* single */
+    margin-right:10px;
+}
 .page-margin{
     margin:30px;
 }
@@ -966,7 +1107,7 @@ body{
 
 }
 .side-li:hover{
-    background:  rgb(207, 225, 241); 
+    background:  rgb(243, 192, 209); 
     color:black;
     transition: 0.3s ease-in all;
     cursor:pointer;
@@ -1074,7 +1215,7 @@ body{
 .side-nav-profile-box{
     padding:15px; 
     margin:0px; 
-    background:rgb(63, 158, 247); 
+    background:crimson; 
     border:solid px rgb(5, 53, 68); 
     border-bottom-width:3px; 
     height:170px;

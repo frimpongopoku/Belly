@@ -124,7 +124,7 @@ class MakeNew extends Component {
             <div className={this.props.notification ===null? 'notifier' : 'notifier s-vanish'} style ={{display:'none'}}>     
               <SnackBar id ='First' color='green' notice ='Finshing up '/>
             </div>
-            <div className= 'col-md-10 col-sm-10 col-xs-12 col-lg-10'>
+            <div className= 'col-md-10 col-sm-10 col-xs-12 col-lg-10 tablet-create-margin'>
             <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}}>
               <button className = 'd-tab zero-border btn-undefault z-depth-1 p-activate-section ' id='text-btn' 
                onClick ={()=>{

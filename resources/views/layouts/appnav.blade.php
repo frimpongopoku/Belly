@@ -67,7 +67,7 @@
 
                             <!-- Branding Image -->
                             <a class="navbar-brand" href="#" style="padding:15px">
-                                <span  class = 'QB'>QB</span> <span class = "fa fa-tint QB-tint"></span>
+                                <span  class = 'QB'>QB</span> <span class = "fa fa-tint tint-slow QB-tint"></span>
                             </a>
                         </div>
 

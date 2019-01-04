@@ -4,7 +4,7 @@ class ResultsPad extends Component{
   render() {
     return (
       <div>
-        <div data-toggled="false" className= "clearfix thumbnail z-depth-1 vanish results-pad" 
+        <div data-toggled="false" className= "clearfix thumbnail z-depth-1 vanish tablet-results-fix results-pad mobile-results-fix" 
           style={{
             zIndex: 100, padding: 50, paddingTop:20,position: "absolute", width: "100%",}} id="results-pad">
         
@@ -31,14 +31,13 @@ class ResultsPad extends Component{
             </div>
           </div>
           <div className="pull-right" style={{ position: 'absolute', bottom: 30, right: 50 }}>
-           
             <button className="btn btn-danger z-depth-1" 
               onClick={() => { this.props.toggleFunction(); }}>
               Close
-           </button>
+          </button>
           </div>
           
-        </div>
+        </div>  
       </div>
     );
   }

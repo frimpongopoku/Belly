@@ -39,14 +39,16 @@ class SideNav extends Component {
     }
     capitalize(theString){
         return theString.charAt(0).toUpperCase() + theString.slice(1)
-    }
+    } 
+    
+
     spillMenu(){
       return this.menuItems.map((option,index) => {
         return (
-          <li className={option.name === 'dashboard' ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } 
+          <li className={option.name === $('#home').attr('data-session-page') ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } 
           onClick={() => {
               this.switchPage(option.name)
-            }} key = { index }> <i className={ 'fa  '+ option.fa }></i>
+            }} key = { index }> <i className={ 'fa margin-r-10  '+ option.fa }></i>
             { " "+ this.capitalize(option.name) }
           </li>
         );
@@ -62,7 +64,7 @@ class SideNav extends Component {
       else{
         $('#' + currentPage).fadeOut(300, function(){
             $('#' + choicePage).fadeIn(200, function(){
-              //if the page the user is attempting to enter is the news page, dont update the box
+              //if the page the user its attempting to enter is the news page, dont update the box
                 if(choicePage ==='gist'){}
                 else{
                   $('#current-page-box').val(choicePage);
@@ -82,14 +84,15 @@ class SideNav extends Component {
       return (
         <div>
                 {/* Hidden current page ID textbox */}
-           <input type='hidden' id ='current-page-box' value='dashboard' />
+          <input type='hidden' id='current-page-box' value={$('#home').attr('data-session-page')} />
           <div className = 'side-nav-container z-depth-2'> 
           <div className = 'side-nav-profile-box'> 
             <center>
               <img src='/imgs/avatars/nose-mask-avatar.jpg'className='side-profile-pic' />
               <h4 style={{'margin':'3px','cursor':'pointer'}}>
                   { this.props.user ===null ? '...' : this.props.user.name }
-               <i className = 'fa fa-caret-down awesome-margin'></i></h4>
+                      {/* <i className = 'fa fa-caret-down awesome-margin'></i> */}
+              </h4>
             </center>
           </div>
           <div style={{background:'#282828',padding:7,color:'orange'}}> 
@@ -108,7 +111,7 @@ class SideNav extends Component {
                 </li> */}
               { this.spillMenu() }
               <li className = ' side-li' onClick = {()=>{ this.logout()}} >
-                  <i className = 'fa fa-sign-out' style={{ color:'red' }}></i> Logout 
+                  <i className = 'fa fa-sign-out margin-r-10' style={{ color:'red' }}></i> Logout 
               </li>
             </ul>
           </div>

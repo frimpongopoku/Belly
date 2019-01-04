@@ -8,7 +8,6 @@ class PDFs extends Component {
   }
   searchForMoreNews(){
     let nextBadge = Number(this.state.badgeNumber + 1); 
-    console.log("I am the badgeNUmberkjkdjfk: ",nextBadge)
     this.props.getMorePDFNewsFunction(this.props.pdfNews,nextBadge); 
     this.setState({badgeNumber:nextBadge});
   }
@@ -16,7 +15,21 @@ class PDFs extends Component {
     if(this.props.pdfNews !== null){
       let thisClass = this;
       return this.props.pdfNews.map(function(file){
-        return <PdfCard deletePDFFunction ={thisClass.props.deletePDFFunction}id = {file.id} user = {thisClass.props.user} pdf_link = {file.pdf_link} title={file.title} course={file.course} created_at ={file.created_at} owner={file.user} />
+        var num = Math.round(Math.random(1000000) * 100000000000);
+        var loopIndex = "news-pdf-" + num.toString();
+        return <div key={loopIndex}><PdfCard 
+          deletePDFFunction ={thisClass.props.deletePDFFunction}
+          id = {file.id} 
+          user = {thisClass.props.user} 
+          pdf_link = {file.pdf_link} 
+          title={file.title} 
+          course={file.course} 
+          created_at ={file.created_at} 
+          owner={file.user} 
+          
+         
+        />
+        </div>
       });
     }
   }
@@ -33,7 +46,7 @@ class PDFs extends Component {
         <center> 
            <p style={{fontSize:"1.9rem",color:"black"}}>All the latest PDFs in <b>{this.props.user !==null ? this.props.user.course :''}</b></p>
         </center>
-        <div className="col-lg-10 col-md-offset-1 col-md-10" style={{padding:20}}> 
+        <div className="col-lg-10 col-md-offset-1 col-md-10 mobile-commot-paddings mobile-commot-margins" style={{padding:20}}> 
         {
           this.ejectFiles()
         }

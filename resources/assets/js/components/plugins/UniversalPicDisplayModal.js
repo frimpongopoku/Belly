@@ -20,10 +20,10 @@ class UniversalPicModal extends React.Component {
               <div className='modal-footer clearfix'>
                 <small>{this.props.created_at}</small>
                 <div className='pull-left' style={{ paddingLeft: '85px' }}>
-                  <a href='#' className='action-btn font-small-ish'><i className='fa fa-thumbs-up'></i> 45</a>
-                  <a href='#' className='action-btn font-small-ish'><i className='fa fa-comment'></i> 10</a>
-                  <a href='#' className='action-btn font-small-ish'><i className='fa fa-share'></i> 2 </a>
-                  <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-rock-o'></i> 2 </a>
+                  <a href='#' className='action-btn font-small-ish'><i className='fa fa-thumbs-up'></i> {this.props.likes_count}</a>
+                  <a href='#' className='action-btn font-small-ish'><i className='fa fa-comment'></i> {this.props.comments_count}</a>
+                 
+                   {/* <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-rock-o'></i> 2 </a> */}
                   <a href='#' className='name-badge-n my-depth-2 font-small-ish modal-s-i-c'>{this.props.owner}</a>
                 </div>
                 <button className=' close' data-dismiss='modal' ></button>
