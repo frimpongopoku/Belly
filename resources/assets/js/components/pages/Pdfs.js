@@ -26,8 +26,6 @@ class PDFs extends Component {
           course={file.course} 
           created_at ={file.created_at} 
           owner={file.user} 
-          
-         
         />
         </div>
       });
@@ -46,7 +44,7 @@ class PDFs extends Component {
         <center> 
            <p style={{fontSize:"1.9rem",color:"black"}}>All the latest PDFs in <b>{this.props.user !==null ? this.props.user.course :''}</b></p>
         </center>
-        <div className="col-lg-10 col-md-offset-1 col-md-10 mobile-commot-paddings mobile-commot-margins" style={{padding:20}}> 
+        <div className="col-lg-12  col-md-12 mobile-commot-paddings mobile-commot-margins" style={{padding:20}}> 
         {
           this.ejectFiles()
         }

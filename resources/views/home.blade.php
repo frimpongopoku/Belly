@@ -8,6 +8,7 @@
 @section('scripts')
   <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 	<script> 
-    
+    var base_link =window.location.host;
+    console.log("I am the host:: ", base_link)
 	</script>
 @endsection 

@@ -4,6 +4,7 @@ import './../../app.css';
 class SideNav extends Component {
     constructor(props){
         super(props);
+        this.hostName = window.location.host;
         this.menuItems = [
             {
                 fa:'fa-globe',
@@ -88,7 +89,7 @@ class SideNav extends Component {
           <div className = 'side-nav-container z-depth-2'> 
           <div className = 'side-nav-profile-box'> 
             <center>
-              <img src='/imgs/avatars/nose-mask-avatar.jpg'className='side-profile-pic' />
+              <img src={this.props.settings.profile_picture} className='side-profile-pic' />
               <h4 style={{'margin':'3px','cursor':'pointer'}}>
                   { this.props.user ===null ? '...' : this.props.user.name }
                       {/* <i className = 'fa fa-caret-down awesome-margin'></i> */}

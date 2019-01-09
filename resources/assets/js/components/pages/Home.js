@@ -35,10 +35,13 @@ class Home extends Component {
     this.props.getRelations();
     this.props.getPdfNews(0);
     this.props.getUserSettings();
+    
   }
   snack(notice,ID,color){
       return (<SnackBar color={color} notice = { notice } ID ={ID} />)
   };
+
+  
   switchPage(newPage){
     //switch pages
     //record the latest page
@@ -71,6 +74,7 @@ class Home extends Component {
               <SideNav saveMenuFunction = { this.props.saveMenu } 
                 user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }
                 userRelations = {this.props.userRelations}
+                settings={this.props.userSettings === null ? { facebook_link: "", whatsapp_number: "", linked_in_link: "" } : this.props.userSettings}
                 >
               </SideNav> 
              </div>
@@ -102,7 +106,8 @@ class Home extends Component {
                   {name:"",email:"",school:"",number:"",hall:"", gui:""} : 
                   this.props.authenticatedUser }
                 userRelations={this.props.userRelations}
-                settings = {this.props.userSettings === null? {facebook_link:"",whatsapp_number:"",linked_in_link:""} : this.props.userSettings}
+                setProfilePicture = { this.props.setProfilePicture}
+                settings = {this.props.userSettings === null? {facebook_link:"",whatsapp_number:"",linked_in_link:"",profile_picture:""} : this.props.userSettings}
                 notification = { this.props.notification } 
                 saveProfileEditsFunction = { this.props.saveProfileEdits }>
               </Profile>    
@@ -175,7 +180,8 @@ function matchDispatchToProps(dispatch){
     getPdfNews:appActions.getPdfNewsAction,
     getMorePDFNews:appActions.getMorePDFNewsAction,
     deletePDF: appActions.deletePDFAction,
-    getUserSettings:appActions.getUserSettingsAction
+    getUserSettings:appActions.getUserSettingsAction,
+    setProfilePicture:appActions.setProfilePictureAction
   },dispatch)
 };
 

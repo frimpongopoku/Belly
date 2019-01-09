@@ -36,7 +36,7 @@ class GistPaperCard extends React.Component{
   }
   componentDidMount(){
     var thisClass = this;
-    thisClass.checkOwner();
+    //thisClass.checkOwner();
   }
  
   doLike(){
@@ -122,8 +122,8 @@ class GistPaperCard extends React.Component{
                   paperType = "paper"
                 </Dropdown>
 							</div>
-            <a href={ "/profile/ImU8iwby1xOdiru-"+this.props.details.owner.id+"-PputaKIShq9/"+this.props.details.owner.name} className = 'name-badge   my-depth-2 margin-climb-up'  
-              	style={{background:this.props.details.bcolor,position:'absolute', marginTop:-30, marginLeft:-36 }}> @{this.props.details.owner.name} 
+            <a href={ "/profile/ImU8iwby1xOdiru-"+this.props.details.owner.id+"-PputaKIShq9/"+this.props.details.owner.name} className = 'name-badge g-p-n  my-depth-2 margin-climb-up'  
+              	style={{background:this.props.details.bcolor,position:'absolute', marginTop:-30, marginLeft:-20 }}> @{this.props.details.owner.name} 
           		</a> 
           		<div className =" paper-title-div " >
           			<h4>{this.props.title+ " - " + this.props.id }</h4>

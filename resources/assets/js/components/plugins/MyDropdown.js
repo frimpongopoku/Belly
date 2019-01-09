@@ -14,7 +14,7 @@ class MyDropdown extends React.Component{
         return (
           <li key = {index}>
             <a data-toggle="modal" data-target="#universal-delete-board"
-              onClick = {()=>{ console.log(("I am the ::: ", this.props.paperTitle))}}
+              onClick = {()=>{ }}
             > <i className = "fa fa-trash"></i> delete</a>
           </li>
         )

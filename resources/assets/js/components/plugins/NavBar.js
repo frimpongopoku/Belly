@@ -45,7 +45,7 @@ class NavBar extends React.Component{
         //under normal circumstances, the current page textbox is never going to filled with "gist"
         //unless a use visits that page via the gist link which is "/home/new/"
         //so always check if the current page box is filled with 'gist' then fade dashboard in
-        $('#dashboard').fadeIn(200);
+        $('#dashboard').fadeIn(200); 
         $('#dashboard-button').addClass('side-active');
         $('#current-page-box').val('dashboard');
       }
@@ -67,12 +67,16 @@ class NavBar extends React.Component{
 		             <span  className = 'QB'>QB</span> <span className = "fa fa-tint tint-slow QB-tint"></span>
 		            </a>
 		          </div>
-		          <div className = "pull-right" style={{marginTop:10}}>
+                {/* <input type ="text" placeholder ="Search" className ="form-control rounded mobile-vanish-key tablet-vanish-key pc-inline" style={{width:"85%",paddingLeft:30,margin:8}} />
+                <input type="text" placeholder="Search" className="form-control rounded pc-vanish-key mobile-vanish-key tab-inline " style={{ width: "80%", paddingLeft: 30, margin: 8,  }} />
+              <input type="text" placeholder="Search" className="form-control rounded pc-vanish-key tablet-vanish-key mob-inline" style={{ width: "60%", paddingLeft: 30, margin: 8,  }} /> */}
+
+		          <div className = "pull-right" >
 		          	  {/* <small  className = '' style={{color:"white",margin:7,fontSize:"2.2rem"}}><i className = ' fa fa-bell nav-icon'></i></small> */}
 		            <small onClick = {()=>{ this.goToDashboard("non-mobile")}} className = 'mobile-vanish-key tablet-vanish-key pc-appearance-key' style={{color:"white",margin:7,fontSize:"2.2rem"}}>
 		            	<i className = ' fa fa-dashboard nav-icon'></i>
                 </small>  
-              <small onClick={() => { this.goToDashboard("mobile") }} className='mobile-apperance-key tablet-appearance-key pc-vanish-key' style={{ color: "white", margin: 7, fontSize: "2.2rem" }}>
+              <small onClick={() => { this.goToDashboard("mobile") }} className='mobile-appearance-key tablet-appearance-key pc-vanish-key' style={{ color: "white", margin: 7, fontSize: "2.2rem" }}>
                 <i className=' fa fa-dashboard nav-icon'></i>
               </small>  
 		          </div>

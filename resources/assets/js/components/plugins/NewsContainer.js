@@ -29,6 +29,7 @@ class NewsContainer extends Component{
       badgeNumber:0,
       next_page_url:'/me/get-news/',
       currentPieceCommentsViewed:null,
+
       current_date:new Date().toISOString(),
       deleteDetails:{
         title:null, 
@@ -44,10 +45,27 @@ class NewsContainer extends Component{
     this.props.getNews(0,this.props.allNews);
     this.setState({badgeNumber: Number(this.state.badgeNumber+1)}); 
     this.spinnerTrick();
+    //this.reloadAllImages();
   };
  
   
-
+  reloadAllImages() {
+    let thisClass = this;
+    $(document).ready(function () {
+      if ($('#home').attr('data-session-page') !== "") {
+        thisClass.props.allNews.news.forEach(function (item) {
+          if(item.file_type ==="image"){
+            let img = document.createElement('img');
+            img.src = item.picture_link;
+            console.log("I have downloaded :: ",item.picture_link)
+            img.onload = function () {
+              //do nothing
+            }
+          }
+        });
+      }
+    })
+  }
   ejectNews(){
     let thisClass = this;
     if(this.props.allNews !== null){
@@ -100,7 +118,6 @@ class NewsContainer extends Component{
               allNews={thisClass.props.allNews}
               school={item.user.school}
             />
-
           </li>)
         }
 
@@ -118,8 +135,10 @@ class NewsContainer extends Component{
       $.ajax({method:'get',url:'/me/save-comment/',data:dataTrain})
       .done(function(response){
         if(response ==="TRUE"){
-          thisClass.create(piece_id,type,pieceTitle);
           $('#comment-textbox').val("");
+          thisClass.setState({currentPieceCommentsViewed:null}) //unset the currently viewed piece value so that the comments can reload
+          thisClass.create(piece_id,type,pieceTitle);
+          
         }
         else{
           alert('save impossible!');

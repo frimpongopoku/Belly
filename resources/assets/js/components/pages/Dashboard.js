@@ -73,7 +73,9 @@ class Dashboard extends Component {
     },1000)  
   }
   spillTextPieces(){ 
+    //this.emptyNotice("paper");
     return this.props.pieces.map( (piece, index) =>{ 
+      
       return (
         <li key={ index }>
           <Piece 
@@ -94,7 +96,9 @@ class Dashboard extends Component {
           ID={ piece.id } />
         </li>
         );
+      
     })
+    
   }
   spillPicPieces(){
     //look for posts with single pieces and posts with multiple pictures andn load the appropriate plugins
@@ -567,6 +571,16 @@ class Dashboard extends Component {
     this.props.deletePictureFunction(id, this.props.picPieces);
     let idImageArray = this.idImageArrayManufacture(this.props.picPieces);
     this.runAllImages(idImageArray);
+  }
+
+  emptyNotice(type){
+    if(this.props.pieces.length ===0){
+      return (<div>
+          <center> 
+              <h3>Start creating {type} papers!</h3>
+          </center>
+      </div>);
+    }
   }
   render() {
     return (

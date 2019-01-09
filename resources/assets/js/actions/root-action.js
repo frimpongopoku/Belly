@@ -3,6 +3,14 @@ import { initialState } from './../reducers/dummy';
 
 
 
+export const setProfilePictureAction=(picture_link)=>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'change-profile',data:{picture_link:picture_link}})
+    .done(function(){
+       dispatch(getUserSettingsAction());
+    })
+  }
+}
 export const deletePDFAction =(id) =>{
   return dispatch =>{
     $.ajax({ method: 'get', url: '/delete-pdf/' + id });
@@ -25,15 +33,14 @@ export const getPdfNewsAction=(point) =>{
   }
 }
 
-
-
 export const getMorePDFNewsAction=(oldTrain,point)=>{
-
   return dispatch => {
     $.ajax({ method: 'get', url: '/get-pdf-news/' + point })
       .done((response) => {
-        let newSet = [...oldTrain,...response]
-        dispatch(loadPdfNews(newSet));
+        if(response.length !== 0 ){
+           let newSet = [...oldTrain,...response]
+            dispatch(loadPdfNews(newSet));
+        }
       });
   }
 }

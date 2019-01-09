@@ -5,12 +5,14 @@ import PropTypes from 'prop-types';
 class Profile extends Component {
   constructor(props){
     super(props); 
+    this.hostName = window.location.host;
     this.submit = this.submit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.saveNewEdits = this.saveNewEdits.bind(this);
     this.state = {
       dataTrain:{ name:"", email:"", phone:"", university:"", course:"", hall:""}, 
-      old:{}
+      old:{},
+      selectedPicture:null
     }
   }
 
@@ -55,6 +57,7 @@ class Profile extends Component {
   componentDidMount(){
      var thisClass = this; 
      $(document).ready(function(){ 
+       
        setTimeout(function(){
          thisClass.setState ({
             old: { 
@@ -120,6 +123,50 @@ class Profile extends Component {
   }
 
 
+  selection(num){
+    switch (num) {
+      case 0:
+        $('#f-p').css({borderColor:"#e1cd41",opacity:1,borderWidth:4});
+        $('#s-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#t-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#fourth-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        break;
+      case 1:
+        $('#s-p').css({ borderColor: "#e1cd41",opacity:1,borderWidth:4 });
+        $('#f-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#t-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#fourth-p').css({ borderColor: "white",opacity:.95,borderWidth:2 });
+        break;
+      case 2:
+        $('#t-p').css({ borderColor: "#e1cd41",opacity:1,borderWidth:4 });
+        $('#s-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#f-p').css({ borderColor: "white" ,opacity:.85,borderWidth:2});
+        $('#fourth-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        break;
+      case 3:
+        $('#fourth-p').css({ borderColor: "#e1cd41",opacity:1,borderWidth:4 });
+        $('#s-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#t-p').css({ borderColor: "white",opacity:.85,borderWidth:2 });
+        $('#f-p').css({ borderColor: "white" ,opacity:.85,borderWidth:2});
+        break;
+      default:
+        break;
+    }
+
+  }
+  selectPicture(num){
+    let imgCollection = ["imgs/avatars/female-avatar.png", "imgs/avatars/hijab-avatar.png", "imgs/avatars/hoodie-avatar.jpg","imgs/avatars/nose-mask-avatar.jpg"];
+    let val = imgCollection[num];
+    this.selection(Number(num));
+    this.setState({selectedPicture:val});
+  }
+
+  dbChange(){
+    if(this.state.selectedPicture !== null){
+      this.props.setProfilePicture(this.state.selectedPicture);
+    }
+  }
+
 
   render() {
     return (
@@ -132,7 +179,7 @@ class Profile extends Component {
               </div>
               <div className = "mobile-profile-box pc-vanish-key tablet-vanish-key"> 
                 <center>
-                  <img src="imgs/avatars/nose-mask-avatar.jpg" className="mobile-profile-pic" />
+                  <img src="imgs/avatars/nose-mask-avatar.jpg" className="mobile-profile-pic main-prof-pic" />
                 </center>
               </div>
               <div id = "first-div-box" className = "mobile-vanish-key tablet-appearance-key pc-appearance-key"> 
@@ -141,7 +188,7 @@ class Profile extends Component {
                    <h2 className = "black-text profile-name-tag">{ this.props.user.name }</h2>
                   </center>
                   <center>
-                      <img src ="imgs/avatars/nose-mask-avatar.jpg" className = "big-profile-pic"/>
+                    <img src ={this.props.settings.profile_picture}  className = "big-profile-pic main-prof-pic"/>
                   </center>
                 </div>
               </div > 
@@ -177,9 +224,18 @@ class Profile extends Component {
                 </div>
               </div> 
                {/* ===================================== END OF SECOND  DIV ===============================*/}
+               <div className = "thumbnail clearfix" style={{background:"orangered"}}>
+               <input type ="hidden" ref="profile_box" />
+                <button className ="btn btn-default pull-right" onClick = {()=>{this.dbChange()}}style={{margin:25}}>Change</button> 
+                  <img id="f-p"src= "/imgs/avatars/female-avatar.png" className ="profile-choice-item" onClick ={()=>{this.selectPicture(0)}}/>
+                <img id="s-p"src="/imgs/avatars/hijab-avatar.png" className="profile-choice-item" onClick={() => { this.selectPicture(1) }}/>
+                <img id="t-p"src="/imgs/avatars/hoodie-avatar.jpg" className="profile-choice-item " onClick={() => { this.selectPicture(2) }}/>
+                <img id="fourth-p"src="/imgs/avatars/nose-mask-avatar.jpg" className="profile-choice-item " onClick={() => { this.selectPicture(3) }}/>
+                 
+               </div>
                <div id ="third-div-box"> 
                 <div className = "thumbnail z-depth-1 zero-radius clearfix f-d-card"> 
-                   <button className = "btn btn-default pull-right z-depth-1" onClick={()=>{ this.submit() }}> Save </button>
+                   <button className = "btn btn-default pull-right " onClick={()=>{ this.submit() }}> Save </button>
                   <h3>Edit Profile</h3>
                   <form >
                     <div className = "col-md-6  col-sm-6"> 

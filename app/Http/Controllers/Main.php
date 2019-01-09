@@ -16,25 +16,32 @@ use Session;
 class Main extends Controller
 {
 
+
+  public function setProfilePicture(Request $request){
+    $found = Setting::where('user_id',Auth::user()->id)->first(); 
+    $found->update(['profile_picture'=>$request->picture_link]);
+    return 'TRUE';
+  }
   public function goToNews(){
-    Session::put('page_name','gist');
-    return view('home');
+    //Session::put('page_name','gist');
+    
+    return redirect('/home');
   }
   public function goToDashboard(){
-    Session::put('page_name','dashboard');
-    return view('home');
+    //Session::put('page_name','dashboard');
+      return redirect('/home');
   }
   public function goToDashProfile(){
-    Session::put('page_name','profile');
-    return view('home');
+    //Session::put('page_name','profile');
+    return redirect('/home');
   }
   public function goToPdfGist(){
-    Session::put('page_name','pdfs');
-    return view('home');
+    //Session::put('page_name','pdfs');
+    return redirect('/home');
   }
   public function goToCreatePage(){
-    Session::put('page_name','create-page');
-    return view('home');
+    //Session::put('page_name','create-page');
+    return redirect('/home');
   }
   public function getUserSettings(){
     $found = Setting::where('user_id',Auth::user()->id)->first(); 
@@ -46,7 +53,7 @@ class Main extends Controller
     $found->delete();
   }
   public function getPdfNews($point){
-    $related  = PdfPiece::where('course','!=',Auth::user()->course)->with('user')->skip($point * 3)->take(3)->get();
+    $related  = PdfPiece::where('course','=',Auth::user()->course)->with('user')->skip($point * 6)->take(6)->get();
     return $related;
   }
   public function getRelations(){
@@ -75,7 +82,7 @@ class Main extends Controller
         $found = PicturePiece::where('id',$comment->picture_piece_id)->first();
         $found->update(["comments_count"=>$found->comments_count -1]);
       }
-      else if($comment_->picture_piece_id =="L"){
+      else if($comment->picture_piece_id =="L"){
         $found = PaperPiece::where('id',$comment->paper_piece_id)->first();
         $found->update(["comments_count"=>$found->comments_count -1]);
       }

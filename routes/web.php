@@ -54,6 +54,7 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('home/create-page','Main@goToCreatePage');
   Route::get('home/pdfs','Main@goToPdfGist');
   Route::get('home/news','Main@goToNews');
+  Route::get('change-profile','Main@setProfilePicture');
 });
 
 

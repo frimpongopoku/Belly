@@ -35,7 +35,15 @@ class GistImageCard extends Component {
     }
   }
   componentDidMount() {
-    this.checkOwner();
+      // if ($('#home').attr('data-session-page') !== "gist") {
+      //   let img = document.createElement('img');
+      //     img.src = item.image_link;
+          
+      //     img.onload = function () {
+      //       //do nothing
+      //       console.log("I have downloaded :: ", item.image_link)
+      //     }
+      // }
   };
   
 
@@ -99,12 +107,15 @@ class GistImageCard extends Component {
     return (
       <div style={{marginTop:40}}>
         <div className = 'panel panel-default solid-p-w' style={{ marginBottom:0}}> 
-          <a href={"/profile/ImU8iwby1xOdiru-" + this.props.details.owner.id + "-PputaKIShq9/" + this.props.details.owner.name} className = 'name-badge   my-depth-2 margin-climb-up'  
-              style={{background:this.props.details.bcolor,position:'absolute' }}> @{this.props.details.owner.name} 
+          <a href={"/profile/ImU8iwby1xOdiru-" + this.props.details.owner.id + "-PputaKIShq9/" + this.props.details.owner.name} className = 'name-badge  g-p-n  my-depth-2 margin-climb-up'  
+               style={{background:this.props.details.bcolor,position:'absolute' }}> @{this.props.details.owner.name} 
           </a> 
           <div style={{marginBottom:15, paddingTop:15}} ></div>
           <div className = 'pull-right' style={{padding:10}}> 
-                <Dropdown  options = { this.state.refinedOptions } name={"dropy-pic-"+this.props.id}></Dropdown>
+                <Dropdown  
+                options = { this.state.refinedOptions } 
+                name={"dropy-pic-"+this.props.id}>
+                </Dropdown>
           </div>
           {/* ================== PANEL-BODY ============== */}
           <div className = 'panel-body clearfix' style ={{padding:'0px '}}> 
@@ -112,7 +123,7 @@ class GistImageCard extends Component {
               <p> {this.props.description} </p>
             </div>
             <div className = ' school-course-div pull-right' style={{paddingLeft:5, marginBottom:5}}> 
-              <small className = ' label label-info info-bg-color rounded z-depth-1' style={{marginRight:5}}>
+              <small className = ' label label-info i]nfo-bg-color rounded z-depth-1' style={{marginRight:5}}>
                 <i className='fa fa-graduation-cap ' ></i> {this.props.details.owner.school} 
               </small>
               <small className = ' label label-default z-depth-1 rounded p-r-fix'>
@@ -123,7 +134,7 @@ class GistImageCard extends Component {
               {' '+moment.duration(moment(this.state.current_date).diff(moment(this.props.created_at))).humanize()} ago 
             </span>
             
-          {/* ================== IMAGE  ============== */}
+          {/* ================== IMAGE ============== */}
             <img src = {this.props.image_link}
               onClick={()=>{this.zoom(this.props.id)}} 
               className='img-responsive gist-img cursor' id={"img-zoom-pointer-"+this.props.id} 
