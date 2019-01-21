@@ -129,12 +129,12 @@ class MakeNew extends Component {
               <button className = 'd-tab zero-border btn-undefault z-depth-1 p-activate-section ' id='text-btn' 
                onClick ={()=>{
                   this.tabClick('text');
-               }}><i className = 'fa fa-pencil'></i> Text</button>
+               }}><i className = 'fa fa-pencil' style={{marginRight:3}}></i> Text</button>
               <button className='d-tab zero-border btn-undefault' id = 'picture-btn'
                   onClick={() => {
                       this.tabClick('picture');
                   }}
-              ><i className ='fa fa-upload'></i>Picture</button>
+                ><i className='fa fa-upload' style={{ marginRight: 3 }}></i> Picture</button>
             </div>
              <div className="">
                 <div className=' my-tabs '>
@@ -142,7 +142,7 @@ class MakeNew extends Component {
                     <div className='my-tab' id='text' style={{marginTop:'1rem'}}>
                       <br />
                       <div className = '' > 
-                        <input type = 'text' ref ='title'className= 'form-control my-input' placeholder='title' />
+                        <input type = 'text' ref ='title'className= 'form-control my-input' placeholder='title' autofocus/>
                         <div className ='thumbnail  clearfix' style={styles.thumbnailFix}> 
                         <CourseSelector 
                           allCourses = { this.props.allCourses}

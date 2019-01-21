@@ -49,23 +49,6 @@ class NewsContainer extends Component{
   };
  
   
-  reloadAllImages() {
-    let thisClass = this;
-    $(document).ready(function () {
-      if ($('#home').attr('data-session-page') !== "") {
-        thisClass.props.allNews.news.forEach(function (item) {
-          if(item.file_type ==="image"){
-            let img = document.createElement('img');
-            img.src = item.picture_link;
-            console.log("I have downloaded :: ",item.picture_link)
-            img.onload = function () {
-              //do nothing
-            }
-          }
-        });
-      }
-    })
-  }
   ejectNews(){
     let thisClass = this;
     if(this.props.allNews !== null){
@@ -84,8 +67,8 @@ class NewsContainer extends Component{
               created_at={item.created_at}
               likesArray={item.likes}
               likes={item.likes.length}
-              commentsArray={item.comments}
-              commentsCount={item.comments.length}
+             // commentsArray={item.comments}
+              commentsCount={item.comments_count}
               showComments={thisClass.create}
               course={item.course}
               coins={Math.round(Math.random(50000) * 1000)}
@@ -109,7 +92,7 @@ class NewsContainer extends Component{
               created_at={item.created_at}
               likesArray={item.likes}
               likes={item.likes.length}
-              comments={item.comments.length}
+              comments={item.comments_count}
               showComments={thisClass.create}
               course={item.course}
               coins={Math.round(Math.random(50000) * 1000)}
@@ -125,6 +108,22 @@ class NewsContainer extends Component{
     }
   }
 
+
+
+  noNews(){
+    if(this.props.allNews !==null){
+      if(this.props.allNews.active ==='false'){
+        return(
+          <div> 
+            <center> 
+              <p>No gist yet on <span><b>{this.props.authenticatedUser.course}</b></span> <br/> 
+              Be the first to create the latest exam gist.</p>
+            </center>
+          </div>
+        )
+      }
+    }
+  }
   saveComment(piece_id,type,pieceTitle){
     //laravel save, and then recall createComment components
     let thisClass= this;
@@ -136,6 +135,8 @@ class NewsContainer extends Component{
       .done(function(response){
         if(response ==="TRUE"){
           $('#comment-textbox').val("");
+          thisClass.props.getRelations();
+          
           thisClass.setState({currentPieceCommentsViewed:null}) //unset the currently viewed piece value so that the comments can reload
           thisClass.create(piece_id,type,pieceTitle);
           
@@ -275,6 +276,7 @@ class NewsContainer extends Component{
     return (
       <div id="app-news-container">
         <ul style = {styles.ulFix}>
+        {this.noNews()}
           {this.ejectNews()}
         </ul>
         <br />
@@ -314,6 +316,7 @@ function mapDispatchToProps(dispatch){
     newLikeFunction : gistActions.newLikeAction,
     getNews: gistActions.getNewsAction, 
     getCommentsForPiece:gistActions.getCommentsForPieceAction, 
+    getRelations:gistActions.getRelationsAction,
   },dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);

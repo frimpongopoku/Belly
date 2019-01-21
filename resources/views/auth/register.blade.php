@@ -9,8 +9,8 @@
                 </center>
                 <div class="panel panel-finish z-depth-1" style='padding:30px;'>
                    <center>
-                     <small style="color:#ccc;font-weight:500;">A D R O P I</small>
-                    <h1  style="margin-top:0px;padding-top:2px;color:black;font-weight:900;font-size:-webkit-xxx-large ; cursor:pointer;" id="the-ico">Q<span style="color:crimson">B</span><i class="tint-slow fa fa-tint" style="font-size:22px; position:relative"></i></h1>
+                     <small style="color:#ccc;font-weight:500;">A D R O P I</small><br>
+                    <h1  style="display:inline-block;margin-top:0px;padding-top:2px;color:black;font-weight:900;font-size:-webkit-xxx-large ; cursor:pointer;" id="the-ico">Q<span style="color:crimson">B</span><i class="tint-slow fa fa-tint" style="font-size:22px; position:relative"></i></h1>
                    
                   </center>
                     <div clasName = 'panel panel-default '>
@@ -19,13 +19,25 @@
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label register-font"> Name</label>
+                                    <label for="name" class="col-md-4 control-label register-font"> First Name</label>
 
                                     <div class="col-md-6">
-                                        <input id="name" type="text" placeholder="Name"class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                        <input id="name" type="text" placeholder="First Name"class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                         @if ($errors->has('name'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname" class="col-md-4 control-label register-font"> Last Name</label>
+
+                                    <div class="col-md-6">
+                                        <input id="lastname" type="text" placeholder="Last Name"class="form-control" name="last_name" required>
+                                        @if ($errors->has('lastname'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('lastname') }}</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -96,7 +108,17 @@
                                     <label for="course" class="col-md-4 control-label register-font">Course</label>
 
                                     <div class="col-md-6">
-                                        <input id="course" placeholder="Course" type="text" class="form-control" name="course"  required>
+                                        <input id="course" placeholder="Course" type="hidden" class="form-control" name="course"  required>
+                                        <select class='form-control course-chooser'> 
+                                            <option>Choose</option>
+                                           <option >Actuarial Science</option> 
+                                           <option>Agriculture</option>
+                                           <option >Computer Science</option> 
+                                           <option>Dondology</option>
+                                           <option>Physics</option>
+                                           <option>Information Science</option>
+                                           <option>Statistics</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -169,10 +191,11 @@
         
          setInterval(function(){
              var value = $('.gender').val();
-             var sChooser = $'.school-chooser').val();
+             var sChooser = $('.school-chooser').val();
+             var cChooser = $('.course-chooser').val();
               $('.gender-value').val(value);
-               $('.school').val(sChooser);
-            console.log(sChooser)
+               $('#school').val(sChooser);
+               $('#course').val(cChooser);
          },900);
          $('#the-ico').click(function(){
           window.location = "/";

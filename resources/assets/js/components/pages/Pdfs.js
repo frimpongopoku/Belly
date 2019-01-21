@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PdfCard from './../plugins/PdfCard';
+import Sidebar from './../navigation/Sidebar';
 class PDFs extends Component {
 
   constructor(props){
@@ -31,6 +32,34 @@ class PDFs extends Component {
       });
     }
   }
+  empty(){
+    if(this.props.pdfNews !== null){
+      if(this.props.pdfNews.length ===0){
+        return (<div> 
+          <center>
+            <p style={{ fontSize: 'medium', fontWeight: 600, color: "black" }}>You do not have any
+                  <span className='text text-warning'> PDF</span> papers yet.<br /> Start creating...</p>
+
+            <button className="btn btn-default" style={{marginBottom:6}}
+              onClick={() => { let sideBar = new Sidebar(); sideBar.switchPage('create-page') }}>
+              <span className="fa fa-plus"></span></button>
+          </center>
+        </div>);
+      }
+    }
+  }
+  ejectButton(){
+    if (this.props.pdfNews !== null) {
+      if (this.props.pdfNews.length === 10) {
+        return(
+          <button className={"btn btn-default btn-block"} onClick={() => { this.searchForMoreNews(); this.spinnerTrick() }}>
+            Load More
+         <span className="fa fa-spinner fa-spin" style={{ marginLeft: 5, display: "none", color: "black" }} id="pdf-load-spinner"></span>
+          </button> 
+        )
+      }
+    }
+  }
   spinnerTrick(){
     $('#pdf-load-spinner').fadeIn(function(){
       setTimeout(() => {
@@ -45,13 +74,12 @@ class PDFs extends Component {
            <p style={{fontSize:"1.9rem",color:"black"}}>All the latest PDFs in <b>{this.props.user !==null ? this.props.user.course :''}</b></p>
         </center>
         <div className="col-lg-12  col-md-12 mobile-commot-paddings mobile-commot-margins" style={{padding:20}}> 
+        {this.empty()}
         {
           this.ejectFiles()
         }
-        <button className="btn btn-default btn-block" onClick={()=>{this.searchForMoreNews();this.spinnerTrick()}}>
-          Load More 
-         <span className="fa fa-spinner fa-spin" style={{ marginLeft: 5, display:"none" ,color:"black"}} id="pdf-load-spinner"></span>
-        </button> 
+        {this.ejectButton()}
+        
         </div>
       </div>
     );

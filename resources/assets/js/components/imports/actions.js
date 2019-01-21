@@ -63,5 +63,6 @@ export const gistActions ={
   newLikeAction: newLikeAction,
   getNewsAction: getNewsAction,
   getCommentsForPieceAction:getCommentsForPieceAction,
+  getRelationsAction:getRelationsAction,
 
 };

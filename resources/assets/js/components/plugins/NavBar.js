@@ -63,7 +63,8 @@ class NavBar extends React.Component{
 						style = { {margin:0,padding:0} }>
 		        <div className="container-fluid clearfix" style = {{}}>
             <div className="navbar-header" style={{display: 'inline-block'}}>
-		            <a className="navbar-brand" href="#" style={{padding:15,}}>
+		            <a className="navbar-brand" href="" onClick={(e)=>{e.preventDefault();
+                }} style={{padding:15,}}>
 		             <span  className = 'QB'>QB</span> <span className = "fa fa-tint tint-slow QB-tint"></span>
 		            </a>
 		          </div>

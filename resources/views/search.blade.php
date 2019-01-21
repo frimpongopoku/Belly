@@ -80,7 +80,7 @@
           @endforeach
         </div>
       </div>
-      <div class='modal fade' id="comments-modal-box" style="border-radius:15px;border:solid 2px orange;"> 
+      <div class='modal fade' id="comments-modal-box" style=""> 
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-body" style="max-height:400px; overflow-y:scroll;  border-radius:10px;">

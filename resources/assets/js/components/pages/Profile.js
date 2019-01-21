@@ -164,6 +164,7 @@ class Profile extends Component {
   dbChange(){
     if(this.state.selectedPicture !== null){
       this.props.setProfilePicture(this.state.selectedPicture);
+      window.location ="/home";
     }
   }
 

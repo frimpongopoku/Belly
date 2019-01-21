@@ -132,7 +132,7 @@ class GistPaperCard extends React.Component{
           			<span className = ' text text-primary font-small number-font'><i className='fa fa-clock-o'></i> {moment.duration(moment(this.state.current_date).diff(moment(this.props.created_at))).humanize()} ago </span>
           		</small>
           		<div data-zoomed="false" onClick = {()=>{this.zoomText(this.props.id);}} className = {" gist-paper-body-text "+"t-d-"+this.props.id} style={{padding:20,cursor:'pointer', minHeight:200, maxHeight:200,overflowY:'hidden' }}> 
-	          		<p className ={"paper-paragraph-"+this.props.id}>{this.props.body}
+	          		<p className ={" save-white paper-paragraph-"+this.props.id}>{this.props.body}
 								</p>
           		</div>
           		<div >
@@ -147,7 +147,8 @@ class GistPaperCard extends React.Component{
                     <span className = "fa fa-thumbs-up"></span> 
                     <span> { this.props.likes} </span> 
                   </small> 
-		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"> </span> <span> { this.props.commentsCount} </span> </small> 
+		              <small className = "number-font t-black "><span className = "fa fa-comments p-r-fix"> </span> 
+                    <span id={"com-text-"+this.props.id}> { this.props.commentsCount} </span> </small> 
                     {/* <small className = " label label-primary pull-right gist-coin-display number-font"> 
                       <b>C</b> {this.props.coins} 
                     </small> */}

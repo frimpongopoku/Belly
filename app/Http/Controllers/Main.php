@@ -53,7 +53,7 @@ class Main extends Controller
     $found->delete();
   }
   public function getPdfNews($point){
-    $related  = PdfPiece::where('course','=',Auth::user()->course)->with('user')->skip($point * 6)->take(6)->get();
+    $related  = PdfPiece::where('course','=',Auth::user()->course)->with('user')->skip($point * 10)->take(10)->get();
     return $related;
   }
   public function getRelations(){
@@ -76,16 +76,23 @@ class Main extends Controller
   }
 
   public function deleteComment($id){
+    //delete a comment, the creator of the comment gets a 1 out of 2 and the creator of the piece gets a 1 out of 5
+    //exception: if you make a comment on your own piece, you only get a 2, and your 2 becomes 1 when you delete the comment
     $comment = Comment::find($id);
     if($comment){
       if($comment->paper_piece_id =="L"){
         $found = PicturePiece::where('id',$comment->picture_piece_id)->first();
         $found->update(["comments_count"=>$found->comments_count -1]);
+        if(Auth::user()->id != $found->user->id){
+          $this->decreaseReputation(4,$found->user_id);
+        }
       }
       else if($comment->picture_piece_id =="L"){
         $found = PaperPiece::where('id',$comment->paper_piece_id)->first();
         $found->update(["comments_count"=>$found->comments_count -1]);
+         $this->decreaseReputation(4,$found->user_id);
       }
+      $this->decreaseReputation(1,Auth::user()->id);
       $comment->delete();
     }
   }
@@ -107,6 +114,7 @@ class Main extends Controller
   }
 
   public function saveComment(Request $request){
+    //create a comment, the creator gets a 2 and the maker of the piece gets a 5
     $newCom = new Comment(); 
     $newCom->body= $request->body; 
     $newCom->user_id= Auth::user()->id;
@@ -122,13 +130,17 @@ class Main extends Controller
       //find the owner of the piece that has been commented on
       if($request->type == "paper"){
         $foundPiece = PaperPiece::where('id',$request->pieceID)->first();
-        $foundPiece->update(['comments_count'=>$foundPiece->comments_count]);
+        $foundPiece->update(['comments_count'=>$foundPiece->comments_count + 1]);
       }
       elseif($request->type =="picture"){
          $foundPiece = PicturePiece::where('id',$request->pieceID)->first();
-          $foundPiece->update(['comments_count'=>$foundPiece->comments_count]);
+          $foundPiece->update(['comments_count'=>$foundPiece->comments_count + 1]);
       }
-      $this->addReputation(5,$foundPiece->user_id);
+      //commentor gets a 2, and the creator of the piece gets a 5
+      if(Auth::user()->id != $foundPiece->user_id){
+        $this->addReputation(5,$foundPiece->user_id);
+      }
+      $this->addReputation(2,Auth::user()->id);
       return "TRUE";
     }
     else{
@@ -146,12 +158,17 @@ class Main extends Controller
     }
   }
   public function pictureLike(Request $request){
+    //the liker of a piece gets a 5 and the creator gets a 10. Unlike and both loose the give reps
+     //exception: if you like your own piece, only get a 5
     $exists = Like::where(["user_id"=>$request->user_id, "picture_piece_id" =>$request->picture_piece_id])->first();
     if($exists){
       $exists->delete();
       $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
         $likedPiece->update(["likes_count"=>$likedPiece->likes_count - 1]); 
       $this->decreaseReputation(5,Auth::user()->id);
+       if($likedPiece->user_id != Auth::user()->id){
+          $this->decreaseReputation(10,$likedPiece->user_id);
+        }
      
       return $likedPiece;
     }
@@ -164,18 +181,26 @@ class Main extends Controller
         $likedPiece = PicturePiece::where("id",$request->picture_piece_id)->with('likes')->first(); 
          $likedPiece->update(["likes_count"=>$likedPiece->likes_count + 1]);
          $this->addReputation(5,Auth::user()->id); 
+         if($likedPiece->user_id != Auth::user()->id){
+           $this->addReputation(10,$likedPiece->user_id);
+         }
        
         return $likedPiece;
       }
     }
   }
   public function like(Request $request){
+     //the liker of a piece gets a 5 and the creator gets a 10. Unlike and both loose the give reps
+     //exception: if you like your own piece, only get a 5
     $exists = Like::where(["user_id"=>$request->user_id, "paper_piece_id" =>$request->paper_piece_id])->first();
     if($exists){
       $exists->delete();
       $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first();
       $likedPiece->update(["likes_count"=>$likedPiece->likes_count - 1]); 
-      $this->decreaseReputation(10,Auth::user()->id);
+      $this->decreaseReputation(5,Auth::user()->id);
+      if($likedPiece->user_id != Auth::user()->id){
+          $this->decreaseReputation(10,$likedPiece->user_id);
+      }
       return $likedPiece;
     }
     else{
@@ -186,7 +211,10 @@ class Main extends Controller
         //return the paper's new set of likes NB: newly added too
         $likedPiece = PaperPiece::where("id",$request->paper_piece_id)->with('likes')->first();
         $likedPiece->update(["likes_count"=>$likedPiece->likes_count + 1]);
-        $this->addReputation(10,Auth::user()->id); 
+        $this->addReputation(5,Auth::user()->id); 
+         if($likedPiece->user_id != Auth::user()->id){
+           $this->addReputation(10,$likedPiece->user_id);
+         }
         return $likedPiece;
       }
     }
@@ -206,15 +234,15 @@ class Main extends Controller
     //then cut away the oldValues with "alreadySent" point then send only the next 10
     //*make the users choose other courses they would like to see news(questions) on
     //there is actually an eloquent fxnality called "skip" use it later!
-    $alreadySent = $point * 3;
-    $nextSetPoint  = $alreadySent + 3;
-    $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes","comments")->skip($alreadySent)->take(3)->orderBy('id','DESC')->get();
-    $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes","comments")->skip($alreadySent)->take(3)->orderBy('id','DESC')->get();
+    $alreadySent = $point * 5;
+    $nextSetPoint  = $alreadySent + 5;
+    $texts = PaperPiece::where('course', Auth::user()->course)->with('user',"likes")->skip($alreadySent)->take(5)->orderBy('id','DESC')->get();
+    $pics = PicturePiece::where('course',Auth::user()->course)->with('user',"likes")->skip($alreadySent)->take(5)->orderBy('id','DESC')->get();
     $texts = $this->objectToArray($texts);
     $pics = $this->objectToArray($pics);
     $merged =  array_merge($texts,$pics);
     $shuffled = shuffle($merged);
-    return [ "news"=>$merged, "active"=> count($merged) !=0 ?true:false ,"setNumber"=>$point +1];
+    return [ "news"=>$merged, "active"=> count($merged) !=0 ?'true':'false' ,"setNumber"=>$point +1];
   }
   public function objectToArray($obj){
     $temp = []; 
@@ -244,11 +272,18 @@ class Main extends Controller
 		}
 	}
 	public function deletePicture($id){
-		$found = PicturePiece::find($id); 
-		//delete image from the directory 
-		unlink($found->picture_link);
-		//delete image from the database
-		$found->delete(); 
+    $found = PicturePiece::find($id); 
+    if($found){
+      	//delete image from the directory 
+      unlink($found->picture_link);
+      //delete image from the database
+    	if (Auth::user()->id == $found->user->id){
+        Comment::where('paper_piece_id',$found->id)->delete();
+        Like::where('paper_piece_id',$found->id)->delete();
+        $foundPaper->delete();
+			}
+    }
+	
 	}
 	public function getToken(){
 		return csrf_token();
@@ -275,7 +310,6 @@ class Main extends Controller
         Comment::where('paper_piece_id',$foundPaper->id)->delete();
         Like::where('paper_piece_id',$foundPaper->id)->delete();
         $foundPaper->delete();
-      
 			}
 		}
   }

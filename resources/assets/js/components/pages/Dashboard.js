@@ -10,6 +10,7 @@ import UniversalPicDisplay from './../plugins/UniversalPicDisplayModal';
 import SearchBox from './../plugins/search/SearchBox';
 import ReactDOM from 'react-dom';
 import PageSwitcher from './../plugins/PageSwitcher';
+import Sidebar from "./../navigation/Sidebar";
 
 class Dashboard extends Component {
   constructor(props){ 
@@ -71,6 +72,40 @@ class Dashboard extends Component {
     setTimeout(function(){
         imageReplace(thisClass,imgIDArr);
     },1000)  
+  }
+  emptyNotice(type) {
+    if(this.props.pieces !==null){
+      if(type ==="paper"){
+        if (this.props.pieces.length === 0){
+            return (<div>
+              <center>
+                <p style={{fontSize:'medium',fontWeight:600, color:"black"}}>You do not have any 
+                <span className ='text text-primary'> text</span> papers yet.<br/> Start creating...</p>
+              
+              <button className ="btn btn-default" 
+              onClick = {()=>{ let sideBar = new Sidebar(); sideBar.switchPage('create-page')}}> 
+              <span className ="fa fa-plus"></span></button>
+              </center>
+            </div>);
+        }
+      }
+      else if (type == "shots") {
+        if(this.props.picPieces.length ===0){
+          return (<div>
+            <center>
+              <p style={{ fontSize: 'medium', fontWeight: 600, color: "black" }}>You do not have any
+                <span className='text text-danger'> image</span> papers yet.
+                <br /> Start creating...</p>
+
+              <button className="btn btn-default"
+                onClick={() => { let sideBar = new Sidebar(); sideBar.switchPage('create-page') }}>
+                <span className="fa fa-plus"></span>
+              </button>
+            </center>
+          </div>);
+        }
+      }
+    }
   }
   spillTextPieces(){ 
     //this.emptyNotice("paper");
@@ -442,7 +477,7 @@ class Dashboard extends Component {
     titleDiv.className = 'piece-title';
     realTitle.className ='view-title'; 
     bodyDiv.className = 'piece-body'; 
-    realBody.className = 'view-body';
+    realBody.className = 'view-body save-white';
     realTitle.textContent = title;
     realBody.textContent = body;
     titleDiv.appendChild(realTitle); 
@@ -573,15 +608,7 @@ class Dashboard extends Component {
     this.runAllImages(idImageArray);
   }
 
-  emptyNotice(type){
-    if(this.props.pieces.length ===0){
-      return (<div>
-          <center> 
-              <h3>Start creating {type} papers!</h3>
-          </center>
-      </div>);
-    }
-  }
+ 
   render() {
     return (
       <div>
@@ -605,6 +632,7 @@ class Dashboard extends Component {
                         <div id = 'text-section'style={{position:'relative'}}>
                             <PageSwitcher baseURL ="/me/get-all-text-papers" type="text" animateDiv="#text-portion" values={this.props.paginatorTextValuesInsert} unique="texty"></PageSwitcher>
                           <div id="text-portion">
+                          {this.emptyNotice('paper')}
                             <ul style={{listStyleType:'none',padding:0}}> 
                               { 
                                   this.props.pieces ===null ? '' : this.spillTextPieces()
@@ -616,10 +644,13 @@ class Dashboard extends Component {
                         <PageSwitcher baseURL="/me/get-all-pic-papers" type="picture" animateDiv="#pic-portion" values={this.props.paginatorPicValuesInsert} unique="pixy"></PageSwitcher>  
                           <div id='pic-portion'>
                             <ul style={{listStyleType:'none',padding:0}}> 
+                            {this.emptyNotice('shots')}
+                              
                                 {
                                     this.props.picPieces === null ? '' : this.spillPicPieces()
                                 }
                             </ul>
+                           
                           </div>
                          </div>
                           {/* <div id = 'pdf-section' className = 'vanish'> 

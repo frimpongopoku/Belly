@@ -50,7 +50,7 @@ class SideNav extends Component {
           onClick={() => {
               this.switchPage(option.name)
             }} key = { index }> <i className={ 'fa margin-r-10  '+ option.fa }></i>
-            { " "+ this.capitalize(option.name) }
+            { " "+ this.capitalize(option.name =="create-page"?"create":option.name) }
           </li>
         );
        });
