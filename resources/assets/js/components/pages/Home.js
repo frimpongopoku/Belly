@@ -69,7 +69,7 @@ class Home extends Component {
           <NavBar></NavBar>
         </div>
         <div className = ' col-md-12 col-lg-12 mobile-commot-paddings mobile-commot-margins'>
-          <div className={$('#home').attr('data-session-page') === "gist" ? 'side-nav vanish mobile-vanish-key tablet-vanish-key' : 'side-nav mobile-vanish-key tablet-vanish-key'} >
+          <div id="side-nav-super-key" className={$('#home').attr('data-session-page') === "gist" ? 'side-nav vanish mobile-vanish-key tablet-vanish-key' : 'side-nav mobile-vanish-key tablet-vanish-key'} >
             <div className = 'col-md-2 col-lg-2 col-xs-12'>
               <SideNav saveMenuFunction = { this.props.saveMenu } 
                 user = { this.props.authenticatedUser === null ? null : this.props.authenticatedUser }

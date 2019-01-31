@@ -107,6 +107,7 @@ class SideNav extends Component {
           </div>
           <div> 
             <ul className = 'side-ul'> 
+              <li className = "side-li mobile-appearance-key tablet-vanish-key pc-vanish-key" onClick ={()=>{$('#side-nav-super-key').css({display:'none'})}}> <center><i className="fa fa-eye-slash"></i></center></li>
                 {/* <li className = 'side-li'>
                     <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
                 </li> */}

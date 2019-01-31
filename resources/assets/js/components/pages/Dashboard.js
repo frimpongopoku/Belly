@@ -59,7 +59,7 @@ class Dashboard extends Component {
     let tab = '#'+option;
     let oldTab = '#'+$('#d-current-tab').val();
     this.availableOptions.filter(opt => opt !== option).forEach(optB => {
-        $('#'+ optB+'-btn').removeClass(' z-dep  th-1 p-activate-section ');     
+        $('#'+ optB+'-btn').removeClass(' z-depth-1 p-activate-section ');     
     }); 
     $(optionID).addClass('z-depth-1 p-activate-section ');
     $(oldTab).fadeOut(200,function(){
@@ -617,7 +617,7 @@ class Dashboard extends Component {
   }
 
  
-  render() {
+  render(){
     return (
       <div>
         <div className = 'container t-m-l-fix' style={{padding:'0'}}> 
