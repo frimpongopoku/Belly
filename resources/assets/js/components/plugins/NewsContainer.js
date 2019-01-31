@@ -88,7 +88,7 @@ class NewsContainer extends Component{
               description={item.description}
               user={thisClass.props.authenticatedUser}
               course={item.course}
-              image_link={item.picture_link}
+              image_link={item.reduced_path}
               created_at={item.created_at}
               likesArray={item.likes}
               likes={item.likes.length}
@@ -103,7 +103,6 @@ class NewsContainer extends Component{
             />
           </li>)
         }
-
       });
     }
   }

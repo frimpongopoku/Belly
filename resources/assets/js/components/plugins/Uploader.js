@@ -193,7 +193,7 @@ class Uploader extends React.Component{
                     $('.input-file').trigger('click');
                   }}><i className='glyphicon glyphicon-hand-up'></i> Select</button>
                   <div onClick={() => { this.doUpload() }} className='btn btn-success  upload-button-design z-depth-1'
-                    style={{ margin: 5, paddingLeft: 22, paddingRight: 22 }}><i className = "fa fa-upload"></i> Upload</div>
+                    style={{ margin: 5, paddingLeft: 22, paddingRight: 22 }}><i className = "fa fa-upload"></i> Save</div>
                 </div>
               </div>
 
@@ -208,18 +208,18 @@ class Uploader extends React.Component{
             <input type='file' className='input-file' name="image[]" style={{opacity:0, width:1}} multiple/> 
           </form>
 
-                    {/* <form action ="/upload-image" method="post" encType="multipart/form-data"> 
-                      <input type='hidden' name='_token' defaultValue={this.props.token} />
-                        <input type='hidden' name='pic_course_select' defaultValue="Computer Science" />
-                      <input type='file' name="image[]" multiple/>
-                        <CourseSelector
-                          allCourses={this.props.allCourses}
-                          name="pic_course_selection"
-                          user_course={this.props.course}
-                        />
+                {/* <form action ="/upload-image" method="post" encType="multipart/form-data"> 
+                  <input type='hidden' name='_token' defaultValue={this.props.token} />
+                    <input type='hidden' name='pic_course_select' defaultValue="Computer Science" />
+                  <input type='file' name="image[]" multiple/>
+                    <CourseSelector
+                      allCourses={this.props.allCourses}
+                      name="pic_course_selection"
+                      user_course={this.props.course}
+                    />
 
-                    <input type = "submit" />
-                    </form> */}
+                <input type = "submit" />
+                </form> */}
 	               
 			</div>
 		);

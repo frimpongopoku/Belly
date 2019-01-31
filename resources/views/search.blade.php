@@ -11,7 +11,7 @@
           <h2 style=" color:black; padding:7px;">{{$found->title}}</h2>
           <div style="padding:20px;padding-top:0px; min-height:200px; max-height:515px;overflow-y:scroll; 
                 border:solid 0px black; border-bottom-width:2px; margin-bottom:10px;">
-            <p>{{$found->body}}<br>
+            <p style="font-size:larger">{{$found->body}}<br>
               ----------------------<br>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime ducimus cupiditate soluta 
               saepe totam quis, suscipit est unde voluptatibus iusto nam magni excepturi officiis amet 
@@ -50,12 +50,12 @@
               <small class="cursor text text-danger" style="display:none" id="liked"><i class='fa fa-thumbs-up'></i> <span class ='number-font' id="liked-span">{{count($found->likes)}}</span></small>
               <small class="cursor" id="like"><i class='fa fa-thumbs-up'></i> <span class ='number-font' id="like-span">{{count($found->likes)}}</span></small>
             @endif
-             <small class="cursor"data-toggle="modal" data-target="#comments-modal-box"><i class='fa fa-comment'></i> 
+             <small class="cursor"data-toggle="modal" data-target="#comments-modal-box" id="view-comments"><i class='fa fa-comment'></i> 
               <span class ='number-font comment-number'>{{count($found->comments)}}</span></small>
           </div>
         </div>
           {{--  <--------------------COMMENTING SECTION-------------->  --}}
-        <div class="thumbnail zero-radius z-depth-1" style="padding:20px;margin-top:5px; height:100px;background:navajowhite"> 
+        <div class="thumbnail zero-radius" style="padding:20px;margin-top:5px; height:100px;background:#f54f29"> 
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-8">
                   <textarea class="form-control" placeholder="say something..." id="c-body"></textarea>
                   <small class='dark-text' style='display:none;padding:7px;margin:10px;color:green;'id='c-status'><i>commenting <span class='fa fa-spinner fa-spin'></span></i></small>
@@ -63,17 +63,16 @@
                   <input type="hidden" value ="paper" id="c-type" />
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-              
-              <button class="btn btn-default user-badge-comment rounded v-c-b" id="c-btn" style="margin-top:10px;">{{'@'.Auth::user()->name}}</button>
+              <button class="btn btn-default user-badge-comment rounded v-c-b" id="c-btn" style="margin-top:10px;">Comment</button>
             </div>
           </form>
         </div>
         <div class="other-links" style=""> 
           @foreach($similar as $piece)
-              <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12" style="padding-right:3px; padding-left:3px;"> 
-                <div class="thumbnail z-depth-2 dark-text similar">
+              <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12" style="padding-right:3px; padding-left:3px;"> 
+                <div class="thumbnail  dark-text similar">
                   <p ><a style="color:crimson" href="/paper-view/MBZyU9WoGvD3M3OcszZ8skHvoPputaKIhq9uPmW6ZqImU8iwby1xOdirul1w2gGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/{{$piece->id}}" target="_blank" > {{$piece->title}}</a></p>
-                  <p class="angel">By: @Agyingo</p>
+                  <p class="angel">By: {{'@'.$piece->user->name}}</p>
                   <p class="angel">{{$piece->course}}</p>
                 </div>
               </div>
@@ -83,9 +82,9 @@
       <div class='modal fade' id="comments-modal-box" style=""> 
         <div class="modal-dialog modal-md">
           <div class="modal-content">
-            <div class="modal-body" style="max-height:400px; overflow-y:scroll;  border-radius:10px;">
+            <div class="modal-body" id="modal-frag-area" style="max-height:400px; overflow-y:scroll;  border-radius:10px;">
                @forelse($app_comments as $comment)
-                  <div style="margin:6px">
+                  <div style="margin:6px" >
                     <div class="comment-item-text rounded" id="lil-comment-{{$comment->id}}"> 
                       <small class='comment-item-title dark-text' style=""><b>{{$comment->user->name}}</b></small> 
                       @if(Auth::user()->id == $comment->user_id)
@@ -113,12 +112,19 @@
     var paperID = {{$found->id}};
     var userID = {{Auth::user()->id}};
     $(document).ready(function(){
-       var deleteComment=function(id){
+      var deleteComment=function(id){
         $.ajax({method:"get",url:'/delete-comment/'+id})
         .done(function(){
           $('#lil-comment-'+id).fadeOut(400);
         });
       }
+      var loadCommentFragment = function(){
+        $("#modal-frag-area").load('/get-comment-fragment/'+paperID);
+      }
+      $('#view-comments').click(function(){
+        loadCommentFragment();
+      });
+
       $('.lil-com').click(function(){
         deleteComment($(this).attr('data-id'));
       });

@@ -59,7 +59,7 @@ class Dashboard extends Component {
     let tab = '#'+option;
     let oldTab = '#'+$('#d-current-tab').val();
     this.availableOptions.filter(opt => opt !== option).forEach(optB => {
-        $('#'+ optB+'-btn').removeClass(' z-depth-1 p-activate-section ');     
+        $('#'+ optB+'-btn').removeClass(' z-dep  th-1 p-activate-section ');     
     }); 
     $(optionID).addClass('z-depth-1 p-activate-section ');
     $(oldTab).fadeOut(200,function(){
@@ -166,7 +166,9 @@ class Dashboard extends Component {
   backgroundImageLoad(id,imageURL){
     //requests for an image to be loaded unto a page
     var bigImage = document.createElement('img');
-    bigImage.src = "http://localhost:8000/" + imageURL;
+    //bigImage.src = "http://localhost:8000/" + imageURL;
+    var webPath = window.location.protocol + "//" + window.location.host;
+    bigImage.src =webPath +'/'+imageURL;
     bigImage.onload = function () {
       $('.spinner-' + imageID).hide();
       $('.shots-img-' + imageID).css({
@@ -183,8 +185,12 @@ class Dashboard extends Component {
   }
   imageLoad(imageID,imageURL){
     //requests for an image to be loaded unto a page
-    var bigImage = document.createElement('img'); 
-    bigImage.src = "http://localhost:8000/"+imageURL;
+    var bigImage = document.createElement('img');  
+    //bigImage.src = "http://localhost:8000/"+imageURL;
+    var webPath = window.location.protocol +"//"+window.location.host;
+    bigImage.src = webPath +'/' + imageURL;
+    console.log("I am the hostname and stuff:",window.location);
+    console.log("I am the imageURL::", imageURL);
     bigImage.onload = function(){
       $('.spinner-'+imageID).hide();
       $('.shots-img-'+imageID).css({
@@ -210,7 +216,9 @@ class Dashboard extends Component {
 
   extraImageLoad(imageID, inArrayID, imageURL){
     var bigImage = document.createElement('img'); 
-    bigImage.src = "http://localhost:8000/"+imageURL;
+    //bigImage.src = "http://localhost:8000/"+imageURL;
+    var webPath = window.location.protocol + "//" + window.location.host;
+    bigImage.src = webPath +'/' + imageURL;
     bigImage.onload = function(){
       $('#pic-piece-body-'+imageID+'-m-'+inArrayID).css({
           background:'url('+bigImage.src+')',
@@ -235,10 +243,10 @@ class Dashboard extends Component {
     pieces.map(item =>{
         //check if item has extra pictures 
         if(item.type ==='multiple'){
-             var collection = { id: item.id , image: item.picture_link, type:'M', extraImages: item.extra_images }; //you need to put the text ouchere yh!
+             var collection = { id: item.id , image: item.thumb_path, type:'M', extraImages: item.extra_images }; //you need to put the text ouchere yh!
          }
         else{
-              var collection = { id: item.id , image: item.picture_link, type:'S' };
+              var collection = { id: item.id , image: item.thumb_path, type:'S' };
          }
         arr.push(collection);
     });

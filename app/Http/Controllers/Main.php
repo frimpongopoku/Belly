@@ -17,6 +17,10 @@ class Main extends Controller
 {
 
 
+  public function returnCommentFragment($id){
+    $app_comments = Comment::where('paper_piece_id',$id)->take(30)->get();
+    return view('fragments.modal_comments',compact('app_comments'));
+  }
   public function setProfilePicture(Request $request){
     $found = Setting::where('user_id',Auth::user()->id)->first(); 
     $found->update(['profile_picture'=>$request->picture_link]);
@@ -272,9 +276,9 @@ class Main extends Controller
 		}
 	}
 	public function deletePicture($id){
-    $found = PicturePiece::find($id); 
+    $found = PicturePiece::where('id',$id)->with('user')->first(); 
     if($found){
-      	//delete image from the directory 
+      //delete image from the directory 
       unlink($found->picture_link);
       //delete image from the database
     	if (Auth::user()->id == $found->user->id){
@@ -283,7 +287,6 @@ class Main extends Controller
         $foundPaper->delete();
 			}
     }
-	
 	}
 	public function getToken(){
 		return csrf_token();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\PicturePiece;
 use App\PdfPiece;
+use Image;
 class UploadController extends Controller
 {
 
@@ -22,6 +23,14 @@ class UploadController extends Controller
 		echo "<br>"; 
 	}
 
+  public function myReduceImage($imagePath,$parentImage,$otherName, $width,$height){
+    //imagePath should contain the file name
+    $img =  Image::make($imagePath.$parentImage)->resize($width, $height,function($constraint){
+      $constraint->aspectRatio();
+    });
+    $img->save($imagePath.$otherName);
+    unlink($imagePath.$parentImage);
+  }
 	public function extraImagesStringMaker($images){
 		//get filenames and turn then into a string with "<==>" so they can ge split later on to retain the file names 
 		$prepString = ""; 
@@ -119,10 +128,22 @@ class UploadController extends Controller
       $picture->user_id = Auth::user()->id; 
       $picture->course = $request->pic_course_select;
       $picture->description = $description;
-      $newFileName = uniqid().'-USER-ID-'.Auth::user()->id.'-time-'.time().'.'.$firstImageCheck['info']['ext'];
+      //how resizing works 
+      //upload the original into the normal folder, the thumbnail folder, and the reduced folder
+      //now resize the ones in the thumb, and the reduced folder
+      $newFileName = uniqid().'-USER-ID-'.Auth::user()->id.'-time-'.time();
+      $newFileNameWithExt = $newFileName.'.'.$firstImageCheck['info']['ext'];
+      $thumbFileName = $newFileName.'-thumbnail'.'.'.$firstImageCheck['info']['ext'];
+      $reducedFileName = $newFileName.'-red'.'.'.$firstImageCheck['info']['ext'];
       $picturePath = "users/pictures/";
-      $picture->picture_link = $picturePath.$newFileName;
-      $this->uploadFile($imageArray[0],$picturePath, $newFileName);
+      $picture->picture_link = $picturePath.$newFileNameWithExt;
+      $picture->thumb_path = $picturePath.'thumbnails/'.$thumbFileName; 
+      $picture->reduced_path = $picturePath.'little/'.$reducedFileName; 
+      $this->uploadFile($imageArray[0],$picturePath, $newFileNameWithExt);
+      copy($picture->picture_link, $picturePath.'thumbnails/'.$newFileNameWithExt);
+      $this->myReduceImage($picturePath.'thumbnails/',$newFileNameWithExt,$thumbFileName,300,200);
+      copy($picture->picture_link, $picturePath.'little/'.$newFileNameWithExt);
+      $this->myReduceImage($picturePath.'little/',$newFileNameWithExt,$reducedFileName,591,400);
       if(count($imageArray) >1){
         $extraImages = array_slice($imageArray,1); //start cut the list form the second item
         $extraImagesToString = $this->extraImagesUpload($extraImages); 
