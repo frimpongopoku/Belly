@@ -107,10 +107,33 @@ class Dashboard extends Component {
       }
     }
   }
+  spillMyPdfs(){
+    var thisClass = this;
+    if(this.props.myPdfs !== null){
+      return this.props.myPdfs.map((piece,index) => {
+        var num = Math.round(Math.random(1000000) * 100000000000);
+        var loopIndex = "my-pdf-" + num.toString();
+        return(
+          <li key ={loopIndex}>
+            <div style={{ paddingLeft: 15, paddingRight: 22 }}>
+              <div className="thumbnail clearfix pdf-item" 
+              onClick={() => { window.location = piece.pdf_link; window.location.target ="_blank" }}>
+                <small className="text text-default pull-right number-font" 
+                style={{ fontWeight: 100 }}> 5 seconds ago</small>
+                <a href="#" style={{ textDecoration: "none", color: "black", fontWeight: 600 }}>
+                <i className="fa fa-file-pdf-o" style={{ marginRight: 6 }}></i> 
+                {piece.title}</a>
+              </div>
+            </div>
+          </li>
+        );
+      })
+    }
+  }
+
+
   spillTextPieces(){ 
-    //this.emptyNotice("paper");
-    return this.props.pieces.map( (piece, index) =>{ 
-      
+    return this.props.pieces.map( (piece, index) =>{   
       return (
         <li key={ index }>
           <Piece 
@@ -189,8 +212,6 @@ class Dashboard extends Component {
     //bigImage.src = "http://localhost:8000/"+imageURL;
     var webPath = window.location.protocol +"//"+window.location.host;
     bigImage.src = webPath +'/' + imageURL;
-    console.log("I am the hostname and stuff:",window.location);
-    console.log("I am the imageURL::", imageURL);
     bigImage.onload = function(){
       $('.spinner-'+imageID).hide();
       $('.shots-img-'+imageID).css({
@@ -617,6 +638,7 @@ class Dashboard extends Component {
   }
 
  
+  
   render(){
     return (
       <div>
@@ -630,7 +652,7 @@ class Dashboard extends Component {
                 <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}} > 
                   <button onClick = {()=>{this.tabClick('text-section')}} id='text-section-btn'className = 'p-activate-section z-depth-1 d-tab zero-border btn-undefault'><i className = 'fa fa-file-text'></i> Text</button>
                   <button onClick = {()=>{this.tabClick('picture-section')}} id='picture-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-camera'></i> Shots</button>
-                    {/* <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button> */}
+                  <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button>
                 </div>
                 {/* Found Papers area  */}
                 <div> 
@@ -653,17 +675,20 @@ class Dashboard extends Component {
                           <div id='pic-portion'>
                             <ul style={{listStyleType:'none',padding:0}}> 
                             {this.emptyNotice('shots')}
-                              
                                 {
                                     this.props.picPieces === null ? '' : this.spillPicPieces()
                                 }
                             </ul>
-                           
                           </div>
                          </div>
-                          {/* <div id = 'pdf-section' className = 'vanish'> 
-                              <center><h1>ADEY HERE TOOO </h1></center>
-                          </div> */}
+                          <div id = 'pdf-section' className = 'vanish'>
+                        <PageSwitcher baseURL="/get-user-pdfs" type="pdf" animateDiv="#pdf-portion" values={this.props.paginatorPdfValuesInsert} unique="pdfy"></PageSwitcher>  
+                            <div id="pdf-portion">
+                              <ul style={{paddingLeft:15,paddingRight:22}}>
+                                {this.spillMyPdfs()}
+                              </ul>
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -726,8 +751,8 @@ Dashboard.propTypes = {
   deletePictureFunction:PropTypes.func, 
   editPaperFunction:PropTypes.func,
   editPictureFunction:PropTypes.func, 
-  picPieces: PropTypes.object, 
+  picPieces: PropTypes.array, 
   user: PropTypes.object,
-  pieces:PropTypes.object
+  pieces:PropTypes.array
 }
 export default Dashboard;

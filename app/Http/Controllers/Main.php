@@ -17,6 +17,18 @@ class Main extends Controller
 {
 
 
+  public function getLatestTextNews(){
+    $news = PaperPiece::where("course",Auth::user()->course)->with('likes','user')->orderBy('id','DESC')->paginate(15);
+    return $news;
+  }
+  public function getLatestPicNews(){
+    $news = PicturePiece::where("course",Auth::user()->course)->with('user','likes')->orderBy('id','DESC')->paginate(15);
+    return $news;
+  }
+  public function getUserPdfs(){
+    $set = PdfPiece::where('user_id',Auth::user()->id)->orderBy('id','DESC')->paginate(20);
+    return $set;
+  }
   public function returnCommentFragment($id){
     $app_comments = Comment::where('paper_piece_id',$id)->take(30)->get();
     return view('fragments.modal_comments',compact('app_comments'));

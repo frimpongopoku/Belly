@@ -9,7 +9,9 @@ import   {
     currentCommentReducer,
     userRelationsReducer, 
     userSettingsReducer,
-    
+    userPdfPiecesReducer,
+    picNewsFeedReducer,
+    textNewsFeedReducer,
   }  
 from './users-reducer'; 
 import { saveMenuItemsReducer, notifierReducer,tokenReducer} from './application-reducer';
@@ -22,11 +24,15 @@ const allReducers = combineReducers({
  	menuItems: saveMenuItemsReducer, 
   notification: notifierReducer, 
   newsFeed:newsFeedReducer, 
+  picNews:picNewsFeedReducer, 
+  textNews:textNewsFeedReducer,
   token:tokenReducer, 
   allCourses: allCoursesReducer, 
   currentPieceComments:currentCommentReducer,
   pdfNews:pdfNewsReducer,
   userSettings:userSettingsReducer,
+  userPdfs: userPdfPiecesReducer,
+  
  });
 
 export default allReducers;  

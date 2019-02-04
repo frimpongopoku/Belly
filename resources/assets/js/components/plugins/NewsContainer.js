@@ -41,14 +41,90 @@ class NewsContainer extends Component{
   insertDelDetails(title,itemID,type){
     this.setState({deleteDetails:{title:title,itemID:itemID,type:type}});
   }
+  
+  componentWillMount(){
+    this.props.getPicNews(); 
+    this.props.getTextNews(); 
+
+  }
   componentDidMount() {
     this.props.getNews(0,this.props.allNews);
     this.setState({badgeNumber: Number(this.state.badgeNumber+1)}); 
     this.spinnerTrick();
+     
     //this.reloadAllImages();
   };
  
-  
+  ejectTexts(){
+    let thisClass = this; 
+    if(this.props.textNews !== null){
+      if(this.props.textNews.data !==null){
+        return this.props.textNews.data.map(function(item,index){
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "news-ind-pic-" + num.toString();
+          return(
+            <li key={loopIndex}>
+              <TextCard
+                type={item.type}
+                details={{ bcolor: 'black', owner: item.user }}
+                id={item.id}
+                user={thisClass.props.authenticatedUser}
+                title={item.title}
+                body={item.body}
+                created_at={item.created_at}
+                likesArray={item.likes}
+                likes={item.likes.length}
+                // commentsArray={item.comments}
+                commentsCount={item.comments_count}
+                showComments={thisClass.create}
+                course={item.course}
+                coins={Math.round(Math.random(50000) * 1000)}
+                school={item.user.school}
+                newLikeFunction={thisClass.props.newLikeFunction}
+                allNews={thisClass.props.allNews}
+                school={item.user.school}
+                insertDetailsFunction={thisClass.insertDelDetails}
+              />
+            </li>
+          );
+        })
+      }
+    }
+  }
+  ejectPictures(){
+    let thisClass = this; 
+    if(this.props.picNews !==null ){
+      if(this.props.picNews.data !==null){
+        return this.props.picNews.data.map(function(item,index){
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "news-ind-pic-" + num.toString();
+          return(
+            <li key={loopIndex}>
+              <ImageCard
+                id={item.id}
+                details={{ bcolor: 'green', owner: item.user }}
+                description={item.description}
+                user={thisClass.props.authenticatedUser}
+                course={item.course}
+                image_link={item.reduced_path}
+                created_at={item.created_at}
+                likesArray={item.likes}
+                likes={item.likes.length}
+                comments={item.comments_count}
+                showComments={thisClass.create}
+                course={item.course}
+                coins={Math.round(Math.random(50000) * 1000)}
+                school={item.user.school}
+                likeFunction={thisClass.props.picLikeFunction}
+                allNews={thisClass.props.allNews}
+                school={item.user.school}
+              />
+            </li>
+          );
+        });
+      }
+    }
+  }
   ejectNews(){
     let thisClass = this;
     if(this.props.allNews !== null){
@@ -141,12 +217,12 @@ class NewsContainer extends Component{
           
         }
         else{
-          alert('save impossible!');
+          alert('Could not save!');
         }
       });
     }
     else{
-      alert("Type something before you comment!")
+      alert("Please type something before you comment!")
     }
   }
 
@@ -274,20 +350,33 @@ class NewsContainer extends Component{
   render() {
     return (
       <div id="app-news-container">
-        <ul style = {styles.ulFix}>
-        {this.noNews()}
-          {this.ejectNews()}
-        </ul>
-        <br />
-        <button className="btn btn-default btn-block"
-          onClick={() => {
-            this.props.getNews(this.state.badgeNumber, this.props.allNews);
-            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1)});
-            this.loadIndicator();
-          }}>
-          Load More
-          <span className = "fa fa-spinner fa-spin" style={{marginLeft:5,marginBottom:10}}id="load-spinner"></span>
-        </button>
+        <div id="pic-type-container" className ="vanish"> 
+          <ul style ={styles.ulFix}>
+            {this.ejectPictures()} 
+          </ul>
+        </div> 
+        <div id ="text-type-container" className = "vanish" style={{position:'relative'}}> 
+          <ul style ={styles.ulFix}> 
+            {this.ejectTexts()}
+          </ul>
+        </div>
+        <div id="all-types-container">
+          <ul style = {styles.ulFix}>
+          {this.noNews()}
+            {this.ejectNews()}
+            
+          </ul>
+          <br />
+          <button className="btn btn-default btn-block"
+            onClick={() => {
+              this.props.getNews(this.state.badgeNumber, this.props.allNews);
+              this.setState({ badgeNumber: Number(this.state.badgeNumber + 1)});
+              this.loadIndicator();
+            }}>
+            Load More
+            <span className = "fa fa-spinner fa-spin" style={{marginLeft:5,marginBottom:10}}id="load-spinner"></span>
+          </button>
+        </div>
         <UniCommentBoard comments={this.props.currentPieceComments}></UniCommentBoard>
         <UniversalDelete paperType={this.state.deleteDetails.type} title={this.state.deleteDetails.title} paperID ={this.state.deleteDetails.itemID}/>
       </div>
@@ -307,6 +396,8 @@ function mapStateToProps(state){
     allNews: state.newsFeed,
     authenticatedUser:state.authUser, 
     currentPieceComments:state.currentPieceComments,
+    textNews: state.textNews, 
+    picNews:state.picNews,
   });
 }
 function mapDispatchToProps(dispatch){
@@ -314,6 +405,8 @@ function mapDispatchToProps(dispatch){
     picLikeFunction:gistActions.picLikeAction,
     newLikeFunction : gistActions.newLikeAction,
     getNews: gistActions.getNewsAction, 
+    getPicNews: gistActions.getLatestPicNewsAction,
+    getTextNews: gistActions.getLatestTextNewsAction,
     getCommentsForPiece:gistActions.getCommentsForPieceAction, 
     getRelations:gistActions.getRelationsAction,
   },dispatch);

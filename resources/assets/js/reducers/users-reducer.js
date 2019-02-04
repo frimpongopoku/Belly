@@ -1,5 +1,39 @@
 
 
+export const textNewsFeedReducer = (state = null, action) => {
+  switch (action.type) {
+    case "user/LOAD_TEXT_NEWS":
+      return action.payload
+      break;
+
+    default:
+      break;
+  }
+  return state;
+}
+export const picNewsFeedReducer = (state = null, action) => {
+  switch (action.type) {
+    case "user/LOAD_PIC_NEWS":
+      return action.payload
+      break;
+
+    default:
+      break;
+  }
+  return state;
+}
+export const userPdfPiecesReducer = (state = null, action) => {
+  switch (action.type) {
+    case "user/LOAD_PDF_PIECES":
+      return action.payload
+      break;
+
+    default:
+      break;
+  }
+  return state;
+}
+
 export const userSettingsReducer = (state = null, action) => {
   switch (action.type) {
     case "user/GET_SETTINGS":

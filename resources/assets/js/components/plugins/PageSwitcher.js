@@ -44,19 +44,15 @@ class PageSwitcher extends React.Component{
   }
   nextPage() {
     if (this.state.items.next_page_url !== null) {
-      console.log("I am the new Page:::: ");
       this.dataFinder(this.state.items.next_page_url, 'get', this.fillState);
     } else {
-      console.log("I am the new Page:::: ");
       this.dataFinder(this.state.items.first_page_url, 'get', this.fillState);
     }
   }
   previousPage() {
     if (this.state.items.prev_page_url !== null) {
-      console.log("I am the prev Page:::: ");
       this.dataFinder(this.state.items.prev_page_url, 'get', this.fillState);
     } else {
-      console.log("I am the prev Page:::: ");
       this.dataFinder(this.state.items.last_page_url, 'get', this.fillState);
     }
   }
@@ -66,9 +62,6 @@ class PageSwitcher extends React.Component{
       method: 'get',
       url: this.props.baseURL
     }).done(function (response) {
-      
-     
-      console.log("I am the response: ", response);
       thisClass.setState({ lp: response.last_page,items:response })
     });
   }
@@ -87,7 +80,6 @@ class PageSwitcher extends React.Component{
       }
     }
     else {
-      console.log("Please input a correct page value!")
     }
   }
   mainCheck(){

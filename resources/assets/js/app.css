@@ -1,4 +1,19 @@
 
+
+.pdf-item{
+  padding: 17px;
+  border-radius: 10px;
+  border-width: 0px;
+  border-left-width:9px; 
+  border-left-color:#ffffff;
+  margin-bottom:10px;
+  cursor: pointer;
+}
+.pdf-item:hover{
+  background:#f2dede; 
+  transform:translateY(-3px);
+  transition:.3s ease-in-out all; 
+}
 .save-white{
   white-space: pre-wrap;
 }
@@ -182,9 +197,10 @@
 }
 .pdf-page-card:hover{
   background:navajowhite; 
-  transition: .4s ease-in-out all;
   border:navajowhite;
-   box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+  transition: .4s ease-in-out all;
+  
+    /* box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15); */
 }
 
 .pdf-page-card:focus{

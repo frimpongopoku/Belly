@@ -56,6 +56,9 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('home/news','Main@goToNews');
   Route::get('change-profile','Main@setProfilePicture');
   Route::get('get-comment-fragment/{id}','Main@returnCommentFragment');
+  Route::get('get-user-pdfs','Main@getUserPdfs');
+  Route::get('get-latest-pic-news',"Main@getLatestPicNews");
+  Route::get('get-latest-text-news',"Main@getLatestTextNews");
 });
 
 

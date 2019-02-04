@@ -84,7 +84,6 @@ class MakeNew extends Component {
       created_at:'4 days ago', 
       type:'text'
     };
-    console.log("I am the selected course: ",course)
     let validationResults = this.validate(title,body); 
     if(validationResults.status ==='Pass'){
       this.refs.title.value = ""; 
@@ -142,7 +141,7 @@ class MakeNew extends Component {
                     <div className='my-tab' id='text' style={{marginTop:'1rem'}}>
                       <br />
                       <div className = '' > 
-                        <input type = 'text' ref ='title'className= 'form-control my-input' placeholder='title' autofocus/>
+                        <input type = 'text' ref ='title'className= 'form-control my-input' placeholder='title' autoFocus/>
                         <div className ='thumbnail  clearfix' style={styles.thumbnailFix}> 
                         <CourseSelector 
                           allCourses = { this.props.allCourses}
@@ -191,10 +190,10 @@ const styles = {
 
 
 MakeNew.propTypes = { 
-  allPicturePieces:PropTypes.object,
+  allPicturePieces:PropTypes.array,
   newPicFunction:PropTypes.func,
   createPaperFunction:PropTypes.func,
-  allPieces:PropTypes.object,
+  allPieces:PropTypes.array,
   user:PropTypes.object,
 }
 export default MakeNew;

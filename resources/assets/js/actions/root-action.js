@@ -3,6 +3,46 @@ import { initialState } from './../reducers/dummy';
 
 
 
+
+
+export const paginatorPdfValuesAction = (data) => {
+  return dispatch => {
+    dispatch(loadUserPdfPieces(data));
+  }
+}
+export const getUserPdfAction =()=>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'/get-user-pdfs'})
+    .done(function(response){
+      dispatch(loadUserPdfPieces(response.data));
+    })
+  }
+}
+export const getLatestTextNewsAction =()=>{
+  return dispatch =>{
+    $.ajax({method:'get',url:'get-latest-text-news'})
+    .done(function(response){
+      dispatch(loadTextNewsPieces(response));
+    })
+  }
+}
+export const getLatestPicNewsAction =()=>{
+  return dispatch =>{
+    $.ajax({method:'get',url:'get-latest-pic-news'})
+    .done(function(response){
+      dispatch(loadPicNewsPieces(response));
+    })
+  }
+}
+export const loadPicNewsPieces =(response)=>{
+  return { type:'user/LOAD_PIC_NEWS', payload:response};
+}
+export const loadTextNewsPieces =(response)=>{
+  return { type:'user/LOAD_TEXT_NEWS', payload:response};
+}
+export const loadUserPdfPieces =(response)=>{
+  return { type:'user/LOAD_PDF_PIECES', payload:response};
+}
 export const setProfilePictureAction=(picture_link)=>{
   return dispatch=>{
     $.ajax({method:'get',url:'change-profile',data:{picture_link:picture_link}})
@@ -197,6 +237,8 @@ export const test = ()=>{
 	return notifierAction('new shit!');
 }
 
+
+
 export const getTokenAction = ()=>{
 	return dispatch=>{
     $.ajax({method:'get',url:'/me/get-token'})
@@ -291,13 +333,14 @@ export const dBSaveAction = (dataTrain) =>{
 export const notifierAction = (data)=>{ 
 	return({type:'application/NOTIFY',payload:data})
 }
+
 export const paginatorTextValuesAction = (data) =>{
   return dispatch =>{
     dispatch(loadUserPiecesAction(data));
   }
 };
 
-export const getUserPiecesAction = ()=>{
+export const getUserPiecesAction =()=>{
 	return dispatch =>{
     $.ajax({method:'get',url:'/me/get-all-text-papers'})
     .done( response =>{

@@ -35,7 +35,7 @@ class Home extends Component {
     this.props.getRelations();
     this.props.getPdfNews(0);
     this.props.getUserSettings();
-    
+    this.props.getUserPdfs();
   }
   snack(notice,ID,color){
       return (<SnackBar color={color} notice = { notice } ID ={ID} />)
@@ -90,6 +90,7 @@ class Home extends Component {
             </div>
             <div id='dashboard' className={$('#home').attr('data-session-page') === "dashboard" ? '' : 'vanish'} > 
                <Dashboard 
+                  myPdfs = { this.props.myPdfs}
                   deletePictureFunction = {this.props.deletePicturePiece} 
                   picPieces = {this.props.userPicPieces === null ? null : this.props.userPicPieces } 
                   user={this.props.authenticatedUser} 
@@ -97,6 +98,7 @@ class Home extends Component {
                   deletePaperFunction = { this.props.deletePaperPiece } 
                   paginatorTextValuesInsert = { this.props.paginatorTextValuesInsert}
                   paginatorPicValuesInsert={this.props.paginatorPicValuesInsert}
+                  paginatorPdfValuesInsert={this.props.paginatorPdfValuesInsert}
                   pieces = { this.props.userPieces === null ? null : this.props.userPieces }>
                 </Dashboard> 
             </div> 
@@ -154,7 +156,8 @@ function mapStateToProps(state){
     allCourses: state.allCourses,
     userRelations: state.authUserRelations,
     pdfNews:state.pdfNews,
-    userSettings: state.userSettings
+    userSettings: state.userSettings,
+    myPdfs: state.userPdfs
   }; 
 };
 function matchDispatchToProps(dispatch){
@@ -176,12 +179,16 @@ function matchDispatchToProps(dispatch){
     getAllCourses: appActions.getAllCoursesAction, 
     paginatorTextValuesInsert: appActions.paginatorTextValuesAction,
     paginatorPicValuesInsert: appActions.paginatorPicValuesAction,
+    paginatorPdfValuesInsert: appActions.paginatorPdfValuesAction,
     getRelations : appActions.getRelationsAction,
     getPdfNews:appActions.getPdfNewsAction,
     getMorePDFNews:appActions.getMorePDFNewsAction,
     deletePDF: appActions.deletePDFAction,
     getUserSettings:appActions.getUserSettingsAction,
-    setProfilePicture:appActions.setProfilePictureAction
+    setProfilePicture:appActions.setProfilePictureAction,
+    getUserPdfs: appActions.getUserPdfAction,
+    
+
   },dispatch)
 };
 

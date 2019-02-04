@@ -92,7 +92,7 @@ class UploadController extends Controller
         }
       }
     }
-    return "It is finished";
+    return "It is done";
   }
   public function saveUserPDFDetails($title,$path,$course){
     $new = new PdfPiece(); 

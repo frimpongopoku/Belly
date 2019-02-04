@@ -22,25 +22,58 @@ class Gist extends Component {
       else{
         $('.side-nav').fadeIn(200);
       }
-     
       $('#current-page-box').val("pdfs");
       //$('#'+curr).css({marginLeft:50});
-
     }, 600)
+  }
+  goToSection(sectionName){
+    let currentSection = $('#news-section-box').val(); 
+    let oldSec = "#"+$('#news-section-box').val(); 
+    let newSec = "#"+sectionName; 
+    if(sectionName !== currentSection){
+      $(oldSec).css({
+        transform:"translateX(-40px)",opacity:0,
+         transition:'.2s ease-in-out'});
+      setTimeout(() => {
+        $(oldSec).css({transform:"translateX(0px)",opacity:1});
+        $(oldSec).fadeOut();
+      }, 300);
+      setTimeout(() => {
+        $(newSec).fadeIn();
+        $(newSec).css({opacity:1});
+        $('#news-section-box').val(sectionName);
+      }, 700);
+    }
   }
   render() {
     return (
       <div className ='page-margin' style = {{marginTop:80}}>
-      <button className =" btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key" 
-      onClick = {()=>{this.goPDFNews("non-mobile")}}
-        style={{zIndex:100,background:"royalblue",borderTopLeftRadius:50, borderBottomLeftRadius:50,position:"fixed", top:100, right:0}}>
-        PDF Gist 
-      </button>
-        <button className=" btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key"
-          onClick={() => { this.goPDFNews("mobile") }}
-          style={{ zIndex: 100, background: "royalblue", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 100, right: 0 }}>
-          PDF Gist
-      </button>
+        <input type="hidden" id ="news-section-box" defaultValue ="all-types-container"/>
+        <button className =" btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key" 
+        onClick = {()=>{this.goPDFNews("non-mobile")}}
+          style={{zIndex:100,background:"royalblue",borderTopLeftRadius:50, borderBottomLeftRadius:50,position:"fixed", top:100, right:0}}>
+          PDF Gist 
+        </button>
+        <button className =" btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key" 
+        onClick = {()=>{this.goToSection("text-type-container")}}
+            style={{ zIndex: 100, background:"#4e3a1c",borderTopLeftRadius:50, borderBottomLeftRadius:50,position:"fixed", top:142, right:0}}>
+          <i className = "fa fa-file-text" style={{marginRight:9}}></i>Texts
+        </button>
+        <button className =" btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key" 
+        onClick = {()=>{this.goToSection("pic-type-container")}}
+          style={{zIndex:100,background:"orange",borderTopLeftRadius:50, borderBottomLeftRadius:50,position:"fixed", top:184, right:0}}>
+            <i className="fa fa-camera" style={{ marginRight: 9 }}></i>Shots
+        </button>
+        <button className =" btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key" 
+        onClick = {()=>{this.goToSection("all-types-container")}}
+          style={{ zIndex: 100, background:"#00d0ff",borderTopLeftRadius:50, borderBottomLeftRadius:50,position:"fixed", top:226, right:0}}>
+            <i className="fa fa-camera" style={{ marginRight: 9 }}></i>All
+        </button>
+          <button className=" btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key"
+            onClick={() => { this.goPDFNews("mobile") }}
+            style={{ zIndex: 100, background: "royalblue", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 100, right: 0 }}>
+            PDF Gist
+        </button>
         <div className = 'container'> 
           <div className = 'row'>
             <div className='col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1 col-sm-12 col-xs-12  '> 

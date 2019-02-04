@@ -22772,41 +22772,44 @@ var SnackBar = function (_React$Component) {
 
 
 var appActions = {
-  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* saveProfileEditsAction */],
-  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["z" /* test */],
+  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["B" /* saveProfileEditsAction */],
+  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["D" /* test */],
   deletePicturePieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["d" /* deletePicturePieceAction */],
   editPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["e" /* editPaperAction */],
-  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* newPicPieceAction */],
-  getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getPicPiecesAction */],
-  getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getTokenAction */],
-  getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getUserPiecesAction */],
+  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* newPicPieceAction */],
+  getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getPicPiecesAction */],
+  getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* getTokenAction */],
+  getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* getUserPiecesAction */],
   fetchUserAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["f" /* fetchUserAction */],
-  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* loadUserPiecesAction */],
+  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* loadUserPiecesAction */],
   createNewPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["a" /* createNewPaperAction */],
-  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* saveMenuToRemoteAction */],
+  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["A" /* saveMenuToRemoteAction */],
   deletePaperPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["c" /* deletePaperPieceAction */],
-  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getNewsAction */],
+  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getNewsAction */],
   getAllCoursesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["g" /* getAllCoursesAction */],
-  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* paginatorTextValuesAction */],
-  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* paginatorPicValuesAction */],
-  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getRelationsAction */],
-  getPdfNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["k" /* getPdfNewsAction */],
-  getMorePDFNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["i" /* getMorePDFNewsAction */],
+  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["y" /* paginatorTextValuesAction */],
+  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* paginatorPicValuesAction */],
+  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getRelationsAction */],
+  getPdfNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getPdfNewsAction */],
+  getMorePDFNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["k" /* getMorePDFNewsAction */],
   deletePDFAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["b" /* deletePDFAction */],
-  getUserSettingsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* getUserSettingsAction */],
-  setProfilePictureAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["y" /* setProfilePictureAction */]
+  getUserSettingsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* getUserSettingsAction */],
+  setProfilePictureAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["C" /* setProfilePictureAction */],
+  getUserPdfAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* getUserPdfAction */],
+  paginatorPdfValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* paginatorPdfValuesAction */]
 
 };
 var likeActions = {
-  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* newLikeAction */]
+  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* newLikeAction */]
 };
 var gistActions = {
-  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* picLikeAction */],
-  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* newLikeAction */],
-  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getNewsAction */],
+  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["z" /* picLikeAction */],
+  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* newLikeAction */],
+  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getNewsAction */],
   getCommentsForPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["h" /* getCommentsForPieceAction */],
-  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getRelationsAction */]
-
+  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getRelationsAction */],
+  getLatestPicNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["i" /* getLatestPicNewsAction */],
+  getLatestTextNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getLatestTextNewsAction */]
 };
 
 /***/ }),
@@ -40003,30 +40006,37 @@ var styles = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return setProfilePictureAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return paginatorPdfValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getUserPdfAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getLatestTextNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getLatestPicNewsAction; });
+/* unused harmony export loadPicNewsPieces */
+/* unused harmony export loadTextNewsPieces */
+/* unused harmony export loadUserPdfPieces */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return setProfilePictureAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return deletePDFAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getUserSettingsAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getPdfNewsAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getMorePDFNewsAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getRelationsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return getUserSettingsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getPdfNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getMorePDFNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getRelationsAction; });
 /* unused harmony export loadRelations */
 /* unused harmony export loadUserSettings */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getCommentsForPieceAction; });
 /* unused harmony export loadCurrentComment */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return picLikeAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return newLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return picLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return newLikeAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getAllCoursesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getNewsAction; });
 /* unused harmony export loadNewsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return saveProfileEditsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return saveProfileEditsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return deletePicturePieceAction; });
 /* unused harmony export deleteDBPic */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return newPicPieceAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getPicPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return paginatorPicValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return newPicPieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getPicPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return paginatorPicValuesAction; });
 /* unused harmony export loadPicsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return test; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getTokenAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return test; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getTokenAction; });
 /* unused harmony export editPaper */
 /* unused harmony export addPaper */
 /* unused harmony export delPaper */
@@ -40034,13 +40044,13 @@ var styles = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return deletePaperPieceAction; });
 /* unused harmony export dBEditPaper */
 /* unused harmony export dBDelete */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return saveMenuToRemoteAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return saveMenuToRemoteAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createNewPaperAction; });
 /* unused harmony export dBSaveAction */
 /* unused harmony export notifierAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return paginatorTextValuesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getUserPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return loadUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return paginatorTextValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return getUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return loadUserPiecesAction; });
 /* unused harmony export saveAuthenticatedUserAction */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return fetchUserAction; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(15);
@@ -40053,6 +40063,41 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
+var paginatorPdfValuesAction = function paginatorPdfValuesAction(data) {
+  return function (dispatch) {
+    dispatch(loadUserPdfPieces(data));
+  };
+};
+var getUserPdfAction = function getUserPdfAction() {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: '/get-user-pdfs' }).done(function (response) {
+      dispatch(loadUserPdfPieces(response.data));
+    });
+  };
+};
+var getLatestTextNewsAction = function getLatestTextNewsAction() {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: 'get-latest-text-news' }).done(function (response) {
+      dispatch(loadTextNewsPieces(response));
+    });
+  };
+};
+var getLatestPicNewsAction = function getLatestPicNewsAction() {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: 'get-latest-pic-news' }).done(function (response) {
+      dispatch(loadPicNewsPieces(response));
+    });
+  };
+};
+var loadPicNewsPieces = function loadPicNewsPieces(response) {
+  return { type: 'user/LOAD_PIC_NEWS', payload: response };
+};
+var loadTextNewsPieces = function loadTextNewsPieces(response) {
+  return { type: 'user/LOAD_TEXT_NEWS', payload: response };
+};
+var loadUserPdfPieces = function loadUserPdfPieces(response) {
+  return { type: 'user/LOAD_PDF_PIECES', payload: response };
+};
 var setProfilePictureAction = function setProfilePictureAction(picture_link) {
   return function (dispatch) {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: 'change-profile', data: { picture_link: picture_link } }).done(function () {
@@ -40324,6 +40369,7 @@ var dBSaveAction = function dBSaveAction(dataTrain) {
 var notifierAction = function notifierAction(data) {
   return { type: 'application/NOTIFY', payload: data };
 };
+
 var paginatorTextValuesAction = function paginatorTextValuesAction(data) {
   return function (dispatch) {
     dispatch(loadUserPiecesAction(data));
@@ -40371,7 +40417,7 @@ var fetchUserAction = function fetchUserAction() {
 
 
 
-var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_1__reducers_root_reducer__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__["a" /* default */]));
+var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["d" /* createStore */])(__WEBPACK_IMPORTED_MODULE_1__reducers_root_reducer__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* applyMiddleware */])(__WEBPACK_IMPORTED_MODULE_2_redux_thunk__["a" /* default */], __WEBPACK_IMPORTED_MODULE_3_redux_logger___default.a));
 
 /***/ }),
 /* 239 */
@@ -72893,6 +72939,7 @@ var Home = function (_Component) {
       this.props.getRelations();
       this.props.getPdfNews(0);
       this.props.getUserSettings();
+      this.props.getUserPdfs();
     }
   }, {
     key: 'snack',
@@ -72969,6 +73016,7 @@ var Home = function (_Component) {
               'div',
               { id: 'dashboard', className: __WEBPACK_IMPORTED_MODULE_7_jquery___default()('#home').attr('data-session-page') === "dashboard" ? '' : 'vanish' },
               __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Dashboard__["a" /* default */], {
+                myPdfs: this.props.myPdfs,
                 deletePictureFunction: this.props.deletePicturePiece,
                 picPieces: this.props.userPicPieces === null ? null : this.props.userPicPieces,
                 user: this.props.authenticatedUser,
@@ -72976,6 +73024,7 @@ var Home = function (_Component) {
                 deletePaperFunction: this.props.deletePaperPiece,
                 paginatorTextValuesInsert: this.props.paginatorTextValuesInsert,
                 paginatorPicValuesInsert: this.props.paginatorPicValuesInsert,
+                paginatorPdfValuesInsert: this.props.paginatorPdfValuesInsert,
                 pieces: this.props.userPieces === null ? null : this.props.userPieces })
             ),
             __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
@@ -73036,7 +73085,8 @@ function mapStateToProps(state) {
     allCourses: state.allCourses,
     userRelations: state.authUserRelations,
     pdfNews: state.pdfNews,
-    userSettings: state.userSettings
+    userSettings: state.userSettings,
+    myPdfs: state.userPdfs
   };
 };
 function matchDispatchToProps(dispatch) {
@@ -73058,12 +73108,15 @@ function matchDispatchToProps(dispatch) {
     getAllCourses: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getAllCoursesAction,
     paginatorTextValuesInsert: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].paginatorTextValuesAction,
     paginatorPicValuesInsert: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].paginatorPicValuesAction,
+    paginatorPdfValuesInsert: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].paginatorPdfValuesAction,
     getRelations: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getRelationsAction,
     getPdfNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getPdfNewsAction,
     getMorePDFNews: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getMorePDFNewsAction,
     deletePDF: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].deletePDFAction,
     getUserSettings: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getUserSettingsAction,
-    setProfilePicture: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].setProfilePictureAction
+    setProfilePicture: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].setProfilePictureAction,
+    getUserPdfs: __WEBPACK_IMPORTED_MODULE_11__imports_actions__["a" /* appActions */].getUserPdfAction
+
   }, dispatch);
 };
 
@@ -73078,7 +73131,7 @@ exports = module.exports = __webpack_require__(365)(false);
 
 
 // module
-exports.push([module.i, "\n.save-white{\n  white-space: pre-wrap;\n}\n .g-p-n{\n  text-decoration: none;\n }\n .g-p-n{\n   color:white !important; \n   transition: .3s ease-in-out;\n }\n \n .profile-choice-item{\n   height: 70px;\n    width: 70px;\n    border-radius: 10px;\n    border: solid 2px white;\n    cursor: pointer;\n    background-color: white;\n    background-color: white;\n    margin:5px !important;\n    opacity:.85;\n    display:inline !important;\n }\n .profile-choice-item:hover{\n   transform: scale(0.95); \n   opacity:1;\n   transition: .4s ease-in-out;\n }\n\n .profile-choice-item:selection{\n   border-color:royalblue !important;\n }\n \n /* MOBILE PHONE */\n  @media only screen and (max-width: 785px){\n\n      .mob-inline{\n        display:inline;\n      }\n    .page-margin{\n      margin:0 !important;\n      margin-top:10px;\n    }\n    .mobile-appearance-key{\n      display:block;\n    }\n   \n    .mobile-vanish-key{\n      display:none;\n    }\n    .mobile-top-padding{\n      padding-top:100px;\n    }\n    .mobile-commot-paddings{\n      padding:0px !important;\n    }\n    .mobile-commot-margins{\n      margin:0px !important;\n    }\n    .mobile-dashboard-pad-fix{\n      padding:30px !important;\n    }\n    .mobile-results-fix{\n      width:90% !important;\n    }\n    .f-d-card{\n        background:\"white\";\n        padding:30px !important; \n        min-height:250px;\n        max-height:500px !important; \n        background:white;\n    }\n\n      .mobile-p-fix{\n        margin-top:-120px;\n      }\n      .mobile-modal-b-left{\n        margin-left:70px;\n      }\n   \n  }\n\n    @media only screen and (min-width: 786px) and ( max-width:991px){\n      \n      .tab-inline{\n        display:inline;\n      }\n      .tablet-vanish-key{\n        display:none;\n      }\n      .tablet-appearance-key{\n        display:block;\n      }\n      .tablet-results-fix{\n        margin-left:5px !important;\n      }\n\n      .t-m-l-fix{\n          /* tablet margin left fix */\n          margin-left:10px !important;\n      }\n      .tablet-create-margin{\n        margin:60px !important;\n      }\n        \n      .tablet-modal-b-left{\n        margin-left:70px;\n      }\n    }\n    @media only screen and (min-width: 992px){\n    .pc-inline{\n      display:inline;\n    }\n      .desktop-width-fix{\n        width:1000px !important; \n        margin-left:10px !important;\n      }\n      .pc-vanish-key{\n        display:none;\n      }\n      .pc-appearance-key{\n        display:block;\n      }\n\n    }\n\n  .mobile-profile-pic{\n    width: 300px;\n    height: 300px;\n    margin: 10px;\n    border:solid 1px gray;\n    border-bottom-width: 5px;\n    background-color: white;\n}\n.panel-finish{\n  \n    padding: 30px;\n    border-top-width: 5px;\n    border-top-color: crimson;\n    border-bottom-width: 5px;\n    border-bottom-color:black;\n}\n\n\n\n.pdf-profile-name{\n  color:black !important; \n  font-weight: 400;\n}\n.pdf-profile-name:hover{\n  color:rgb(0, 140, 255) !important; \n  transition: .2s ease-in;\n}\n.remove-trick{\n  transform: rotateX(70deg); \n  transition: .4s ease-in;\n}\n.pdf-card-title{\n  font-weight:600;\n  font-size:1.6rem;\n  color:black;\n}\n.pdf-page-card{\n  padding:20px;\n  background:whitesmoke; \n\n  margin-top:5px;\n \n}\n\n.login-button{\n  background:crimson; \n  color:white;\n  border-color:crimson;\n}\n.login-button:hover{\n  background:black; \n  border-color:black;\n  color:white;\n  transition: .3s ease-in-out;\n}\n.pdf-page-card:hover{\n  background:navajowhite; \n  transition: .4s ease-in-out all;\n  border:navajowhite;\n   box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n\n.pdf-page-card:focus{\n  background:green ; \n  color:white;\n}\n.view-thumbnail{\n  cursor:pointer; \n  background: whitesmoke;\n}\n.similar{\n  cursor:pointer;\n  padding:30px;min-height:156px;max-height:156px;overflow:hidden; background:#282828;border:solid 1px black; border-top-width:3px;\n}\n.similar:hover{\n  transform: translateY(-10px);\n  transition:.5s ease-in-out;\n}\n.view-thumbnail:hover{\n  cursor:pointer; \n  background:white; \n  color:black;\n  transition: .3s ease-in-out all; \n}\n.v-c-b{\n  cursor:pointer; \n  color:black !important;\n}\n.v-c-b:hover{\n  transform: scale(1.1);\n  background:white !important;\n  transition: .5s ease-in-out all;\n}\n.grab-button{\n  border-width: 0px; \n  background:floralwhite !important;\n}\n.grab-button:hover{\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n  transition: .3s ease-in-out all;\n  border-width: 2px;\n  border-color:white;\n  -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.grab-button:focus{\n  outline:0 !important; \n  border-width: 2px;\n  border-color:white !important;\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n\n}\n.margin-right-5{\n  margin-right: 5px;\n}\n.envelope-correction{\n  margin:7px;\n}\n.results-pad{\n\n  border-top-right-radius: 0px; \n  border-top-left-radius: 0px; \n  border-top-width: 5px; \n  border-top-color: black; \n  background: floralwhite;\n  margin-left:-13px;\n}\n\n.upload-button-design{\n  background:rgb(255, 169, 8) !important; \n  color:black!important;\n  border-color:rgb(255, 169, 8) !important; \n}\n.upload-button-design:hover{\n  background:#202020 !important; \n  color:white !important;\n  border-color:#202020 !important; \n  transition: .3s ease-in-out all;\n}\n.nav-icon{\n    cursor:pointer;\n}\n.nav-icon:hover{\n    transform:scale(1.3);\n    color:black;\n    transition:0.3s ease-in all;\n\n}\n\n.pic-modal-envelope{\n  margin-left: -23px; \n  width:800px;\n}\n.QB{\n    font-size:3rem;\n    color:white !important; \n}\n\n.tint-focus{\n    position:relative; \n    cursor:pointer;\n    animation: jump infinite 0.5s linear;\n\n}\n.tint-slow{\n   position:relative; \n    cursor:pointer;\n    animation: jumpy infinite 2s linear;\n    animation-delay:.5s;\n}\n.confidence-level{\n    margin-top:-10px !important;\n    cursor:pointer;\n    font-size:1.8rem;\n    padding:10px;\n    color:limegreen;\n\n}\n\n.tint-focus:hover{\n    transform: scale(2);\n}\n@keyframes jumpy{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n          transfrom:translateY(8px);\n          opacity:.5;\n    }\n    80%{\n        transform:translateY(12px);\n        opacity:0;\n    }\n    100%{\n     transform:translateY(-12px);\n        opacity:0;\n    }\n}\n\n@keyframes jump{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n        transfrom:translateY(-5px);\n    }\n    100%{\n        transform:translateY(0px);\n    }\n}\n.rating-belt{\n    height: 70px;\n    position: absolute;\n    width: 100%;\n    margin-left: -15px;\n    margin-top: -70px;\n    border-color: #272727;\n\n}\n.QB-tint{\n    color:white; \n    font-size:1.7rem;\n    text-shadow: 0 2px 2px dimgrey;\n\n}\n.nav-bar-stick{\n    position:fixed; \n    top:0; \n    width:100%; \n    z-index:1;\n}\n.z-text-depth-1{\n    text-shadow: 0 2px 2px dimgrey;\n}\n.QB-Brand{\n    height:100px !important; \n    width:100px !important;\n    object-fit:cover;\n    object-position: center center;\n}\n.phone-textbox-design{\n    border: solid 0px #C8C8C8; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray; \n    border-radius:0;\n    margin:10px;\n}\n.phone-textbox-design:focus{\n    border: solid 0px #6c757d; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray !important; \n    border-radius:0;\n    outline:0;\n}\n.m-right-bit{\n    margin-right:6px;\n}\n\n.c-m-height{\n    max-height:250px !important;\n}\n.f-d-card{\n    background:\"white\";\n    padding:30px !important; \n    min-height:250px;\n    max-height:350px; \n    background:white;\n}\n.corner-10{\n    margin:2px 2px !important; \n    border-radius:3px;\n}\n.extra-img-div{\n    margin-bottom:10px;\n}\n.p-space-1{\n    margin:5px 7px;\n}\n.inside-popover{\n    margin:10px; \n    padding:10px;\n    text-align:center;\n}\n.file-check{\n    padding:10px;\n}\n.anoda{\n    animation-name:fa-spin;\n    animation-duration: infinite;\n}\n\n.modal-pic-div-image{\n  background-position: center center; \n  background-size: auto 100%; \n  opacity: 1; \n  background-repeat: no-repeat !important; \n  transition: .5s ease-in-out;\n}\n.pic-piece-image{\n    width:100% !important;\n    min-height:620px !important;\n    overflow-y:hidden;\n    cursor:pointer;\n    border-radius:0px;\n    \n}\n.pic-piece-image:hover{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    transition: 0.2s ease-in all;\n}\n.spinner-logo {\n  animation: spinner-logo-spin infinite .5s linear;\n  height: 80px;\n}\n@keyframes spinner-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n\n\n.font-red{\n    color:red;\n}\n.font-blue{\n    background: rgb(63, 158, 247) !important;\n}\n.number-font{\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.p-r-fix{\n        /*pull-right-fx*/\n    margin:5px;\n}\n\n.i-p-overlay{\n    background:black; \n    opacity:0.5; \n    height:200px;\n    z-index: 1; \n}\n\n.zero-border{\n    border:solid 0px black !important;\n}\n.btn-undefault:focus{\n    outline:0; \n    border: solid 0px black !important;\n}\n\n.p-activate-section{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n.p-activate-section-green{\n    /*paper - activate -section*/\n    background:green !important;\n    color:white !important;\n}\n.p-activate-section-blue{\n    /*paper - activate -section*/\n    background:crimson  !important;\n    color:white !important;\n}\n\n.d-tab{\n    font-weight: 500;\n    padding:8px 15px; \n     background:inherit; \n    margin:0;\n    cursor:pointer;\n    height:100%;\n    overflow-x:hidden;\n}\n\n.d-tab:hover{\n    background:orange;\n    color:black;\n    transition:0.3s ease-in all;\n}\n\n\n\n.margin-5{\n    margin:5px;\n}\n.centerness{\n    padding:120px 30px;\n}\n.relative{\n    position: relative;\n}\n.input-file-textbox{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n    margin-bottom:6px;\n}\n\n.input-file-textbox:focus{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n}\n.zero-radius{\n    border-radius:0px;\n}\n.multiple-side-active{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.m-side-active{\n        /*modal side option active*/\n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.search-box{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n}\n.search-box:focus{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n\n}\n.round-float-button{\n    float:right;\n    z-index:1;\n    position:fixed;\n    right:50px;\n    font-size:1.5rem;\n    position: fixed;\n    bottom:70px;\n    border-radius:50%;\n    padding:10px 16px; \n    color:white;\n}\n\n.float-red{ \n    bottom:120px; \n    background: red;\n }\n .float-red:hover{ \n    background: black;\n    color:white;\n    transition: 0.3s ease-in all; \n  }\n  .float-green{ \n\n    background:green;\n }\n  .float-green:hover{ \n    background:black;\n    color:white;\n    transition: 0.3s ease-in all; \n }\n.round-float-button:focus{ \n    border-radius:50% !important;\n    border-color:green !important;\n    color:white !important;\n    outline:0;\n }\n.modal-ed-title{ \n    margin:10px;\n    margin-left:0; \n    border:solid 0px rgb(98,97,97);\n    font-size:2.5rem;\n    border-bottom-width: 2px;\n    padding:25px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n  \n\n\n }\n .modal-ed-title:focus{ \n    border:solid 0px rgb(98,97,97) !important;\n    border-bottom-width: 2px !important;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n    outline:0;\n\n  }\n\n  .modal-ed-body{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n\n  .modal-ed-body:focus{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n.modal-bottom{\n    bottom:0 !important;\n}\n.piece-title{ \n    border:solid 0px rgb(98,97,97);\n    border-bottom-width: 2px; \n    \n    margin:5px;\n    margin-bottom:15px;\n    border-bottom-right-radius: 30px;\n    padding:5px;\n    padding-right:20px;\n    left:90px; \n    display:inline-block;\n\n }\n .piece-body{ \n    min-height: 400px; \n    max-height: 400px;  \n    overflow-y:scroll;\n    width:100%; \n\n  }\n.modal-side-items{ \n    \n    padding:10px;  \n    text-align: center; \n    border: solid 0px white;\n    /*border-bottom-width:1px;    */\n\n }\n     /*.modal-body:hover{ \n         background: rgb(207, 225, 241); \n         transition: 0.3s ease-in; \n         cursor: pointer;\n      }*/\n .modal-s-i-c{\n        /*modal-side-item-correction*/\n    font-size: 2.2rem;\n    color:white;\n   \n }\n .modal-s-i-c:hover{\n    color:white;\n    text-decoration: none;\n\n }\n .modal-s-i-c:focus{ \n    color:white;\n  }\n\n  .modal-s-i-c:active{ \n        color: rgb(63, 158, 247);\n   }\n.multiple-m-pages-btn{\n     padding:10px;  \n     text-align: center; \n     border: solid 0px white;\n}\n\n.multiple-m-pages-btn:hover{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n    }\n    .modal-side-items:hover{ \n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n\n}\n.modal-height{\n    min-height:500px;\n    overflow-y:scroll;\n    padding-top:0;\n    padding-right:0px !important;\n}\n\n.pic-modal-height{\n    min-height:620px;\n\n    padding-top:0;\n    padding-right:0 !important;\n    padding-left:64px;\n}\n\n.modal-side-bar{\n    /*padding-top:20px;   */\n    left:0;\n    position:fixed;\n    width:80px;\n    background: #272727;\n    height:100%;\n    margin-top:0;\n\n\n}\n.red{\n    background: crimson; \n    color:white;\n}\n.b-app-color{\n    border-color:crimson;\n}\n.app-color{ \n    background:crimson;\n        /*background: rgb(65, 85, 255) !important;*/\n    color:white !important;\n }\n.p-black-color{\n    background: #272727; \n    color:white !important;\n}\n.z-depth-1-half{\n    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n.z-depth-1{\n    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.z-depth-2{\n    -webkit-box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);\n    box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)\n}\n.z-depth-3{\n    -webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);\n    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)}\n.z-depth-4{\n    -webkit-box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21);\n    box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21)}\n.z-depth-5{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22)}\n    \n.my-depth-1 { \n    box-shadow: 0px 1px 2px gray;\n }\n .my-depth-half { \n    box-shadow: 0px 1px 1px gray;\n }\n .my-depth-half-b { \n    box-shadow: 0px 1px 1px black;\n }\n .my-depth-2 { \n    box-shadow: 0px 3px 3px gray;\n }\n .my-depth-4 { \n    box-shadow: 0px 4px 4px gray;\n }\n .my-active{ \n    background: #aceaf9;\n  }\n\n.snack-bar{\n    width:200px;\n    background: #148e0e;\n    color:white;\n    z-index:1;\n    position: fixed;\n    text-align: center;\n    padding:10px; \n    margin-left:35%;\n    margin-right:auto !important;\n    cursor:pointer;\n    bottom:0;\n    margin-bottom:10px;\n}\n.my-input{ \n    border: solid 0px gray;\n    border-bottom-width:3px; \n    border-bottom-color:rgb(98,97,97);\n    padding:20px;\n    margin-bottom:10px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    font-size: 2rem;\n    \n\n }\n .gist-coin-display{\n    margin-top: 5px;\n    padding: 5px;\n    background: mediumvioletred;\n    cursor:pointer;\n }\n .gist-coin-display:hover{\n    transform:scale(1.2);\n    box-shadow: 0 2px 2px gray;\n    transition:0.3s ease-in all;\n }\n.t-black{\n    color:black;\n}\n .my-input:focus{\n    border: solid 0px gray;\n    border-bottom-color:rgb(98,97,97);\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    border-bottom-width:3px; \n    padding:20px;\n    margin-bottom:10px;\n }\n.sides-padding{\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n}\n\n.my-txt-area{ \n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    font-size:1.6rem;\n    resize:none;\n }\n\n.my-txt-area:focus{\n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    resize:none;\n}\n.rounded{\n    border-top-right-radius: 50px; \n    border-bottom-right-radius: 50px; \n    border-top-left-radius: 50px; \n    border-bottom-left-radius: 50px;\n}\nbody{\n    color:rgb(117, 116, 116);   \n    background:white;\n    padding:0 !important;\n}\n.info-bg-color{\n    background: #66CCFF;\n}\n.gist-title{\n    padding:7px;\n}\n.padding-bit{\n    padding:5px;\n    margin:3px;\n}\n.solid-p-w{\n    /* solid-paper-weight */\n    box-shadow: 0px 1px 1px rgb(163, 161, 161);\n}\n.margin-climb-up{\n    margin-top: -20px;\n}\n.name-badge-n{\n    padding:10px; \n    background: #272727; \n    color:white; \n    margin-left:10px;\n    border-radius:10px;\n\n}\n.comment-box{\n    height:35px !important;\n    word-wrap:break-word;\n}\n.ease-in-slow{\n     transform:scale(1);\n     transition:0.2s ease-in all;\n}\n.cursor{\n    cursor:pointer;\n}\n.awesome-margin{\n    margin:5px;\n}\n.comment-item-title{\n    padding:5px; \n}\n.black-text{\n    color:black;\n}\n.comment-box-initial{\n    height: 1px;\n    position: absolute;\n    opacity:0;\n  \n}\n.comment-item-text{\n    background:whitesmoke; \n    padding:6px 15px; \n    display:inline-block;\n}\n.appear{\n    display:block;\n}\n.comment-box-entry{\n    position:absolute;\n    z-index:1;\n    opacity:1;\n    transition-delay:3s;\n    transition:0.5s ease-in-out;\n   \n}\n.paper-title-div{\n    background: whitesmoke;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n\n}\n.user-badge-comment{\n    outline: 0 !important;\n    background:#e6e5e5 !important;\n    border:solid 0px black !important;\n    box-shadow:4px 0 0 gray !important;\n}\n.user-badge:focus{\n    outline: 0 !important;\n    border:solid 0px black !important;\n}\n.triangle{\n    border:solid 15px navajowhite;\n    width:30px;\n    border-left-color:transparent;\n    border-right-color:transparent;\n\n    border-top-color:transparent;\n    background:transparent;\n\n}\n.p-text-view{\n    background:antiquewhite;\n    color:black;\n     transform:scale(1.3);\n     overflow-y:scroll !important;\n     transition:0.2s ease-in all;\n     padding:30px !important;\n     max-height:400px !important; \n     box-shadow:0 2px 2px gray;\n     \n}\n.gist-paper-body-text:hover{\n    background:whitesmoke; \n    transition:0.5s ease-in all;\n    cursor:pointer; \n}\n.semi-footer{\n    background: antiquewhite;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n}\n.paper-panel:hover{\n    box-shadow:0 6px 6px gray;\n    z-index:1;\n    transition:0.3s ease-in all;\n    cursor:pointer;\n}\n.name-badge-n:hover{\n    transform: rotateY(20deg);\n    transition: 0.5s ease-in all;\n}\n.name-badge{\n    padding:10px; \n    background:black; \n    color:white;\n    margin-left:-20px;\n}\n.gist-img{\n    height:400px; \n    width:100%; \n    object-fit: cover !important; \n    margin:0;\n}\n.action-btn-act-liked{\n  color:crimson;\n  text-decoration:none !important;\n}\n.action-btn-act-liked:hover{\n  cursor:pointer; \n  color:rgb(75, 27, 27);\n  transition:0.2s ease-in; \n}\n.action-btn {\n    color: rgb(107, 106, 106); \n    margin:5px;\n    text-decoration: none !important;\n}\n.action-btn:active{\n    color:crimson; \n}\n\n.action-btn:hover{\n    cursor:pointer; \n    color:black; \n    transition:0.2s ease-in; \n}\n.input-file{\n    font-size: 1em;\n    color: white;\n    background-color: black;\n    display: inline-block;\n    margin:10px;\n}\n.input-file:focus + label,\n.input-file + label:hover {\n    background-color: red;\n}\n.tab-back-color{\n    background: rgb(241, 240, 240) !important;\n}\n.tab-h-5{\n    height:500px;\n}\n.my-tab{\n    margin-top:70px;\n}\n.tab-text{\n    border-bottom-color:crimson;\n}\n.tab-upload{\n    border-bottom-color:green;\n}\n.tab-umb{\n    border:solid 2px #585858 !important; \n    border-bottom-width:0 !important;\n}\n.tab-option{\n    background: inherit; \n    color:rgb(107, 106, 106);\n    text-align:center; \n    padding:10px 0 !important; \n    margin:0 !important;\n    width:100%; \n    border:solid 0px black;\n    border-bottom-width:2px;\n    border-top-right-radius:10px; \n    border-top-left-radius: 10px;\n}\n.tab-option:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.2s ease-in all;\n}\n .tab-option:focus{ \n    border:solid 2px #585858 !important;\n    border-color: #585858 !important;\n    border-bottom-width:0 !important;\n    margin:0 !important;\n    outline:0;\n  }\n\n.font-small{\n    font-size:1rem; \n}\n.font-tiny{\n    font-size:0.8rem;\n}\n.font-small-ish{\n    font-size:1.3rem;\n}\n.font-medium{\n    font-size:1.7rem;\n}\n.font-big{\n    font-size:2rem;\n}\n.margin-10{\n    margin:15px 6px;\n}\n.margin-r-10{\n    /* single */\n    margin-right:10px;\n}\n.page-margin{\n    margin:30px;\n}\n.angel{\n    color:white !important;\n}\n.my-card-footer{\n    margin-top:0px; \n    padding:10px;\n    /*background:rgb(63, 158, 247);   */\n    background:#272727;\n    /*border:solid 2px rgb(63, 158, 247); */ \n    border:solid 2px #272727;\n    border-top-width:0px;\n}\n.my-card > p{\n    margin:2px;\n    padding:2px;   \n}\n\n.side-li{\n    padding:10px; \n    color:white; \n    font-size:1.5rem;\n    text-align: left; \n    margin:0px 0px;\n}\n\n\n.side-active {\n    background: white; \n    color:black;\n\n}\n.side-li:hover{\n    background:  rgb(243, 192, 209); \n    color:black;\n    transition: 0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.title-flag{\n    padding:5px; \n    border:solid 0px #585858; \n    border-bottom-width:0px;\n    text-transform:uppercase;\n    \n}\n.side-ul{\n    list-style-type: none; \n    padding:0px; \n    margin:0px;\n\n\n}\n.s-vanish{\n        /*stylish vanish*/\n    opacity:0;\n    transition:0.5s ease-out all;\n    display:none;\n}\n.vanish{\n    display: none;\n\n   \n   \n}\n.my-thumbnail{\n  \n    overflow-y:'scroll';\n    background:white; \n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;\n    font-size:1.5rem;\n    \n}\n.pic-trans{\n    opacity:1;\n    transition: 0.5s ease-in all;\n}\n.my-pic-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    /*padding:20px;            */\n    font-size:1.5rem;\n    cursor:pointer;\n    \n    \n}\n\n.shots-img:hover{\n    transform:scale(1.1);\n}\n.my-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;        \n    font-size:1.5rem;\n    \n    \n}\n.my-card:hover{\n    background:#585858; \n    color:white; \n    transition:0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.my-checkbox-label{\n     margin:10px; \n     margin-left:3px;\n    font-size:1.2rem;\n    cursor:pointer;\n}\n.my-checkbox{\n    margin:10px; \n    font-size:1.2rem;\n    cursor:pointer;\n}\n.side-nav-container{\n    left:0; \n    top:0;\n    z-index:1;\n    position:fixed;\n    height:100%; \n    width:200px; \n    background:rgb(8, 8, 8);\n    color:white;\n    \n}\n.side-nav-profile-box{\n    padding:15px; \n    margin:0px; \n    background:crimson; \n    border:solid px rgb(5, 53, 68); \n    border-bottom-width:3px; \n    height:170px;\n\n}\n\n.big-profile-pic {\n    margin-top:20px;\n    height:250px; \n    width:250px; \n    border-radius:100%;\n    border:solid 4px rgb(233, 229, 229);\n     box-shadow: 0px 2px 2px black;\n    object-fit: cover !important;\n\n}\n.side-profile-pic{\n  \n    height:110px; \n    width:110px; \n    border:solid 4px rgb(233, 229, 229); \n    box-shadow: 0px 2px 2px black;\n    border-radius:100%; \n    \n}", ""]);
+exports.push([module.i, "\n\n.pdf-item{\n  padding: 17px;\n  border-radius: 10px;\n  border-width: 0px;\n  border-left-width:9px; \n  border-left-color:#ffffff;\n  margin-bottom:10px;\n  cursor: pointer;\n}\n.pdf-item:hover{\n  background:#f2dede; \n  transform:translateY(-3px);\n  transition:.3s ease-in-out all; \n}\n.save-white{\n  white-space: pre-wrap;\n}\n .g-p-n{\n  text-decoration: none;\n }\n .g-p-n{\n   color:white !important; \n   transition: .3s ease-in-out;\n }\n \n .profile-choice-item{\n   height: 70px;\n    width: 70px;\n    border-radius: 10px;\n    border: solid 2px white;\n    cursor: pointer;\n    background-color: white;\n    background-color: white;\n    margin:5px !important;\n    opacity:.85;\n    display:inline !important;\n }\n .profile-choice-item:hover{\n   transform: scale(0.95); \n   opacity:1;\n   transition: .4s ease-in-out;\n }\n\n .profile-choice-item:selection{\n   border-color:royalblue !important;\n }\n \n /* MOBILE PHONE */\n  @media only screen and (max-width: 785px){\n\n      .mob-inline{\n        display:inline;\n      }\n    .page-margin{\n      margin:0 !important;\n      margin-top:10px;\n    }\n    .mobile-appearance-key{\n      display:block;\n    }\n   \n    .mobile-vanish-key{\n      display:none;\n    }\n    .mobile-top-padding{\n      padding-top:100px;\n    }\n    .mobile-commot-paddings{\n      padding:0px !important;\n    }\n    .mobile-commot-margins{\n      margin:0px !important;\n    }\n    .mobile-dashboard-pad-fix{\n      padding:30px !important;\n    }\n    .mobile-results-fix{\n      width:90% !important;\n    }\n    .f-d-card{\n        background:\"white\";\n        padding:30px !important; \n        min-height:250px;\n        max-height:500px !important; \n        background:white;\n    }\n\n      .mobile-p-fix{\n        margin-top:-120px;\n      }\n      .mobile-modal-b-left{\n        margin-left:70px;\n      }\n   \n  }\n\n    @media only screen and (min-width: 786px) and ( max-width:991px){\n      \n      .tab-inline{\n        display:inline;\n      }\n      .tablet-vanish-key{\n        display:none;\n      }\n      .tablet-appearance-key{\n        display:block;\n      }\n      .tablet-results-fix{\n        margin-left:5px !important;\n      }\n\n      .t-m-l-fix{\n          /* tablet margin left fix */\n          margin-left:10px !important;\n      }\n      .tablet-create-margin{\n        margin:60px !important;\n      }\n        \n      .tablet-modal-b-left{\n        margin-left:70px;\n      }\n    }\n    @media only screen and (min-width: 992px){\n    .pc-inline{\n      display:inline;\n    }\n      .desktop-width-fix{\n        width:1000px !important; \n        margin-left:10px !important;\n      }\n      .pc-vanish-key{\n        display:none;\n      }\n      .pc-appearance-key{\n        display:block;\n      }\n\n    }\n\n  .mobile-profile-pic{\n    width: 300px;\n    height: 300px;\n    margin: 10px;\n    border:solid 1px gray;\n    border-bottom-width: 5px;\n    background-color: white;\n}\n.panel-finish{\n  \n    padding: 30px;\n    border-top-width: 5px;\n    border-top-color: crimson;\n    border-bottom-width: 5px;\n    border-bottom-color:black;\n}\n\n\n\n.pdf-profile-name{\n  color:black !important; \n  font-weight: 400;\n}\n.pdf-profile-name:hover{\n  color:rgb(0, 140, 255) !important; \n  transition: .2s ease-in;\n}\n.remove-trick{\n  transform: rotateX(70deg); \n  transition: .4s ease-in;\n}\n.pdf-card-title{\n  font-weight:600;\n  font-size:1.6rem;\n  color:black;\n}\n.pdf-page-card{\n  padding:20px;\n  background:whitesmoke; \n\n  margin-top:5px;\n \n}\n\n.login-button{\n  background:crimson; \n  color:white;\n  border-color:crimson;\n}\n.login-button:hover{\n  background:black; \n  border-color:black;\n  color:white;\n  transition: .3s ease-in-out;\n}\n.pdf-page-card:hover{\n  background:navajowhite; \n  border:navajowhite;\n  transition: .4s ease-in-out all;\n  \n    /* box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15); */\n}\n\n.pdf-page-card:focus{\n  background:green ; \n  color:white;\n}\n.view-thumbnail{\n  cursor:pointer; \n  background: whitesmoke;\n}\n.similar{\n  cursor:pointer;\n  padding:30px;min-height:156px;max-height:156px;overflow:hidden; background:#282828;border:solid 1px black; border-top-width:3px;\n}\n.similar:hover{\n  transform: translateY(-10px);\n  transition:.5s ease-in-out;\n}\n.view-thumbnail:hover{\n  cursor:pointer; \n  background:white; \n  color:black;\n  transition: .3s ease-in-out all; \n}\n.v-c-b{\n  cursor:pointer; \n  color:black !important;\n}\n.v-c-b:hover{\n  transform: scale(1.1);\n  background:white !important;\n  transition: .5s ease-in-out all;\n}\n.grab-button{\n  border-width: 0px; \n  background:floralwhite !important;\n}\n.grab-button:hover{\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n  transition: .3s ease-in-out all;\n  border-width: 2px;\n  border-color:white;\n  -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.grab-button:focus{\n  outline:0 !important; \n  border-width: 2px;\n  border-color:white !important;\n  background: gray !important; \n  color:white !important; \n  border-radius: 5px;\n\n}\n.margin-right-5{\n  margin-right: 5px;\n}\n.envelope-correction{\n  margin:7px;\n}\n.results-pad{\n\n  border-top-right-radius: 0px; \n  border-top-left-radius: 0px; \n  border-top-width: 5px; \n  border-top-color: black; \n  background: floralwhite;\n  margin-left:-13px;\n}\n\n.upload-button-design{\n  background:rgb(255, 169, 8) !important; \n  color:black!important;\n  border-color:rgb(255, 169, 8) !important; \n}\n.upload-button-design:hover{\n  background:#202020 !important; \n  color:white !important;\n  border-color:#202020 !important; \n  transition: .3s ease-in-out all;\n}\n.nav-icon{\n    cursor:pointer;\n}\n.nav-icon:hover{\n    transform:scale(1.3);\n    color:black;\n    transition:0.3s ease-in all;\n\n}\n\n.pic-modal-envelope{\n  margin-left: -23px; \n  width:800px;\n}\n.QB{\n    font-size:3rem;\n    color:white !important; \n}\n\n.tint-focus{\n    position:relative; \n    cursor:pointer;\n    animation: jump infinite 0.5s linear;\n\n}\n.tint-slow{\n   position:relative; \n    cursor:pointer;\n    animation: jumpy infinite 2s linear;\n    animation-delay:.5s;\n}\n.confidence-level{\n    margin-top:-10px !important;\n    cursor:pointer;\n    font-size:1.8rem;\n    padding:10px;\n    color:limegreen;\n\n}\n\n.tint-focus:hover{\n    transform: scale(2);\n}\n@keyframes jumpy{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n          transfrom:translateY(8px);\n          opacity:.5;\n    }\n    80%{\n        transform:translateY(12px);\n        opacity:0;\n    }\n    100%{\n     transform:translateY(-12px);\n        opacity:0;\n    }\n}\n\n@keyframes jump{\n    0%{\n        transform: translateY(5px);\n    }\n    50%{\n        transfrom:translateY(-5px);\n    }\n    100%{\n        transform:translateY(0px);\n    }\n}\n.rating-belt{\n    height: 70px;\n    position: absolute;\n    width: 100%;\n    margin-left: -15px;\n    margin-top: -70px;\n    border-color: #272727;\n\n}\n.QB-tint{\n    color:white; \n    font-size:1.7rem;\n    text-shadow: 0 2px 2px dimgrey;\n\n}\n.nav-bar-stick{\n    position:fixed; \n    top:0; \n    width:100%; \n    z-index:1;\n}\n.z-text-depth-1{\n    text-shadow: 0 2px 2px dimgrey;\n}\n.QB-Brand{\n    height:100px !important; \n    width:100px !important;\n    object-fit:cover;\n    object-position: center center;\n}\n.phone-textbox-design{\n    border: solid 0px #C8C8C8; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray; \n    border-radius:0;\n    margin:10px;\n}\n.phone-textbox-design:focus{\n    border: solid 0px #6c757d; \n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray !important; \n    border-radius:0;\n    outline:0;\n}\n.m-right-bit{\n    margin-right:6px;\n}\n\n.c-m-height{\n    max-height:250px !important;\n}\n.f-d-card{\n    background:\"white\";\n    padding:30px !important; \n    min-height:250px;\n    max-height:350px; \n    background:white;\n}\n.corner-10{\n    margin:2px 2px !important; \n    border-radius:3px;\n}\n.extra-img-div{\n    margin-bottom:10px;\n}\n.p-space-1{\n    margin:5px 7px;\n}\n.inside-popover{\n    margin:10px; \n    padding:10px;\n    text-align:center;\n}\n.file-check{\n    padding:10px;\n}\n.anoda{\n    animation-name:fa-spin;\n    animation-duration: infinite;\n}\n\n.modal-pic-div-image{\n  background-position: center center; \n  background-size: auto 100%; \n  opacity: 1; \n  background-repeat: no-repeat !important; \n  transition: .5s ease-in-out;\n}\n.pic-piece-image{\n    width:100% !important;\n    min-height:620px !important;\n    overflow-y:hidden;\n    cursor:pointer;\n    border-radius:0px;\n    \n}\n.pic-piece-image:hover{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    transition: 0.2s ease-in all;\n}\n.spinner-logo {\n  animation: spinner-logo-spin infinite .5s linear;\n  height: 80px;\n}\n@keyframes spinner-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n\n\n.font-red{\n    color:red;\n}\n.font-blue{\n    background: rgb(63, 158, 247) !important;\n}\n.number-font{\n    font-family: Arial, Helvetica, sans-serif;\n}\n\n.p-r-fix{\n        /*pull-right-fx*/\n    margin:5px;\n}\n\n.i-p-overlay{\n    background:black; \n    opacity:0.5; \n    height:200px;\n    z-index: 1; \n}\n\n.zero-border{\n    border:solid 0px black !important;\n}\n.btn-undefault:focus{\n    outline:0; \n    border: solid 0px black !important;\n}\n\n.p-activate-section{\n    /*paper - activate -section*/\n    background:crimson !important;\n    color:white !important;\n}\n.p-activate-section-green{\n    /*paper - activate -section*/\n    background:green !important;\n    color:white !important;\n}\n.p-activate-section-blue{\n    /*paper - activate -section*/\n    background:crimson  !important;\n    color:white !important;\n}\n\n.d-tab{\n    font-weight: 500;\n    padding:8px 15px; \n     background:inherit; \n    margin:0;\n    cursor:pointer;\n    height:100%;\n    overflow-x:hidden;\n}\n\n.d-tab:hover{\n    background:orange;\n    color:black;\n    transition:0.3s ease-in all;\n}\n\n\n\n.margin-5{\n    margin:5px;\n}\n.centerness{\n    padding:120px 30px;\n}\n.relative{\n    position: relative;\n}\n.input-file-textbox{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n    margin-bottom:6px;\n}\n\n.input-file-textbox:focus{\n    border:solid 0px #808080; \n    box-shadow: 0 0 0 gray;\n    border-bottom-width:2px;\n}\n.zero-radius{\n    border-radius:0px;\n}\n.multiple-side-active{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.m-side-active{\n        /*modal side option active*/\n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n}\n.search-box{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n}\n.search-box:focus{\n    border:solid 0px #808080;\n    border-bottom-width:2px;\n    box-shadow: 0 0 0 gray;\n    border-radius:0px;\n\n}\n.round-float-button{\n    float:right;\n    z-index:1;\n    position:fixed;\n    right:50px;\n    font-size:1.5rem;\n    position: fixed;\n    bottom:70px;\n    border-radius:50%;\n    padding:10px 16px; \n    color:white;\n}\n\n.float-red{ \n    bottom:120px; \n    background: red;\n }\n .float-red:hover{ \n    background: black;\n    color:white;\n    transition: 0.3s ease-in all; \n  }\n  .float-green{ \n\n    background:green;\n }\n  .float-green:hover{ \n    background:black;\n    color:white;\n    transition: 0.3s ease-in all; \n }\n.round-float-button:focus{ \n    border-radius:50% !important;\n    border-color:green !important;\n    color:white !important;\n    outline:0;\n }\n.modal-ed-title{ \n    margin:10px;\n    margin-left:0; \n    border:solid 0px rgb(98,97,97);\n    font-size:2.5rem;\n    border-bottom-width: 2px;\n    padding:25px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n  \n\n\n }\n .modal-ed-title:focus{ \n    border:solid 0px rgb(98,97,97) !important;\n    border-bottom-width: 2px !important;\n    box-shadow: 0px 0px 0px gray;\n    border-radius: 0px;\n    outline:0;\n\n  }\n\n  .modal-ed-body{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n\n  .modal-ed-body:focus{\n    border-width:0px; \n    box-shadow: 0px 0px 0px gray;\n\n  }\n.modal-bottom{\n    bottom:0 !important;\n}\n.piece-title{ \n    border:solid 0px rgb(98,97,97);\n    border-bottom-width: 2px; \n    \n    margin:5px;\n    margin-bottom:15px;\n    border-bottom-right-radius: 30px;\n    padding:5px;\n    padding-right:20px;\n    left:90px; \n    display:inline-block;\n\n }\n .piece-body{ \n    min-height: 400px; \n    max-height: 400px;  \n    overflow-y:scroll;\n    width:100%; \n\n  }\n.modal-side-items{ \n    \n    padding:10px;  \n    text-align: center; \n    border: solid 0px white;\n    /*border-bottom-width:1px;    */\n\n }\n     /*.modal-body:hover{ \n         background: rgb(207, 225, 241); \n         transition: 0.3s ease-in; \n         cursor: pointer;\n      }*/\n .modal-s-i-c{\n        /*modal-side-item-correction*/\n    font-size: 2.2rem;\n    color:white;\n   \n }\n .modal-s-i-c:hover{\n    color:white;\n    text-decoration: none;\n\n }\n .modal-s-i-c:focus{ \n    color:white;\n  }\n\n  .modal-s-i-c:active{ \n        color: rgb(63, 158, 247);\n   }\n.multiple-m-pages-btn{\n     padding:10px;  \n     text-align: center; \n     border: solid 0px white;\n}\n\n.multiple-m-pages-btn:hover{\n    color:white;\n    background: orange; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n    }\n    .modal-side-items:hover{ \n    color:white;\n    background: crimson; \n    box-shadow: 0px 2px 4px #202020;        \n    transition: 0.2s ease-in all; \n    cursor:pointer;\n\n}\n.modal-height{\n    min-height:500px;\n    overflow-y:scroll;\n    padding-top:0;\n    padding-right:0px !important;\n}\n\n.pic-modal-height{\n    min-height:620px;\n\n    padding-top:0;\n    padding-right:0 !important;\n    padding-left:64px;\n}\n\n.modal-side-bar{\n    /*padding-top:20px;   */\n    left:0;\n    position:fixed;\n    width:80px;\n    background: #272727;\n    height:100%;\n    margin-top:0;\n\n\n}\n.red{\n    background: crimson; \n    color:white;\n}\n.b-app-color{\n    border-color:crimson;\n}\n.app-color{ \n    background:crimson;\n        /*background: rgb(65, 85, 255) !important;*/\n    color:white !important;\n }\n.p-black-color{\n    background: #272727; \n    color:white !important;\n}\n.z-depth-1-half{\n    box-shadow:0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);\n}\n.z-depth-1{\n    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);\n    box-shadow:0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)\n}\n.z-depth-2{\n    -webkit-box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);\n    box-shadow:0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)\n}\n.z-depth-3{\n    -webkit-box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);\n    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19)}\n.z-depth-4{\n    -webkit-box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21);\n    box-shadow:0 16px 28px 0 rgba(0,0,0,.22),0 25px 55px 0 rgba(0,0,0,.21)}\n.z-depth-5{\n    -webkit-box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22);\n    box-shadow:0 27px 24px 0 rgba(0,0,0,.2),0 40px 77px 0 rgba(0,0,0,.22)}\n    \n.my-depth-1 { \n    box-shadow: 0px 1px 2px gray;\n }\n .my-depth-half { \n    box-shadow: 0px 1px 1px gray;\n }\n .my-depth-half-b { \n    box-shadow: 0px 1px 1px black;\n }\n .my-depth-2 { \n    box-shadow: 0px 3px 3px gray;\n }\n .my-depth-4 { \n    box-shadow: 0px 4px 4px gray;\n }\n .my-active{ \n    background: #aceaf9;\n  }\n\n.snack-bar{\n    width:200px;\n    background: #148e0e;\n    color:white;\n    z-index:1;\n    position: fixed;\n    text-align: center;\n    padding:10px; \n    margin-left:35%;\n    margin-right:auto !important;\n    cursor:pointer;\n    bottom:0;\n    margin-bottom:10px;\n}\n.my-input{ \n    border: solid 0px gray;\n    border-bottom-width:3px; \n    border-bottom-color:rgb(98,97,97);\n    padding:20px;\n    margin-bottom:10px;\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    font-size: 2rem;\n    \n\n }\n .gist-coin-display{\n    margin-top: 5px;\n    padding: 5px;\n    background: mediumvioletred;\n    cursor:pointer;\n }\n .gist-coin-display:hover{\n    transform:scale(1.2);\n    box-shadow: 0 2px 2px gray;\n    transition:0.3s ease-in all;\n }\n.t-black{\n    color:black;\n}\n .my-input:focus{\n    border: solid 0px gray;\n    border-bottom-color:rgb(98,97,97);\n    box-shadow: 0px 0px 0px gray;\n    border-radius:0px;\n    border-bottom-width:3px; \n    padding:20px;\n    margin-bottom:10px;\n }\n.sides-padding{\n    padding-left: 10px !important;\n    padding-right: 10px !important;\n}\n\n.my-txt-area{ \n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    font-size:1.6rem;\n    resize:none;\n }\n\n.my-txt-area:focus{\n    border-radius:0px; \n    border: solid 0px gray;\n    box-shadow: 0px 0px 0px gray;\n    resize:none;\n}\n.rounded{\n    border-top-right-radius: 50px; \n    border-bottom-right-radius: 50px; \n    border-top-left-radius: 50px; \n    border-bottom-left-radius: 50px;\n}\nbody{\n    color:rgb(117, 116, 116);   \n    background:white;\n    padding:0 !important;\n}\n.info-bg-color{\n    background: #66CCFF;\n}\n.gist-title{\n    padding:7px;\n}\n.padding-bit{\n    padding:5px;\n    margin:3px;\n}\n.solid-p-w{\n    /* solid-paper-weight */\n    box-shadow: 0px 1px 1px rgb(163, 161, 161);\n}\n.margin-climb-up{\n    margin-top: -20px;\n}\n.name-badge-n{\n    padding:10px; \n    background: #272727; \n    color:white; \n    margin-left:10px;\n    border-radius:10px;\n\n}\n.comment-box{\n    height:35px !important;\n    word-wrap:break-word;\n}\n.ease-in-slow{\n     transform:scale(1);\n     transition:0.2s ease-in all;\n}\n.cursor{\n    cursor:pointer;\n}\n.awesome-margin{\n    margin:5px;\n}\n.comment-item-title{\n    padding:5px; \n}\n.black-text{\n    color:black;\n}\n.comment-box-initial{\n    height: 1px;\n    position: absolute;\n    opacity:0;\n  \n}\n.comment-item-text{\n    background:whitesmoke; \n    padding:6px 15px; \n    display:inline-block;\n}\n.appear{\n    display:block;\n}\n.comment-box-entry{\n    position:absolute;\n    z-index:1;\n    opacity:1;\n    transition-delay:3s;\n    transition:0.5s ease-in-out;\n   \n}\n.paper-title-div{\n    background: whitesmoke;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n\n}\n.user-badge-comment{\n    outline: 0 !important;\n    background:#e6e5e5 !important;\n    border:solid 0px black !important;\n    box-shadow:4px 0 0 gray !important;\n}\n.user-badge:focus{\n    outline: 0 !important;\n    border:solid 0px black !important;\n}\n.triangle{\n    border:solid 15px navajowhite;\n    width:30px;\n    border-left-color:transparent;\n    border-right-color:transparent;\n\n    border-top-color:transparent;\n    background:transparent;\n\n}\n.p-text-view{\n    background:antiquewhite;\n    color:black;\n     transform:scale(1.3);\n     overflow-y:scroll !important;\n     transition:0.2s ease-in all;\n     padding:30px !important;\n     max-height:400px !important; \n     box-shadow:0 2px 2px gray;\n     \n}\n.gist-paper-body-text:hover{\n    background:whitesmoke; \n    transition:0.5s ease-in all;\n    cursor:pointer; \n}\n.semi-footer{\n    background: antiquewhite;\n    color: black;\n    margin-top: 3px;\n    padding: 1px;\n    padding-left: 15px;\n}\n.paper-panel:hover{\n    box-shadow:0 6px 6px gray;\n    z-index:1;\n    transition:0.3s ease-in all;\n    cursor:pointer;\n}\n.name-badge-n:hover{\n    transform: rotateY(20deg);\n    transition: 0.5s ease-in all;\n}\n.name-badge{\n    padding:10px; \n    background:black; \n    color:white;\n    margin-left:-20px;\n}\n.gist-img{\n    height:400px; \n    width:100%; \n    object-fit: cover !important; \n    margin:0;\n}\n.action-btn-act-liked{\n  color:crimson;\n  text-decoration:none !important;\n}\n.action-btn-act-liked:hover{\n  cursor:pointer; \n  color:rgb(75, 27, 27);\n  transition:0.2s ease-in; \n}\n.action-btn {\n    color: rgb(107, 106, 106); \n    margin:5px;\n    text-decoration: none !important;\n}\n.action-btn:active{\n    color:crimson; \n}\n\n.action-btn:hover{\n    cursor:pointer; \n    color:black; \n    transition:0.2s ease-in; \n}\n.input-file{\n    font-size: 1em;\n    color: white;\n    background-color: black;\n    display: inline-block;\n    margin:10px;\n}\n.input-file:focus + label,\n.input-file + label:hover {\n    background-color: red;\n}\n.tab-back-color{\n    background: rgb(241, 240, 240) !important;\n}\n.tab-h-5{\n    height:500px;\n}\n.my-tab{\n    margin-top:70px;\n}\n.tab-text{\n    border-bottom-color:crimson;\n}\n.tab-upload{\n    border-bottom-color:green;\n}\n.tab-umb{\n    border:solid 2px #585858 !important; \n    border-bottom-width:0 !important;\n}\n.tab-option{\n    background: inherit; \n    color:rgb(107, 106, 106);\n    text-align:center; \n    padding:10px 0 !important; \n    margin:0 !important;\n    width:100%; \n    border:solid 0px black;\n    border-bottom-width:2px;\n    border-top-right-radius:10px; \n    border-top-left-radius: 10px;\n}\n.tab-option:hover{\n    background:  rgb(207, 225, 241); \n    color:black;\n    transition: 0.2s ease-in all;\n}\n .tab-option:focus{ \n    border:solid 2px #585858 !important;\n    border-color: #585858 !important;\n    border-bottom-width:0 !important;\n    margin:0 !important;\n    outline:0;\n  }\n\n.font-small{\n    font-size:1rem; \n}\n.font-tiny{\n    font-size:0.8rem;\n}\n.font-small-ish{\n    font-size:1.3rem;\n}\n.font-medium{\n    font-size:1.7rem;\n}\n.font-big{\n    font-size:2rem;\n}\n.margin-10{\n    margin:15px 6px;\n}\n.margin-r-10{\n    /* single */\n    margin-right:10px;\n}\n.page-margin{\n    margin:30px;\n}\n.angel{\n    color:white !important;\n}\n.my-card-footer{\n    margin-top:0px; \n    padding:10px;\n    /*background:rgb(63, 158, 247);   */\n    background:#272727;\n    /*border:solid 2px rgb(63, 158, 247); */ \n    border:solid 2px #272727;\n    border-top-width:0px;\n}\n.my-card > p{\n    margin:2px;\n    padding:2px;   \n}\n\n.side-li{\n    padding:10px; \n    color:white; \n    font-size:1.5rem;\n    text-align: left; \n    margin:0px 0px;\n}\n\n\n.side-active {\n    background: white; \n    color:black;\n\n}\n.side-li:hover{\n    background:  rgb(243, 192, 209); \n    color:black;\n    transition: 0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.title-flag{\n    padding:5px; \n    border:solid 0px #585858; \n    border-bottom-width:0px;\n    text-transform:uppercase;\n    \n}\n.side-ul{\n    list-style-type: none; \n    padding:0px; \n    margin:0px;\n\n\n}\n.s-vanish{\n        /*stylish vanish*/\n    opacity:0;\n    transition:0.5s ease-out all;\n    display:none;\n}\n.vanish{\n    display: none;\n\n   \n   \n}\n.my-thumbnail{\n  \n    overflow-y:'scroll';\n    background:white; \n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;\n    font-size:1.5rem;\n    \n}\n.pic-trans{\n    opacity:1;\n    transition: 0.5s ease-in all;\n}\n.my-pic-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    /*padding:20px;            */\n    font-size:1.5rem;\n    cursor:pointer;\n    \n    \n}\n\n.shots-img:hover{\n    transform:scale(1.1);\n}\n.my-card{\n    min-height:200px; \n    max-height:200px; \n    overflow-y:'scroll';\n    border-radius:10px;\n    border-bottom-right-radius: 0px; \n    border-bottom-left-radius:0px;\n    border:solid 1px rgb(212, 211, 211);\n    padding:20px;        \n    font-size:1.5rem;\n    \n    \n}\n.my-card:hover{\n    background:#585858; \n    color:white; \n    transition:0.3s ease-in all;\n    cursor:pointer;\n    \n}\n.my-checkbox-label{\n     margin:10px; \n     margin-left:3px;\n    font-size:1.2rem;\n    cursor:pointer;\n}\n.my-checkbox{\n    margin:10px; \n    font-size:1.2rem;\n    cursor:pointer;\n}\n.side-nav-container{\n    left:0; \n    top:0;\n    z-index:1;\n    position:fixed;\n    height:100%; \n    width:200px; \n    background:rgb(8, 8, 8);\n    color:white;\n    \n}\n.side-nav-profile-box{\n    padding:15px; \n    margin:0px; \n    background:crimson; \n    border:solid px rgb(5, 53, 68); \n    border-bottom-width:3px; \n    height:170px;\n\n}\n\n.big-profile-pic {\n    margin-top:20px;\n    height:250px; \n    width:250px; \n    border-radius:100%;\n    border:solid 4px rgb(233, 229, 229);\n     box-shadow: 0px 2px 2px black;\n    object-fit: cover !important;\n\n}\n.side-profile-pic{\n  \n    height:110px; \n    width:110px; \n    border:solid 4px rgb(233, 229, 229); \n    box-shadow: 0px 2px 2px black;\n    border-radius:100%; \n    \n}", ""]);
 
 // exports
 
@@ -74907,13 +74960,49 @@ var Dashboard = function (_Component) {
       }
     }
   }, {
+    key: 'spillMyPdfs',
+    value: function spillMyPdfs() {
+      var thisClass = this;
+      if (this.props.myPdfs !== null) {
+        return this.props.myPdfs.map(function (piece, index) {
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "my-pdf-" + num.toString();
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { key: loopIndex },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { style: { paddingLeft: 15, paddingRight: 22 } },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'thumbnail clearfix pdf-item',
+                  onClick: function onClick() {
+                    window.location = piece.pdf_link;window.location.target = "_blank";
+                  } },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'small',
+                  { className: 'text text-default pull-right number-font',
+                    style: { fontWeight: 100 } },
+                  ' 5 seconds ago'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'a',
+                  { href: '#', style: { textDecoration: "none", color: "black", fontWeight: 600 } },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-file-pdf-o', style: { marginRight: 6 } }),
+                  piece.title
+                )
+              )
+            )
+          );
+        });
+      }
+    }
+  }, {
     key: 'spillTextPieces',
     value: function spillTextPieces() {
       var _this2 = this;
 
-      //this.emptyNotice("paper");
       return this.props.pieces.map(function (piece, index) {
-
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'li',
           { key: index },
@@ -74991,8 +75080,6 @@ var Dashboard = function (_Component) {
       //bigImage.src = "http://localhost:8000/"+imageURL;
       var webPath = window.location.protocol + "//" + window.location.host;
       bigImage.src = webPath + '/' + imageURL;
-      console.log("I am the hostname and stuff:", window.location);
-      console.log("I am the imageURL::", imageURL);
       bigImage.onload = function () {
         $('.spinner-' + imageID).hide();
         $('.shots-img-' + imageID).css({
@@ -75506,6 +75593,14 @@ var Dashboard = function (_Component) {
                     }, id: 'picture-section-btn', className: ' d-tab zero-border btn-undefault' },
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-camera' }),
                   ' Shots'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'button',
+                  { onClick: function onClick() {
+                      _this5.tabClick('pdf-section');
+                    }, id: 'pdf-section-btn', className: ' d-tab zero-border btn-undefault' },
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-file-pdf-o' }),
+                  ' PDF'
                 )
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -75547,6 +75642,20 @@ var Dashboard = function (_Component) {
                             { style: { listStyleType: 'none', padding: 0 } },
                             this.emptyNotice('shots'),
                             this.props.picPieces === null ? '' : this.spillPicPieces()
+                          )
+                        )
+                      ),
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { id: 'pdf-section', className: 'vanish' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__plugins_PageSwitcher__["a" /* default */], { baseURL: '/get-user-pdfs', type: 'pdf', animateDiv: '#pdf-portion', values: this.props.paginatorPdfValuesInsert, unique: 'pdfy' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                          'div',
+                          { id: 'pdf-portion' },
+                          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'ul',
+                            { style: { paddingLeft: 15, paddingRight: 22 } },
+                            this.spillMyPdfs()
                           )
                         )
                       )
@@ -75600,9 +75709,9 @@ Dashboard.propTypes = {
   deletePictureFunction: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
   editPaperFunction: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
   editPictureFunction: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func,
-  picPieces: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,
+  picPieces: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array,
   user: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,
-  pieces: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object
+  pieces: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array
 };
 /* harmony default export */ __webpack_exports__["a"] = (Dashboard);
 
@@ -77590,10 +77699,8 @@ var PageSwitcher = function (_React$Component) {
     key: "nextPage",
     value: function nextPage() {
       if (this.state.items.next_page_url !== null) {
-        console.log("I am the new Page:::: ");
         this.dataFinder(this.state.items.next_page_url, 'get', this.fillState);
       } else {
-        console.log("I am the new Page:::: ");
         this.dataFinder(this.state.items.first_page_url, 'get', this.fillState);
       }
     }
@@ -77601,10 +77708,8 @@ var PageSwitcher = function (_React$Component) {
     key: "previousPage",
     value: function previousPage() {
       if (this.state.items.prev_page_url !== null) {
-        console.log("I am the prev Page:::: ");
         this.dataFinder(this.state.items.prev_page_url, 'get', this.fillState);
       } else {
-        console.log("I am the prev Page:::: ");
         this.dataFinder(this.state.items.last_page_url, 'get', this.fillState);
       }
     }
@@ -77616,8 +77721,6 @@ var PageSwitcher = function (_React$Component) {
         method: 'get',
         url: this.props.baseURL
       }).done(function (response) {
-
-        console.log("I am the response: ", response);
         thisClass.setState({ lp: response.last_page, items: response });
       });
     }
@@ -77636,9 +77739,7 @@ var PageSwitcher = function (_React$Component) {
         if (this.refs._goBox.value > this.state.lp || this.refs._goBox.value < 1) {} else {
           this.goToPage(this.refs._goBox.value);
         }
-      } else {
-        console.log("Please input a correct page value!");
-      }
+      } else {}
     }
   }, {
     key: "mainCheck",
@@ -78414,7 +78515,6 @@ var MakeNew = function (_Component) {
         created_at: '4 days ago',
         type: 'text'
       };
-      console.log("I am the selected course: ", course);
       var validationResults = this.validate(title, body);
       if (validationResults.status === 'Pass') {
         this.refs.title.value = "";
@@ -78513,7 +78613,7 @@ var MakeNew = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                       'div',
                       { className: '' },
-                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', ref: 'title', className: 'form-control my-input', placeholder: 'title', autofocus: true }),
+                      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', ref: 'title', className: 'form-control my-input', placeholder: 'title', autoFocus: true }),
                       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'thumbnail  clearfix', style: styles.thumbnailFix },
@@ -78577,10 +78677,10 @@ var styles = {
 };
 
 MakeNew.propTypes = {
-  allPicturePieces: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.object,
+  allPicturePieces: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.array,
   newPicFunction: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.func,
   createPaperFunction: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.func,
-  allPieces: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.object,
+  allPieces: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.array,
   user: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.object
 };
 /* harmony default export */ __webpack_exports__["a"] = (MakeNew);
@@ -79020,10 +79120,30 @@ var Gist = function (_Component) {
         } else {
           $('.side-nav').fadeIn(200);
         }
-
         $('#current-page-box').val("pdfs");
         //$('#'+curr).css({marginLeft:50});
       }, 600);
+    }
+  }, {
+    key: "goToSection",
+    value: function goToSection(sectionName) {
+      var currentSection = $('#news-section-box').val();
+      var oldSec = "#" + $('#news-section-box').val();
+      var newSec = "#" + sectionName;
+      if (sectionName !== currentSection) {
+        $(oldSec).css({
+          transform: "translateX(-40px)", opacity: 0,
+          transition: '.2s ease-in-out' });
+        setTimeout(function () {
+          $(oldSec).css({ transform: "translateX(0px)", opacity: 1 });
+          $(oldSec).fadeOut();
+        }, 300);
+        setTimeout(function () {
+          $(newSec).fadeIn();
+          $(newSec).css({ opacity: 1 });
+          $('#news-section-box').val(sectionName);
+        }, 700);
+      }
     }
   }, {
     key: "render",
@@ -79033,6 +79153,7 @@ var Gist = function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         { className: "page-margin", style: { marginTop: 80 } },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "hidden", id: "news-section-box", defaultValue: "all-types-container" }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "button",
           { className: " btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key",
@@ -79041,6 +79162,36 @@ var Gist = function (_Component) {
             },
             style: { zIndex: 100, background: "royalblue", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 100, right: 0 } },
           "PDF Gist"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key",
+            onClick: function onClick() {
+              _this2.goToSection("text-type-container");
+            },
+            style: { zIndex: 100, background: "#4e3a1c", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 142, right: 0 } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-file-text", style: { marginRight: 9 } }),
+          "Texts"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key",
+            onClick: function onClick() {
+              _this2.goToSection("pic-type-container");
+            },
+            style: { zIndex: 100, background: "orange", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 184, right: 0 } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-camera", style: { marginRight: 9 } }),
+          "Shots"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key",
+            onClick: function onClick() {
+              _this2.goToSection("all-types-container");
+            },
+            style: { zIndex: 100, background: "#00d0ff", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 226, right: 0 } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-camera", style: { marginRight: 9 } }),
+          "All"
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "button",
@@ -79166,24 +79317,31 @@ var NewsContainer = function (_Component) {
       this.setState({ deleteDetails: { title: title, itemID: itemID, type: type } });
     }
   }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.getPicNews();
+      this.props.getTextNews();
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.getNews(0, this.props.allNews);
       this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) });
       this.spinnerTrick();
+
       //this.reloadAllImages();
     }
   }, {
-    key: 'ejectNews',
-    value: function ejectNews() {
+    key: 'ejectTexts',
+    value: function ejectTexts() {
       var thisClass = this;
-      if (this.props.allNews !== null) {
-        return this.props.allNews.news.map(function (item, index) {
-          var num = Math.round(Math.random(1000000) * 100000000000);
-          var loopIndex = "news-text-" + num.toString();
-          if (item.file_type === "text") {
+      if (this.props.textNews !== null) {
+        if (this.props.textNews.data !== null) {
+          return this.props.textNews.data.map(function (item, index) {
             var _React$createElement;
 
+            var num = Math.round(Math.random(1000000) * 100000000000);
+            var loopIndex = "news-ind-pic-" + num.toString();
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'li',
               { key: loopIndex },
@@ -79207,9 +79365,21 @@ var NewsContainer = function (_Component) {
                 allNews: thisClass.props.allNews
               }, _defineProperty(_React$createElement, 'school', item.user.school), _defineProperty(_React$createElement, 'insertDetailsFunction', thisClass.insertDelDetails), _React$createElement))
             );
-          } else if (item.file_type === "image") {
+          });
+        }
+      }
+    }
+  }, {
+    key: 'ejectPictures',
+    value: function ejectPictures() {
+      var thisClass = this;
+      if (this.props.picNews !== null) {
+        if (this.props.picNews.data !== null) {
+          return this.props.picNews.data.map(function (item, index) {
             var _React$createElement2;
 
+            var num = Math.round(Math.random(1000000) * 100000000000);
+            var loopIndex = "news-ind-pic-" + num.toString();
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'li',
               { key: loopIndex },
@@ -79226,6 +79396,64 @@ var NewsContainer = function (_Component) {
                 comments: item.comments_count,
                 showComments: thisClass.create
               }, _defineProperty(_React$createElement2, 'course', item.course), _defineProperty(_React$createElement2, 'coins', Math.round(Math.random(50000) * 1000)), _defineProperty(_React$createElement2, 'school', item.user.school), _defineProperty(_React$createElement2, 'likeFunction', thisClass.props.picLikeFunction), _defineProperty(_React$createElement2, 'allNews', thisClass.props.allNews), _defineProperty(_React$createElement2, 'school', item.user.school), _React$createElement2))
+            );
+          });
+        }
+      }
+    }
+  }, {
+    key: 'ejectNews',
+    value: function ejectNews() {
+      var thisClass = this;
+      if (this.props.allNews !== null) {
+        return this.props.allNews.news.map(function (item, index) {
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "news-text-" + num.toString();
+          if (item.file_type === "text") {
+            var _React$createElement3;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              { key: loopIndex },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__GistPaperCard__["a" /* default */], (_React$createElement3 = {
+                type: item.type,
+                details: { bcolor: 'black', owner: item.user },
+                id: item.id,
+                user: thisClass.props.authenticatedUser,
+                title: item.title,
+                body: item.body,
+                created_at: item.created_at,
+                likesArray: item.likes,
+                likes: item.likes.length
+                // commentsArray={item.comments}
+                , commentsCount: item.comments_count,
+                showComments: thisClass.create,
+                course: item.course,
+                coins: Math.round(Math.random(50000) * 1000),
+                school: item.user.school,
+                newLikeFunction: thisClass.props.newLikeFunction,
+                allNews: thisClass.props.allNews
+              }, _defineProperty(_React$createElement3, 'school', item.user.school), _defineProperty(_React$createElement3, 'insertDetailsFunction', thisClass.insertDelDetails), _React$createElement3))
+            );
+          } else if (item.file_type === "image") {
+            var _React$createElement4;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              { key: loopIndex },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__GistImageCard__["a" /* default */], (_React$createElement4 = {
+                id: item.id,
+                details: { bcolor: 'green', owner: item.user },
+                description: item.description,
+                user: thisClass.props.authenticatedUser,
+                course: item.course,
+                image_link: item.reduced_path,
+                created_at: item.created_at,
+                likesArray: item.likes,
+                likes: item.likes.length,
+                comments: item.comments_count,
+                showComments: thisClass.create
+              }, _defineProperty(_React$createElement4, 'course', item.course), _defineProperty(_React$createElement4, 'coins', Math.round(Math.random(50000) * 1000)), _defineProperty(_React$createElement4, 'school', item.user.school), _defineProperty(_React$createElement4, 'likeFunction', thisClass.props.picLikeFunction), _defineProperty(_React$createElement4, 'allNews', thisClass.props.allNews), _defineProperty(_React$createElement4, 'school', item.user.school), _React$createElement4))
             );
           }
         });
@@ -79281,11 +79509,11 @@ var NewsContainer = function (_Component) {
             thisClass.setState({ currentPieceCommentsViewed: null }); //unset the currently viewed piece value so that the comments can reload
             thisClass.create(piece_id, type, pieceTitle);
           } else {
-            alert('save impossible!');
+            alert('Could not save!');
           }
         });
       } else {
-        alert("Type something before you comment!");
+        alert("Please type something before you comment!");
       }
     }
   }, {
@@ -79431,22 +79659,44 @@ var NewsContainer = function (_Component) {
         'div',
         { id: 'app-news-container' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'ul',
-          { style: styles.ulFix },
-          this.noNews(),
-          this.ejectNews()
+          'div',
+          { id: 'pic-type-container', className: 'vanish' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'ul',
+            { style: styles.ulFix },
+            this.ejectPictures()
+          )
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'button',
-          { className: 'btn btn-default btn-block',
-            onClick: function onClick() {
-              _this2.props.getNews(_this2.state.badgeNumber, _this2.props.allNews);
-              _this2.setState({ badgeNumber: Number(_this2.state.badgeNumber + 1) });
-              _this2.loadIndicator();
-            } },
-          'Load More',
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fa fa-spinner fa-spin', style: { marginLeft: 5, marginBottom: 10 }, id: 'load-spinner' })
+          'div',
+          { id: 'text-type-container', className: 'vanish', style: { position: 'relative' } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'ul',
+            { style: styles.ulFix },
+            this.ejectTexts()
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { id: 'all-types-container' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'ul',
+            { style: styles.ulFix },
+            this.noNews(),
+            this.ejectNews()
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'button',
+            { className: 'btn btn-default btn-block',
+              onClick: function onClick() {
+                _this2.props.getNews(_this2.state.badgeNumber, _this2.props.allNews);
+                _this2.setState({ badgeNumber: Number(_this2.state.badgeNumber + 1) });
+                _this2.loadIndicator();
+              } },
+            'Load More',
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { className: 'fa fa-spinner fa-spin', style: { marginLeft: 5, marginBottom: 10 }, id: 'load-spinner' })
+          )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__UniversalComment__["a" /* default */], { comments: this.props.currentPieceComments }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__UniversalDelete__["a" /* default */], { paperType: this.state.deleteDetails.type, title: this.state.deleteDetails.title, paperID: this.state.deleteDetails.itemID })
@@ -79468,7 +79718,9 @@ function mapStateToProps(state) {
   return {
     allNews: state.newsFeed,
     authenticatedUser: state.authUser,
-    currentPieceComments: state.currentPieceComments
+    currentPieceComments: state.currentPieceComments,
+    textNews: state.textNews,
+    picNews: state.picNews
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -79476,6 +79728,8 @@ function mapDispatchToProps(dispatch) {
     picLikeFunction: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].picLikeAction,
     newLikeFunction: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].newLikeAction,
     getNews: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getNewsAction,
+    getPicNews: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getLatestPicNewsAction,
+    getTextNews: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getLatestTextNewsAction,
     getCommentsForPiece: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getCommentsForPieceAction,
     getRelations: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getRelationsAction
   }, dispatch);
@@ -80006,18 +80260,22 @@ var UniversalDelete = function (_Component) {
 
 
 var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReducers */])({
-  textPieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["g" /* userPiecesReducer */],
-  picturePieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["f" /* userPicturePiecesReducer */],
+  textPieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["j" /* userPiecesReducer */],
+  picturePieces: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["i" /* userPicturePiecesReducer */],
   authUser: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["b" /* authenticatedUserReducer */],
-  authUserRelations: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["h" /* userRelationsReducer */],
+  authUserRelations: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["k" /* userRelationsReducer */],
   menuItems: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["b" /* saveMenuItemsReducer */],
   notification: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["a" /* notifierReducer */],
   newsFeed: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["d" /* newsFeedReducer */],
+  picNews: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["f" /* picNewsFeedReducer */],
+  textNews: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["g" /* textNewsFeedReducer */],
   token: __WEBPACK_IMPORTED_MODULE_2__application_reducer__["c" /* tokenReducer */],
   allCourses: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["a" /* allCoursesReducer */],
   currentPieceComments: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["c" /* currentCommentReducer */],
   pdfNews: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["e" /* pdfNewsReducer */],
-  userSettings: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["i" /* userSettingsReducer */]
+  userSettings: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["l" /* userSettingsReducer */],
+  userPdfs: __WEBPACK_IMPORTED_MODULE_1__users_reducer__["h" /* userPdfPiecesReducer */]
+
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (allReducers);
@@ -80027,16 +80285,62 @@ var allReducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["c" /* combineReduc
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return userSettingsReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return textNewsFeedReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return picNewsFeedReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return userPdfPiecesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return userSettingsReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return pdfNewsReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return userRelationsReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return userRelationsReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return currentCommentReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return allCoursesReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return newsFeedReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return userPicturePiecesReducer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return userPiecesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return userPicturePiecesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return userPiecesReducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return authenticatedUserReducer; });
 
+
+var textNewsFeedReducer = function textNewsFeedReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/LOAD_TEXT_NEWS":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
+var picNewsFeedReducer = function picNewsFeedReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/LOAD_PIC_NEWS":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
+var userPdfPiecesReducer = function userPdfPiecesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "user/LOAD_PDF_PIECES":
+      return action.payload;
+      break;
+
+    default:
+      break;
+  }
+  return state;
+};
 
 var userSettingsReducer = function userSettingsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
