@@ -4,6 +4,28 @@ import { initialState } from './../reducers/dummy';
 
 
 
+export const getMorePicNewsAction =(nextPageUrl,oldNews) =>{
+  return dispatch =>{
+     $.ajax({method:'get',url:nextPageUrl})
+    .done(function(response){
+      let combine = [...response.data,...oldNews]; 
+      let newResponse = { ...response, data:combine};
+      dispatch(loadPicNewsPieces(newResponse));
+    });
+  }
+}
+export const getMoreTextNewsAction =(nextPageUrl,oldNews) =>{
+  return dispatch =>{
+     $.ajax({method:'get',url:nextPageUrl})
+    .done(function(response){
+      let combine = [...response.data,...oldNews]; 
+      let newResponse = { ...response, data:combine};
+      dispatch(loadTextNewsPieces(newResponse));
+      console.log("I am in the root carnal")
+    });
+  }
+}
+
 
 export const paginatorPdfValuesAction = (data) => {
   return dispatch => {

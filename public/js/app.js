@@ -22772,44 +22772,46 @@ var SnackBar = function (_React$Component) {
 
 
 var appActions = {
-  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["B" /* saveProfileEditsAction */],
-  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["D" /* test */],
+  saveProfileEditsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["D" /* saveProfileEditsAction */],
+  test: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["F" /* test */],
   deletePicturePieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["d" /* deletePicturePieceAction */],
   editPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["e" /* editPaperAction */],
-  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* newPicPieceAction */],
-  getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getPicPiecesAction */],
-  getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* getTokenAction */],
-  getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* getUserPiecesAction */],
+  newPicPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* newPicPieceAction */],
+  getPicPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["p" /* getPicPiecesAction */],
+  getTokenAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["r" /* getTokenAction */],
+  getUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* getUserPiecesAction */],
   fetchUserAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["f" /* fetchUserAction */],
-  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["t" /* loadUserPiecesAction */],
+  loadUserPiecesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["v" /* loadUserPiecesAction */],
   createNewPaperAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["a" /* createNewPaperAction */],
-  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["A" /* saveMenuToRemoteAction */],
+  saveMenuToRemoteAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["C" /* saveMenuToRemoteAction */],
   deletePaperPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["c" /* deletePaperPieceAction */],
-  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getNewsAction */],
+  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getNewsAction */],
   getAllCoursesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["g" /* getAllCoursesAction */],
-  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["y" /* paginatorTextValuesAction */],
-  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["x" /* paginatorPicValuesAction */],
-  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getRelationsAction */],
-  getPdfNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getPdfNewsAction */],
+  paginatorTextValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["A" /* paginatorTextValuesAction */],
+  paginatorPicValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["z" /* paginatorPicValuesAction */],
+  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* getRelationsAction */],
+  getPdfNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getPdfNewsAction */],
   getMorePDFNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["k" /* getMorePDFNewsAction */],
   deletePDFAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["b" /* deletePDFAction */],
-  getUserSettingsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* getUserSettingsAction */],
-  setProfilePictureAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["C" /* setProfilePictureAction */],
-  getUserPdfAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* getUserPdfAction */],
-  paginatorPdfValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* paginatorPdfValuesAction */]
+  getUserSettingsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* getUserSettingsAction */],
+  setProfilePictureAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["E" /* setProfilePictureAction */],
+  getUserPdfAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["s" /* getUserPdfAction */],
+  paginatorPdfValuesAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["y" /* paginatorPdfValuesAction */]
 
 };
 var likeActions = {
-  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* newLikeAction */]
+  sendNewLike: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* newLikeAction */]
 };
 var gistActions = {
-  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["z" /* picLikeAction */],
-  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["u" /* newLikeAction */],
-  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getNewsAction */],
+  picLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["B" /* picLikeAction */],
+  newLikeAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["w" /* newLikeAction */],
+  getNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["n" /* getNewsAction */],
   getCommentsForPieceAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["h" /* getCommentsForPieceAction */],
-  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["o" /* getRelationsAction */],
+  getRelationsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["q" /* getRelationsAction */],
   getLatestPicNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["i" /* getLatestPicNewsAction */],
-  getLatestTextNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getLatestTextNewsAction */]
+  getLatestTextNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["j" /* getLatestTextNewsAction */],
+  getMorePicNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["l" /* getMorePicNewsAction */],
+  getMoreTextNewsAction: __WEBPACK_IMPORTED_MODULE_0__actions_root_action__["m" /* getMoreTextNewsAction */]
 };
 
 /***/ }),
@@ -40006,37 +40008,39 @@ var styles = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return paginatorPdfValuesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getUserPdfAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getMorePicNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getMoreTextNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return paginatorPdfValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return getUserPdfAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return getLatestTextNewsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return getLatestPicNewsAction; });
 /* unused harmony export loadPicNewsPieces */
 /* unused harmony export loadTextNewsPieces */
 /* unused harmony export loadUserPdfPieces */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return setProfilePictureAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return setProfilePictureAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return deletePDFAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return getUserSettingsAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return getPdfNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return getUserSettingsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getPdfNewsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return getMorePDFNewsAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return getRelationsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return getRelationsAction; });
 /* unused harmony export loadRelations */
 /* unused harmony export loadUserSettings */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return getCommentsForPieceAction; });
 /* unused harmony export loadCurrentComment */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return picLikeAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return newLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return picLikeAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return newLikeAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getAllCoursesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return getNewsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getNewsAction; });
 /* unused harmony export loadNewsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return saveProfileEditsAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return saveProfileEditsAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return deletePicturePieceAction; });
 /* unused harmony export deleteDBPic */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return newPicPieceAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return getPicPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return paginatorPicValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return newPicPieceAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getPicPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return paginatorPicValuesAction; });
 /* unused harmony export loadPicsPiecesAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return test; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return getTokenAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return test; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return getTokenAction; });
 /* unused harmony export editPaper */
 /* unused harmony export addPaper */
 /* unused harmony export delPaper */
@@ -40044,13 +40048,13 @@ var styles = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return deletePaperPieceAction; });
 /* unused harmony export dBEditPaper */
 /* unused harmony export dBDelete */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return saveMenuToRemoteAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return saveMenuToRemoteAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createNewPaperAction; });
 /* unused harmony export dBSaveAction */
 /* unused harmony export notifierAction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return paginatorTextValuesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return getUserPiecesAction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return loadUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return paginatorTextValuesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return getUserPiecesAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return loadUserPiecesAction; });
 /* unused harmony export saveAuthenticatedUserAction */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return fetchUserAction; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(15);
@@ -40062,6 +40066,26 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
+
+var getMorePicNewsAction = function getMorePicNewsAction(nextPageUrl, oldNews) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: nextPageUrl }).done(function (response) {
+      var combine = [].concat(_toConsumableArray(response.data), _toConsumableArray(oldNews));
+      var newResponse = _extends({}, response, { data: combine });
+      dispatch(loadPicNewsPieces(newResponse));
+    });
+  };
+};
+var getMoreTextNewsAction = function getMoreTextNewsAction(nextPageUrl, oldNews) {
+  return function (dispatch) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.ajax({ method: 'get', url: nextPageUrl }).done(function (response) {
+      var combine = [].concat(_toConsumableArray(response.data), _toConsumableArray(oldNews));
+      var newResponse = _extends({}, response, { data: combine });
+      dispatch(loadTextNewsPieces(newResponse));
+      console.log("I am in the root carnal");
+    });
+  };
+};
 
 var paginatorPdfValuesAction = function paginatorPdfValuesAction(data) {
   return function (dispatch) {
@@ -79190,7 +79214,7 @@ var Gist = function (_Component) {
               _this2.goToSection("all-types-container");
             },
             style: { zIndex: 100, background: "#00d0ff", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 226, right: 0 } },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-camera", style: { marginRight: 9 } }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-refresh", style: { marginRight: 9 } }),
           "All"
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -79201,6 +79225,33 @@ var Gist = function (_Component) {
             },
             style: { zIndex: 100, background: "royalblue", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 100, right: 0 } },
           "PDF Gist"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key",
+            onClick: function onClick() {
+              _this2.goToSection("text-type-container");
+            },
+            style: { zIndex: 100, background: "#4e3a1c", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 142, right: 0 } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-file-text" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key",
+            onClick: function onClick() {
+              _this2.goToSection("pic-type-container");
+            },
+            style: { zIndex: 100, background: "orange", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 184, right: 0 } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-camera" })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: " btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key",
+            onClick: function onClick() {
+              _this2.goToSection("all-types-container");
+            },
+            style: { zIndex: 100, background: "#00d0ff", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 226, right: 0 } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: "fa fa-refresh" })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           "div",
@@ -79651,6 +79702,14 @@ var NewsContainer = function (_Component) {
       $("load-spinner").attr('data-old-news', this.state.news);
     }
   }, {
+    key: 'loadMoreTexts',
+    value: function loadMoreTexts() {
+      if (this.props.textNews.next_page_url !== null) {
+        this.props.moreTexts(this.props.textNews.next_page_url, this.props.textNews.data);
+        console.log("I am in gist");
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -79674,6 +79733,14 @@ var NewsContainer = function (_Component) {
             'ul',
             { style: styles.ulFix },
             this.ejectTexts()
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'button',
+            { className: 'btn btn-default btn-block', style: { marginTop: 10 },
+              onClick: function onClick() {
+                _this2.loadMoreTexts();
+              } },
+            'Load More'
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -79731,7 +79798,9 @@ function mapDispatchToProps(dispatch) {
     getPicNews: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getLatestPicNewsAction,
     getTextNews: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getLatestTextNewsAction,
     getCommentsForPiece: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getCommentsForPieceAction,
-    getRelations: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getRelationsAction
+    getRelations: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getRelationsAction,
+    moreTexts: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getMoreTextNewsAction,
+    morePics: __WEBPACK_IMPORTED_MODULE_9__imports_actions__["b" /* gistActions */].getMorePicNewsAction
   }, dispatch);
 }
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_7_react_redux__["b" /* connect */])(mapStateToProps, mapDispatchToProps)(NewsContainer));

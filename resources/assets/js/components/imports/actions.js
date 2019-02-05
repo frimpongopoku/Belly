@@ -29,6 +29,8 @@ import {
   getUserPdfAction,
   getLatestPicNewsAction, 
   getLatestTextNewsAction,
+  getMoreTextNewsAction, 
+  getMorePicNewsAction,
 
 } from './../../actions/root-action';
 
@@ -74,4 +76,6 @@ export const gistActions ={
   getRelationsAction:getRelationsAction,
   getLatestPicNewsAction:getLatestPicNewsAction ,
   getLatestTextNewsAction:getLatestTextNewsAction,
+  getMorePicNewsAction:getMorePicNewsAction, 
+  getMoreTextNewsAction: getMoreTextNewsAction,
 };

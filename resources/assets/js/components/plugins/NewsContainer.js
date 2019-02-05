@@ -347,6 +347,12 @@ class NewsContainer extends Component{
     $("load-spinner").attr('data-old-news',this.state.news);
   }
 
+  loadMoreTexts(){
+    if(this.props.textNews.next_page_url !== null){
+      this.props.moreTexts(this.props.textNews.next_page_url, this.props.textNews.data);
+      console.log("I am in gist")
+    }
+  }
   render() {
     return (
       <div id="app-news-container">
@@ -359,6 +365,10 @@ class NewsContainer extends Component{
           <ul style ={styles.ulFix}> 
             {this.ejectTexts()}
           </ul>
+          <button className = "btn btn-default btn-block" style={{marginTop:10}}
+            onClick ={()=>{this.loadMoreTexts()}}>
+            Load More 
+          </button>
         </div>
         <div id="all-types-container">
           <ul style = {styles.ulFix}>
@@ -409,6 +419,8 @@ function mapDispatchToProps(dispatch){
     getTextNews: gistActions.getLatestTextNewsAction,
     getCommentsForPiece:gistActions.getCommentsForPieceAction, 
     getRelations:gistActions.getRelationsAction,
+    moreTexts: gistActions.getMoreTextNewsAction, 
+    morePics: gistActions.getMorePicNewsAction
   },dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);

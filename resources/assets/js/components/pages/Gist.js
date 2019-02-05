@@ -67,13 +67,31 @@ class Gist extends Component {
         <button className =" btn btn-primary z-depth-2 zero-border mobile-vanish-key tablet-vanish-key pc-appearance-key" 
         onClick = {()=>{this.goToSection("all-types-container")}}
           style={{ zIndex: 100, background:"#00d0ff",borderTopLeftRadius:50, borderBottomLeftRadius:50,position:"fixed", top:226, right:0}}>
-            <i className="fa fa-camera" style={{ marginRight: 9 }}></i>All
+            <i className="fa fa-refresh" style={{ marginRight: 9 }}></i>All
         </button>
+          {/* ---------------- MOBILE SECTION BUTTONS ------------ */}
           <button className=" btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key"
             onClick={() => { this.goPDFNews("mobile") }}
             style={{ zIndex: 100, background: "royalblue", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 100, right: 0 }}>
             PDF Gist
+            
         </button>
+        <button className=" btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key"
+          onClick={() => { this.goToSection("text-type-container") }}
+          style={{ zIndex: 100, background: "#4e3a1c", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 142, right: 0 }}>
+          <i className="fa fa-file-text"></i>
+        </button>
+        <button className=" btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key"
+          onClick={() => { this.goToSection("pic-type-container") }}
+          style={{ zIndex: 100, background: "orange", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 184, right: 0 }}>
+          <i className="fa fa-camera" ></i>
+        </button>
+        <button className=" btn btn-primary z-depth-2 zero-border mobile-appearance-key tablet-appearance-key pc-vanish-key"
+          onClick={() => { this.goToSection("all-types-container") }}
+          style={{ zIndex: 100, background: "#00d0ff", borderTopLeftRadius: 50, borderBottomLeftRadius: 50, position: "fixed", top: 226, right: 0 }}>
+          <i className="fa fa-refresh"></i>
+        </button>
+
         <div className = 'container'> 
           <div className = 'row'>
             <div className='col-md-10 col-lg-10 col-lg-offset-1 col-md-offset-1 col-sm-12 col-xs-12  '> 
