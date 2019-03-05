@@ -1,5 +1,6 @@
 import React from 'react'; 
 import PropTypes from 'prop-types';
+import * as moment from 'moment';
 class Piece extends React.Component{
 
   sendPieceInformation(){
@@ -9,7 +10,9 @@ class Piece extends React.Component{
       course:this.props.course, 
       fileType: this.props.fileType, 
       body:this.props.body,
-      ID: this.props.ID
+      ID: this.props.ID,
+      likes_count: this.props.likes_count,
+      comments_count:this.props.comments_count
     };
     if (this.props.indicator !== this.props.ID){
       this.props.currentTextStateFunction();
@@ -25,10 +28,10 @@ class Piece extends React.Component{
  
 	render(){
 		return (
-			<div>
-				<div className ='col-md-4' style = { styles.pieceFinish } >
+			<div> 
+				<div className ='col-md-4 col-sm-6 col-xs-12' style = { styles.pieceFinish } >
           <div className = ''>
-            <div className ='my-card z-depth-1-half' 
+            <div className ='my-card z-depth-1-half mobile-l-r-margin' 
               onClick = {()=>{this.sendPieceInformation()}} 
               data-toggle='modal' 
               data-target="#universal-text-modal"> 
@@ -39,13 +42,16 @@ class Piece extends React.Component{
                 </p>
               </center>
                 <p><b>Name:</b> {this.props.owner}</p>
-                <p><b>Course:</b> {this.props.course}</p>
-                <p><b>File-type:</b> <span 
-                className = 'label label-danger z-depth-1 rounded red'>{this.props.fileType} </span></p>
+                <p><b>Course:</b> {this.props.subcourse}</p>
+                <p style={{color:"#ccc"}}><b>Audience:</b> <span style={{fontSize:'small',fontFamily:"sans-serif"}}
+                >{this.props.paper_term} </span></p>
             </div>
-            <div className='my-card-footer z-depth-1-half clearfix' 
+            <div className=' mobile-l-r-margin my-card-footer z-depth-1-half clearfix' 
               style={{borderBottomRightRadius:10, borderBottomLeftRadius:10}}>
-              <small className = 'angel'><i className = 'fa fa-timer'></i> 3 months ago</small>
+
+              <small className ="pull-right"><a target="_blank" href={'/paper-view/MBZyU9WoGvD3M3OcszZ8skHvoPputaKIhq9uPmW6ZqImU8iwby1xOdirul1w2gGEgo2n2kZGRGjnVHaELEC1flWfpkOC1fM87KnTzlGW2Ah3BcoCOc9nlcB4cPNTcz8XK6SpztbVJk0zDwCpLparTW/'+this.props.ID} style={{color:"orange"}}><i className ="fa fa-forward"></i></a></small>
+              <small className = 'angel number-font'><i className = 'fa fa-timer'></i> {moment(this.props.created_at).format("LL")}</small>
+              <small style={{marginLeft:5,padding:5,fontFamily: 'sans-serif',color:'#FFEB3B'}}>{this.props.paper_term !==null? this.props.paper_term !=="" ? this.props.paper_term.split('-')[1] :'Y1FS':'Y1FS'}</small>
             </div>
           </div>
         </div>

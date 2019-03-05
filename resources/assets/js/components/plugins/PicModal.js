@@ -125,7 +125,7 @@ class PicModal extends React.Component{
                                 <a href='#' className='action-btn font-small-ish'><i className='fa fa-hand-rock-o'></i> 2 </a>
                                 <a href='#' className='name-badge-n my-depth-2 font-small-ish modal-s-i-c'>{this.props.owner}</a>
                           </div>
-                          <button className=' close' data-dismiss='modal' ></button>
+                          
                       </div>
                   </div>
               </div>

@@ -16,8 +16,11 @@ Route::get('/', function () {
 });
  
 Auth::routes();
+
+
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::group(["prefix"=>"me", "as"=>"user","midddleware"=>"auth"],function(){
 	Route::get('get-auth-user','Main@getAuthUser');
 	Route::get('save-text-piece',['as'=>'textpiece.save','uses'=>'Main@saveTextPiece']);
@@ -49,7 +52,61 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('get-pdf-news/{point}','Main@getPdfNews');
   Route::get('delete-pdf/{id}',"Main@deletePDF");
   Route::get('get-settings',"Main@getUserSettings");
+  Route::get('change-profile','Main@setProfilePicture');
+  Route::get('get-comment-fragment/{id}','Main@returnCommentFragment');
+  Route::get('get-pic-comment-fragment/{id}','Main@returnPicCommentFragment');
+  Route::get('get-user-pdfs','Main@getUserPdfs');
+  Route::get('get-latest-pic-news',"Main@getLatestPicNews");
+  Route::get('get-latest-text-news',"Main@getLatestTextNews");
+  Route::get('give-me-pdf/{id}',"Main@createOurPdf");
+  Route::get('show-pdf-structure',"Main@showPDFgenerate");
+  Route::get('profile',"Main@showDashboardProfile");
+  Route::get('refresh-news','Main@refreshNews');
+  Route::get('help','Main@getHelp')->name('help');
+  Route::get('5c66032865819/activate-account','HomeController@showActivationPage')->name('activation.show'); 
+  Route::get('report-this-{type}-juD7ir-{id}','Main@showReportPage');
+  Route::get('send-report','Main@sendReport');
+  Route::get('save-progress','Main@saveProgress');
+  Route::get('record-viewage/{piece_id}/{type}','Main@newViewage');
+  Route::get('get-rankings','Main@getRankings');
+  Route::get('set-comment-notification/{switch}','Main@setCommentNotificationStatus');
+  Route::get('connection-test', function() {
+    return "TRUE";
+  });
+
 });
+
+  // ==============================NO MIDDLE WARE ZONE=========================
+ Route::get('activate-me/iTUxD-{id}/{name}',"HomeController@activateLink");
+ Route::get('show-success',function(){
+     return view('auth.activation-success');
+ });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('do-search','SearchController@doSearch');
@@ -57,5 +114,6 @@ Route::get('dummy','Main@dummy');
 Route::post('check','UploadController@check');
 Route::post('up-test',"UploadController@upTest");
 Route::get('testing',function(){
-	echo uniqid();
+  $stripped = str_replace(' ','-',"Dude where do you thing you are goind? I am the shit!");
+  return $stripped;
 });

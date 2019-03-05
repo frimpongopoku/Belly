@@ -51,7 +51,7 @@
       <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 dark-text" style="margin-bottom:10px;">
         <center>
           <h4 class="dark-text"><b>{{$user->name}}'s PROFILE</b></h4>
-          <img src="/imgs/avatars/female-avatar.png" class="p-pic" />
+          <img src="{{asset($user->settings->profile_picture)}}" class="p-pic" />
           <h3>{{$user->name}}</h3> 
             <h5>{{$user->school}}</h5>
             <h4 class="number-font">{{$user->reputation->points}}+ rep</h4>

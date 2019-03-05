@@ -4,27 +4,30 @@ import './../../app.css';
 class SideNav extends Component {
     constructor(props){
         super(props);
+        this.hostName = window.location.host;
         this.menuItems = [
             {
-                fa:'fa-globe',
+              fa: 'fa-dashboard',
+              name: 'dashboard'
+            },
+            {
+                fa:'fa-newspaper-o',
                 name: 'gist'
             },
             {
-                fa:'fa-dashboard', 
-                name:'dashboard'
+              fa: 'fa-file-pdf-o',
+              name: 'pdfs'
+            },
+            {
+              fa: 'fa-plus',
+              name: 'create-page'
             },
             { 
                 fa:'fa-user',
                 name:'profile'
             },
-            {
-                fa:'fa-plus', 
-                name:'create-page'
-            },
-            {
-              fa:'fa-file-pdf-o',
-              name:'pdfs'
-            },
+           
+            
         ];
         this.logout = this.logout.bind(this);
     }
@@ -39,15 +42,17 @@ class SideNav extends Component {
     }
     capitalize(theString){
         return theString.charAt(0).toUpperCase() + theString.slice(1)
-    }
+    } 
+    
+
     spillMenu(){
       return this.menuItems.map((option,index) => {
         return (
-          <li className={option.name === 'dashboard' ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } 
+          <li className={option.name === $('#home').attr('data-session-page') ? ' side-li side-active ' : 'side-li '} id = { option.name + '-button' } 
           onClick={() => {
               this.switchPage(option.name)
-            }} key = { index }> <i className={ 'fa  '+ option.fa }></i>
-            { " "+ this.capitalize(option.name) }
+            }} key = { index }> <i className={ 'fa margin-r-10  '+ option.fa }></i>
+            { " "+ this.capitalize(option.name =="create-page"?"create":option.name) }
           </li>
         );
        });
@@ -62,7 +67,7 @@ class SideNav extends Component {
       else{
         $('#' + currentPage).fadeOut(300, function(){
             $('#' + choicePage).fadeIn(200, function(){
-              //if the page the user is attempting to enter is the news page, dont update the box
+              //if the page the user its attempting to enter is the news page, dont update the box
                 if(choicePage ==='gist'){}
                 else{
                   $('#current-page-box').val(choicePage);
@@ -82,14 +87,15 @@ class SideNav extends Component {
       return (
         <div>
                 {/* Hidden current page ID textbox */}
-           <input type='hidden' id ='current-page-box' value='dashboard' />
+          <input type='hidden' id='current-page-box' value={$('#home').attr('data-session-page')} />
           <div className = 'side-nav-container z-depth-2'> 
           <div className = 'side-nav-profile-box'> 
             <center>
-              <img src='/imgs/avatars/nose-mask-avatar.jpg'className='side-profile-pic' />
-              <h4 style={{'margin':'3px','cursor':'pointer'}}>
+              <img src={this.props.settings.profile_picture} className='side-profile-pic' />
+              <h4 style={{'margin':'3px','cursor':'pointer',marginTop:10}}>
                   { this.props.user ===null ? '...' : this.props.user.name }
-               <i className = 'fa fa-caret-down awesome-margin'></i></h4>
+                      {/* <i className = 'fa fa-caret-down awesome-margin'></i> */}
+              </h4>
             </center>
           </div>
           <div style={{background:'#282828',padding:7,color:'orange'}}> 
@@ -103,12 +109,22 @@ class SideNav extends Component {
           </div>
           <div> 
             <ul className = 'side-ul'> 
+              <li className = "side-li mobile-appearance-key tablet-vanish-key pc-vanish-key" onClick ={()=>{$('#side-nav-super-key').css({display:'none'})}}> <center><i style={{marginRight:10}}className="fa fa-eye-slash"></i>Hide</center></li>
                 {/* <li className = 'side-li'>
                     <i className = 'fa fa-bell' style={{ color:'lime' }}></i> notification <i className ='badge'> 3 </i> 
                 </li> */}
               { this.spillMenu() }
+                <li className=' side-li' data-toggle="modal" data-target="#settings-modal" >
+                  <i className='fa fa-cog margin-r-10' style={{ }}></i> Settings
+                </li>
+                <li className=' side-li' onClick={() => { this.props.curtainDown() }} >
+                  <i className='fa fa-trophy margin-r-10' style={{ color: '#ff9800' }}></i> Leather Board
+                </li>
+                <li className=' side-li' onClick={() => { window.location="/help" }} >
+                  <i className='fa fa-question-circle margin-r-10' style={{ color: '#14c514' }}></i> Help
+              </li>
               <li className = ' side-li' onClick = {()=>{ this.logout()}} >
-                  <i className = 'fa fa-sign-out' style={{ color:'red' }}></i> Logout 
+                  <i className = 'fa fa-sign-out margin-r-10' style={{ color:'red' }}></i> Logout 
               </li>
             </ul>
           </div>

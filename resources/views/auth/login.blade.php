@@ -3,11 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+        <div class="col-md-8 col-md-offset-2 " style="padding-top:12%;">
+            <div class="panel panel-default z-depth-2 panel-finish" style="padding:30px;">
+                  {{--  <div class="panel-heading">Login</div>  --}}
+                  <center>
+                     <small style="color:#ccc;font-weight:500;">A D R O P I</small>
+                    <h1  style="margin:40px;margin-top:0px;padding-top:2px;color:black;font-weight:900;font-size:-webkit-xxx-large ; cursor:pointer;" id="the-ico">Q<span style="color:crimson">B</span><i class="tint-slow fa fa-tint" style="font-size:22px; position:relative"></i></h1>
+                   
+                  </center>
 
-                <div class="panel-body">
+                <div class="panel-body" >
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -51,11 +56,12 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                              <a href="/register" class="btn btn-default">Sign Up</a>
+                                <button type="submit" class="btn login-button">
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class=" text text-default" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>
@@ -66,4 +72,13 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+  <script> 
+    $(document).ready(function(){
+      $('#the-ico').click(function(){
+       window.location = "/";
+      })
+    })
+  </script>
 @endsection

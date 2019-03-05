@@ -8,6 +8,7 @@ import UniversalDelete from "./UniversalDelete";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { gistActions} from "./../imports/actions";
+import * as moment from 'moment';
 
 
 
@@ -28,6 +29,8 @@ class NewsContainer extends Component{
       badgeNumber:0,
       next_page_url:'/me/get-news/',
       currentPieceCommentsViewed:null,
+      stillMoreTexts:null,
+      current_date:new Date().toISOString(),
       deleteDetails:{
         title:null, 
         itemID:null,
@@ -35,55 +38,127 @@ class NewsContainer extends Component{
       }
     }
   }
-  insertDelDetails(title,itemID,type){
-    console.log("dfsdfsdf" ,title)
-    console.log("aaaa",itemID)
-    console.log("mmsdjf",type);
+  checkForMore(type){
     
+    if(type ==="texts"){
+      if(this.props.textNews !==null){
+        if(this.props.textNews.next_page_url === null){
+          this.setState({stillMoreTexts:false})
+          console.log("i have the state to false")
+        }
+        else{
+          this.setState({stillMoreTexts:true})
+          console.log("I have set the state to true")
+        }
+      }
+    }
+  }
+  showLoadTextButton(){
+    if(this.state.stillMoreTexts === true){
+      return (
+         <button className = "btn btn-default btn-block" style={{marginTop:10}}
+            onClick ={()=>{this.loadMoreTexts()}}>
+            Load More 
+          </button>
+      );
+    }
+  }
+  insertDelDetails(title,itemID,type){
     this.setState({deleteDetails:{title:title,itemID:itemID,type:type}});
+  }
+  
+  componentWillMount(){
+    this.props.getPicNews(); 
+    this.props.getTextNews(); 
+    this.checkForMore('texts');
+
   }
   componentDidMount() {
     this.props.getNews(0,this.props.allNews);
     this.setState({badgeNumber: Number(this.state.badgeNumber+1)}); 
     this.spinnerTrick();
+    
+     
+    //this.reloadAllImages();
   };
  
-  ejectPictures(){
-   let thisClass =this; 
-   if(this.props.allNews.active !==false){
-     return this.props.allNews.pics.map(function(item,index){
-       var num = Math.round(Math.random(1000000) * 100000000000);
-       var loopIndex = "news-pic-" + num.toString();
-       return (
-         <li key={loopIndex}>
-           <ImageCard
-             id={item.id}
-             details={{ bcolor: 'green', owner: item.user }}
-             description={item.description}
-             user={thisClass.props.authenticatedUser}
-             course={item.course}
-             image_link={item.picture_link}
-             created_at={item.created_at}
-             likesArray={item.likes}
-            likes={item.likes.length}
-            comments={item.comments.length}
-             showComments={thisClass.create}
-             course={item.course}
-             coins={Math.round(Math.random(50000) * 1000)}
-             school={item.user.school}
-             likeFunction={thisClass.props.picLikeFunction}
-             allNews={thisClass.props.allNews}
-             school={item.user.school}
-           />
-           
-         </li>
-       );
-     })
-   }
+  ejectTexts(){
+    let thisClass = this; 
+    if(this.props.textNews !== null){
+      if(this.props.textNews.data !==null){
+        return this.props.textNews.data.map(function(item,index){
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "news-ind-pic-" + num.toString();
+          return(
+            <li key={loopIndex}>
+              <TextCard
+                type={item.type}
+                details={{ bcolor: 'black', owner: item.user }}
+                id={item.id}
+                user={thisClass.props.authenticatedUser}
+                title={item.title}
+                body={item.body}
+                created_at={item.created_at}
+                likesArray={item.likes}
+                likes={item.likes.length}
+                // commentsArray={item.comments}
+                paper_term = { item.paper_term}
+                commentsCount={item.comments_count}
+                showComments={thisClass.create}
+                course={item.course}
+                subcourse={item.subcourse !==null? item.subcourse.name:''}
+                coins={Math.round(Math.random(50000) * 1000)}
+                school={item.user.school}
+                newLikeFunction={thisClass.props.newLikeFunction}
+                allNews={thisClass.props.allNews}
+                school={item.user.school}
+                insertDetailsFunction={thisClass.insertDelDetails}
+                textNewsData = {thisClass.props.textNews}
+              />
+            </li>
+          );
+        })
+      }
+    }
   }
-
+  ejectPictures(){
+    let thisClass = this; 
+    if(this.props.picNews !==null ){
+      if(this.props.picNews.data !==null){
+        return this.props.picNews.data.map(function(item,index){
+          var num = Math.round(Math.random(1000000) * 100000000000);
+          var loopIndex = "news-ind-pic-" + num.toString();
+          return(
+            <li key={loopIndex}>
+              <ImageCard
+                id={item.id}
+                details={{ bcolor: 'green', owner: item.user }}
+                description={item.description}
+                user={thisClass.props.authenticatedUser}
+                course={item.course}
+                subcourse={item.subcourse.name}
+                image_link={item.reduced_path}
+                created_at={item.created_at}
+                likesArray={item.likes}
+                likes={item.likes.length}
+                comments={item.comments_count}
+                showComments={thisClass.create}
+                coins={Math.round(Math.random(50000) * 1000)}
+                school={item.user.school}
+                likeFunction={thisClass.props.picLikeFunction}
+                allNews={thisClass.props.allNews}
+                school={item.user.school}
+                picNewsData={thisClass.props.picNews}
+                image_type={item.type}
+                paper_term = {item.paper_term}
+              />
+            </li>
+          );
+        });
+      }
+    }
+  }
   ejectNews(){
-    console.log("I am the newss feeed>>>>", this.props.allNews);
     let thisClass = this;
     if(this.props.allNews !== null){
       return this.props.allNews.news.map(function (item, index) {
@@ -101,16 +176,19 @@ class NewsContainer extends Component{
               created_at={item.created_at}
               likesArray={item.likes}
               likes={item.likes.length}
-              commentsArray={item.comments}
-              commentsCount={item.comments.length}
+             // commentsArray={item.comments}
+               paper_term = {item.paper_term}
+              commentsCount={item.comments_count}
               showComments={thisClass.create}
               course={item.course}
+             subcourse={item.subcourse !== null ? item.subcourse.name : ''}
               coins={Math.round(Math.random(50000) * 1000)}
               school={item.user.school}
               newLikeFunction={thisClass.props.newLikeFunction}
               allNews={thisClass.props.allNews}
               school={item.user.school}
               insertDetailsFunction={thisClass.insertDelDetails}
+              textNewsData={thisClass.props.textNews}
             />
           </li>)
         }
@@ -122,61 +200,29 @@ class NewsContainer extends Component{
               description={item.description}
               user={thisClass.props.authenticatedUser}
               course={item.course}
-              image_link={item.picture_link}
+              subcourse = {item.subcourse.name}
+              image_link={item.reduced_path}
               created_at={item.created_at}
               likesArray={item.likes}
               likes={item.likes.length}
-              comments={item.comments.length}
+              comments={item.comments_count}
               showComments={thisClass.create}
-              course={item.course}
               coins={Math.round(Math.random(50000) * 1000)}
               school={item.user.school}
               likeFunction={thisClass.props.picLikeFunction}
               allNews={thisClass.props.allNews}
               school={item.user.school}
+              picNewsData = { thisClass.props.picNews}
+              image_type = {item.type}
+              paper_term = { item.paper_term}
             />
-
           </li>)
         }
+      });
+    }
+  }
 
-      });
-    }
-  }
-  ejectTexts(){
-    let thisClass= this;
-    if(this.props.allNews.active !==false){
-      return this.props.allNews.texts.map(function(item,index){
-        var num = Math.round(Math.random(1000000) *100000000000);
-        var loopIndex = "news-text-"+num.toString();
-        return (
-          <li key={loopIndex}>
-            <TextCard
-              type={item.type}
-              details={{ bcolor: 'black', owner: item.user }}
-              id={item.id}
-              user={thisClass.props.authenticatedUser}
-              title={item.title}
-              body={item.body}
-              created_at={item.created_at}
-              likesArray = {item.likes}
-              likes={item.likes.length}
-              commentsArray = {item.comments}
-              commentsCount={ item.comments.length }
-              showComments = { thisClass.create}
-              course={item.course}
-              coins={Math.round(Math.random(50000) * 1000)}
-              school={item.user.school}
-              newLikeFunction={thisClass.props.newLikeFunction}
-              allNews= { thisClass.props.allNews}
-              school = { item.user.school}
-              insertDetailsFunction= { thisClass.insertDelDetails}
-            />
-            
-          </li>
-        );
-      });
-    }
-  }
+
 
   saveComment(piece_id,type,pieceTitle){
     //laravel save, and then recall createComment components
@@ -188,16 +234,20 @@ class NewsContainer extends Component{
       $.ajax({method:'get',url:'/me/save-comment/',data:dataTrain})
       .done(function(response){
         if(response ==="TRUE"){
-          thisClass.create(piece_id,type,pieceTitle);
           $('#comment-textbox').val("");
+          thisClass.props.getRelations();
+          
+          thisClass.setState({currentPieceCommentsViewed:null}) //unset the currently viewed piece value so that the comments can reload
+          thisClass.create(piece_id,type,pieceTitle);
+          
         }
         else{
-          alert('save impossible!');
+          alert('Could not save!');
         }
       });
     }
     else{
-      alert("Type something before you comment!")
+      alert("Please type something before you comment!")
     }
   }
 
@@ -211,20 +261,22 @@ class NewsContainer extends Component{
 
   backEndDelComment(id){
     $.ajax({method:'get',url:'/delete-comment/'+id})
-    .done(function(){
-
-    });
+    .done(function(){});
   }
   removeCommentItem(id){
     $("#"+id).fadeOut();
   }
-  createIndCommentDisplays(user,body,parent,userID,commentID){
+  createIndCommentDisplays(user,body,parent,userID,commentID,created_at){
     var thisClass = this;
     var hook = Math.round(Math.random() * 1000 ).toString()+'-hook';
+    var createdAt = document.createElement('small');
     let commentItem = document.createElement('div');
+    createdAt.className = " text text-primary number-font"; 
+    createdAt.style.margin = "0 7px";
+    createdAt.textContent = moment.duration(moment(this.state.current_date).diff(moment(created_at))).humanize() + " ago" ;
     commentItem.className = "js-comment-item";
     let commentItemText = document.createElement('small');
-    commentItemText.className = "comment-item-text rounded cursor";
+    commentItemText.className = "comment-item-text rounded cursor clearfix";
     commentItemText.id = hook;
     commentItem.style.marginBottom = "10px";
     let commentTitle = document.createElement('small');
@@ -238,7 +290,6 @@ class NewsContainer extends Component{
       delA.addEventListener('click',function(){
         thisClass.backEndDelComment(commentID);
         thisClass.removeCommentItem(hook);
-        console.log("I am the hookd::::: ",hook);
       });
       delA.style.color = "crimson"; 
       delSm.style.paddingLeft = "7px";
@@ -253,6 +304,7 @@ class NewsContainer extends Component{
     if (userID === this.props.authenticatedUser.id){
       commentItemText.appendChild(delSm);
     }
+    commentItemText.appendChild(createdAt);
     commentItemText.appendChild(bodyText);
     commentItem.appendChild(commentItemText);
     parent.appendChild(commentItem);
@@ -269,7 +321,7 @@ class NewsContainer extends Component{
     let commentContainer = document.createElement('div');
     commentContainer.id = "js-comment-container";
     commentsArray.forEach(function(comment){
-      thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer,comment.user.id,comment.id);
+      thisClass.createIndCommentDisplays(comment.user.name, comment.body, commentContainer,comment.user.id,comment.id,comment.created_at);
     });
     let footerButtonDiv = document.createElement('div');
     footerButtonDiv.className = "col-lg-2 col-md-2 col-sm-2 col-xs-2";
@@ -320,24 +372,105 @@ class NewsContainer extends Component{
     $("load-spinner").attr('data-old-news',this.state.news);
   }
 
-  render() {
-    return (
-      <div id="app-news-container">
-        <ul style = {styles.ulFix}>
-          {this.ejectNews()}
-        </ul>
-        <br />
-        <button className="btn btn-default btn-block"
+  loadMoreTexts(){
+    if(this.props.textNews.next_page_url !==null){  
+      this.props.moreTexts(this.props.textNews.next_page_url, this.props.textNews.data);
+    }
+    else{
+      $('.g-text-load-more-btn').fadeOut(); 
+    }
+  }
+  loadMorePics(){
+    if(this.props.picNews.next_page_url !==null){  
+      this.props.morePics(this.props.picNews.next_page_url, this.props.picNews.data);
+    }
+    else{
+      $('.g-pic-load-more-btn').fadeOut(); 
+    }
+  }
+
+  noNewsCard(){
+    if(this.props.allNews ===null){
+      return(
+        <div className="thumbnail" style={{ cursor:'pointer',padding: 15, background:'#00bcd4',color:'white',fontSize:'large'}}> 
+          <center>
+            <p><i className="fa fa-bullhorn" style={{margin:10}}></i> Be the first to create gists for your course</p>
+          </center>
+        </div>
+      );
+    }
+  }
+  noNews(){
+    if(this.props.allNews !==null){
+      return (
+        <button style={{marginTop:10}} className="btn btn-default btn-block"
           onClick={() => {
             this.props.getNews(this.state.badgeNumber, this.props.allNews);
-            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1)});
+            this.setState({ badgeNumber: Number(this.state.badgeNumber + 1) });
             this.loadIndicator();
           }}>
           Load More
-          <span className = "fa fa-spinner fa-spin" style={{marginLeft:5}}id="load-spinner"></span>
+            <span className="fa fa-spinner fa-spin" style={{ marginLeft: 5, marginBottom: 10 }} id="load-spinner"></span>
         </button>
-       
-       <button className = "btn btn-danger" onClick={()=>{console.log("I am the state of newsContainer: ",this.state)}}>modal</button>
+      );
+    }
+  }
+
+  noTextCard(){
+    if (this.props.allNews === null) {
+      return (
+        <div className="thumbnail" style={{ cursor: 'pointer', padding: 15, background: 'rgb(78, 58, 28)', color: 'white', fontSize: 'large' }}>
+          <center>
+            <p><i className="fa fa-bullhorn" style={{ margin: 10 }}></i> Be the first to create gists for your course</p>
+          </center>
+        </div>
+      );
+    }
+  }
+  noPictureCard(){
+    if (this.props.allNews === null) {
+      return (
+        <div className="thumbnail" style={{ cursor: 'pointer', padding: 15, background: 'orange', color: 'white', fontSize: 'large' }}>
+          <center>
+            <p><i className="fa fa-bullhorn" style={{ margin: 10 }}></i> Be the first to create gists for your course</p>
+          </center>
+        </div>
+      );
+    }
+  }
+ 
+
+  render() {
+    return (
+      <div id="app-news-container">
+        <div id="pic-type-container" className ="vanish"> 
+          <ul style ={styles.ulFix}>
+            {this.noPictureCard()}
+            {this.ejectPictures()} 
+          </ul>
+          <button className="btn btn-default btn-block g-pic-load-more-btn" style={{ marginTop: 10 }}
+            onClick={() => { this.loadMorePics(); }}>
+            Load More
+          </button>
+        </div> 
+        <div id ="text-type-container" className = "vanish" style={{position:'relative'}}> 
+          <ul style ={styles.ulFix}> 
+          {this.noTextCard()}
+            {this.ejectTexts()}
+          </ul>
+          <button className = "btn btn-default btn-block g-text-load-more-btn" style={{marginTop:10}}
+            onClick ={()=>{this.loadMoreTexts();}}>
+            Load More 
+          </button>
+        </div>
+        <div id="all-types-container">
+          <ul style = {styles.ulFix}>
+          {this.noNewsCard()}
+            {this.ejectNews()}
+            {this.noNews()}
+          </ul>
+          <br />
+        </div>
         <UniCommentBoard comments={this.props.currentPieceComments}></UniCommentBoard>
         <UniversalDelete paperType={this.state.deleteDetails.type} title={this.state.deleteDetails.title} paperID ={this.state.deleteDetails.itemID}/>
       </div>
@@ -357,6 +490,8 @@ function mapStateToProps(state){
     allNews: state.newsFeed,
     authenticatedUser:state.authUser, 
     currentPieceComments:state.currentPieceComments,
+    textNews: state.textNews, 
+    picNews:state.picNews,
   });
 }
 function mapDispatchToProps(dispatch){
@@ -364,7 +499,12 @@ function mapDispatchToProps(dispatch){
     picLikeFunction:gistActions.picLikeAction,
     newLikeFunction : gistActions.newLikeAction,
     getNews: gistActions.getNewsAction, 
+    getPicNews: gistActions.getLatestPicNewsAction,
+    getTextNews: gistActions.getLatestTextNewsAction,
     getCommentsForPiece:gistActions.getCommentsForPieceAction, 
+    getRelations:gistActions.getRelationsAction,
+    moreTexts: gistActions.getMoreTextNewsAction, 
+    morePics: gistActions.getMorePicNewsAction
   },dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer);

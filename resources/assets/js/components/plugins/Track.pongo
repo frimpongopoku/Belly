@@ -1,0 +1,38 @@
+New Files 
+-----------
+New migration File: subcourse migration file
+New model created : Subcourse, 
+New Model created: Viewage,
+
+
+Files Changed
+-------------
+register.blade : changed "course" to "programme"
+Course.php : new relationship 
+Main.php :new function
+Picturepiece.php: new relationship, new search scope params
+PaperPIece.php: new relationship, new search scope params
+PdfPiece: new relationship, new search scope params
+picsearch.blade: subcourse intro
+search.blade: subcourse intro
+web.php: new routes
+app.css
+Rep.php
+password/email.blade
+password/reset.blade
+setting.php
+Help.blade.
+activation.blade
+
+
+Database Changes
+----------------
+New table: subcourses ->[ id, name, creator_id,course_id,paper_piece_id,pdf_piece_id,picture_piece_id]
+New table: viewages ->[id,user_id,picture_piece_id,paper_piece_id,pdf_piece_id]
+New table: password_resets[email,token]
+Table Changes: new column [ comment_notification]
+
+
+WHAT to test on server
+-----------------------
+email notification

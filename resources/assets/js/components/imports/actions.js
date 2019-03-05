@@ -19,11 +19,19 @@ import {
   getCommentsForPieceAction,
   paginatorTextValuesAction,
   paginatorPicValuesAction,
+  paginatorPdfValuesAction,
   getRelationsAction,
   getPdfNewsAction,
   getMorePDFNewsAction,
   deletePDFAction,
   getUserSettingsAction,
+  setProfilePictureAction,
+  getUserPdfAction,
+  getLatestPicNewsAction, 
+  getLatestTextNewsAction,
+  getMoreTextNewsAction, 
+  getMorePicNewsAction,
+ 
 
 } from './../../actions/root-action';
 
@@ -51,6 +59,11 @@ export const appActions = {
   getMorePDFNewsAction:getMorePDFNewsAction,
   deletePDFAction:deletePDFAction,
   getUserSettingsAction:getUserSettingsAction,
+  setProfilePictureAction:setProfilePictureAction,
+  getUserPdfAction: getUserPdfAction,
+  paginatorPdfValuesAction: paginatorPdfValuesAction,
+  
+  
   
 };
 export const likeActions = { 
@@ -61,5 +74,9 @@ export const gistActions ={
   newLikeAction: newLikeAction,
   getNewsAction: getNewsAction,
   getCommentsForPieceAction:getCommentsForPieceAction,
-
+  getRelationsAction:getRelationsAction,
+  getLatestPicNewsAction:getLatestPicNewsAction ,
+  getLatestTextNewsAction:getLatestTextNewsAction,
+  getMorePicNewsAction:getMorePicNewsAction, 
+  getMoreTextNewsAction: getMoreTextNewsAction,
 };

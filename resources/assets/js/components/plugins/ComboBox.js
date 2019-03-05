@@ -20,7 +20,7 @@ class ComboBox extends Component {
   render() {
     return (
       <div className = "col-md-4 col-lg-4 col-sm-6 col-xs-6">
-        <div className="form-group " className=" input-sm" >
+        <div className="form-group" className=" input-sm" >
           <select className="form-control input-sm" name = {this.props.name} ref = {this.props.name} id={this.props.name} >
                  {this.ejectCourses()}
           </select>

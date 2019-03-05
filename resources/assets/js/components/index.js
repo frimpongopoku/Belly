@@ -8,7 +8,7 @@ import { store } from './../redux-setup/store';
 if (document.getElementById('home')) {
     ReactDOM.render(
         <Provider store = { store }>
-            <Home />
+            <Home  linkToPage="dashboard"/>
         </Provider >,
     document.getElementById('home'));
 }

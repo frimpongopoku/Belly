@@ -2,11 +2,13 @@ import React from 'react';
 import $ from 'jquery';
 import ajaxSubmit from 'jquery-form';
 import CourseSelector from './ComboBox';
+import TermSelector from './CourseYearSelect';
 
 class Uploader extends React.Component{
 	constructor(props){
 		super(props); 
 		this.state = {
+      subcourseHolder:'',
 			selectedItems:null, 
 			fileTypes: ['png','PNG','jpg','JPG','jpeg','JPEG','gif','GIF','bmp','BMP','pdf','PDF']
 		}
@@ -20,14 +22,20 @@ class Uploader extends React.Component{
 			},500)
 		})
 		let fullWidth = document.getElementById('info-box'); 
-		console.log("I am the width: ", fullWidth);
 	}
 	doUpload(){ 
-		if( this.fileSelected() === true){ //if something has actually been selected
-			$('#upload-form').submit();	
+		if( this.fileSelected() === true ){ //if something has actually been selected
+      if (this.refs.subcourse.value.trim() !== "" && this.refs.paperTitle.value.trim() !==""){
+        $('#refresh-notice').fadeIn(400);
+        $('.curtain-dragger').addClass('blink');
+        $('#upload-form').submit();	
+      }else{
+        alert("Add a title to this upload.\nOR\nIndicate which course under "+this.props.course+" this paper belongs to.")
+      }
+      
 		}
 		else{
-			alert('Where do you think you are going? You havent selected anything');
+			alert('You havent selected any file');
 		}
 	}
 	uploadOnSubmit(){
@@ -52,12 +60,14 @@ class Uploader extends React.Component{
 	 						$('.progress-text').text(percentComplete+'% complete');	 						
 					}, 
 					success:function(data){
+            window.location ="/home";//refresh
 						setTimeout(function(){
 	 							$('.progress').fadeOut(100); 
 	 							$('.progress-text').fadeOut(100);
 	 					},1500);
 						addNewPicture(data, thisClass);
 						cleanUp();
+            
 					}
 				});
 				return false; //this is also a second wall to make sure the form does not submit twice
@@ -111,20 +121,19 @@ class Uploader extends React.Component{
 			return this.state.selectedItems.map((item,inArrayID)=>{
 				return (
 					<div  key = { inArrayID } style={{width:'100%'}}>
-						<button className = ' file-check number-font corner-10 z-depth-1 p-r-fix label label-success' 
+						<button className = ' file-check number-font corner-10  p-r-fix label label-success' 
 							id={"check-file-name-"+inArrayID} style={{width:'60%' }} onClick={(e)=>{
 								e.preventDefault();
 							}}> { inArrayID}</button> 
-				        <button className = ' corner-10 file-check number-font  z-depth-1 p-r-fix label label-success'  
+				        <button className = ' corner-10 file-check number-font   p-r-fix label label-success'  
 				       		 id={"check-file-size-"+inArrayID} style={{width:'10%' }}  onClick={(e)=>{
 								e.preventDefault();
 							}}> Second One { inArrayID }</button> 
-				        <button className = 'corner-10 file-check number-font  z-depth-1 p-r-fix label label-success'  
+				        <button className = 'corner-10 file-check number-font   p-r-fix label label-success'  
 				        	id={"check-file-type-"+inArrayID} style={{width:'10%'}} onClick={(e)=>{
 								e.preventDefault();
 							}}> Third One { inArrayID }</button> <br/>
 				       
-				        
 			        </div>
 				);
 			});
@@ -158,45 +167,108 @@ class Uploader extends React.Component{
 		this.uploadOnSubmit();//check pongo.why to know why this happens out here.
 
 		return (
-			<div className = 'clearfix'>
+			<div className = 'clearfix' style={{marginTop:-10}}>
 				 <center>
-            <h3 style={{ marginTop: '10%' }}>Upload Picture OR PDF Of Questions </h3>
-            <small>Here you can upload a picture of questions, or a PDF file that contains questions.</small>
+            <h3 style={{ marginTop: '10%',color:'black' }}>Upload Picture OR PDF Of Questions </h3>
+            <small style={{fontSize:'medium'}}>Here you can upload a picture of questions, or <br/>a PDF file that contains questions.</small>
               <br />
-            <small className = 'text text-success'>Maximum file size for pictures 
+          <small style={{ fontSize: 'medium' }} className = 'text text-success'>Maximum file size for pictures 
               <b><span className ='text text-danger number-font'> 2 MB</span> </b>.</small> <br/>
-            <small className = 'text text-success'>Maximum file size for PDFs 
-              <b><span className ='text text-danger number-font'> 5 MB </span></b>.</small>
+            <small className = 'text text-success'>
+              <b><span className ='text text-danger number-font'> Keep files to a resonable size, very huge files will not upload</span></b>.</small>
               <br/>
+              <p id="refresh-notice" className="refresh-notice vanish">Refresh when upload is complete 
+              <button onClick = {()=>{this.props.curtainDown()}} 
+                style={{marginLeft:10}} className="outline-remove outline-rounded btn btn-default rounded">
+                <i className="fa fa-refresh"></i>  Refresh</button>
+                </p>
           </center>
+          <div style={{margin:40}}></div>
               {/* FORM AREA */}
           <form action="/upload-image" id='upload-form' method="post" encType = 'multipart/form-data'>
             <input type='hidden' name='_token' defaultValue ={ this.props.token } />
                 <input type='text' placeholder='Choose file ' className ='form-control col-md-8 col-lg-8 number-font pull-left input-file-textbox zero-radius' 
-                id='input-file-textbox'style={{width:'100%'}} readOnly/>
-               
-                
-                <input type='text' name='description' className = 'form-control zero-radius input-file-textbox pull-left' 
-                defaultValue="" id='post-description' style={{width:'100%',marginBottom:13}} placeholder='Say something'/>
+            id='input-file-textbox' style={{ fontSize: 18,fontStyle:'italic',width:'100%'}} readOnly/>
+              
+            <input type='text' ref="paperTitle" name='description' className = 'mob-neg-margin-top form-control zero-radius input-file-textbox pull-left' 
+            defaultValue="" id='post-description' style={{fontSize:18,width:'100%',marginBottom:13}} placeholder='"Midterm Biology Paper"'/>
 
-              <div className = "clearfix">
-                <div style={{marginLeft:-20}}>
-                  <CourseSelector
-                    allCourses={this.props.allCourses}
-                    name="pic_course_select"
-                    user_course={this.props.course}
-                  />
+          {/* ==========================PHONE CREATION BELT ==================== */}
+          <div className='raise mobile-appearance-key pc-vanish-key tablet-vanish-key  thumbnail clearfix' style={{
+            background: '#ef740a', borderColor: '#ef740a', padding: "10px 10px"
+          }}>
+            <input type="text" style={{
+              fontSize: 18,
+              borderColor: 'antiquewhite',
+              marginBottom: 10,
+              paddingLeft: 30,
+            }}
+              name="subcourse"
+              ref="subcourse"
+              onChange={() => {
+                this.setState({
+                  subcourseHolder: $('.pic-phone-subcourse').val()
+                });
+              }}
+              placeholder="Enter course"
+              value ={this.state.subcourseHolder}
+              className="pic-phone-subcourse rounded form-control " />
+
+            <div className=" ">
+              <TermSelector unique="pic_paper_term" />
+            </div>
+            <center>
+              <button className='btn btn-primary  green raise z-depth-1 ' style={{ margin: 5 }} id='test-button' onClick={(event) => {
+                event.preventDefault();
+                $('.input-file').trigger('click');
+              }}>
+                <i className='glyphicon glyphicon-hand-up' style={{ marginRight: 4 }}></i>
+                Select
+                  </button>
+              <div onClick={() => { this.doUpload() }} className='btn btn-success  raise upload-button-design z-depth-1'
+                style={{ margin: 5, paddingLeft: 22, paddingRight: 22 }}><i className="fa fa-upload"></i> Save</div>
+            </center>
+          </div>
+          {/* -------------------------------------------------------------------- */}
+  {/* ======================PC CREATION BELT================================= */}
+          <div className= "thumbnail mobile-vanish-key pc-appearance-key tablet-appearance-key  clearfix" style={{paddingLeft:15}}>
+                <div style={{marginLeft:-5}} className="pull-left">
+              <div className=" pull-left" >
+                <div className=" pull-left" style={{ width: "50%" }}>
+                      <input type="text" style={{
+                        fontSize: 18,
+                        paddingLeft: 20,
+                        borderColor: 'antiquewhite',
+                        marginTop: 4,
+                        marginBottom: 4,
+                        marginLeft: 4,
+                        marginRight: 15,
+                      }}
+                        onChange={() => {
+                          this.setState({
+                            subcourseHolder: $('.pic-pc-subcourse').val()
+                          });
+                        }}
+                        value={this.state.subcourseHolder}
+                        name="subcourse"
+                        ref="subcourse"
+                        placeholder="Enter course"
+                        className="pic-pc-subcourse rounded form-control " />
+                    </div>
+                    <div className="pull-right">
+                       <TermSelector unique="pic_paper_term" />
+                    </div>
+                  </div>
                 </div>
                 <div className = 'pull-right'>
-                  <button className='btn btn-primary  green   z-depth-1 ' style={{margin:5}}id='test-button' onClick={(event) => {
+                  <button className='btn btn-primary  green raise z-depth-1 ' style={{margin:5}}id='test-button' onClick={(event) => {
                     event.preventDefault();
                     $('.input-file').trigger('click');
-                  }}><i className='glyphicon glyphicon-hand-up'></i> Select</button>
-                  <div onClick={() => { this.doUpload() }} className='btn btn-success  upload-button-design z-depth-1'
-                    style={{ margin: 5, paddingLeft: 22, paddingRight: 22 }}><i className = "fa fa-upload"></i> Upload</div>
+              }}><i className='glyphicon glyphicon-hand-up' style={{ marginRight: 4 }}></i> Select</button>
+                  <div onClick={() => { this.doUpload() }} className='btn btn-success  raise upload-button-design z-depth-1'
+                    style={{ margin: 5, paddingLeft: 22, paddingRight: 22 }}><i className = "fa fa-upload"></i> Save</div>
                 </div>
               </div>
-
               <div style ={{ width:'100%'}} id=" info-box">
                   {  this.displayInfo() }
               </div>

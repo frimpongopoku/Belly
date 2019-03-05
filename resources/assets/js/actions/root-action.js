@@ -2,7 +2,84 @@ import $ from 'jquery';
 import { initialState } from './../reducers/dummy';
 
 
+export const refreshNews = () =>{
+  return dispatch =>{
+    $.ajax({method:'get',url:'refresh-news'})
+    .done(function(response){
+      dispatch(loadNewsPiecesAction(response));
+      dispatch(getLatestPicNewsAction()); 
+      dispatch(getLatestTextNewsAction()); 
+    })
+  }
+}
+export const getMorePicNewsAction =(nextPageUrl,oldNews) =>{
+  return dispatch =>{
+     $.ajax({method:'get',url:nextPageUrl})
+    .done(function(response){
+      let combine = [...response.data,...oldNews]; 
+      let newResponse = { ...response, data:combine};
+      dispatch(loadPicNewsPieces(newResponse));
+    });
+  }
+}
+export const getMoreTextNewsAction =(nextPageUrl,oldNews) =>{
+  return dispatch =>{
+     $.ajax({method:'get',url:nextPageUrl})
+    .done(function(response){
+      let combine = [...response.data,...oldNews]; 
+      let newResponse = { ...response, data:combine};
+      dispatch(loadTextNewsPieces(newResponse));
+    });
+  }
+}
 
+
+export const paginatorPdfValuesAction = (data) => {
+  return dispatch => {
+    dispatch(loadUserPdfPieces(data));
+  }
+}
+export const getUserPdfAction =()=>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'/get-user-pdfs'})
+    .done(function(response){
+      dispatch(loadUserPdfPieces(response.data));
+    })
+  }
+}
+export const getLatestTextNewsAction =()=>{
+  return dispatch =>{
+    $.ajax({method:'get',url:'get-latest-text-news'})
+    .done(function(response){
+      dispatch(loadTextNewsPieces(response));
+    })
+  }
+}
+export const getLatestPicNewsAction =()=>{
+  return dispatch =>{
+    $.ajax({method:'get',url:'get-latest-pic-news'})
+    .done(function(response){
+      dispatch(loadPicNewsPieces(response));
+    })
+  }
+}
+export const loadPicNewsPieces =(response)=>{
+  return { type:'user/LOAD_PIC_NEWS', payload:response};
+}
+export const loadTextNewsPieces =(response)=>{
+  return { type:'user/LOAD_TEXT_NEWS', payload:response};
+}
+export const loadUserPdfPieces =(response)=>{
+  return { type:'user/LOAD_PDF_PIECES', payload:response};
+}
+export const setProfilePictureAction=(picture_link)=>{
+  return dispatch=>{
+    $.ajax({method:'get',url:'change-profile',data:{picture_link:picture_link}})
+    .done(function(){
+       dispatch(getUserSettingsAction());
+    })
+  }
+}
 export const deletePDFAction =(id) =>{
   return dispatch =>{
     $.ajax({ method: 'get', url: '/delete-pdf/' + id });
@@ -25,15 +102,14 @@ export const getPdfNewsAction=(point) =>{
   }
 }
 
-
-
 export const getMorePDFNewsAction=(oldTrain,point)=>{
-
   return dispatch => {
     $.ajax({ method: 'get', url: '/get-pdf-news/' + point })
       .done((response) => {
-        let newSet = [...oldTrain,...response]
-        dispatch(loadPdfNews(newSet));
+        if(response.length !== 0 ){
+           let newSet = [...oldTrain,...response]
+            dispatch(loadPdfNews(newSet));
+        }
       });
   }
 }
@@ -67,34 +143,52 @@ export const getCommentsForPieceAction=(id,type) =>{
 export const loadCurrentComment = (dataTrain)=>{
   return{ type:"user/PIECE_COMMENT_GET", payload:dataTrain};
 }
-export const picLikeAction =(miniTrain, allNews)=>{
+export const picLikeAction =(miniTrain, allNews,picNewsPageData)=>{
   return dispatch => {
     $.ajax({ method: "get", url: "/me/picture-like", data: miniTrain })
       .done((response) => {
         let newState = { news: [], badgeNumber:null, active: true };
+        let newPicPageData  =[]; 
         allNews.news.forEach(function (picNews) {
           if (picNews.id === response.id && picNews.file_type === response.file_type) {
             picNews.likes = response.likes;
           }
           newState.news.push(picNews);
         });
+
+        picNewsPageData.data.forEach(function(picNews){
+          if (picNews.id === response.id && picNews.file_type === response.file_type) {
+            picNews.likes = response.likes;
+          }
+          newPicPageData.push(picNews);
+        });
         //you gotta bring the badge number here too
         dispatch(loadNewsPiecesAction(newState));
         dispatch(getRelationsAction());
+        dispatch(loadPicNewsPieces({...picNewsPageData,data:newPicPageData}));
       });
   }
 }
-export const newLikeAction = (miniTrain,allNews) =>{
+export const newLikeAction = (miniTrain,allNews,textNewsPageData) =>{
     return dispatch =>{
       $.ajax({method:"get",url:"/me/like",data:miniTrain})
       .done((response)=>{ 
         let newState ={news:[],badgeNumber:null,active:true};
+        let newTextPageData =[];
         allNews.news.forEach(function(textNews){
           if(textNews.id === response.id && textNews.file_type === response.file_type){
             textNews.likes = response.likes;
           }
           newState.news.push(textNews);
         });
+        //update the likes in the "text" compartment of the news page
+        textNewsPageData.data.forEach(function(textNews){
+          if (textNews.id === response.id && textNews.file_type === response.file_type) {
+            textNews.likes = response.likes;
+          }
+          newTextPageData.push(textNews);
+        });
+        dispatch(loadTextNewsPieces({...textNewsPageData,data:newTextPageData}));
         dispatch(loadNewsPiecesAction(newState));
         dispatch(getRelationsAction());
       });
@@ -190,6 +284,8 @@ export const test = ()=>{
 	return notifierAction('new shit!');
 }
 
+
+
 export const getTokenAction = ()=>{
 	return dispatch=>{
     $.ajax({method:'get',url:'/me/get-token'})
@@ -214,8 +310,10 @@ export const editPaper = (newData,oldPieces) =>{
 }
 
 export const addPaper = (dataTrain,oldPieces) =>{
-	var old = oldPieces.length === 6 ? oldPieces.slice(0,5) : oldPieces ;//This will make sure to written only 5 elements + the new one so It will much my pagination
-	let newState = [dataTrain,...old]; 
+	var old = oldPieces.length === 6 ? oldPieces.slice(0,5) : oldPieces;//This will make sure to written only 5 elements + the new one so It will much my pagination
+  //shame area(lool! modifying subcourse to fit the structure)
+  let newTrain ={...dataTrain,subcourse:{name:dataTrain.subcourse}}
+  let newState = [newTrain,...old]; 
 	return newState;
 }
 export const delPaper = (id, oldPieces) =>{
@@ -227,7 +325,8 @@ export const delPaper = (id, oldPieces) =>{
 export const editPaperAction = (newData,oldPieces)=>{
 	return dispatch =>{
 		dispatch(dBEditPaper(newData));
-		dispatch(loadUserPiecesAction(editPaper(newData,oldPieces)));
+    dispatch(loadUserPiecesAction(editPaper(newData,oldPieces)));
+    dispatch(getLatestTextNewsAction()); 
 	}
 }
 export const deletePaperPieceAction = (id,oldPieces) =>{
@@ -261,18 +360,33 @@ export const saveMenuToRemoteAction = (menuItems) =>{
 	return ({type:'application/SAVE_MENU',payload: menuItems});
 }
 export const createNewPaperAction = (dataObj, oldPieces) =>{ 
-
+  
 	return dispatch => { 
-		dispatch(dBSaveAction(dataObj));
-		dispatch(loadUserPiecesAction(addPaper(dataObj,oldPieces)))
+		dispatch(dBSaveAction(dataObj,oldPieces));
+    dispatch(loadUserPiecesAction(addPaper(dataObj,oldPieces)));
+    dispatch(getRelationsAction());
+    dispatch(refreshNews());
 	};
 };
 
-export const dBSaveAction = (dataTrain) =>{
+export const dBSaveAction = (dataTrain,currentlyLoadedPieces) =>{
 	return dispatch => {
-    $.ajax({method:'get',url:'/me/save-text-piece',data:{ name: dataTrain.name,course: dataTrain.course, body: dataTrain.body, user_id: dataTrain.user_id, title: dataTrain.title }})
+    $.ajax({
+      method:'get',
+      url:'/me/save-text-piece',
+      data:{ 
+        name: dataTrain.name,
+        course: dataTrain.course, 
+        paper_term:dataTrain.paper_term,
+        subcourse:dataTrain.subcourse,
+        body: dataTrain.body, 
+        user_id: dataTrain.user_id, 
+        title: dataTrain.title }
+      })
     .done( response => {
-			if( response === "True" ){
+			if( response.status === "True" ){
+        let redefState = addPaper(response.justSavedItem,currentlyLoadedPieces);  
+        dispatch(loadUserPiecesAction(redefState));
 				setTimeout(function(){
 					dispatch(notifierAction(dataTrain.title));
 				},2000)
@@ -284,13 +398,14 @@ export const dBSaveAction = (dataTrain) =>{
 export const notifierAction = (data)=>{ 
 	return({type:'application/NOTIFY',payload:data})
 }
+
 export const paginatorTextValuesAction = (data) =>{
   return dispatch =>{
     dispatch(loadUserPiecesAction(data));
   }
 };
 
-export const getUserPiecesAction = ()=>{
+export const getUserPiecesAction =()=>{
 	return dispatch =>{
     $.ajax({method:'get',url:'/me/get-all-text-papers'})
     .done( response =>{

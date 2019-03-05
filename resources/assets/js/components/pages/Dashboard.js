@@ -10,9 +10,11 @@ import UniversalPicDisplay from './../plugins/UniversalPicDisplayModal';
 import SearchBox from './../plugins/search/SearchBox';
 import ReactDOM from 'react-dom';
 import PageSwitcher from './../plugins/PageSwitcher';
+import Sidebar from "./../navigation/Sidebar";
+import * as moment from 'moment';
 
 class Dashboard extends Component {
-  constructor(props){
+  constructor(props){ 
     super(props); 
     this.searchTypes = ['Name','Title','Year','Username','University','Programme','Course','Rating']; 
     this.availableOptions = ['text-section','picture-section','pdf-section'];
@@ -72,22 +74,121 @@ class Dashboard extends Component {
         imageReplace(thisClass,imgIDArr);
     },1000)  
   }
+  emptyNotice(type) {
+    if(this.props.pieces !==null){
+      if(type ==="paper"){
+        if (this.props.pieces.length === 0){
+            return (<div>
+              <center>
+                <p style={{fontSize:'medium',fontWeight:600, color:"black"}}>You do not have any 
+                <span className ='text text-primary'> text</span> papers yet.<br/> Start creating...</p>
+              
+              <button className ="btn btn-default" 
+              onClick = {()=>{ let sideBar = new Sidebar(); sideBar.switchPage('create-page')}}> 
+              <span className ="fa fa-plus"></span></button>
+              </center>
+            </div>);
+        }
+      }
+      else if (type == "shots") {
+        if(this.props.picPieces !==null){
+          if(this.props.picPieces.length ===0){
+            return (<div>
+              <center>
+                <p style={{ fontSize: 'medium', fontWeight: 600, color: "black" }}>You do not have any
+                  <span className='text text-warning'> image</span> papers yet.
+                  <br /> Start creating...</p>
+                <button className="btn btn-default"
+                  onClick={() => { let sideBar = new Sidebar(); sideBar.switchPage('create-page') }}>
+                  <span className="fa fa-plus"></span>
+                </button>
+              </center>
+            </div>);
+          }
+        }
+      }
+      else if(type ="pdfs"){
+        if(this.props.myPdfs !==null){
+          if(this.props.myPdfs.length ===0){
+            return (<div>
+              <center>
+                <p style={{ fontSize: 'medium', fontWeight: 600, color: "black" }}>You do not have any
+                  <span className='text text-danger'> PDF </span> papers yet.
+                  <br /> Start creating...</p>
+                <button className="btn btn-default"
+                  onClick={() => { let sideBar = new Sidebar(); sideBar.switchPage('create-page') }}>
+                  <span className="fa fa-plus"></span>
+                </button>
+              </center>
+            </div>);
+          }
+        }
+      }
+    }
+  }
+  doPdfDelete(id){
+    let pdfItem = $("#personal-pdf-item-box-"+id); 
+    let thisClass = this;
+    //this.props.deletePDFFunction(this.props.id);
+    setTimeout(() => {
+      pdfItem.addClass("remove-trick"); 
+      pdfItem.fadeOut();
+    }, 200);
+    this.props.deletePDF(id);
+  }
+  spillMyPdfs(){
+    var thisClass = this;
+    if(this.props.myPdfs !== null){
+      return this.props.myPdfs.map((piece,index) => {
+        var num = Math.round(Math.random(1000000) * 100000000000);
+        var loopIndex = "my-pdf-" + num.toString();
+        return(
+          <li key ={loopIndex} id={"personal-pdf-item-box-" + piece.id}>
+            <div style={{ paddingLeft: 15, paddingRight: 22 }}>
+              <div className="thumbnail clearfix pdf-item" >
+                
+                <div className="pull-right">
+                  <small style={{ fontWeight: 600, fontFamily: 'sans-serif', color: 'sandybrown', fontSize: 'smaller' }}>
+                    {piece.paper_term !== null ? piece.paper_term !== "" ? piece.paper_term.split('-')[0] : 'Year 1 First Sem' : 'Year 1 First Sem'}
+                  </small>
+                  <small className ="text text-primary">{piece.subcourse !==null? piece.subcourse.name:''}</small>
+                  <button onClick ={()=>{this.doPdfDelete(piece.id)}}className = "btn btn-default btn-sm" style={{borderRadius:55, marginLeft:5,marginRight:5}}><i className ="fa fa-minus text text-danger"></i></button>
+                  <small className="text text-default number-font" 
+                  style={{ fontWeight: 100 }}> {moment(piece.created_at).format("LL")}</small>
+                </div>
+                <a href={piece.pdf_link} target="_blank" style={{ cursor:"pointer",color: "black", fontWeight: 600 }}>
+                <i className="fa fa-file-pdf-o" style={{ marginRight: 6 }}></i> 
+                {piece.title}</a>
+              </div>
+            </div>
+          </li>
+        );
+      })
+    }
+  }
+
+
   spillTextPieces(){ 
-    return this.props.pieces.map( (piece, index) =>{ 
+    return this.props.pieces.map( (piece, index) =>{   
       return (
         <li key={ index }>
           <Piece 
+          paper_term = {piece.paper_term}
           owner= { this.props.user.name } 
           course={ piece.course } 
+          subcourse={piece.subcourse !== null ? piece.subcourse.name : ''}
           fileType = "text" 
           title={ piece.title }
           body = { piece.body }
+          likes_count = { piece.likes_count}
+          comments_count = {piece.comments_count}
           openPieceFunction = { this.currentTextPieceSetter }
           currentTextStateFunction = { this.setTextCurrentState }
           createSideOptionsFunction ={ this.createAllOptions }
           textModalCleanUpFunction = { this.textModalCleanUp }
           initAllPagesFunction = { this.initAllPages }
           indicator = { this.state.currentTextIndicator }
+          created_at = {piece.created_at}
           ID={ piece.id } />
         </li>
         );
@@ -99,8 +200,12 @@ class Dashboard extends Component {
         return (
           <li key={index}> 
             <PicPiece 
-              owner = { this.props.user.name }
+              owner = {  this.props.user.name }
+              course = {piece.course}
+              subcourse = {piece.subcourse !==null?piece.subcourse.name:''}
               image_url={piece.picture_link}
+              likes_count={piece.likes_count}
+              comments_count={piece.comments_count}
               piece_id={piece.id}
               created_at={piece.created_at}
               allPieces={this.props.picPieces} 
@@ -113,22 +218,25 @@ class Dashboard extends Component {
               extras = { piece.extra_images}
               type = { piece.type}
               indicator = { this.state.currentPicIndicator }
+              paper_term = { piece.paper_term}
               />
         </li>
         );
-                 
     });
   }
   backgroundImageLoad(id,imageURL){
     //requests for an image to be loaded unto a page
     var bigImage = document.createElement('img');
-    bigImage.src = "http://localhost:8000/" + imageURL;
+    //bigImage.src = "http://localhost:8000/" + imageURL;
+    var webPath = window.location.protocol + "//" + window.location.host;
+    bigImage.src =webPath +'/'+imageURL;
     bigImage.onload = function () {
       $('.spinner-' + imageID).hide();
       $('.shots-img-' + imageID).css({
         background: 'url(' + bigImage.src + ')',
         height: 200,
         backgroundPosition: 'center center',
+        backgroundRepeat:'no-repeat !important',
         opacity: 1,
         objectFit: 'cover !important',
         transition: '0.5s ease-in all',
@@ -139,16 +247,19 @@ class Dashboard extends Component {
   }
   imageLoad(imageID,imageURL){
     //requests for an image to be loaded unto a page
-    var bigImage = document.createElement('img'); 
-    bigImage.src = "http://localhost:8000/"+imageURL;
+    var bigImage = document.createElement('img');  
+    //bigImage.src = "http://localhost:8000/"+imageURL;
+    var webPath = window.location.protocol +"//"+window.location.host;
+    bigImage.src = webPath +'/' + imageURL;
     bigImage.onload = function(){
       $('.spinner-'+imageID).hide();
       $('.shots-img-'+imageID).css({
-          background:'url('+bigImage.src+')',
-          height:200, 
+          backgroundImage:'url('+bigImage.src+')',
+          height:200,
+          backgroundRepeat:'no-repeat !important', 
           backgroundPosition:'center center',
           opacity:1, 
-          objectFit:'cover !important',
+          objectFit:'cover',
           transition:'0.5s ease-in all',
           borderTopRightRadius:5, 
           borderTopLeftRadius:5
@@ -166,7 +277,9 @@ class Dashboard extends Component {
 
   extraImageLoad(imageID, inArrayID, imageURL){
     var bigImage = document.createElement('img'); 
-    bigImage.src = "http://localhost:8000/"+imageURL;
+    //bigImage.src = "http://localhost:8000/"+imageURL;
+    var webPath = window.location.protocol + "//" + window.location.host;
+    bigImage.src = webPath +'/' + imageURL;
     bigImage.onload = function(){
       $('#pic-piece-body-'+imageID+'-m-'+inArrayID).css({
           background:'url('+bigImage.src+')',
@@ -191,10 +304,10 @@ class Dashboard extends Component {
     pieces.map(item =>{
         //check if item has extra pictures 
         if(item.type ==='multiple'){
-             var collection = { id: item.id , image: item.picture_link, type:'M', extraImages: item.extra_images }; //you need to put the text ouchere yh!
+             var collection = { id: item.id , image: item.thumb_path, type:'M', extraImages: item.extra_images }; //you need to put the text ouchere yh!
          }
         else{
-              var collection = { id: item.id , image: item.picture_link, type:'S' };
+              var collection = { id: item.id , image: item.thumb_path, type:'S' };
          }
         arr.push(collection);
     });
@@ -211,9 +324,6 @@ class Dashboard extends Component {
               thisClass.extraImageLoad(item.id,index, extra);
           });
       }
-            // thisClass.extraImageLoad(item.id,'1','imgs/avatars/blonde-avatar.jpg');
-            // thisClass.extraImageLoad(item.id,'2','imgs/avatars/female-avatar.png');
-            // thisClass.extraImageLoad(item.id,'3','imgs/avatars/hoodie-avatar.jpg');
     });
   }
 
@@ -367,7 +477,7 @@ class Dashboard extends Component {
     textDiv.appendChild(text);
     textDiv.className = ' vanish'; 
     parent.appendChild(textDiv);
-    console.log("I am the image div....: ",parent)
+   
     document.getElementById('pic-modal-envelope').appendChild(parent);
   }
   createPictureDeletePage(id){
@@ -394,7 +504,6 @@ class Dashboard extends Component {
     center.appendChild(text);
     center.appendChild(btn);
     parent.appendChild(center);
-    console.log("Dude I am the delete page inPic  __>:: ", parent)
     document.getElementById('pic-modal-envelope').appendChild(parent);
   }
   createPicturePublishPage(body){
@@ -408,21 +517,21 @@ class Dashboard extends Component {
     let cont = document.createElement('span');
     parent.id = 'universal-p-publish-mode';
     parent.className = 'vanish';
-    text.textContent = ' You are about to make this paper live to everyone. Are you sure ';
+    text.textContent = ' The feature will be added in the next update! ';
     textSpan.style.color = 'black';
     btn.className = ' btn btn-success float-green my-depth-1 margin-5';
-    btn.addEventListener('click', function () { alert('Nigga I am the shit!!!') });
+    btn.addEventListener('click', function () { alert('Coming Soon...') });
     btnFa.className = ' fa fa-globe';
     cont.textContent = " is ready?";
-    textSpan.appendChild(bold);
-    text.appendChild(textSpan);
-    text.appendChild(cont);
-    btn.appendChild(btnFa);
-    btn.textContent = 'I know what I am doing ';
+    //textSpan.appendChild(bold);
+    //text.appendChild(textSpan);
+    //text.appendChild(cont);
+    //btn.appendChild(btnFa);
+    //btn.textContent = 'I know what I am doing ';
     center.appendChild(text);
-    center.appendChild(btn);
+    //center.appendChild(btn);
     parent.appendChild(center);
-    console.log("Dude I am the publish page |||__>::||  ", parent)
+    
     document.getElementById('pic-modal-envelope').appendChild(parent);
   }
   createViewModalPage(title,body){
@@ -436,14 +545,14 @@ class Dashboard extends Component {
     titleDiv.className = 'piece-title';
     realTitle.className ='view-title'; 
     bodyDiv.className = 'piece-body'; 
-    realBody.className = 'view-body';
+    realBody.className = 'view-body save-white';
     realTitle.textContent = title;
     realBody.textContent = body;
     titleDiv.appendChild(realTitle); 
     bodyDiv.appendChild(realBody); 
     parent.appendChild(titleDiv); 
     parent.appendChild(bodyDiv);
-    console.log("I am the parent:::: ", parent);
+    
     document.getElementById('text-modal-envelope').appendChild(parent);
 
   }
@@ -480,7 +589,6 @@ class Dashboard extends Component {
     parent.appendChild(saveBtn); 
     parent.appendChild(titleInput); 
     parent.appendChild(bodyArea); 
-    console.log("Yoo I am the edit page ---->>: : ", parent);
     document.getElementById('text-modal-envelope').appendChild(parent);
 
   }
@@ -501,15 +609,15 @@ class Dashboard extends Component {
     btn.className = ' btn btn-danger float-red my-depth-1 margin-5';
     btn.addEventListener('click',function(){thisClass.deletePaper(id)});
     btnFa.className = ' fa fa-trash'; 
+    btnFa.style.marginLeft = "4px";
     bold.textContent = ' "'+title+'" ';
     textSpan.appendChild(bold);
     text.appendChild(textSpan); 
     btn.textContent = 'Yes I want to';
-    btn.appendChild(btnFa); 
+    //btn.appendChild(btnFa); 
     center.appendChild(text); 
     center.appendChild(btn); 
     parent.appendChild(center); 
-    console.log("Dude I am the delete page __>:: ",parent)
     document.getElementById('text-modal-envelope').appendChild(parent);
   }
   createPublishModalPage(title){
@@ -523,22 +631,21 @@ class Dashboard extends Component {
     let cont = document.createElement('span');
     parent.id = 'universal-t-publish-mode';
     parent.className = 'vanish';
-    text.textContent = ' You are about to make this paper live to everyone. Are you sure ';
+    text.textContent = ' The feature will be added in the next update! ';
     textSpan.style.color = 'black';
     btn.className = ' btn btn-success float-green my-depth-1 margin-5';
-    btn.addEventListener('click', function () { alert('Nigga I am the shit!!!') });
+    btn.addEventListener('click', function () { alert('Coming soon...') });
     btnFa.className = ' fa fa-globe';
     bold.textContent = '"' + title + '"';
     cont.textContent = " is ready?";
     textSpan.appendChild(bold);
-    text.appendChild(textSpan);
-    text.appendChild(cont);
-    btn.appendChild(btnFa);
-    btn.textContent = 'I know what I am doing ';
+    //text.appendChild(textSpan);
+    //text.appendChild(cont);
+    //btn.appendChild(btnFa);
+   // btn.textContent = 'I know what I am doing ';
     center.appendChild(text);
-    center.appendChild(btn);
+    //center.appendChild(btn);
     parent.appendChild(center);
-    console.log("Dude I am the publish page |||__>::||  ", parent)
     document.getElementById('text-modal-envelope').appendChild(parent);
   }
   initAllPicPages(id,body,imageLink,type,extras){
@@ -563,34 +670,51 @@ class Dashboard extends Component {
   
 
   deletePicture(id) {
+    var thisClass = this;
+    var newSet = this.props.picPieces.filter(function(item){
+      return item.id !== id;
+    });
     $('.modal .close').click();
     this.props.deletePictureFunction(id, this.props.picPieces);
-    let idImageArray = this.idImageArrayManufacture(this.props.picPieces);
-    this.runAllImages(idImageArray);
+    let idImageArray = this.idImageArrayManufacture(newSet);
+    this.runAllImages(thisClass,idImageArray);
   }
-  render() {
+
+ 
+  
+  render(){
     return (
       <div>
-        <div className = 'container' style={{padding:'0'}}> 
-          <input type='hidden' id = 'd-current-tab' value="text-section"/>
+        <div className = 'container t-m-l-fix' style={{padding:'0'}}> 
+             <input type='hidden' id = 'd-current-tab' value="text-section"/>
           <div className = 'row' > 
-            <div className = 'col-md-10 col-lg-10'> 
+            <div className = 'col-md-10 col-lg-10 mobile-dashboard-pad-fix'> 
               {/* Search area */}
                  <SearchBox></SearchBox>
                 {/* User Papers Tabs for TEXT/PICTURE/PDFs*/}
                 <div className = 'thumbnail zero-radius clearfix' style={{height:55, padding:0}} > 
                   <button onClick = {()=>{this.tabClick('text-section')}} id='text-section-btn'className = 'p-activate-section z-depth-1 d-tab zero-border btn-undefault'><i className = 'fa fa-file-text'></i> Text</button>
                   <button onClick = {()=>{this.tabClick('picture-section')}} id='picture-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-camera'></i> Shots</button>
-                    {/* <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button> */}
+                  <button onClick = {()=>{this.tabClick('pdf-section')}} id='pdf-section-btn'className = ' d-tab zero-border btn-undefault'><i className = 'fa fa-file-pdf-o'></i> PDF</button>
                 </div>
                 {/* Found Papers area  */}
                 <div> 
                   <div className = 'container' style={{padding:'0'}}>  
-                    <div className = 'col-md-10' style={{padding:'0'}}>  
+                    <div className = 'col-md-10' style={{padding:'0'}}> 
+                    <div className="thumbnail mobile-appearance-key tablet-appearance-key pc-vanish-key" style={{ background:'#ffeb3b',paddingTop:10}}>
+                        <center>
+                          <p className="text text-danger"> 
+                            <i className="fa fa-warning" style={{marginRight:9}}></i>
+                          <b>We advice that you use your PC<i className="fa fa-desktop" style={{ marginRight: 7,marginLeft:4 }}></i>to get the best
+                            <br/>experience on Question Belly</b>
+                          </p>
+                        </center>
+                      </div> 
                     <div className='row' id="textons" style={{ position: 'relative' }}> 
                         <div id = 'text-section'style={{position:'relative'}}>
                             <PageSwitcher baseURL ="/me/get-all-text-papers" type="text" animateDiv="#text-portion" values={this.props.paginatorTextValuesInsert} unique="texty"></PageSwitcher>
                           <div id="text-portion">
+                          {this.emptyNotice('paper')}
                             <ul style={{listStyleType:'none',padding:0}}> 
                               { 
                                   this.props.pieces ===null ? '' : this.spillTextPieces()
@@ -602,15 +726,22 @@ class Dashboard extends Component {
                         <PageSwitcher baseURL="/me/get-all-pic-papers" type="picture" animateDiv="#pic-portion" values={this.props.paginatorPicValuesInsert} unique="pixy"></PageSwitcher>  
                           <div id='pic-portion'>
                             <ul style={{listStyleType:'none',padding:0}}> 
+                            {this.emptyNotice('shots')}
                                 {
                                     this.props.picPieces === null ? '' : this.spillPicPieces()
                                 }
                             </ul>
                           </div>
                          </div>
-                          {/* <div id = 'pdf-section' className = 'vanish'> 
-                              <center><h1>ADEY HERE TOOO </h1></center>
-                          </div> */}
+                          <div id = 'pdf-section' className = 'vanish'>
+                        <PageSwitcher baseURL="/get-user-pdfs" type="pdf" animateDiv="#pdf-portion" values={this.props.paginatorPdfValuesInsert} unique="pdfy"></PageSwitcher>  
+                            <div id="pdf-portion">
+                              <ul style={{paddingLeft:15,paddingRight:22,listStyleType:'none'}}>
+                                {this.emptyNotice('pdfs')}
+                                {this.spillMyPdfs()}
+                              </ul>
+                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -631,6 +762,8 @@ class Dashboard extends Component {
                   piece_id = {null}
                   piece_body={null}
                   created_at= {null}
+                  likes_count = {null}
+                  comments_count ={null}
                 />
               :  
                 <UniversalTextDisplay 
@@ -642,6 +775,8 @@ class Dashboard extends Component {
                   piece_id = {this.state.currentTextPiece.ID}
                   piece_body={this.state.currentTextPiece.body } 
                   created_at= { this.state.currentTextPiece.created_at}
+                  likes_count = {this.state.currentTextPiece.likes_count}
+                  comments_count = {this.state.currentTextPiece.comments_count}
                   createSideOptionFunction={this.createOptionElements}
                   textModalCleanUpFunction={this.textModalCleanUp}
                 />
@@ -655,6 +790,9 @@ class Dashboard extends Component {
             <UniversalPicDisplay
               owner = { this.props.user.name }
               created_at = {this.state.currentPicPiece.created_at}
+              likes_count={this.state.currentPicPiece.likes_count}
+              comments_count={this.state.currentPicPiece.comments_count}
+              piece_id = { this.state.currentPicPiece.id}
             />
         }
       </div>
@@ -667,8 +805,8 @@ Dashboard.propTypes = {
   deletePictureFunction:PropTypes.func, 
   editPaperFunction:PropTypes.func,
   editPictureFunction:PropTypes.func, 
-  picPieces: PropTypes.object, 
+  picPieces: PropTypes.array, 
   user: PropTypes.object,
-  pieces:PropTypes.object
+  pieces:PropTypes.array
 }
 export default Dashboard;

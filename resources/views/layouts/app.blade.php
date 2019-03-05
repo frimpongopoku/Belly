@@ -7,20 +7,19 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'QBelly') }}</title>
+     {{--  <base href={{" url::base() "}} />  --}}
+    <title>Question Belly</title>
+    <link rel="shortcut icon"  type="img/png" href="{{asset('imgs/fav-p.jpg')}}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('font/css/font-awesome.min.css') }} ">
     <link href='/css/welcome.css' />
-
-    
-
-
 </head>
+@yield('custom-style')
 <body>
     <div id="app" style="margin:0 !important; padding:0 !important">
+    
                {{--  <nav class="navbar navbar-default navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
@@ -81,8 +80,9 @@
     </div>
 
     <!-- Scripts -->
-    @yield('scripts')
+    
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
     
 
 </body>

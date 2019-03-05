@@ -12,7 +12,8 @@ class UniversalComment extends Component {
         <div className='modal fade my-depth-1' id="universal-comment-board">
           <div className='modal-dialog modal-md'>
             <div className='modal-content'>
-              <div className =" modal-header" id="js-piece-title-comment-box">
+              <div className =" modal-header clearfix" id="js-piece-title-comment-box">
+                <button className="btn btn-danger rounded pull-right" data-dismiss="modal"><i className="fa fa-close"></i></button>
                  
               </div>
               <div className='modal-body' id='js-comment-modal-body' style ={{paddingTop:15, height:450, maxHeight:450, minHeight: 450,overflowY:'scroll'}}>

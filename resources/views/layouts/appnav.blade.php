@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
+    <link rel="shortcut icon"  type="img/png" href="{{asset('imgs/fav-p.jpg')}}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -20,6 +21,23 @@
 <style> 
     .dropy-style{
     color:white !important;
+  }
+  .light-off{
+    background:black; 
+    color:white !important;
+  }
+  .light-off:hover{
+    background:red; 
+    transition:.4s ease-in-out all; 
+  }
+  .light-on{
+    background:white; 
+    color:#282828;
+  }
+  .light-on:hover{
+    background:green; 
+    color:white; 
+    transition:.4s ease-in-out all; 
   }
   .dropy-style:focus{
     color:black !important;
@@ -67,7 +85,7 @@
 
                             <!-- Branding Image -->
                             <a class="navbar-brand" href="#" style="padding:15px">
-                                <span  class = 'QB'>QB</span> <span class = "fa fa-tint QB-tint"></span>
+                                <span  class = 'QB'>QB</span> <span class = "fa fa-tint tint-slow QB-tint"></span>
                             </a>
                         </div>
 

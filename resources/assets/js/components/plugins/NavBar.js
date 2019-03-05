@@ -3,35 +3,83 @@ import QB from './../../imgs/QB.png';
 
 class NavBar extends React.Component{
 
-	goToDashboard(){
+	goToDashboard(type){
 		//fade out the news/gist page, and get the value stored in the currentpage box and then fade to that page! 
 		$('#gist').fadeOut(500); 
 		$('#nav-bar').fadeOut(500);
 		setTimeout(function(){
 			let curr = $('#current-page-box').val(); 
 			$('#gist-button').removeClass('side-active');
-			$('#'+curr+'-button').addClass('side-active');
-			$('#'+curr).fadeIn(200);
-			$('.side-nav').fadeIn(200); 
-			//$('#'+curr).css({marginLeft:50});
+      if(curr ==='gist'){
+        //under normal circumstances, the current page textbox is never going to filled with "gist"
+        //unless a use visits that page via the gist link which is "/home/new/"
+        //so always check if the current page box is filled with 'gist' then fade dashboard in
+        $('#dashboard').fadeIn(200); 
+        $('#dashboard-button').addClass('side-active');
+        $('#current-page-box').val('dashboard');
+      }
+      else{
+        $('#' + curr).fadeIn(200);
+        $('#' + curr + '-button').addClass('side-active');
+      }
+      if(type==="mobile"){
+        $('#mobile-nav').fadeIn(200);
+      }
+      else{
+        $('.side-nav').fadeIn(200); 
+      }
+			
+     
+      
 			
 		},600)
-	}
+  }
+  goToMobileDashboard(type) {
+    //fade out the news/gist page, and get the value stored in the currentpage box and then fade to that page! 
+    $('#gist').fadeOut(500);
+    $('#nav-bar').fadeOut(500);
+    setTimeout(function () {
+      let curr = $('#current-page-box').val();
+      $('#gist-button').removeClass('side-active');
+      if (curr === 'gist') {
+        //under normal circumstances, the current page textbox is never going to filled with "gist"
+        //unless a use visits that page via the gist link which is "/home/new/"
+        //so always check if the current page box is filled with 'gist' then fade dashboard in
+        $('#dashboard').fadeIn(200); 
+        $('#dashboard-button').addClass('side-active');
+        $('#current-page-box').val('dashboard');
+      }
+      else {
+        $('#' + curr).fadeIn(200);
+        $('#' + curr + '-button').addClass('side-active');
+      }
+      //$('.side-nav').fadeIn(200);
+    }, 600)
+  }
 	render(){
 		return (
 				<div>
 					<nav className="navbar navbar-default app-color b-app-color nav-bar-stick z-depth-1 zero-radius " 
 						style = { {margin:0,padding:0} }>
 		        <div className="container-fluid clearfix" style = {{}}>
-		          <div className="navbar-header">
-		            <a className="navbar-brand" href="#" style={{padding:15}}>
-		             <span  className = 'QB'>QB</span> <span className = "fa fa-tint QB-tint"></span>
+            <div className="navbar-header" style={{display: 'inline-block'}}>
+		            <a className="navbar-brand" href="" onClick={(e)=>{e.preventDefault();
+                }} style={{padding:15,}}>
+		             <span  className = 'QB'>QB</span> <span className = "fa fa-tint tint-slow QB-tint"></span>
 		            </a>
 		          </div>
-		          <div className = "pull-right" style={{marginTop:10}}>
-		          	<small  className = '' style={{color:"white",margin:7,fontSize:"2.2rem"}}><i className = ' fa fa-bell nav-icon'></i></small>
-		            <small onClick = {()=>{ this.goToDashboard()}} className = '' style={{color:"white",margin:7,fontSize:"2.2rem"}}>
-		            	<i className = ' fa fa-dashboard nav-icon'></i></small>  
+                {/* <input type ="text" placeholder ="Search" className ="form-control rounded mobile-vanish-key tablet-vanish-key pc-inline" style={{width:"85%",paddingLeft:30,margin:8}} />
+                <input type="text" placeholder="Search" className="form-control rounded pc-vanish-key mobile-vanish-key tab-inline " style={{ width: "80%", paddingLeft: 30, margin: 8,  }} />
+              <input type="text" placeholder="Search" className="form-control rounded pc-vanish-key tablet-vanish-key mob-inline" style={{ width: "60%", paddingLeft: 30, margin: 8,  }} /> */}
+
+		          <div className = "pull-right" >
+		          	  {/* <small  className = '' style={{color:"white",margin:7,fontSize:"2.2rem"}}><i className = ' fa fa-bell nav-icon'></i></small> */}
+		            <small onClick = {()=>{ this.goToDashboard("non-mobile")}} className = 'mobile-vanish-key tablet-vanish-key pc-appearance-key' style={{color:"white",margin:7,fontSize:"2.2rem"}}>
+		            	<i className = ' fa fa-dashboard nav-icon'></i>
+                </small>  
+              <small onClick={() => { this.goToDashboard("mobile") }} className='mobile-appearance-key tablet-appearance-key pc-vanish-key' style={{ color: "white", margin: 7, fontSize: "2.2rem" }}>
+                <i className=' fa fa-dashboard nav-icon'></i>
+              </small>  
 		          </div>
 		        </div>
 		      </nav>
